@@ -1,0 +1,66 @@
+<?php
+
+// Code generated. DO NOT EDIT.
+
+namespace UserHub\AdminV1;
+
+use UserHub\Internal\JsonUnserializable;
+
+/**
+ * The subscription items.
+ */
+class UpdateSubscriptionItemsRequestItem implements \JsonSerializable, JsonUnserializable
+{
+    /**
+     * The product identifier.
+     *
+     * If this is empty and the user ID is set, the default
+     * seat will be used.
+     */
+    public null|string $productId;
+
+    /**
+     * The member user ID of the organization member. This can
+     * only be specified for seat items.
+     */
+    public null|string $userId;
+
+    /**
+     * The quantity for the item.
+     *
+     * If this is `0` the item will be removed.
+     */
+    public null|int $quantity;
+
+    public function __construct(
+        null|string $productId = null,
+        null|string $userId = null,
+        null|int $quantity = null,
+    ) {
+        $this->productId = $productId ?? null;
+        $this->userId = $userId ?? null;
+        $this->quantity = $quantity ?? null;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return (object) [
+            'productId' => isset($this->productId) ? $this->productId : null,
+            'userId' => isset($this->userId) ? $this->userId : null,
+            'quantity' => isset($this->quantity) ? $this->quantity : null,
+        ];
+    }
+
+    public static function jsonUnserialize(mixed $data): static
+    {
+        if (!is_object($data)) {
+            throw new TypeError('json data must be an object');
+        }
+
+        return new UpdateSubscriptionItemsRequestItem(
+            isset($data->{'productId'}) ? $data->{'productId'} : null,
+            isset($data->{'userId'}) ? $data->{'userId'} : null,
+            isset($data->{'quantity'}) ? $data->{'quantity'} : null,
+        );
+    }
+}

@@ -1,0 +1,52 @@
+<?php
+
+// Code generated. DO NOT EDIT.
+
+namespace UserHub\AdminV1;
+
+use UserHub\Internal\JsonUnserializable;
+use UserHub\Internal\Util;
+
+/**
+ * The signing secret for the webhook.
+ */
+class SigningSecret implements \JsonSerializable, JsonUnserializable
+{
+    /**
+     * The signing secret value.
+     */
+    public string $secret;
+
+    /**
+     * The time the signing secret is set to expire.
+     */
+    public null|\DateTimeInterface $expireTime;
+
+    public function __construct(
+        null|string $secret = null,
+        null|\DateTimeInterface $expireTime = null,
+    ) {
+        $this->secret = $secret ?? '';
+        $this->expireTime = $expireTime ?? null;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return (object) [
+            'secret' => isset($this->secret) ? $this->secret : null,
+            'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
+        ];
+    }
+
+    public static function jsonUnserialize(mixed $data): static
+    {
+        if (!is_object($data)) {
+            throw new TypeError('json data must be an object');
+        }
+
+        return new SigningSecret(
+            isset($data->{'secret'}) ? $data->{'secret'} : null,
+            isset($data->{'expireTime'}) ? Util::decodeDateTime($data->{'expireTime'}) : null,
+        );
+    }
+}

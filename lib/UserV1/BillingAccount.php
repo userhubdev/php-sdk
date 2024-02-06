@@ -1,0 +1,87 @@
+<?php
+
+// Code generated. DO NOT EDIT.
+
+namespace UserHub\UserV1;
+
+use UserHub\Internal\JsonUnserializable;
+use UserHub\Internal\Util;
+
+/**
+ * The billing account for an organization or user.
+ */
+class BillingAccount implements \JsonSerializable, JsonUnserializable
+{
+    /**
+     * The status of the billing account.
+     */
+    public null|string $state;
+
+    /**
+     * The balance amount for the account.
+     *
+     * A negative value indicates an amount which will be subtracted from the next
+     * invoice (credit).
+     *
+     * A positive value indicates an amount which will be added to the next
+     * invoice (debt).
+     */
+    public null|string $balanceAmount;
+
+    /**
+     * The ISO-4217 currency code for the account (e.g. `USD`).
+     */
+    public null|string $currencyCode;
+
+    /**
+     * The default and latest 10 payment methods for the account.
+     *
+     * @var \UserHub\UserV1\PaymentMethod[]
+     */
+    public array $paymentMethods;
+
+    /**
+     * The subscription for the account.
+     */
+    public null|\UserHub\UserV1\Subscription $subscription;
+
+    public function __construct(
+        null|string $state = null,
+        null|string $balanceAmount = null,
+        null|string $currencyCode = null,
+        null|array $paymentMethods = null,
+        null|Subscription $subscription = null,
+    ) {
+        $this->state = $state ?? null;
+        $this->balanceAmount = $balanceAmount ?? null;
+        $this->currencyCode = $currencyCode ?? null;
+        $this->paymentMethods = $paymentMethods ?? [];
+        $this->subscription = $subscription ?? null;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return (object) [
+            'state' => isset($this->state) ? $this->state : null,
+            'balanceAmount' => isset($this->balanceAmount) ? $this->balanceAmount : null,
+            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
+            'paymentMethods' => isset($this->paymentMethods) ? $this->paymentMethods : null,
+            'subscription' => isset($this->subscription) ? $this->subscription : null,
+        ];
+    }
+
+    public static function jsonUnserialize(mixed $data): static
+    {
+        if (!is_object($data)) {
+            throw new TypeError('json data must be an object');
+        }
+
+        return new BillingAccount(
+            isset($data->{'state'}) ? $data->{'state'} : null,
+            isset($data->{'balanceAmount'}) ? $data->{'balanceAmount'} : null,
+            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
+            isset($data->{'paymentMethods'}) ? Util::mapArray($data->{'paymentMethods'}, [PaymentMethod::class, 'jsonUnserialize']) : null,
+            isset($data->{'subscription'}) ? Subscription::jsonUnserialize($data->{'subscription'}) : null,
+        );
+    }
+}

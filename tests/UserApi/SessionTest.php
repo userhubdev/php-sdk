@@ -1,0 +1,58 @@
+<?php
+
+// Code generated. DO NOT EDIT.
+
+namespace UserHub\UserApi;
+
+use PHPUnit\Framework\TestCase;
+use UserHub\Internal\TestTransport;
+
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+class SessionTest extends TestCase
+{
+    public function testGet(): void
+    {
+        $tr = new TestTransport();
+        $tr->body = <<<'EOD'
+{
+  "user": {
+    "id": "string",
+    "uniqueId": "test",
+    "displayName": "Test",
+    "email": "test@example.com",
+    "emailVerified": true,
+    "imageUrl": "https://example.com/test.png",
+    "disabled": true
+  },
+  "memberships": [
+    {}
+  ],
+  "subscription": {
+    "id": "string",
+    "state": "ACTIVE",
+    "anchorTime": "2024-02-05T23:07:46.483Z",
+    "plan": {
+      "id": "string",
+      "displayName": "Test"
+    },
+    "seat": {}
+  },
+  "expireTime": "2024-02-05T23:07:46.483Z",
+  "scopes": [
+    "string"
+  ]
+}
+EOD;
+
+        $n = new Session($tr);
+
+        $res = $n->get();
+        $this->assertNotNull($res);
+        $this->assertEquals('GET', $tr->request->method);
+        $this->assertEquals('/user/v1/session', $tr->request->path);
+    }
+}
