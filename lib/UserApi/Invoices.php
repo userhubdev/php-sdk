@@ -28,7 +28,6 @@ class Invoices
         null|string $organizationId = null,
         null|int $pageSize = null,
         null|string $pageToken = null,
-        null|string $filter = null,
         null|string $orderBy = null,
     ): ListInvoicesResponse {
         $req = new Request('user.invoices.list', 'GET', '/user/v1/invoices');
@@ -42,9 +41,6 @@ class Invoices
         }
         if (isset($pageToken)) {
             $req->setQuery('pageToken', $pageToken);
-        }
-        if (isset($filter)) {
-            $req->setQuery('filter', $filter);
         }
         if (isset($orderBy)) {
             $req->setQuery('orderBy', $orderBy);

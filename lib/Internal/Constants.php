@@ -7,7 +7,7 @@ namespace UserHub\Internal;
 abstract class Constants
 {
     public const API_BASE_URL = 'https://api.userhub.com';
-    public const VERSION = '0.1.0';
+    public const VERSION = '0.2.0';
 
     public const AUTH_HEADER = 'Authorization';
     public const API_KEY_HEADER = 'UserHub-Api-Key';
