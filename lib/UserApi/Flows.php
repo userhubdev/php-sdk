@@ -29,7 +29,6 @@ class Flows
         null|string $type = null,
         null|int $pageSize = null,
         null|string $pageToken = null,
-        null|string $filter = null,
         null|string $orderBy = null,
     ): ListFlowsResponse {
         $req = new Request('user.flows.list', 'GET', '/user/v1/flows');
@@ -46,9 +45,6 @@ class Flows
         }
         if (isset($pageToken)) {
             $req->setQuery('pageToken', $pageToken);
-        }
-        if (isset($filter)) {
-            $req->setQuery('filter', $filter);
         }
         if (isset($orderBy)) {
             $req->setQuery('orderBy', $orderBy);

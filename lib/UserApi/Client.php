@@ -9,9 +9,10 @@ use UserHub\Internal\Transport;
 /**
  * The User API.
  *
- * @property Flows    $flows
- * @property Invoices $invoices
- * @property Session  $session
+ * @property Flows         $flows
+ * @property Invoices      $invoices
+ * @property Organizations $organizations
+ * @property Session       $session
  */
 class Client
 {
@@ -30,6 +31,9 @@ class Client
 
             case 'invoices':
                 return new Invoices($this->transport);
+
+            case 'organizations':
+                return new Organizations($this->transport);
 
             case 'session':
                 return new Session($this->transport);
