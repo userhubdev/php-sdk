@@ -25,6 +25,7 @@ class FlowsTest extends TestCase
       "state": "START_PENDING",
       "stateReason": "DELETED",
       "type": "JOIN_ORGANIZATION",
+      "startTime": "2024-02-05T23:07:46.483Z",
       "expireTime": "2024-02-05T23:07:46.483Z",
       "ttl": "string",
       "secret": "string",
@@ -155,6 +156,7 @@ EOD;
     "createTime": "2024-02-05T23:07:46.483Z",
     "updateTime": "2024-02-05T23:07:46.483Z"
   },
+  "startTime": "2024-02-05T23:07:46.483Z",
   "expireTime": "2024-02-05T23:07:46.483Z",
   "ttl": "string",
   "secret": "string",
@@ -166,7 +168,8 @@ EOD;
   },
   "signup": {
     "email": "test@example.com",
-    "displayName": "Test"
+    "displayName": "Test",
+    "createOrganization": true
   }
 }
 EOD;
@@ -289,6 +292,7 @@ EOD;
     "createTime": "2024-02-05T23:07:46.483Z",
     "updateTime": "2024-02-05T23:07:46.483Z"
   },
+  "startTime": "2024-02-05T23:07:46.483Z",
   "expireTime": "2024-02-05T23:07:46.483Z",
   "ttl": "string",
   "secret": "string",
@@ -300,7 +304,8 @@ EOD;
   },
   "signup": {
     "email": "test@example.com",
-    "displayName": "Test"
+    "displayName": "Test",
+    "createOrganization": true
   }
 }
 EOD;
@@ -423,6 +428,7 @@ EOD;
     "createTime": "2024-02-05T23:07:46.483Z",
     "updateTime": "2024-02-05T23:07:46.483Z"
   },
+  "startTime": "2024-02-05T23:07:46.483Z",
   "expireTime": "2024-02-05T23:07:46.483Z",
   "ttl": "string",
   "secret": "string",
@@ -434,7 +440,8 @@ EOD;
   },
   "signup": {
     "email": "test@example.com",
-    "displayName": "Test"
+    "displayName": "Test",
+    "createOrganization": true
   }
 }
 EOD;

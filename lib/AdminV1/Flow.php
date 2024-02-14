@@ -50,6 +50,11 @@ class Flow implements \JsonSerializable, JsonUnserializable
     public null|\UserHub\AdminV1\User $creator;
 
     /**
+     * The start time of the flow.
+     */
+    public \DateTimeInterface $startTime;
+
+    /**
      * The time the flow will expire.
      */
     public null|\DateTimeInterface $expireTime;
@@ -94,6 +99,7 @@ class Flow implements \JsonSerializable, JsonUnserializable
         null|Organization $organization = null,
         null|User $user = null,
         null|User $creator = null,
+        null|\DateTimeInterface $startTime = null,
         null|\DateTimeInterface $expireTime = null,
         null|string $ttl = null,
         null|string $secret = null,
@@ -109,6 +115,7 @@ class Flow implements \JsonSerializable, JsonUnserializable
         $this->organization = $organization ?? null;
         $this->user = $user ?? null;
         $this->creator = $creator ?? null;
+        $this->startTime = $startTime ?? Util::emptyDateTime();
         $this->expireTime = $expireTime ?? null;
         $this->ttl = $ttl ?? null;
         $this->secret = $secret ?? null;
@@ -128,6 +135,7 @@ class Flow implements \JsonSerializable, JsonUnserializable
             'organization' => isset($this->organization) ? $this->organization : null,
             'user' => isset($this->user) ? $this->user : null,
             'creator' => isset($this->creator) ? $this->creator : null,
+            'startTime' => isset($this->startTime) ? Util::encodeDateTime($this->startTime) : null,
             'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
             'ttl' => isset($this->ttl) ? $this->ttl : null,
             'secret' => isset($this->secret) ? $this->secret : null,
@@ -152,6 +160,7 @@ class Flow implements \JsonSerializable, JsonUnserializable
             isset($data->{'organization'}) ? Organization::jsonUnserialize($data->{'organization'}) : null,
             isset($data->{'user'}) ? User::jsonUnserialize($data->{'user'}) : null,
             isset($data->{'creator'}) ? User::jsonUnserialize($data->{'creator'}) : null,
+            isset($data->{'startTime'}) ? Util::decodeDateTime($data->{'startTime'}) : null,
             isset($data->{'expireTime'}) ? Util::decodeDateTime($data->{'expireTime'}) : null,
             isset($data->{'ttl'}) ? $data->{'ttl'} : null,
             isset($data->{'secret'}) ? $data->{'secret'} : null,

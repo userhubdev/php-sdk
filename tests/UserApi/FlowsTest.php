@@ -86,7 +86,8 @@ EOD;
   },
   "signup": {
     "email": "test@example.com",
-    "displayName": "Test"
+    "displayName": "Test",
+    "createOrganization": true
   }
 }
 EOD;
@@ -143,7 +144,8 @@ EOD;
   },
   "signup": {
     "email": "test@example.com",
-    "displayName": "Test"
+    "displayName": "Test",
+    "createOrganization": true
   }
 }
 EOD;
@@ -200,7 +202,8 @@ EOD;
   },
   "signup": {
     "email": "test@example.com",
-    "displayName": "Test"
+    "displayName": "Test",
+    "createOrganization": true
   }
 }
 EOD;
@@ -257,7 +260,8 @@ EOD;
   },
   "signup": {
     "email": "test@example.com",
-    "displayName": "Test"
+    "displayName": "Test",
+    "createOrganization": true
   }
 }
 EOD;
