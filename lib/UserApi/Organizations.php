@@ -56,6 +56,7 @@ class Organizations
         null|string $uniqueId = null,
         null|string $displayName = null,
         null|string $email = null,
+        null|string $flowId = null,
     ): Organization {
         $req = new Request('user.organizations.create', 'POST', '/user/v1/organizations');
         $body = [];
@@ -68,6 +69,9 @@ class Organizations
         }
         if (isset($email)) {
             $body['email'] = $email;
+        }
+        if (isset($flowId)) {
+            $body['flowId'] = $flowId;
         }
 
         $req->setBody((object) $body);
@@ -99,6 +103,7 @@ class Organizations
         null|string|Undefined $uniqueId = new Undefined(),
         null|string|Undefined $displayName = new Undefined(),
         null|string|Undefined $email = new Undefined(),
+        null|string|Undefined $flowId = new Undefined(),
     ): Organization {
         $req = new Request('user.organizations.update', 'PATCH', '/user/v1/organizations/'.rawurlencode($organizationId));
         $req->setIdempotent(true);
@@ -113,6 +118,9 @@ class Organizations
         }
         if (!Undefined::is($email)) {
             $body['email'] = $email;
+        }
+        if (!Undefined::is($flowId)) {
+            $body['flowId'] = $flowId;
         }
 
         $req->setBody((object) $body);
