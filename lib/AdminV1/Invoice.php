@@ -145,6 +145,13 @@ class Invoice implements \JsonSerializable, JsonUnserializable
     public array $items;
 
     /**
+     * The prorated changes that occurred mid-billing cycle.
+     *
+     * @var \UserHub\AdminV1\InvoiceChange[]
+     */
+    public array $changes;
+
+    /**
      * The last time the invoice was pulled from the connection.
      */
     public null|\DateTimeInterface $pullTime;
@@ -184,6 +191,7 @@ class Invoice implements \JsonSerializable, JsonUnserializable
         null|string $paymentState = null,
         null|PaymentIntent $paymentIntent = null,
         null|array $items = null,
+        null|array $changes = null,
         null|\DateTimeInterface $pullTime = null,
         null|\DateTimeInterface $createTime = null,
         null|\DateTimeInterface $updateTime = null,
@@ -212,6 +220,7 @@ class Invoice implements \JsonSerializable, JsonUnserializable
         $this->paymentState = $paymentState ?? null;
         $this->paymentIntent = $paymentIntent ?? null;
         $this->items = $items ?? [];
+        $this->changes = $changes ?? [];
         $this->pullTime = $pullTime ?? null;
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
@@ -244,6 +253,7 @@ class Invoice implements \JsonSerializable, JsonUnserializable
             'paymentState' => isset($this->paymentState) ? $this->paymentState : null,
             'paymentIntent' => isset($this->paymentIntent) ? $this->paymentIntent : null,
             'items' => isset($this->items) ? $this->items : null,
+            'changes' => isset($this->changes) ? $this->changes : null,
             'pullTime' => isset($this->pullTime) ? Util::encodeDateTime($this->pullTime) : null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
@@ -281,6 +291,7 @@ class Invoice implements \JsonSerializable, JsonUnserializable
             isset($data->{'paymentState'}) ? $data->{'paymentState'} : null,
             isset($data->{'paymentIntent'}) ? PaymentIntent::jsonUnserialize($data->{'paymentIntent'}) : null,
             isset($data->{'items'}) ? Util::mapArray($data->{'items'}, [InvoiceItem::class, 'jsonUnserialize']) : null,
+            isset($data->{'changes'}) ? Util::mapArray($data->{'changes'}, [InvoiceChange::class, 'jsonUnserialize']) : null,
             isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,

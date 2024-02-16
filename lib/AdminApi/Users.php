@@ -358,6 +358,7 @@ class Users
         string $userId,
         null|string $portalUrl = null,
         null|string $returnUrl = null,
+        null|string $successUrl = null,
     ): CreatePortalSessionResponse {
         $req = new Request('admin.users.createPortalSession', 'POST', '/admin/v1/users/'.rawurlencode($userId).':createPortalSession');
         $req->setIdempotent(true);
@@ -369,6 +370,9 @@ class Users
         }
         if (isset($returnUrl)) {
             $body['returnUrl'] = $returnUrl;
+        }
+        if (isset($successUrl)) {
+            $body['successUrl'] = $successUrl;
         }
 
         $req->setBody((object) $body);
