@@ -2,10 +2,13 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserApi;
 
 use UserHub\Internal\Request;
 use UserHub\Internal\Transport;
+use UserHub\UserHubError;
 
 /**
  * The Portal session.
@@ -21,6 +24,8 @@ class Session
 
     /**
      * Get current session details.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(): \UserHub\UserV1\Session
     {

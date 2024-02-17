@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\CommonV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -55,26 +57,26 @@ class Address implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'lines' => isset($this->lines) ? $this->lines : null,
-            'city' => isset($this->city) ? $this->city : null,
-            'state' => isset($this->state) ? $this->state : null,
-            'postalCode' => isset($this->postalCode) ? $this->postalCode : null,
-            'country' => isset($this->country) ? $this->country : null,
+            'lines' => $this->lines ?? null,
+            'city' => $this->city ?? null,
+            'state' => $this->state ?? null,
+            'postalCode' => $this->postalCode ?? null,
+            'country' => $this->country ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Address(
-            isset($data->{'lines'}) ? $data->{'lines'} : null,
-            isset($data->{'city'}) ? $data->{'city'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
-            isset($data->{'postalCode'}) ? $data->{'postalCode'} : null,
-            isset($data->{'country'}) ? $data->{'country'} : null,
+        return new self(
+            $data->{'lines'} ?? null,
+            $data->{'city'} ?? null,
+            $data->{'state'} ?? null,
+            $data->{'postalCode'} ?? null,
+            $data->{'country'} ?? null,
         );
     }
 }

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -111,14 +113,14 @@ class PlanGroupRevision implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'default' => isset($this->default) ? $this->default : null,
-            'currencyCodes' => isset($this->currencyCodes) ? $this->currencyCodes : null,
-            'plans' => isset($this->plans) ? $this->plans : null,
-            'items' => isset($this->items) ? $this->items : null,
-            'committed' => isset($this->committed) ? $this->committed : null,
-            'tags' => isset($this->tags) ? $this->tags : null,
-            'sourceRevisionId' => isset($this->sourceRevisionId) ? $this->sourceRevisionId : null,
+            'id' => $this->id ?? null,
+            'default' => $this->default ?? null,
+            'currencyCodes' => $this->currencyCodes ?? null,
+            'plans' => $this->plans ?? null,
+            'items' => $this->items ?? null,
+            'committed' => $this->committed ?? null,
+            'tags' => $this->tags ?? null,
+            'sourceRevisionId' => $this->sourceRevisionId ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
         ];
@@ -126,19 +128,19 @@ class PlanGroupRevision implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PlanGroupRevision(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'default'}) ? $data->{'default'} : null,
-            isset($data->{'currencyCodes'}) ? $data->{'currencyCodes'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'default'} ?? null,
+            $data->{'currencyCodes'} ?? null,
             isset($data->{'plans'}) ? Util::mapArray($data->{'plans'}, [PlanGroupRevisionPlan::class, 'jsonUnserialize']) : null,
             isset($data->{'items'}) ? Util::mapArray($data->{'items'}, [PlanGroupRevisionItem::class, 'jsonUnserialize']) : null,
-            isset($data->{'committed'}) ? $data->{'committed'} : null,
-            isset($data->{'tags'}) ? $data->{'tags'} : null,
-            isset($data->{'sourceRevisionId'}) ? $data->{'sourceRevisionId'} : null,
+            $data->{'committed'} ?? null,
+            $data->{'tags'} ?? null,
+            $data->{'sourceRevisionId'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

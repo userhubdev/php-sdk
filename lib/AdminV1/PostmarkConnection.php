@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\CommonV1\Email;
@@ -61,26 +63,26 @@ class PostmarkConnection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'serverToken' => isset($this->serverToken) ? $this->serverToken : null,
-            'serverId' => isset($this->serverId) ? $this->serverId : null,
-            'from' => isset($this->from) ? $this->from : null,
-            'replyTo' => isset($this->replyTo) ? $this->replyTo : null,
-            'allowedEmails' => isset($this->allowedEmails) ? $this->allowedEmails : null,
+            'serverToken' => $this->serverToken ?? null,
+            'serverId' => $this->serverId ?? null,
+            'from' => $this->from ?? null,
+            'replyTo' => $this->replyTo ?? null,
+            'allowedEmails' => $this->allowedEmails ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PostmarkConnection(
-            isset($data->{'serverToken'}) ? $data->{'serverToken'} : null,
-            isset($data->{'serverId'}) ? $data->{'serverId'} : null,
+        return new self(
+            $data->{'serverToken'} ?? null,
+            $data->{'serverId'} ?? null,
             isset($data->{'from'}) ? Email::jsonUnserialize($data->{'from'}) : null,
             isset($data->{'replyTo'}) ? Email::jsonUnserialize($data->{'replyTo'}) : null,
-            isset($data->{'allowedEmails'}) ? $data->{'allowedEmails'} : null,
+            $data->{'allowedEmails'} ?? null,
         );
     }
 }

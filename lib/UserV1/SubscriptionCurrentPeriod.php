@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -40,11 +42,11 @@ class SubscriptionCurrentPeriod implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new SubscriptionCurrentPeriod(
+        return new self(
             isset($data->{'startTime'}) ? Util::decodeDateTime($data->{'startTime'}) : null,
             isset($data->{'endTime'}) ? Util::decodeDateTime($data->{'endTime'}) : null,
         );

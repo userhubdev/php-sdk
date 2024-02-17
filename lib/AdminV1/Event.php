@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -90,28 +92,28 @@ class Event implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'type' => isset($this->type) ? $this->type : null,
+            'id' => $this->id ?? null,
+            'type' => $this->type ?? null,
             'time' => isset($this->time) ? Util::encodeDateTime($this->time) : null,
-            'entity' => isset($this->entity) ? $this->entity : null,
-            'connection' => isset($this->connection) ? $this->connection : null,
-            'organization' => isset($this->organization) ? $this->organization : null,
-            'user' => isset($this->user) ? $this->user : null,
-            'apiKey' => isset($this->apiKey) ? $this->apiKey : null,
-            'actor' => isset($this->actor) ? $this->actor : null,
-            'request' => isset($this->request) ? $this->request : null,
+            'entity' => $this->entity ?? null,
+            'connection' => $this->connection ?? null,
+            'organization' => $this->organization ?? null,
+            'user' => $this->user ?? null,
+            'apiKey' => $this->apiKey ?? null,
+            'actor' => $this->actor ?? null,
+            'request' => $this->request ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Event(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'type'}) ? $data->{'type'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'type'} ?? null,
             isset($data->{'time'}) ? Util::decodeDateTime($data->{'time'}) : null,
             isset($data->{'entity'}) ? EventEntity::jsonUnserialize($data->{'entity'}) : null,
             isset($data->{'connection'}) ? EventConnection::jsonUnserialize($data->{'connection'}) : null,

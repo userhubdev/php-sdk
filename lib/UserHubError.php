@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace UserHub;
 
 use UserHub\ApiV1\Status;
@@ -100,7 +102,7 @@ class UserHubError extends \Exception
     public function getMetadata(): object
     {
         if (!empty($this->metadata)) {
-            return (object) (new ArrayObject($this->metadata))->getArrayCopy();
+            return (object) (new \ArrayObject($this->metadata))->getArrayCopy();
         }
 
         return (object) [];

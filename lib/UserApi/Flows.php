@@ -2,10 +2,13 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserApi;
 
 use UserHub\Internal\Request;
 use UserHub\Internal\Transport;
+use UserHub\UserHubError;
 use UserHub\UserV1\Flow;
 use UserHub\UserV1\ListFlowsResponse;
 
@@ -23,6 +26,8 @@ class Flows
 
     /**
      * Lists flows.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
         null|string $organizationId = null,
@@ -59,6 +64,8 @@ class Flows
      * Creates a join organization flow.
      *
      * This invites a person to join an organization.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createJoinOrganization(
         null|string $organizationId = null,
@@ -91,6 +98,8 @@ class Flows
 
     /**
      * Retrieves specified flow.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
         string $flowId,
@@ -108,6 +117,8 @@ class Flows
      *
      * This accepts the flow (e.g. for a join organization flow it will
      * accept the invitation and add the member to the organization).
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function consume(
         string $flowId,
@@ -126,6 +137,8 @@ class Flows
      * Cancels specified flow.
      *
      * This cancels the flow and hides it from the user.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function cancel(
         string $flowId,

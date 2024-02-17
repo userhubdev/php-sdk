@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -39,22 +41,22 @@ class Auth0Connection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'domain' => isset($this->domain) ? $this->domain : null,
-            'clientId' => isset($this->clientId) ? $this->clientId : null,
-            'clientSecret' => isset($this->clientSecret) ? $this->clientSecret : null,
+            'domain' => $this->domain ?? null,
+            'clientId' => $this->clientId ?? null,
+            'clientSecret' => $this->clientSecret ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Auth0Connection(
-            isset($data->{'domain'}) ? $data->{'domain'} : null,
-            isset($data->{'clientId'}) ? $data->{'clientId'} : null,
-            isset($data->{'clientSecret'}) ? $data->{'clientSecret'} : null,
+        return new self(
+            $data->{'domain'} ?? null,
+            $data->{'clientId'} ?? null,
+            $data->{'clientSecret'} ?? null,
         );
     }
 }

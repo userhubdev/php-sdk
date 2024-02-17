@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -32,20 +34,20 @@ class ConnectionProvider implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'type' => isset($this->type) ? $this->type : null,
-            'default' => isset($this->default) ? $this->default : null,
+            'type' => $this->type ?? null,
+            'default' => $this->default ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new ConnectionProvider(
-            isset($data->{'type'}) ? $data->{'type'} : null,
-            isset($data->{'default'}) ? $data->{'default'} : null,
+        return new self(
+            $data->{'type'} ?? null,
+            $data->{'default'} ?? null,
         );
     }
 }

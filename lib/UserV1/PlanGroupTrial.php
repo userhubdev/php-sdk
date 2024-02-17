@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -25,18 +27,18 @@ class PlanGroupTrial implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'days' => isset($this->days) ? $this->days : null,
+            'days' => $this->days ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PlanGroupTrial(
-            isset($data->{'days'}) ? $data->{'days'} : null,
+        return new self(
+            $data->{'days'} ?? null,
         );
     }
 }

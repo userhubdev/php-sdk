@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\EventsV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -75,27 +77,27 @@ class Event implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
+            'id' => $this->id ?? null,
             'time' => isset($this->time) ? Util::encodeDateTime($this->time) : null,
-            'type' => isset($this->type) ? $this->type : null,
-            'flowsChanged' => isset($this->flowsChanged) ? $this->flowsChanged : null,
-            'membersChanged' => isset($this->membersChanged) ? $this->membersChanged : null,
-            'organizationsChanged' => isset($this->organizationsChanged) ? $this->organizationsChanged : null,
-            'subscriptionsChanged' => isset($this->subscriptionsChanged) ? $this->subscriptionsChanged : null,
-            'usersChanged' => isset($this->usersChanged) ? $this->usersChanged : null,
+            'type' => $this->type ?? null,
+            'flowsChanged' => $this->flowsChanged ?? null,
+            'membersChanged' => $this->membersChanged ?? null,
+            'organizationsChanged' => $this->organizationsChanged ?? null,
+            'subscriptionsChanged' => $this->subscriptionsChanged ?? null,
+            'usersChanged' => $this->usersChanged ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Event(
-            isset($data->{'id'}) ? $data->{'id'} : null,
+        return new self(
+            $data->{'id'} ?? null,
             isset($data->{'time'}) ? Util::decodeDateTime($data->{'time'}) : null,
-            isset($data->{'type'}) ? $data->{'type'} : null,
+            $data->{'type'} ?? null,
             isset($data->{'flowsChanged'}) ? FlowsChanged::jsonUnserialize($data->{'flowsChanged'}) : null,
             isset($data->{'membersChanged'}) ? MembersChanged::jsonUnserialize($data->{'membersChanged'}) : null,
             isset($data->{'organizationsChanged'}) ? OrganizationsChanged::jsonUnserialize($data->{'organizationsChanged'}) : null,

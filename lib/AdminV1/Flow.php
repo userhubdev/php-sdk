@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -128,42 +130,42 @@ class Flow implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'state' => isset($this->state) ? $this->state : null,
-            'stateReason' => isset($this->stateReason) ? $this->stateReason : null,
-            'type' => isset($this->type) ? $this->type : null,
-            'organization' => isset($this->organization) ? $this->organization : null,
-            'user' => isset($this->user) ? $this->user : null,
-            'creator' => isset($this->creator) ? $this->creator : null,
+            'id' => $this->id ?? null,
+            'state' => $this->state ?? null,
+            'stateReason' => $this->stateReason ?? null,
+            'type' => $this->type ?? null,
+            'organization' => $this->organization ?? null,
+            'user' => $this->user ?? null,
+            'creator' => $this->creator ?? null,
             'startTime' => isset($this->startTime) ? Util::encodeDateTime($this->startTime) : null,
             'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
-            'ttl' => isset($this->ttl) ? $this->ttl : null,
-            'secret' => isset($this->secret) ? $this->secret : null,
+            'ttl' => $this->ttl ?? null,
+            'secret' => $this->secret ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
-            'joinOrganization' => isset($this->joinOrganization) ? $this->joinOrganization : null,
-            'signup' => isset($this->signup) ? $this->signup : null,
+            'joinOrganization' => $this->joinOrganization ?? null,
+            'signup' => $this->signup ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Flow(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
-            isset($data->{'stateReason'}) ? $data->{'stateReason'} : null,
-            isset($data->{'type'}) ? $data->{'type'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'state'} ?? null,
+            $data->{'stateReason'} ?? null,
+            $data->{'type'} ?? null,
             isset($data->{'organization'}) ? Organization::jsonUnserialize($data->{'organization'}) : null,
             isset($data->{'user'}) ? User::jsonUnserialize($data->{'user'}) : null,
             isset($data->{'creator'}) ? User::jsonUnserialize($data->{'creator'}) : null,
             isset($data->{'startTime'}) ? Util::decodeDateTime($data->{'startTime'}) : null,
             isset($data->{'expireTime'}) ? Util::decodeDateTime($data->{'expireTime'}) : null,
-            isset($data->{'ttl'}) ? $data->{'ttl'} : null,
-            isset($data->{'secret'}) ? $data->{'secret'} : null,
+            $data->{'ttl'} ?? null,
+            $data->{'secret'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
             isset($data->{'joinOrganization'}) ? JoinOrganizationFlow::jsonUnserialize($data->{'joinOrganization'}) : null,

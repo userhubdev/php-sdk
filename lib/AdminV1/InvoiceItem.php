@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\CommonV1\Period;
@@ -90,35 +92,35 @@ class InvoiceItem implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'product' => isset($this->product) ? $this->product : null,
-            'price' => isset($this->price) ? $this->price : null,
-            'quantity' => isset($this->quantity) ? $this->quantity : null,
-            'subtotalAmount' => isset($this->subtotalAmount) ? $this->subtotalAmount : null,
-            'discountAmount' => isset($this->discountAmount) ? $this->discountAmount : null,
-            'description' => isset($this->description) ? $this->description : null,
-            'externalId' => isset($this->externalId) ? $this->externalId : null,
-            'proration' => isset($this->proration) ? $this->proration : null,
-            'period' => isset($this->period) ? $this->period : null,
+            'id' => $this->id ?? null,
+            'product' => $this->product ?? null,
+            'price' => $this->price ?? null,
+            'quantity' => $this->quantity ?? null,
+            'subtotalAmount' => $this->subtotalAmount ?? null,
+            'discountAmount' => $this->discountAmount ?? null,
+            'description' => $this->description ?? null,
+            'externalId' => $this->externalId ?? null,
+            'proration' => $this->proration ?? null,
+            'period' => $this->period ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new InvoiceItem(
-            isset($data->{'id'}) ? $data->{'id'} : null,
+        return new self(
+            $data->{'id'} ?? null,
             isset($data->{'product'}) ? Product::jsonUnserialize($data->{'product'}) : null,
             isset($data->{'price'}) ? Price::jsonUnserialize($data->{'price'}) : null,
-            isset($data->{'quantity'}) ? $data->{'quantity'} : null,
-            isset($data->{'subtotalAmount'}) ? $data->{'subtotalAmount'} : null,
-            isset($data->{'discountAmount'}) ? $data->{'discountAmount'} : null,
-            isset($data->{'description'}) ? $data->{'description'} : null,
-            isset($data->{'externalId'}) ? $data->{'externalId'} : null,
-            isset($data->{'proration'}) ? $data->{'proration'} : null,
+            $data->{'quantity'} ?? null,
+            $data->{'subtotalAmount'} ?? null,
+            $data->{'discountAmount'} ?? null,
+            $data->{'description'} ?? null,
+            $data->{'externalId'} ?? null,
+            $data->{'proration'} ?? null,
             isset($data->{'period'}) ? Period::jsonUnserialize($data->{'period'}) : null,
         );
     }

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\ApiV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -42,22 +44,22 @@ class StatusDetails implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'reason' => isset($this->reason) ? $this->reason : null,
-            'param' => isset($this->param) ? $this->param : null,
-            'metadata' => isset($this->metadata) ? $this->metadata : null,
+            'reason' => $this->reason ?? null,
+            'param' => $this->param ?? null,
+            'metadata' => $this->metadata ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new StatusDetails(
-            isset($data->{'reason'}) ? $data->{'reason'} : null,
-            isset($data->{'param'}) ? $data->{'param'} : null,
-            isset($data->{'metadata'}) ? $data->{'metadata'} : null,
+        return new self(
+            $data->{'reason'} ?? null,
+            $data->{'param'} ?? null,
+            $data->{'metadata'} ?? null,
         );
     }
 }

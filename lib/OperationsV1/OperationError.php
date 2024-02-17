@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\OperationsV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -32,20 +34,20 @@ class OperationError implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'code' => isset($this->code) ? $this->code : null,
-            'message' => isset($this->message) ? $this->message : null,
+            'code' => $this->code ?? null,
+            'message' => $this->message ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new OperationError(
-            isset($data->{'code'}) ? $data->{'code'} : null,
-            isset($data->{'message'}) ? $data->{'message'} : null,
+        return new self(
+            $data->{'code'} ?? null,
+            $data->{'message'} ?? null,
         );
     }
 }

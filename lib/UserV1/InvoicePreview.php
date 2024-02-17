@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -117,37 +119,37 @@ class InvoicePreview implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
-            'account' => isset($this->account) ? $this->account : null,
+            'currencyCode' => $this->currencyCode ?? null,
+            'account' => $this->account ?? null,
             'effectiveTime' => isset($this->effectiveTime) ? Util::encodeDateTime($this->effectiveTime) : null,
-            'subtotalAmount' => isset($this->subtotalAmount) ? $this->subtotalAmount : null,
-            'discountAmount' => isset($this->discountAmount) ? $this->discountAmount : null,
-            'balance' => isset($this->balance) ? $this->balance : null,
-            'taxAmount' => isset($this->taxAmount) ? $this->taxAmount : null,
-            'totalAmount' => isset($this->totalAmount) ? $this->totalAmount : null,
-            'dueAmount' => isset($this->dueAmount) ? $this->dueAmount : null,
-            'changeToken' => isset($this->changeToken) ? $this->changeToken : null,
-            'items' => isset($this->items) ? $this->items : null,
+            'subtotalAmount' => $this->subtotalAmount ?? null,
+            'discountAmount' => $this->discountAmount ?? null,
+            'balance' => $this->balance ?? null,
+            'taxAmount' => $this->taxAmount ?? null,
+            'totalAmount' => $this->totalAmount ?? null,
+            'dueAmount' => $this->dueAmount ?? null,
+            'changeToken' => $this->changeToken ?? null,
+            'items' => $this->items ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new InvoicePreview(
-            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
+        return new self(
+            $data->{'currencyCode'} ?? null,
             isset($data->{'account'}) ? InvoiceAccount::jsonUnserialize($data->{'account'}) : null,
             isset($data->{'effectiveTime'}) ? Util::decodeDateTime($data->{'effectiveTime'}) : null,
-            isset($data->{'subtotalAmount'}) ? $data->{'subtotalAmount'} : null,
-            isset($data->{'discountAmount'}) ? $data->{'discountAmount'} : null,
+            $data->{'subtotalAmount'} ?? null,
+            $data->{'discountAmount'} ?? null,
             isset($data->{'balance'}) ? InvoiceBalance::jsonUnserialize($data->{'balance'}) : null,
-            isset($data->{'taxAmount'}) ? $data->{'taxAmount'} : null,
-            isset($data->{'totalAmount'}) ? $data->{'totalAmount'} : null,
-            isset($data->{'dueAmount'}) ? $data->{'dueAmount'} : null,
-            isset($data->{'changeToken'}) ? $data->{'changeToken'} : null,
+            $data->{'taxAmount'} ?? null,
+            $data->{'totalAmount'} ?? null,
+            $data->{'dueAmount'} ?? null,
+            $data->{'changeToken'} ?? null,
             isset($data->{'items'}) ? Util::mapArray($data->{'items'}, [InvoicePreviewItem::class, 'jsonUnserialize']) : null,
         );
     }

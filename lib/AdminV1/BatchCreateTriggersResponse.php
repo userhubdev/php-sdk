@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -28,17 +30,17 @@ class BatchCreateTriggersResponse implements \JsonSerializable, JsonUnserializab
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'triggers' => isset($this->triggers) ? $this->triggers : null,
+            'triggers' => $this->triggers ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new BatchCreateTriggersResponse(
+        return new self(
             isset($data->{'triggers'}) ? Util::mapArray($data->{'triggers'}, [TriggerResult::class, 'jsonUnserialize']) : null,
         );
     }

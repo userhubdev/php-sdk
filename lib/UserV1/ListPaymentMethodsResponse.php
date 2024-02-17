@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -45,22 +47,22 @@ class ListPaymentMethodsResponse implements \JsonSerializable, JsonUnserializabl
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'paymentMethods' => isset($this->paymentMethods) ? $this->paymentMethods : null,
-            'nextPageToken' => isset($this->nextPageToken) ? $this->nextPageToken : null,
-            'previousPageToken' => isset($this->previousPageToken) ? $this->previousPageToken : null,
+            'paymentMethods' => $this->paymentMethods ?? null,
+            'nextPageToken' => $this->nextPageToken ?? null,
+            'previousPageToken' => $this->previousPageToken ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new ListPaymentMethodsResponse(
+        return new self(
             isset($data->{'paymentMethods'}) ? Util::mapArray($data->{'paymentMethods'}, [PaymentMethod::class, 'jsonUnserialize']) : null,
-            isset($data->{'nextPageToken'}) ? $data->{'nextPageToken'} : null,
-            isset($data->{'previousPageToken'}) ? $data->{'previousPageToken'} : null,
+            $data->{'nextPageToken'} ?? null,
+            $data->{'previousPageToken'} ?? null,
         );
     }
 }

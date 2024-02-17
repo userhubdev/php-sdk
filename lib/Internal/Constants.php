@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // Code generated. DO NOT EDIT.
 
 namespace UserHub\Internal;

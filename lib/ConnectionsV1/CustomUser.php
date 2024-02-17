@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\ConnectionsV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -80,32 +82,32 @@ class CustomUser implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'email' => isset($this->email) ? $this->email : null,
-            'emailVerified' => isset($this->emailVerified) ? $this->emailVerified : null,
-            'phoneNumber' => isset($this->phoneNumber) ? $this->phoneNumber : null,
-            'phoneNumberVerified' => isset($this->phoneNumberVerified) ? $this->phoneNumberVerified : null,
-            'imageUrl' => isset($this->imageUrl) ? $this->imageUrl : null,
-            'disabled' => isset($this->disabled) ? $this->disabled : null,
+            'id' => $this->id ?? null,
+            'displayName' => $this->displayName ?? null,
+            'email' => $this->email ?? null,
+            'emailVerified' => $this->emailVerified ?? null,
+            'phoneNumber' => $this->phoneNumber ?? null,
+            'phoneNumberVerified' => $this->phoneNumberVerified ?? null,
+            'imageUrl' => $this->imageUrl ?? null,
+            'disabled' => $this->disabled ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new CustomUser(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'email'}) ? $data->{'email'} : null,
-            isset($data->{'emailVerified'}) ? $data->{'emailVerified'} : null,
-            isset($data->{'phoneNumber'}) ? $data->{'phoneNumber'} : null,
-            isset($data->{'phoneNumberVerified'}) ? $data->{'phoneNumberVerified'} : null,
-            isset($data->{'imageUrl'}) ? $data->{'imageUrl'} : null,
-            isset($data->{'disabled'}) ? $data->{'disabled'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'email'} ?? null,
+            $data->{'emailVerified'} ?? null,
+            $data->{'phoneNumber'} ?? null,
+            $data->{'phoneNumberVerified'} ?? null,
+            $data->{'imageUrl'} ?? null,
+            $data->{'disabled'} ?? null,
         );
     }
 }

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -33,19 +35,19 @@ class SigningSecret implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'secret' => isset($this->secret) ? $this->secret : null,
+            'secret' => $this->secret ?? null,
             'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new SigningSecret(
-            isset($data->{'secret'}) ? $data->{'secret'} : null,
+        return new self(
+            $data->{'secret'} ?? null,
             isset($data->{'expireTime'}) ? Util::decodeDateTime($data->{'expireTime'}) : null,
         );
     }

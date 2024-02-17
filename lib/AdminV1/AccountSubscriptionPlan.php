@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -39,21 +41,21 @@ class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'product' => isset($this->product) ? $this->product : null,
+            'id' => $this->id ?? null,
+            'displayName' => $this->displayName ?? null,
+            'product' => $this->product ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new AccountSubscriptionPlan(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'displayName'} ?? null,
             isset($data->{'product'}) ? AccountSubscriptionProduct::jsonUnserialize($data->{'product'}) : null,
         );
     }

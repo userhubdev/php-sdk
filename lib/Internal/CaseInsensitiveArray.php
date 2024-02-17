@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // The MIT License
 //
 // Copyright (c) 2010-2019 Stripe, Inc. (https://stripe.com)
@@ -62,7 +64,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
     }
 
     #[\ReturnTypeWillChange]
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $offset = self::maybeLowercase($offset);
         if (null === $offset) {
@@ -84,7 +86,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
     }
 
     #[\ReturnTypeWillChange]
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         $offset = self::maybeLowercase($offset);
         unset($this->container[$offset]);
@@ -98,7 +100,7 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
     {
         $offset = self::maybeLowercase($offset);
 
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     private static function maybeLowercase($v)

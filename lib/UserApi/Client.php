@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserApi;
 
 use UserHub\Internal\Transport;
@@ -39,7 +41,7 @@ class Client
                 return new Session($this->transport);
 
             default:
-                \trigger_error('Undefined property: '.static::class.'::$'.$name);
+                trigger_error('Undefined property: '.static::class.'::$'.$name);
 
                 return null;
         }

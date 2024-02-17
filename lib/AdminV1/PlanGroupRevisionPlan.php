@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\CommonV1\Interval;
@@ -77,30 +79,30 @@ class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'uniqueId' => isset($this->uniqueId) ? $this->uniqueId : null,
-            'connection' => isset($this->connection) ? $this->connection : null,
-            'interval' => isset($this->interval) ? $this->interval : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'description' => isset($this->description) ? $this->description : null,
-            'prices' => isset($this->prices) ? $this->prices : null,
-            'visibility' => isset($this->visibility) ? $this->visibility : null,
+            'uniqueId' => $this->uniqueId ?? null,
+            'connection' => $this->connection ?? null,
+            'interval' => $this->interval ?? null,
+            'displayName' => $this->displayName ?? null,
+            'description' => $this->description ?? null,
+            'prices' => $this->prices ?? null,
+            'visibility' => $this->visibility ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PlanGroupRevisionPlan(
-            isset($data->{'uniqueId'}) ? $data->{'uniqueId'} : null,
+        return new self(
+            $data->{'uniqueId'} ?? null,
             isset($data->{'connection'}) ? Connection::jsonUnserialize($data->{'connection'}) : null,
             isset($data->{'interval'}) ? Interval::jsonUnserialize($data->{'interval'}) : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'description'}) ? $data->{'description'} : null,
+            $data->{'displayName'} ?? null,
+            $data->{'description'} ?? null,
             isset($data->{'prices'}) ? Util::mapArray($data->{'prices'}, [Price::class, 'jsonUnserialize']) : null,
-            isset($data->{'visibility'}) ? $data->{'visibility'} : null,
+            $data->{'visibility'} ?? null,
         );
     }
 }

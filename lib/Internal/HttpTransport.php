@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace UserHub\Internal;
 
 use UserHub\ApiV1\Status;
@@ -87,6 +89,9 @@ class HttpTransport implements Transport
         return $this->_curlHandle;
     }
 
+    /**
+     * @throws UserHubError
+     */
     private function attempt(
         Request $req,
         string $url,
@@ -184,13 +189,11 @@ class HttpTransport implements Transport
         }
 
         if (2 !== intdiv($statusCode, 100)) {
-            $contentType = isset($resHeaders['content-type']) ? $resHeaders['content-type'] : '';
+            $contentType = $resHeaders['content-type'] ?? '';
             if (str_contains($contentType, 'json') && !empty($resBody)) {
-                $statusData = null;
-
                 try {
                     $statusData = json_decode($resBody, flags: JSON_THROW_ON_ERROR);
-                } catch (Exception $e) {
+                } catch (\Exception $e) {
                     throw new UserHubError(
                         message: 'Failed to decode error response'.Response::summarizeBody($resBody),
                         call: $req->call,
@@ -201,7 +204,7 @@ class HttpTransport implements Transport
 
                 $status = Status::jsonUnserialize($statusData);
 
-                throw new UserHubError(status: $status, call: $req->call, statusCode: $statusCode);
+                throw new UserHubError(call: $req->call, status: $status, statusCode: $statusCode);
             }
 
             throw new UserHubError(

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -43,22 +45,22 @@ class InvoiceBalance implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'startAmount' => isset($this->startAmount) ? $this->startAmount : null,
-            'endAmount' => isset($this->endAmount) ? $this->endAmount : null,
-            'appliedAmount' => isset($this->appliedAmount) ? $this->appliedAmount : null,
+            'startAmount' => $this->startAmount ?? null,
+            'endAmount' => $this->endAmount ?? null,
+            'appliedAmount' => $this->appliedAmount ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new InvoiceBalance(
-            isset($data->{'startAmount'}) ? $data->{'startAmount'} : null,
-            isset($data->{'endAmount'}) ? $data->{'endAmount'} : null,
-            isset($data->{'appliedAmount'}) ? $data->{'appliedAmount'} : null,
+        return new self(
+            $data->{'startAmount'} ?? null,
+            $data->{'endAmount'} ?? null,
+            $data->{'appliedAmount'} ?? null,
         );
     }
 }

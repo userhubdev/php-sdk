@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -26,18 +28,18 @@ class CreatePortalSessionResponse implements \JsonSerializable, JsonUnserializab
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'redirectUrl' => isset($this->redirectUrl) ? $this->redirectUrl : null,
+            'redirectUrl' => $this->redirectUrl ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new CreatePortalSessionResponse(
-            isset($data->{'redirectUrl'}) ? $data->{'redirectUrl'} : null,
+        return new self(
+            $data->{'redirectUrl'} ?? null,
         );
     }
 }

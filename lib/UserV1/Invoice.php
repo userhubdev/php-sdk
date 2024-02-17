@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\CommonV1\Period;
@@ -201,28 +203,28 @@ class Invoice implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'state' => isset($this->state) ? $this->state : null,
+            'id' => $this->id ?? null,
+            'state' => $this->state ?? null,
             'stateTime' => isset($this->stateTime) ? Util::encodeDateTime($this->stateTime) : null,
-            'number' => isset($this->number) ? $this->number : null,
-            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
-            'description' => isset($this->description) ? $this->description : null,
-            'account' => isset($this->account) ? $this->account : null,
+            'number' => $this->number ?? null,
+            'currencyCode' => $this->currencyCode ?? null,
+            'description' => $this->description ?? null,
+            'account' => $this->account ?? null,
             'effectiveTime' => isset($this->effectiveTime) ? Util::encodeDateTime($this->effectiveTime) : null,
-            'period' => isset($this->period) ? $this->period : null,
-            'subtotalAmount' => isset($this->subtotalAmount) ? $this->subtotalAmount : null,
-            'discountAmount' => isset($this->discountAmount) ? $this->discountAmount : null,
-            'balance' => isset($this->balance) ? $this->balance : null,
-            'taxAmount' => isset($this->taxAmount) ? $this->taxAmount : null,
-            'totalAmount' => isset($this->totalAmount) ? $this->totalAmount : null,
-            'dueAmount' => isset($this->dueAmount) ? $this->dueAmount : null,
-            'remainingDueAmount' => isset($this->remainingDueAmount) ? $this->remainingDueAmount : null,
+            'period' => $this->period ?? null,
+            'subtotalAmount' => $this->subtotalAmount ?? null,
+            'discountAmount' => $this->discountAmount ?? null,
+            'balance' => $this->balance ?? null,
+            'taxAmount' => $this->taxAmount ?? null,
+            'totalAmount' => $this->totalAmount ?? null,
+            'dueAmount' => $this->dueAmount ?? null,
+            'remainingDueAmount' => $this->remainingDueAmount ?? null,
             'dueTime' => isset($this->dueTime) ? Util::encodeDateTime($this->dueTime) : null,
-            'paidAmount' => isset($this->paidAmount) ? $this->paidAmount : null,
-            'paymentState' => isset($this->paymentState) ? $this->paymentState : null,
-            'paymentIntent' => isset($this->paymentIntent) ? $this->paymentIntent : null,
-            'items' => isset($this->items) ? $this->items : null,
-            'changes' => isset($this->changes) ? $this->changes : null,
+            'paidAmount' => $this->paidAmount ?? null,
+            'paymentState' => $this->paymentState ?? null,
+            'paymentIntent' => $this->paymentIntent ?? null,
+            'items' => $this->items ?? null,
+            'changes' => $this->changes ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
         ];
@@ -230,30 +232,30 @@ class Invoice implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Invoice(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'state'} ?? null,
             isset($data->{'stateTime'}) ? Util::decodeDateTime($data->{'stateTime'}) : null,
-            isset($data->{'number'}) ? $data->{'number'} : null,
-            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
-            isset($data->{'description'}) ? $data->{'description'} : null,
+            $data->{'number'} ?? null,
+            $data->{'currencyCode'} ?? null,
+            $data->{'description'} ?? null,
             isset($data->{'account'}) ? InvoiceAccount::jsonUnserialize($data->{'account'}) : null,
             isset($data->{'effectiveTime'}) ? Util::decodeDateTime($data->{'effectiveTime'}) : null,
             isset($data->{'period'}) ? Period::jsonUnserialize($data->{'period'}) : null,
-            isset($data->{'subtotalAmount'}) ? $data->{'subtotalAmount'} : null,
-            isset($data->{'discountAmount'}) ? $data->{'discountAmount'} : null,
+            $data->{'subtotalAmount'} ?? null,
+            $data->{'discountAmount'} ?? null,
             isset($data->{'balance'}) ? InvoiceBalance::jsonUnserialize($data->{'balance'}) : null,
-            isset($data->{'taxAmount'}) ? $data->{'taxAmount'} : null,
-            isset($data->{'totalAmount'}) ? $data->{'totalAmount'} : null,
-            isset($data->{'dueAmount'}) ? $data->{'dueAmount'} : null,
-            isset($data->{'remainingDueAmount'}) ? $data->{'remainingDueAmount'} : null,
+            $data->{'taxAmount'} ?? null,
+            $data->{'totalAmount'} ?? null,
+            $data->{'dueAmount'} ?? null,
+            $data->{'remainingDueAmount'} ?? null,
             isset($data->{'dueTime'}) ? Util::decodeDateTime($data->{'dueTime'}) : null,
-            isset($data->{'paidAmount'}) ? $data->{'paidAmount'} : null,
-            isset($data->{'paymentState'}) ? $data->{'paymentState'} : null,
+            $data->{'paidAmount'} ?? null,
+            $data->{'paymentState'} ?? null,
             isset($data->{'paymentIntent'}) ? PaymentIntent::jsonUnserialize($data->{'paymentIntent'}) : null,
             isset($data->{'items'}) ? Util::mapArray($data->{'items'}, [InvoiceItem::class, 'jsonUnserialize']) : null,
             isset($data->{'changes'}) ? Util::mapArray($data->{'changes'}, [InvoiceChange::class, 'jsonUnserialize']) : null,

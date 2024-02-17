@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -39,22 +41,22 @@ class PlanItem implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'product' => isset($this->product) ? $this->product : null,
-            'price' => isset($this->price) ? $this->price : null,
-            'type' => isset($this->type) ? $this->type : null,
+            'product' => $this->product ?? null,
+            'price' => $this->price ?? null,
+            'type' => $this->type ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PlanItem(
+        return new self(
             isset($data->{'product'}) ? Product::jsonUnserialize($data->{'product'}) : null,
             isset($data->{'price'}) ? Price::jsonUnserialize($data->{'price'}) : null,
-            isset($data->{'type'}) ? $data->{'type'} : null,
+            $data->{'type'} ?? null,
         );
     }
 }

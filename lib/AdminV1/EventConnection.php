@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -42,22 +44,22 @@ class EventConnection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'type' => isset($this->type) ? $this->type : null,
+            'id' => $this->id ?? null,
+            'displayName' => $this->displayName ?? null,
+            'type' => $this->type ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new EventConnection(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'type'}) ? $data->{'type'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'type'} ?? null,
         );
     }
 }

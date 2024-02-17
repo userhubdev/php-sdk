@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace UserHub\Internal;
 
 use UserHub\UserHubError;
@@ -40,11 +42,22 @@ class Request
         $this->headers[$name] = $value;
     }
 
-    public function setQuery(string $name, string $value): void
+    public function setQuery(string $name, mixed $value): void
     {
         if (empty($this->query)) {
             $this->query = [];
         }
+
+        if (!isset($value)) {
+            $value = '';
+        } elseif (\is_bool($value)) {
+            $value = $value ? 'true' : 'false';
+        } elseif ($value instanceof \DateTimeInterface) {
+            $value = Util::encodeDateTime($value);
+        } elseif (!\is_string($value)) {
+            $value = "{$value}";
+        }
+
         $this->query[$name] = $value;
     }
 
@@ -60,13 +73,15 @@ class Request
         }
 
         if ($e instanceof UserHubError) {
-            if (isset($e->statusCode)) {
-                if (429 === $e->statusCode) {
+            $statusCode = $e->getStatusCode();
+
+            if (isset($statusCode)) {
+                if (429 === $statusCode) {
                     return true;
                 }
 
                 if ($this->idempotent) {
-                    if ($e->statusCode >= 500 && $e->statusCode <= 599) {
+                    if ($statusCode >= 500 && $statusCode <= 599) {
                         return true;
                     }
                 }
@@ -74,13 +89,9 @@ class Request
         } elseif ($e instanceof CurlError) {
             if ($this->idempotent) {
                 switch ($e->getCode()) {
-                    case CURLE_COULDNT_CONNECT:
-                        return true;
-
-                    case CURLE_COULDNT_RESOLVE_HOST:
-                        return true;
-
                     case CURLE_OPERATION_TIMEDOUT:
+                    case CURLE_COULDNT_RESOLVE_HOST:
+                    case CURLE_COULDNT_CONNECT:
                         return true;
                 }
             }

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -44,21 +46,21 @@ class WebhookConnection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'url' => isset($this->url) ? $this->url : null,
-            'headers' => isset($this->headers) ? $this->headers : null,
-            'signingSecrets' => isset($this->signingSecrets) ? $this->signingSecrets : null,
+            'url' => $this->url ?? null,
+            'headers' => $this->headers ?? null,
+            'signingSecrets' => $this->signingSecrets ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new WebhookConnection(
-            isset($data->{'url'}) ? $data->{'url'} : null,
-            isset($data->{'headers'}) ? $data->{'headers'} : null,
+        return new self(
+            $data->{'url'} ?? null,
+            $data->{'headers'} ?? null,
             isset($data->{'signingSecrets'}) ? Util::mapArray($data->{'signingSecrets'}, [SigningSecret::class, 'jsonUnserialize']) : null,
         );
     }

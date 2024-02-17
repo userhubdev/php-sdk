@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\CommonV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -25,18 +27,18 @@ class Any implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            '@type' => isset($this->objectType) ? $this->objectType : null,
+            '@type' => $this->objectType ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Any(
-            isset($data->{'@type'}) ? $data->{'@type'} : null,
+        return new self(
+            $data->{'@type'} ?? null,
         );
     }
 }

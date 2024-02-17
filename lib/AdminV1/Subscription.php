@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -191,25 +193,25 @@ class Subscription implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'state' => isset($this->state) ? $this->state : null,
-            'stateReason' => isset($this->stateReason) ? $this->stateReason : null,
-            'connection' => isset($this->connection) ? $this->connection : null,
-            'externalId' => isset($this->externalId) ? $this->externalId : null,
-            'plan' => isset($this->plan) ? $this->plan : null,
-            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
-            'items' => isset($this->items) ? $this->items : null,
-            'seats' => isset($this->seats) ? $this->seats : null,
-            'paymentMethod' => isset($this->paymentMethod) ? $this->paymentMethod : null,
-            'cancelPeriodEnd' => isset($this->cancelPeriodEnd) ? $this->cancelPeriodEnd : null,
+            'id' => $this->id ?? null,
+            'state' => $this->state ?? null,
+            'stateReason' => $this->stateReason ?? null,
+            'connection' => $this->connection ?? null,
+            'externalId' => $this->externalId ?? null,
+            'plan' => $this->plan ?? null,
+            'currencyCode' => $this->currencyCode ?? null,
+            'items' => $this->items ?? null,
+            'seats' => $this->seats ?? null,
+            'paymentMethod' => $this->paymentMethod ?? null,
+            'cancelPeriodEnd' => $this->cancelPeriodEnd ?? null,
             'anchorTime' => isset($this->anchorTime) ? Util::encodeDateTime($this->anchorTime) : null,
             'startTime' => isset($this->startTime) ? Util::encodeDateTime($this->startTime) : null,
             'endTime' => isset($this->endTime) ? Util::encodeDateTime($this->endTime) : null,
-            'trial' => isset($this->trial) ? $this->trial : null,
-            'currentPeriod' => isset($this->currentPeriod) ? $this->currentPeriod : null,
-            'organization' => isset($this->organization) ? $this->organization : null,
-            'user' => isset($this->user) ? $this->user : null,
-            'default' => isset($this->default) ? $this->default : null,
+            'trial' => $this->trial ?? null,
+            'currentPeriod' => $this->currentPeriod ?? null,
+            'organization' => $this->organization ?? null,
+            'user' => $this->user ?? null,
+            'default' => $this->default ?? null,
             'pullTime' => isset($this->pullTime) ? Util::encodeDateTime($this->pullTime) : null,
             'pushTime' => isset($this->pushTime) ? Util::encodeDateTime($this->pushTime) : null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
@@ -219,22 +221,22 @@ class Subscription implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Subscription(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
-            isset($data->{'stateReason'}) ? $data->{'stateReason'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'state'} ?? null,
+            $data->{'stateReason'} ?? null,
             isset($data->{'connection'}) ? Connection::jsonUnserialize($data->{'connection'}) : null,
-            isset($data->{'externalId'}) ? $data->{'externalId'} : null,
+            $data->{'externalId'} ?? null,
             isset($data->{'plan'}) ? Plan::jsonUnserialize($data->{'plan'}) : null,
-            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
+            $data->{'currencyCode'} ?? null,
             isset($data->{'items'}) ? Util::mapArray($data->{'items'}, [SubscriptionItem::class, 'jsonUnserialize']) : null,
             isset($data->{'seats'}) ? Util::mapArray($data->{'seats'}, [SubscriptionSeatInfo::class, 'jsonUnserialize']) : null,
             isset($data->{'paymentMethod'}) ? PaymentMethod::jsonUnserialize($data->{'paymentMethod'}) : null,
-            isset($data->{'cancelPeriodEnd'}) ? $data->{'cancelPeriodEnd'} : null,
+            $data->{'cancelPeriodEnd'} ?? null,
             isset($data->{'anchorTime'}) ? Util::decodeDateTime($data->{'anchorTime'}) : null,
             isset($data->{'startTime'}) ? Util::decodeDateTime($data->{'startTime'}) : null,
             isset($data->{'endTime'}) ? Util::decodeDateTime($data->{'endTime'}) : null,
@@ -242,7 +244,7 @@ class Subscription implements \JsonSerializable, JsonUnserializable
             isset($data->{'currentPeriod'}) ? SubscriptionCurrentPeriod::jsonUnserialize($data->{'currentPeriod'}) : null,
             isset($data->{'organization'}) ? Organization::jsonUnserialize($data->{'organization'}) : null,
             isset($data->{'user'}) ? User::jsonUnserialize($data->{'user'}) : null,
-            isset($data->{'default'}) ? $data->{'default'} : null,
+            $data->{'default'} ?? null,
             isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
             isset($data->{'pushTime'}) ? Util::decodeDateTime($data->{'pushTime'}) : null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,

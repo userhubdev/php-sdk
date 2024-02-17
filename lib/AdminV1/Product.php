@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -99,13 +101,13 @@ class Product implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'uniqueId' => isset($this->uniqueId) ? $this->uniqueId : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'description' => isset($this->description) ? $this->description : null,
-            'committed' => isset($this->committed) ? $this->committed : null,
-            'archived' => isset($this->archived) ? $this->archived : null,
-            'productConnections' => isset($this->productConnections) ? $this->productConnections : null,
+            'id' => $this->id ?? null,
+            'uniqueId' => $this->uniqueId ?? null,
+            'displayName' => $this->displayName ?? null,
+            'description' => $this->description ?? null,
+            'committed' => $this->committed ?? null,
+            'archived' => $this->archived ?? null,
+            'productConnections' => $this->productConnections ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
         ];
@@ -113,17 +115,17 @@ class Product implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Product(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'uniqueId'}) ? $data->{'uniqueId'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'description'}) ? $data->{'description'} : null,
-            isset($data->{'committed'}) ? $data->{'committed'} : null,
-            isset($data->{'archived'}) ? $data->{'archived'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'uniqueId'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'description'} ?? null,
+            $data->{'committed'} ?? null,
+            $data->{'archived'} ?? null,
             isset($data->{'productConnections'}) ? Util::mapArray($data->{'productConnections'}, [ProductConnection::class, 'jsonUnserialize']) : null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -47,22 +49,22 @@ class AccountSubscription implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'state' => isset($this->state) ? $this->state : null,
+            'id' => $this->id ?? null,
+            'state' => $this->state ?? null,
             'anchorTime' => isset($this->anchorTime) ? Util::encodeDateTime($this->anchorTime) : null,
-            'plan' => isset($this->plan) ? $this->plan : null,
+            'plan' => $this->plan ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new AccountSubscription(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'state'} ?? null,
             isset($data->{'anchorTime'}) ? Util::decodeDateTime($data->{'anchorTime'}) : null,
             isset($data->{'plan'}) ? AccountSubscriptionPlan::jsonUnserialize($data->{'plan'}) : null,
         );

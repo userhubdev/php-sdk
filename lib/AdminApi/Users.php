@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminApi;
 
 use UserHub\AdminV1\CreateApiSessionResponse;
@@ -13,6 +15,7 @@ use UserHub\Internal\Request;
 use UserHub\Internal\Transport;
 use UserHub\Internal\Util;
 use UserHub\Undefined;
+use UserHub\UserHubError;
 
 /**
  * The user methods.
@@ -28,6 +31,8 @@ class Users
 
     /**
      * Lists users.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
         null|int $pageSize = null,
@@ -62,6 +67,8 @@ class Users
 
     /**
      * Creates a new user.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function create(
         null|string $uniqueId = null,
@@ -134,6 +141,8 @@ class Users
 
     /**
      * Retrieves specified user.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
         string $userId,
@@ -148,6 +157,8 @@ class Users
 
     /**
      * Updates specified user.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function update(
         string $userId,
@@ -227,6 +238,8 @@ class Users
 
     /**
      * Marks specified user for deletion.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function delete(
         string $userId,
@@ -239,6 +252,8 @@ class Users
 
     /**
      * Un-marks specified user for deletion.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function undelete(
         string $userId,
@@ -255,6 +270,8 @@ class Users
 
     /**
      * Connect specified user to external account.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function connect(
         string $userId,
@@ -289,6 +306,8 @@ class Users
      *
      * WARNING: This can irreversibly destroy data and should be
      * used with extreme caution.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function disconnect(
         string $userId,
@@ -317,6 +336,8 @@ class Users
      * exist.
      *
      * If the user already exists in UserHub, this is a no-op.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function importAccount(
         string $userId,
@@ -335,6 +356,8 @@ class Users
 
     /**
      * Create a User API session.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createApiSession(
         string $userId,
@@ -353,6 +376,8 @@ class Users
 
     /**
      * Create Portal session.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createPortalSession(
         string $userId,

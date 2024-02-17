@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\CommonV1\Interval;
@@ -61,25 +63,25 @@ class Price implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
-            'billingMode' => isset($this->billingMode) ? $this->billingMode : null,
-            'interval' => isset($this->interval) ? $this->interval : null,
-            'fixed' => isset($this->fixed) ? $this->fixed : null,
-            'tiered' => isset($this->tiered) ? $this->tiered : null,
+            'id' => $this->id ?? null,
+            'currencyCode' => $this->currencyCode ?? null,
+            'billingMode' => $this->billingMode ?? null,
+            'interval' => $this->interval ?? null,
+            'fixed' => $this->fixed ?? null,
+            'tiered' => $this->tiered ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Price(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
-            isset($data->{'billingMode'}) ? $data->{'billingMode'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'currencyCode'} ?? null,
+            $data->{'billingMode'} ?? null,
             isset($data->{'interval'}) ? Interval::jsonUnserialize($data->{'interval'}) : null,
             isset($data->{'fixed'}) ? PriceFixedPrice::jsonUnserialize($data->{'fixed'}) : null,
             isset($data->{'tiered'}) ? PriceTieredPrice::jsonUnserialize($data->{'tiered'}) : null,

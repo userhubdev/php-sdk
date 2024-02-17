@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\EventsV1;
 
 use UserHub\AdminV1\Flow;
@@ -26,17 +28,17 @@ class FlowsChanged implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'flow' => isset($this->flow) ? $this->flow : null,
+            'flow' => $this->flow ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new FlowsChanged(
+        return new self(
             isset($data->{'flow'}) ? Flow::jsonUnserialize($data->{'flow'}) : null,
         );
     }

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\CommonV1\Address;
@@ -47,23 +49,23 @@ class InvoiceAccount implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'fullName' => isset($this->fullName) ? $this->fullName : null,
-            'email' => isset($this->email) ? $this->email : null,
-            'phoneNumber' => isset($this->phoneNumber) ? $this->phoneNumber : null,
-            'address' => isset($this->address) ? $this->address : null,
+            'fullName' => $this->fullName ?? null,
+            'email' => $this->email ?? null,
+            'phoneNumber' => $this->phoneNumber ?? null,
+            'address' => $this->address ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new InvoiceAccount(
-            isset($data->{'fullName'}) ? $data->{'fullName'} : null,
-            isset($data->{'email'}) ? $data->{'email'} : null,
-            isset($data->{'phoneNumber'}) ? $data->{'phoneNumber'} : null,
+        return new self(
+            $data->{'fullName'} ?? null,
+            $data->{'email'} ?? null,
+            $data->{'phoneNumber'} ?? null,
             isset($data->{'address'}) ? Address::jsonUnserialize($data->{'address'}) : null,
         );
     }

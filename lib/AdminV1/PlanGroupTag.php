@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -32,20 +34,20 @@ class PlanGroupTag implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'tag' => isset($this->tag) ? $this->tag : null,
-            'revisionId' => isset($this->revisionId) ? $this->revisionId : null,
+            'tag' => $this->tag ?? null,
+            'revisionId' => $this->revisionId ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PlanGroupTag(
-            isset($data->{'tag'}) ? $data->{'tag'} : null,
-            isset($data->{'revisionId'}) ? $data->{'revisionId'} : null,
+        return new self(
+            $data->{'tag'} ?? null,
+            $data->{'revisionId'} ?? null,
         );
     }
 }

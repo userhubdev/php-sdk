@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -46,24 +48,24 @@ class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'brand' => isset($this->brand) ? $this->brand : null,
-            'expiration' => isset($this->expiration) ? $this->expiration : null,
-            'last4' => isset($this->last4) ? $this->last4 : null,
-            'fundingType' => isset($this->fundingType) ? $this->fundingType : null,
+            'brand' => $this->brand ?? null,
+            'expiration' => $this->expiration ?? null,
+            'last4' => $this->last4 ?? null,
+            'fundingType' => $this->fundingType ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new CardPaymentMethod(
-            isset($data->{'brand'}) ? $data->{'brand'} : null,
+        return new self(
+            $data->{'brand'} ?? null,
             isset($data->{'expiration'}) ? CardPaymentMethodExpiration::jsonUnserialize($data->{'expiration'}) : null,
-            isset($data->{'last4'}) ? $data->{'last4'} : null,
-            isset($data->{'fundingType'}) ? $data->{'fundingType'} : null,
+            $data->{'last4'} ?? null,
+            $data->{'fundingType'} ?? null,
         );
     }
 }

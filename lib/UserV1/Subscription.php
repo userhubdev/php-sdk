@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -123,18 +125,18 @@ class Subscription implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'state' => isset($this->state) ? $this->state : null,
-            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
-            'plan' => isset($this->plan) ? $this->plan : null,
-            'paymentMethod' => isset($this->paymentMethod) ? $this->paymentMethod : null,
-            'cancelPeriodEnd' => isset($this->cancelPeriodEnd) ? $this->cancelPeriodEnd : null,
+            'id' => $this->id ?? null,
+            'state' => $this->state ?? null,
+            'currencyCode' => $this->currencyCode ?? null,
+            'plan' => $this->plan ?? null,
+            'paymentMethod' => $this->paymentMethod ?? null,
+            'cancelPeriodEnd' => $this->cancelPeriodEnd ?? null,
             'startTime' => isset($this->startTime) ? Util::encodeDateTime($this->startTime) : null,
             'endTime' => isset($this->endTime) ? Util::encodeDateTime($this->endTime) : null,
-            'trial' => isset($this->trial) ? $this->trial : null,
-            'currentPeriod' => isset($this->currentPeriod) ? $this->currentPeriod : null,
-            'items' => isset($this->items) ? $this->items : null,
-            'seats' => isset($this->seats) ? $this->seats : null,
+            'trial' => $this->trial ?? null,
+            'currentPeriod' => $this->currentPeriod ?? null,
+            'items' => $this->items ?? null,
+            'seats' => $this->seats ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
         ];
@@ -142,17 +144,17 @@ class Subscription implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Subscription(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
-            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'state'} ?? null,
+            $data->{'currencyCode'} ?? null,
             isset($data->{'plan'}) ? Plan::jsonUnserialize($data->{'plan'}) : null,
             isset($data->{'paymentMethod'}) ? PaymentMethod::jsonUnserialize($data->{'paymentMethod'}) : null,
-            isset($data->{'cancelPeriodEnd'}) ? $data->{'cancelPeriodEnd'} : null,
+            $data->{'cancelPeriodEnd'} ?? null,
             isset($data->{'startTime'}) ? Util::decodeDateTime($data->{'startTime'}) : null,
             isset($data->{'endTime'}) ? Util::decodeDateTime($data->{'endTime'}) : null,
             isset($data->{'trial'}) ? SubscriptionTrial::jsonUnserialize($data->{'trial'}) : null,

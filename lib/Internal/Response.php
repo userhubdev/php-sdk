@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace UserHub\Internal;
+
+use UserHub\UserHubError;
 
 class Response
 {
@@ -13,11 +17,14 @@ class Response
         $this->body = $body;
     }
 
+    /**
+     * @throws UserHubError if JSON fails to decode
+     */
     public function decodeBody(callable $callback): mixed
     {
         try {
             $body = json_decode($this->body, flags: JSON_THROW_ON_ERROR);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             throw new UserHubError(
                 message: 'Failed to decode response'.$this->summarizeBody($this->body),
                 call: $this->req->call,
