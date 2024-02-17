@@ -17,7 +17,7 @@ class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
     /**
      * The target plan group for this change path.
      */
-    public null|\UserHub\AdminV1\PlanGroup $target;
+    public null|PlanGroup $target;
 
     /**
      * Whether the change is considered an upgrade or

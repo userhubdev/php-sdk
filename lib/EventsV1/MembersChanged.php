@@ -18,12 +18,12 @@ class MembersChanged implements \JsonSerializable, JsonUnserializable
     /**
      * The organization.
      */
-    public null|\UserHub\AdminV1\Organization $organization;
+    public null|Organization $organization;
 
     /**
      * The member.
      */
-    public null|\UserHub\AdminV1\Member $member;
+    public null|Member $member;
 
     public function __construct(
         null|Organization $organization = null,

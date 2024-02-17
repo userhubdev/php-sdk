@@ -49,12 +49,12 @@ class PlanGroup implements \JsonSerializable, JsonUnserializable
      * For authenticated requests, this will not be set when the account
      * isn't eligible for a trial.
      */
-    public null|\UserHub\UserV1\PlanGroupTrial $trial;
+    public null|PlanGroupTrial $trial;
 
     /**
      * Whether the plan is consider an downgrade/upgrade.
      */
-    public null|\UserHub\UserV1\PlanGroupChangePath $changePath;
+    public null|PlanGroupChangePath $changePath;
 
     /**
      * The plans associated with plan group.

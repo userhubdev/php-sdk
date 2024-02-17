@@ -21,7 +21,7 @@ class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
     /**
      * The expiration date of the card.
      */
-    public null|\UserHub\AdminV1\CardPaymentMethodExpiration $expiration;
+    public null|CardPaymentMethodExpiration $expiration;
 
     /**
      * The last for digits of the card.

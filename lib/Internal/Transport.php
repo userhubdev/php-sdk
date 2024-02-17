@@ -6,6 +6,9 @@ namespace UserHub\Internal;
 
 use UserHub\UserHubError;
 
+/**
+ * @internal
+ */
 interface Transport
 {
     /**

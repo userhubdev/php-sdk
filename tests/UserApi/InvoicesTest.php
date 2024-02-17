@@ -52,8 +52,8 @@ final class InvoicesTest extends TestCase
 
         $res = $n->list();
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/user/v1/invoices', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/user/v1/invoices', $tr->request->path);
     }
 
     public function testGet(): void
@@ -136,7 +136,7 @@ final class InvoicesTest extends TestCase
 
         $res = $n->get(invoiceId: 'invoiceId');
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/user/v1/invoices/invoiceId', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/user/v1/invoices/invoiceId', $tr->request->path);
     }
 }

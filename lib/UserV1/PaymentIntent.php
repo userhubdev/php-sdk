@@ -16,7 +16,7 @@ class PaymentIntent implements \JsonSerializable, JsonUnserializable
     /**
      * A Stripe payment intent.
      */
-    public null|\UserHub\UserV1\StripePaymentIntent $stripe;
+    public null|StripePaymentIntent $stripe;
 
     public function __construct(
         null|StripePaymentIntent $stripe = null,

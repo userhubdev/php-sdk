@@ -40,8 +40,8 @@ final class FlowsTest extends TestCase
 
         $res = $n->list();
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/user/v1/flows', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/user/v1/flows', $tr->request->path);
     }
 
     public function testCreateJoinOrganization(): void
@@ -98,8 +98,8 @@ final class FlowsTest extends TestCase
 
         $res = $n->createJoinOrganization();
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/user/v1/flows:createJoinOrganization', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/user/v1/flows:createJoinOrganization', $tr->request->path);
     }
 
     public function testGet(): void
@@ -156,8 +156,8 @@ final class FlowsTest extends TestCase
 
         $res = $n->get(flowId: 'flowId');
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/user/v1/flows/flowId', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/user/v1/flows/flowId', $tr->request->path);
     }
 
     public function testConsume(): void
@@ -214,8 +214,8 @@ final class FlowsTest extends TestCase
 
         $res = $n->consume(flowId: 'flowId');
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/user/v1/flows/flowId:consume', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/user/v1/flows/flowId:consume', $tr->request->path);
     }
 
     public function testCancel(): void
@@ -272,7 +272,7 @@ final class FlowsTest extends TestCase
 
         $res = $n->cancel(flowId: 'flowId');
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/user/v1/flows/flowId:cancel', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/user/v1/flows/flowId:cancel', $tr->request->path);
     }
 }

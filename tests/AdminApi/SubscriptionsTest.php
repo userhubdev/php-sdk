@@ -48,8 +48,8 @@ final class SubscriptionsTest extends TestCase
 
         $res = $n->list();
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/admin/v1/subscriptions', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/admin/v1/subscriptions', $tr->request->path);
     }
 
     public function testGet(): void
@@ -253,7 +253,7 @@ final class SubscriptionsTest extends TestCase
 
         $res = $n->get(subscriptionId: 'subscriptionId');
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/admin/v1/subscriptions/subscriptionId', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/admin/v1/subscriptions/subscriptionId', $tr->request->path);
     }
 }

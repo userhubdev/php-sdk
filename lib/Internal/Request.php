@@ -6,12 +6,15 @@ namespace UserHub\Internal;
 
 use UserHub\UserHubError;
 
-class Request
+/**
+ * @internal
+ */
+final class Request
 {
     public string $call;
     public string $method;
     public string $path;
-    public ?CaseInsensitiveArray $headers;
+    public ?Headers $headers;
     public ?array $query;
     public mixed $body;
     public int $attempt;
@@ -37,7 +40,7 @@ class Request
     public function setHeader(string $name, string $value): void
     {
         if (empty($this->headers)) {
-            $this->headers = new CaseInsensitiveArray();
+            $this->headers = new Headers();
         }
         $this->headers[$name] = $value;
     }

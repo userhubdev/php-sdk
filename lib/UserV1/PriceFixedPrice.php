@@ -22,7 +22,7 @@ class PriceFixedPrice implements \JsonSerializable, JsonUnserializable
     /**
      * Whether to transform the quantity before multiplying amount.
      */
-    public null|\UserHub\UserV1\PriceTransformQuantity $transformQuantity;
+    public null|PriceTransformQuantity $transformQuantity;
 
     public function __construct(
         null|string $amount = null,

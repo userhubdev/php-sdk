@@ -22,7 +22,7 @@ class InvoicePreview implements \JsonSerializable, JsonUnserializable
     /**
      * The bill to contact information.
      */
-    public null|\UserHub\AdminV1\InvoiceAccount $account;
+    public null|InvoiceAccount $account;
 
     /**
      * The time the upcoming invoice will be finalized.
@@ -53,7 +53,7 @@ class InvoicePreview implements \JsonSerializable, JsonUnserializable
      * The starting and ending account balance as
      * of the time the preview.
      */
-    public null|\UserHub\AdminV1\InvoiceBalance $balance;
+    public null|InvoiceBalance $balance;
 
     /**
      * The tax amount for the preview.

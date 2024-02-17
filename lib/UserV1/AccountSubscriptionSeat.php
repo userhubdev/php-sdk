@@ -16,7 +16,7 @@ class AccountSubscriptionSeat implements \JsonSerializable, JsonUnserializable
     /**
      * The seat product.
      */
-    public null|\UserHub\UserV1\Product $product;
+    public null|Product $product;
 
     public function __construct(
         null|Product $product = null,

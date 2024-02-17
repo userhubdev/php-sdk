@@ -17,7 +17,7 @@ class SubscriptionsChanged implements \JsonSerializable, JsonUnserializable
     /**
      * The subscription.
      */
-    public null|\UserHub\AdminV1\Subscription $subscription;
+    public null|Subscription $subscription;
 
     public function __construct(
         null|Subscription $subscription = null,

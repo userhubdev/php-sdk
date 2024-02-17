@@ -37,19 +37,19 @@ class Flow implements \JsonSerializable, JsonUnserializable
     /**
      * The target organization for the flow.
      */
-    public null|\UserHub\AdminV1\Organization $organization;
+    public null|Organization $organization;
 
     /**
      * The target user for the flow.
      */
-    public null|\UserHub\AdminV1\User $user;
+    public null|User $user;
 
     /**
      * The user who created the flow.
      *
      * This will not be set if the invitation was created by an admin.
      */
-    public null|\UserHub\AdminV1\User $creator;
+    public null|User $creator;
 
     /**
      * The start time of the flow.
@@ -86,12 +86,12 @@ class Flow implements \JsonSerializable, JsonUnserializable
     /**
      * The join organization flow type specific data.
      */
-    public null|\UserHub\AdminV1\JoinOrganizationFlow $joinOrganization;
+    public null|JoinOrganizationFlow $joinOrganization;
 
     /**
      * The signup flow type specific data.
      */
-    public null|\UserHub\AdminV1\SignupFlow $signup;
+    public null|SignupFlow $signup;
 
     public function __construct(
         null|string $id = null,

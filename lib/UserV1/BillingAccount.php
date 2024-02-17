@@ -45,7 +45,7 @@ class BillingAccount implements \JsonSerializable, JsonUnserializable
     /**
      * The subscription for the account.
      */
-    public null|\UserHub\UserV1\Subscription $subscription;
+    public null|Subscription $subscription;
 
     public function __construct(
         null|string $state = null,

@@ -23,7 +23,7 @@ class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The connection.
      */
-    public null|\UserHub\AdminV1\Connection $connection;
+    public null|Connection $connection;
 
     /**
      * The external identifier of the connected price.
@@ -53,7 +53,7 @@ class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The billing interval for the price.
      */
-    public null|\UserHub\CommonV1\Interval $interval;
+    public null|Interval $interval;
 
     /**
      * The admin-facing display name of the price.
@@ -63,7 +63,7 @@ class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The product associated with the price.
      */
-    public null|\UserHub\AdminV1\Product $product;
+    public null|Product $product;
 
     /**
      * The archived status of the price.
@@ -95,12 +95,12 @@ class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The price is fixed per quantity.
      */
-    public null|\UserHub\AdminV1\PriceFixedPrice $fixed;
+    public null|PriceFixedPrice $fixed;
 
     /**
      * The price is dependent on the quantity.
      */
-    public null|\UserHub\AdminV1\PriceTieredPrice $tiered;
+    public null|PriceTieredPrice $tiered;
 
     public function __construct(
         null|string $id = null,

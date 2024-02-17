@@ -88,7 +88,7 @@ class User implements \JsonSerializable, JsonUnserializable
     /**
      * The billing address for the user.
      */
-    public null|\UserHub\CommonV1\Address $address;
+    public null|Address $address;
 
     /**
      * The connected accounts.
@@ -103,7 +103,7 @@ class User implements \JsonSerializable, JsonUnserializable
      * See memberships for organization subscription and
      * seat information.
      */
-    public null|\UserHub\AdminV1\AccountSubscription $subscription;
+    public null|AccountSubscription $subscription;
 
     /**
      * The user's organization memberships.

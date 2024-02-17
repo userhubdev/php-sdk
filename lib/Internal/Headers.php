@@ -27,18 +27,17 @@ declare(strict_types=1);
 namespace UserHub\Internal;
 
 /**
- * CaseInsensitiveArray is an array-like class that ignores case for keys.
+ * @internal
+ *
+ * Headers is an array-like class that ignores case for keys.
  *
  * It is used to store HTTP headers. Per RFC 2616, section 4.2:
  * Each header field consists of a name followed by a colon (":") and the field value. Field names
  * are case-insensitive.
- *
- * In the context of stripe-php, this is useful because the API will return headers with different
- * case depending on whether HTTP/2 is used or not (with HTTP/2, headers are always in lowercase).
  */
-class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggregate
+final class Headers implements \ArrayAccess, \Countable, \IteratorAggregate
 {
-    private array $container = [];
+    private array $container;
 
     public function __construct(array $initial_array = [])
     {
@@ -101,6 +100,46 @@ class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggrega
         $offset = self::maybeLowercase($offset);
 
         return $this->container[$offset] ?? null;
+    }
+
+    public function get($name): string
+    {
+        $value = self::offsetGet($name);
+
+        if (\is_string($value)) {
+            return $value;
+        }
+
+        if (\is_array($value)) {
+            foreach ($value as $v) {
+                if (\is_string($v)) {
+                    return $v;
+                }
+            }
+        }
+
+        return '';
+    }
+
+    public function getAll($name): array
+    {
+        $value = self::offsetGet($name);
+
+        $headers = [];
+
+        if (!empty($value)) {
+            if (\is_string($value)) {
+                $headers[] = $value;
+            } elseif (\is_array($value)) {
+                foreach ($value as $v) {
+                    if (!empty($v) && \is_string($v)) {
+                        $headers[] = $v;
+                    }
+                }
+            }
+        }
+
+        return $headers;
     }
 
     private static function maybeLowercase($v)

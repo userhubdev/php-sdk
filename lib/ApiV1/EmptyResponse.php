@@ -1,7 +1,5 @@
 <?php
 
-// Code generated. DO NOT EDIT.
-
 declare(strict_types=1);
 
 namespace UserHub\ApiV1;
@@ -13,22 +11,15 @@ use UserHub\Internal\JsonUnserializable;
  */
 class EmptyResponse implements \JsonSerializable, JsonUnserializable
 {
-    public function __construct(
-    ) {}
+    public function __construct() {}
 
     public function jsonSerialize(): mixed
     {
-        return (object) [
-        ];
+        return (object) [];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!\is_object($data)) {
-            throw new \TypeError('json data must be an object');
-        }
-
-        return new self(
-        );
+        return new self();
     }
 }

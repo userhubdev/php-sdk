@@ -32,12 +32,12 @@ class Subscription implements \JsonSerializable, JsonUnserializable
     /**
      * The subscription items.
      */
-    public null|\UserHub\UserV1\Plan $plan;
+    public null|Plan $plan;
 
     /**
      * The payment method.
      */
-    public null|\UserHub\UserV1\PaymentMethod $paymentMethod;
+    public null|PaymentMethod $paymentMethod;
 
     /**
      * The subscription is scheduled to be canceled at the end of the
@@ -58,12 +58,12 @@ class Subscription implements \JsonSerializable, JsonUnserializable
     /**
      * The trial information for the subscription.
      */
-    public null|\UserHub\UserV1\SubscriptionTrial $trial;
+    public null|SubscriptionTrial $trial;
 
     /**
      * The current billing period for the subscription.
      */
-    public null|\UserHub\UserV1\SubscriptionCurrentPeriod $currentPeriod;
+    public null|SubscriptionCurrentPeriod $currentPeriod;
 
     /**
      * The subscription items.

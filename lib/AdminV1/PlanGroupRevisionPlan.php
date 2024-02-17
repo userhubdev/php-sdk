@@ -24,12 +24,12 @@ class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializable
     /**
      * The details of the associated connection.
      */
-    public null|\UserHub\AdminV1\Connection $connection;
+    public null|Connection $connection;
 
     /**
      * The billing interval for the plan.
      */
-    public null|\UserHub\CommonV1\Interval $interval;
+    public null|Interval $interval;
 
     /**
      * The customer facing human-readable display name for the plan.

@@ -26,7 +26,7 @@ class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializable
     /**
      * The plan product.
      */
-    public null|\UserHub\AdminV1\AccountSubscriptionProduct $product;
+    public null|AccountSubscriptionProduct $product;
 
     public function __construct(
         null|string $id = null,

@@ -33,37 +33,37 @@ class Event implements \JsonSerializable, JsonUnserializable
     /**
      * The entity associated with the event.
      */
-    public null|\UserHub\AdminV1\EventEntity $entity;
+    public null|EventEntity $entity;
 
     /**
      * The connection associated with the event.
      */
-    public null|\UserHub\AdminV1\EventConnection $connection;
+    public null|EventConnection $connection;
 
     /**
      * The organization associated with the event.
      */
-    public null|\UserHub\AdminV1\EventOrganization $organization;
+    public null|EventOrganization $organization;
 
     /**
      * The user associated with the event.
      */
-    public null|\UserHub\AdminV1\EventUser $user;
+    public null|EventUser $user;
 
     /**
      * The API key associated with the event.
      */
-    public null|\UserHub\AdminV1\EventApiKey $apiKey;
+    public null|EventApiKey $apiKey;
 
     /**
      * The actor associated with the event.
      */
-    public null|\UserHub\AdminV1\EventActor $actor;
+    public null|EventActor $actor;
 
     /**
      * The request associated with the event.
      */
-    public null|\UserHub\AdminV1\EventRequest $request;
+    public null|EventRequest $request;
 
     public function __construct(
         null|string $id = null,

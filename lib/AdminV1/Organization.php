@@ -88,7 +88,7 @@ class Organization implements \JsonSerializable, JsonUnserializable
     /**
      * The address for the organization.
      */
-    public null|\UserHub\CommonV1\Address $address;
+    public null|Address $address;
 
     /**
      * The connected accounts.
@@ -100,7 +100,7 @@ class Organization implements \JsonSerializable, JsonUnserializable
     /**
      * The organization's default active subscription.
      */
-    public null|\UserHub\AdminV1\AccountSubscription $subscription;
+    public null|AccountSubscription $subscription;
 
     /**
      * The sign-up time for the organization.

@@ -6,21 +6,25 @@ namespace UserHub;
 
 use UserHub\ApiV1\Status;
 
-class UserHubError extends \Exception
+class UserHubError extends \Exception implements \JsonSerializable
 {
-    protected ?string $apiCode;
-    protected ?string $reason;
-    protected ?string $param;
-    protected ?object $metadata;
-    protected ?string $call;
-    protected ?int $statusCode;
+    protected null|Code $apiCode = null;
+    protected null|string $reason = null;
+    protected null|string $param = null;
+    protected null|object $metadata = null;
+    protected null|string $call = null;
+    protected null|int $statusCode = null;
 
     public function __construct(
-        ?string $message = null,
-        ?string $call = null,
-        ?Status $status = null,
-        ?int $statusCode = null,
-        ?\Throwable $previous = null,
+        null|string $message = null,
+        null|Code $apiCode = null,
+        null|string $reason = null,
+        null|string $param = null,
+        null|object $metadata = null,
+        null|string $call = null,
+        null|int $statusCode = null,
+        null|Status $status = null,
+        null|\Throwable $previous = null,
     ) {
         if (empty($message)) {
             if (isset($status)) {
@@ -33,19 +37,39 @@ class UserHubError extends \Exception
 
         parent::__construct($message, 0, $previous);
 
-        $this->call = empty($call) ? null : $call;
-        $this->statusCode = empty($statusCode) ? null : $statusCode;
+        if (!empty($call)) {
+            $this->call = $call;
+        }
+        if (!empty($statusCode)) {
+            $this->statusCode = $statusCode;
+        }
 
         if (isset($status)) {
-            $this->apiCode = $status->code;
-            $this->reason = empty($status->reason) ? null : $status->reason;
-            $this->param = empty($status->param) ? null : $status->param;
-            $this->metadata = empty($metadata) ? null : $metadata;
-        } else {
-            $this->apiCode = null;
-            $this->reason = null;
-            $this->param = null;
-            $this->metadata = null;
+            if (isset($status->code)) {
+                $this->apiCode = Code::tryFrom($status->code);
+            }
+            if (!empty($status->reason)) {
+                $this->reason = $status->reason;
+            }
+            if (!empty($status->param)) {
+                $this->param = $status->param;
+            }
+            if (!empty($metadata)) {
+                $this->metadata = $metadata;
+            }
+        }
+
+        if (isset($apiCode)) {
+            $this->apiCode = $apiCode;
+        }
+        if (!empty($reason)) {
+            $status->reason = $reason;
+        }
+        if (!empty($param)) {
+            $status->param = $param;
+        }
+        if (!empty($metadata)) {
+            $status->metadata = $metadata;
         }
     }
 
@@ -57,10 +81,10 @@ class UserHubError extends \Exception
             $parts[] = "call: {$this->call}";
         }
 
-        $hasApiCode = isset($this->apiCode) && 'UNKNOWN' !== $this->apiCode;
+        $hasApiCode = isset($this->apiCode) && Code::Unknown !== $this->apiCode;
 
         if ($hasApiCode) {
-            $parts[] = "apiCode: {$this->apiCode}";
+            $parts[] = "apiCode: {$this->apiCode->value}";
         }
 
         if (!empty($this->reason)) {
@@ -84,9 +108,9 @@ class UserHubError extends \Exception
         return $text;
     }
 
-    public function getApiCode(): string
+    public function getApiCode(): Code
     {
-        return empty($this->apiCode) ? 'UNKNOWN' : $this->apiCode;
+        return empty($this->apiCode) ? Code::Unknown : $this->apiCode;
     }
 
     public function getReason(): ?string
@@ -116,5 +140,13 @@ class UserHubError extends \Exception
     public function getStatusCode(): ?int
     {
         return $this->statusCode;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return (object) [
+            'code' => $this->getApiCode(),
+            'message' => $this->getMessage(),
+        ];
     }
 }

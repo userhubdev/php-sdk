@@ -90,7 +90,7 @@ class OrganizationInput implements \JsonSerializable, JsonUnserializable
     /**
      * The billing address for the organization.
      */
-    public null|\UserHub\CommonV1\Address $address;
+    public null|Address $address;
 
     /**
      * The sign-up time for the organization.

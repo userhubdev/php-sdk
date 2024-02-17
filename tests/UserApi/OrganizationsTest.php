@@ -41,8 +41,8 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->list();
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/user/v1/organizations', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/user/v1/organizations', $tr->request->path);
     }
 
     public function testCreate(): void
@@ -64,8 +64,8 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->create();
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/user/v1/organizations', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/user/v1/organizations', $tr->request->path);
     }
 
     public function testGet(): void
@@ -87,8 +87,8 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->get(organizationId: 'organizationId');
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/user/v1/organizations/organizationId', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/user/v1/organizations/organizationId', $tr->request->path);
     }
 
     public function testUpdate(): void
@@ -110,8 +110,8 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->update(organizationId: 'organizationId');
         self::assertNotNull($res);
-        self::assertSame('PATCH', $tr->request->method);
-        self::assertSame('/user/v1/organizations/organizationId', $tr->request->path);
+        self::assertEquals('PATCH', $tr->request->method);
+        self::assertEquals('/user/v1/organizations/organizationId', $tr->request->path);
     }
 
     public function testDelete(): void
@@ -133,8 +133,8 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->delete(organizationId: 'organizationId');
         self::assertNotNull($res);
-        self::assertSame('DELETE', $tr->request->method);
-        self::assertSame('/user/v1/organizations/organizationId', $tr->request->path);
+        self::assertEquals('DELETE', $tr->request->method);
+        self::assertEquals('/user/v1/organizations/organizationId', $tr->request->path);
     }
 
     public function testLeave(): void
@@ -148,7 +148,7 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->leave(organizationId: 'organizationId');
         self::assertNotNull($res);
-        self::assertSame('DELETE', $tr->request->method);
-        self::assertSame('/user/v1/organizations/organizationId:leave', $tr->request->path);
+        self::assertEquals('DELETE', $tr->request->method);
+        self::assertEquals('/user/v1/organizations/organizationId:leave', $tr->request->path);
     }
 }

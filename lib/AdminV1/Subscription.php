@@ -32,7 +32,7 @@ class Subscription implements \JsonSerializable, JsonUnserializable
     /**
      * The billing connection.
      */
-    public null|\UserHub\AdminV1\Connection $connection;
+    public null|Connection $connection;
 
     /**
      * The external identifier of the subscription.
@@ -42,7 +42,7 @@ class Subscription implements \JsonSerializable, JsonUnserializable
     /**
      * The plan.
      */
-    public null|\UserHub\AdminV1\Plan $plan;
+    public null|Plan $plan;
 
     /**
      * The currency code for the subscription (e.g. `USD`).
@@ -66,7 +66,7 @@ class Subscription implements \JsonSerializable, JsonUnserializable
     /**
      * The payment method.
      */
-    public null|\UserHub\AdminV1\PaymentMethod $paymentMethod;
+    public null|PaymentMethod $paymentMethod;
 
     /**
      * Whether the subscription is scheduled to be canceled
@@ -92,12 +92,12 @@ class Subscription implements \JsonSerializable, JsonUnserializable
     /**
      * The trial information for the subscription.
      */
-    public null|\UserHub\AdminV1\SubscriptionTrial $trial;
+    public null|SubscriptionTrial $trial;
 
     /**
      * The current billing period for the subscription.
      */
-    public null|\UserHub\AdminV1\SubscriptionCurrentPeriod $currentPeriod;
+    public null|SubscriptionCurrentPeriod $currentPeriod;
 
     /**
      * The organization owner of the subscription.
@@ -105,7 +105,7 @@ class Subscription implements \JsonSerializable, JsonUnserializable
      * The ID field of this object must be populated if
      * if user isn't specified.
      */
-    public null|\UserHub\AdminV1\Organization $organization;
+    public null|Organization $organization;
 
     /**
      * The user owner of the subscription.
@@ -113,7 +113,7 @@ class Subscription implements \JsonSerializable, JsonUnserializable
      * The ID field of this object must be populated if
      * if organization isn't specified.
      */
-    public null|\UserHub\AdminV1\User $user;
+    public null|User $user;
 
     /**
      * Whether the subscription is the default for the account.

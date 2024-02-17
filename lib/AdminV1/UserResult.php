@@ -17,12 +17,12 @@ class UserResult implements \JsonSerializable, JsonUnserializable
     /**
      * The user.
      */
-    public null|\UserHub\AdminV1\User $user;
+    public null|User $user;
 
     /**
      * The result error.
      */
-    public null|\UserHub\ApiV1\Status $error;
+    public null|Status $error;
 
     public function __construct(
         null|User $user = null,

@@ -16,12 +16,12 @@ class Member implements \JsonSerializable, JsonUnserializable
     /**
      * The user.
      */
-    public null|\UserHub\UserV1\User $user;
+    public null|User $user;
 
     /**
      * The user's role within the organization.
      */
-    public null|\UserHub\UserV1\Role $role;
+    public null|Role $role;
 
     /**
      * The seat assigned to the member.
@@ -30,7 +30,7 @@ class Member implements \JsonSerializable, JsonUnserializable
      * subscription for the organization or the user
      * has not been assigned a seat.
      */
-    public null|\UserHub\UserV1\AccountSubscriptionSeat $seat;
+    public null|AccountSubscriptionSeat $seat;
 
     public function __construct(
         null|User $user = null,

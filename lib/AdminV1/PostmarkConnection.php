@@ -32,12 +32,12 @@ class PostmarkConnection implements \JsonSerializable, JsonUnserializable
      * The Postmark account must be allowed to send from this email
      * address.
      */
-    public null|\UserHub\CommonV1\Email $from;
+    public null|Email $from;
 
     /**
      * The reply to email address.
      */
-    public null|\UserHub\CommonV1\Email $replyTo;
+    public null|Email $replyTo;
 
     /**
      * The allowed email list.

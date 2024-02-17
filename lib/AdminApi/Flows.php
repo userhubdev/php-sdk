@@ -42,25 +42,25 @@ class Flows
         $req = new Request('admin.flows.list', 'GET', '/admin/v1/flows');
         $req->setIdempotent(true);
 
-        if (isset($organizationId)) {
+        if (!empty($organizationId)) {
             $req->setQuery('organizationId', $organizationId);
         }
-        if (isset($userId)) {
+        if (!empty($userId)) {
             $req->setQuery('userId', $userId);
         }
-        if (isset($type)) {
+        if (!empty($type)) {
             $req->setQuery('type', $type);
         }
-        if (isset($pageSize)) {
+        if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
         }
-        if (isset($pageToken)) {
+        if (!empty($pageToken)) {
             $req->setQuery('pageToken', $pageToken);
         }
-        if (isset($orderBy)) {
+        if (!empty($orderBy)) {
             $req->setQuery('orderBy', $orderBy);
         }
-        if (isset($view)) {
+        if (!empty($view)) {
             $req->setQuery('view', $view);
         }
 
@@ -88,25 +88,25 @@ class Flows
         $req = new Request('admin.flows.createJoinOrganization', 'POST', '/admin/v1/flows:createJoinOrganization');
         $body = [];
 
-        if (isset($organizationId)) {
+        if (!empty($organizationId)) {
             $body['organizationId'] = $organizationId;
         }
-        if (isset($userId)) {
+        if (!empty($userId)) {
             $body['userId'] = $userId;
         }
-        if (isset($email)) {
+        if (!empty($email)) {
             $body['email'] = $email;
         }
-        if (isset($displayName)) {
+        if (!empty($displayName)) {
             $body['displayName'] = $displayName;
         }
-        if (isset($creatorUserId)) {
+        if (!empty($creatorUserId)) {
             $body['creatorUserId'] = $creatorUserId;
         }
-        if (isset($expireTime)) {
+        if (!empty($expireTime)) {
             $body['expireTime'] = Util::encodeDateTime($expireTime);
         }
-        if (isset($ttl)) {
+        if (!empty($ttl)) {
             $body['ttl'] = $ttl;
         }
 

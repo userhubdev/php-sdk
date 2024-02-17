@@ -39,13 +39,13 @@ class Organizations
         $req = new Request('user.organizations.list', 'GET', '/user/v1/organizations');
         $req->setIdempotent(true);
 
-        if (isset($pageSize)) {
+        if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
         }
-        if (isset($pageToken)) {
+        if (!empty($pageToken)) {
             $req->setQuery('pageToken', $pageToken);
         }
-        if (isset($orderBy)) {
+        if (!empty($orderBy)) {
             $req->setQuery('orderBy', $orderBy);
         }
 
@@ -68,16 +68,16 @@ class Organizations
         $req = new Request('user.organizations.create', 'POST', '/user/v1/organizations');
         $body = [];
 
-        if (isset($uniqueId)) {
+        if (!empty($uniqueId)) {
             $body['uniqueId'] = $uniqueId;
         }
-        if (isset($displayName)) {
+        if (!empty($displayName)) {
             $body['displayName'] = $displayName;
         }
-        if (isset($email)) {
+        if (!empty($email)) {
             $body['email'] = $email;
         }
-        if (isset($flowId)) {
+        if (!empty($flowId)) {
             $body['flowId'] = $flowId;
         }
 

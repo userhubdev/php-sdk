@@ -16,7 +16,7 @@ class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializable
     /**
      * The subscription item product.
      */
-    public null|\UserHub\UserV1\Product $product;
+    public null|Product $product;
 
     /**
      * The quantity which has been invoiced for the current billing period.

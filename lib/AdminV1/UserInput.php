@@ -90,7 +90,7 @@ class UserInput implements \JsonSerializable, JsonUnserializable
     /**
      * The billing address for the user.
      */
-    public null|\UserHub\CommonV1\Address $address;
+    public null|Address $address;
 
     /**
      * The sign-up time for the user.

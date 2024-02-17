@@ -17,7 +17,7 @@ class ProductConnection implements \JsonSerializable, JsonUnserializable
     /**
      * The basic view of the connection.
      */
-    public null|\UserHub\AdminV1\Connection $connection;
+    public null|Connection $connection;
 
     /**
      * The external identifier of the connected product.
