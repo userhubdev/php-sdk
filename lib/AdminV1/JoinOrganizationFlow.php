@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -32,20 +34,20 @@ class JoinOrganizationFlow implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'email' => isset($this->email) ? $this->email : null,
+            'displayName' => $this->displayName ?? null,
+            'email' => $this->email ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new JoinOrganizationFlow(
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'email'}) ? $data->{'email'} : null,
+        return new self(
+            $data->{'displayName'} ?? null,
+            $data->{'email'} ?? null,
         );
     }
 }

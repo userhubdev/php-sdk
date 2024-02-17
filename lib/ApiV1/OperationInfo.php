@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\ApiV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -25,18 +27,18 @@ class OperationInfo implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'responseType' => isset($this->responseType) ? $this->responseType : null,
+            'responseType' => $this->responseType ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new OperationInfo(
-            isset($data->{'responseType'}) ? $data->{'responseType'} : null,
+        return new self(
+            $data->{'responseType'} ?? null,
         );
     }
 }

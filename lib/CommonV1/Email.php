@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\CommonV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -32,20 +34,20 @@ class Email implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'address' => isset($this->address) ? $this->address : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
+            'address' => $this->address ?? null,
+            'displayName' => $this->displayName ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Email(
-            isset($data->{'address'}) ? $data->{'address'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
+        return new self(
+            $data->{'address'} ?? null,
+            $data->{'displayName'} ?? null,
         );
     }
 }

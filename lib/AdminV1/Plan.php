@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\CommonV1\Interval;
@@ -73,29 +75,29 @@ class Plan implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'description' => isset($this->description) ? $this->description : null,
-            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
-            'billingInterval' => isset($this->billingInterval) ? $this->billingInterval : null,
-            'tags' => isset($this->tags) ? $this->tags : null,
-            'items' => isset($this->items) ? $this->items : null,
+            'id' => $this->id ?? null,
+            'displayName' => $this->displayName ?? null,
+            'description' => $this->description ?? null,
+            'currencyCode' => $this->currencyCode ?? null,
+            'billingInterval' => $this->billingInterval ?? null,
+            'tags' => $this->tags ?? null,
+            'items' => $this->items ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Plan(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'description'}) ? $data->{'description'} : null,
-            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'description'} ?? null,
+            $data->{'currencyCode'} ?? null,
             isset($data->{'billingInterval'}) ? Interval::jsonUnserialize($data->{'billingInterval'}) : null,
-            isset($data->{'tags'}) ? $data->{'tags'} : null,
+            $data->{'tags'} ?? null,
             isset($data->{'items'}) ? Util::mapArray($data->{'items'}, [PlanItem::class, 'jsonUnserialize']) : null,
         );
     }

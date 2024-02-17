@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -67,30 +69,30 @@ class Organization implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'uniqueId' => isset($this->uniqueId) ? $this->uniqueId : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'email' => isset($this->email) ? $this->email : null,
-            'emailVerified' => isset($this->emailVerified) ? $this->emailVerified : null,
-            'imageUrl' => isset($this->imageUrl) ? $this->imageUrl : null,
-            'disabled' => isset($this->disabled) ? $this->disabled : null,
+            'id' => $this->id ?? null,
+            'uniqueId' => $this->uniqueId ?? null,
+            'displayName' => $this->displayName ?? null,
+            'email' => $this->email ?? null,
+            'emailVerified' => $this->emailVerified ?? null,
+            'imageUrl' => $this->imageUrl ?? null,
+            'disabled' => $this->disabled ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Organization(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'uniqueId'}) ? $data->{'uniqueId'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'email'}) ? $data->{'email'} : null,
-            isset($data->{'emailVerified'}) ? $data->{'emailVerified'} : null,
-            isset($data->{'imageUrl'}) ? $data->{'imageUrl'} : null,
-            isset($data->{'disabled'}) ? $data->{'disabled'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'uniqueId'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'email'} ?? null,
+            $data->{'emailVerified'} ?? null,
+            $data->{'imageUrl'} ?? null,
+            $data->{'disabled'} ?? null,
         );
     }
 }

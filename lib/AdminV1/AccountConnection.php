@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -111,14 +113,14 @@ class AccountConnection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'connection' => isset($this->connection) ? $this->connection : null,
-            'externalId' => isset($this->externalId) ? $this->externalId : null,
-            'adminUrl' => isset($this->adminUrl) ? $this->adminUrl : null,
-            'state' => isset($this->state) ? $this->state : null,
-            'stateReason' => isset($this->stateReason) ? $this->stateReason : null,
-            'balanceAmount' => isset($this->balanceAmount) ? $this->balanceAmount : null,
-            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
-            'paymentMethods' => isset($this->paymentMethods) ? $this->paymentMethods : null,
+            'connection' => $this->connection ?? null,
+            'externalId' => $this->externalId ?? null,
+            'adminUrl' => $this->adminUrl ?? null,
+            'state' => $this->state ?? null,
+            'stateReason' => $this->stateReason ?? null,
+            'balanceAmount' => $this->balanceAmount ?? null,
+            'currencyCode' => $this->currencyCode ?? null,
+            'paymentMethods' => $this->paymentMethods ?? null,
             'pullTime' => isset($this->pullTime) ? Util::encodeDateTime($this->pullTime) : null,
             'pushTime' => isset($this->pushTime) ? Util::encodeDateTime($this->pushTime) : null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
@@ -128,18 +130,18 @@ class AccountConnection implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new AccountConnection(
+        return new self(
             isset($data->{'connection'}) ? Connection::jsonUnserialize($data->{'connection'}) : null,
-            isset($data->{'externalId'}) ? $data->{'externalId'} : null,
-            isset($data->{'adminUrl'}) ? $data->{'adminUrl'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
-            isset($data->{'stateReason'}) ? $data->{'stateReason'} : null,
-            isset($data->{'balanceAmount'}) ? $data->{'balanceAmount'} : null,
-            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
+            $data->{'externalId'} ?? null,
+            $data->{'adminUrl'} ?? null,
+            $data->{'state'} ?? null,
+            $data->{'stateReason'} ?? null,
+            $data->{'balanceAmount'} ?? null,
+            $data->{'currencyCode'} ?? null,
             isset($data->{'paymentMethods'}) ? Util::mapArray($data->{'paymentMethods'}, [PaymentMethod::class, 'jsonUnserialize']) : null,
             isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
             isset($data->{'pushTime'}) ? Util::decodeDateTime($data->{'pushTime'}) : null,

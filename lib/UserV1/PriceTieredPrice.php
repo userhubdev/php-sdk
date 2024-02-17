@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -36,19 +38,19 @@ class PriceTieredPrice implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'mode' => isset($this->mode) ? $this->mode : null,
-            'tiers' => isset($this->tiers) ? $this->tiers : null,
+            'mode' => $this->mode ?? null,
+            'tiers' => $this->tiers ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PriceTieredPrice(
-            isset($data->{'mode'}) ? $data->{'mode'} : null,
+        return new self(
+            $data->{'mode'} ?? null,
             isset($data->{'tiers'}) ? Util::mapArray($data->{'tiers'}, [TieredPriceTier::class, 'jsonUnserialize']) : null,
         );
     }

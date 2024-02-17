@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\OperationsV1;
 
 use UserHub\CommonV1\Any;
@@ -71,10 +73,10 @@ class Operation implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'done' => isset($this->done) ? $this->done : null,
-            'error' => isset($this->error) ? $this->error : null,
-            'response' => isset($this->response) ? $this->response : null,
+            'id' => $this->id ?? null,
+            'done' => $this->done ?? null,
+            'error' => $this->error ?? null,
+            'response' => $this->response ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
             'deleteTime' => isset($this->deleteTime) ? Util::encodeDateTime($this->deleteTime) : null,
@@ -83,13 +85,13 @@ class Operation implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Operation(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'done'}) ? $data->{'done'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'done'} ?? null,
             isset($data->{'error'}) ? OperationError::jsonUnserialize($data->{'error'}) : null,
             isset($data->{'response'}) ? Any::jsonUnserialize($data->{'response'}) : null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,

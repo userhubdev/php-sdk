@@ -17,5 +17,12 @@
     "psr-4": {
       "UserHub\\": "lib/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "UserHub\\": [
+        "tests/"
+      ]
+    }
   }
 }

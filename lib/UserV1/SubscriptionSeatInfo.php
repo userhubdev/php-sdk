@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -65,28 +67,28 @@ class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'product' => isset($this->product) ? $this->product : null,
-            'currentPeriodQuantity' => isset($this->currentPeriodQuantity) ? $this->currentPeriodQuantity : null,
-            'nextPeriodQuantity' => isset($this->nextPeriodQuantity) ? $this->nextPeriodQuantity : null,
-            'assignedQuantity' => isset($this->assignedQuantity) ? $this->assignedQuantity : null,
-            'unassignedQuantity' => isset($this->unassignedQuantity) ? $this->unassignedQuantity : null,
-            'totalQuantity' => isset($this->totalQuantity) ? $this->totalQuantity : null,
+            'product' => $this->product ?? null,
+            'currentPeriodQuantity' => $this->currentPeriodQuantity ?? null,
+            'nextPeriodQuantity' => $this->nextPeriodQuantity ?? null,
+            'assignedQuantity' => $this->assignedQuantity ?? null,
+            'unassignedQuantity' => $this->unassignedQuantity ?? null,
+            'totalQuantity' => $this->totalQuantity ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new SubscriptionSeatInfo(
+        return new self(
             isset($data->{'product'}) ? Product::jsonUnserialize($data->{'product'}) : null,
-            isset($data->{'currentPeriodQuantity'}) ? $data->{'currentPeriodQuantity'} : null,
-            isset($data->{'nextPeriodQuantity'}) ? $data->{'nextPeriodQuantity'} : null,
-            isset($data->{'assignedQuantity'}) ? $data->{'assignedQuantity'} : null,
-            isset($data->{'unassignedQuantity'}) ? $data->{'unassignedQuantity'} : null,
-            isset($data->{'totalQuantity'}) ? $data->{'totalQuantity'} : null,
+            $data->{'currentPeriodQuantity'} ?? null,
+            $data->{'nextPeriodQuantity'} ?? null,
+            $data->{'assignedQuantity'} ?? null,
+            $data->{'unassignedQuantity'} ?? null,
+            $data->{'totalQuantity'} ?? null,
         );
     }
 }

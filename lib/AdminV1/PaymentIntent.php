@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -25,17 +27,17 @@ class PaymentIntent implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'stripe' => isset($this->stripe) ? $this->stripe : null,
+            'stripe' => $this->stripe ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PaymentIntent(
+        return new self(
             isset($data->{'stripe'}) ? StripePaymentIntent::jsonUnserialize($data->{'stripe'}) : null,
         );
     }

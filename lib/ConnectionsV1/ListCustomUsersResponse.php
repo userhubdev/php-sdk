@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\ConnectionsV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -40,20 +42,20 @@ class ListCustomUsersResponse implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'users' => isset($this->users) ? $this->users : null,
-            'nextPageToken' => isset($this->nextPageToken) ? $this->nextPageToken : null,
+            'users' => $this->users ?? null,
+            'nextPageToken' => $this->nextPageToken ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new ListCustomUsersResponse(
+        return new self(
             isset($data->{'users'}) ? Util::mapArray($data->{'users'}, [CustomUser::class, 'jsonUnserialize']) : null,
-            isset($data->{'nextPageToken'}) ? $data->{'nextPageToken'} : null,
+            $data->{'nextPageToken'} ?? null,
         );
     }
 }

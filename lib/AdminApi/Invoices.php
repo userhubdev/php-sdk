@@ -2,12 +2,15 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminApi;
 
 use UserHub\AdminV1\Invoice;
 use UserHub\AdminV1\ListInvoicesResponse;
 use UserHub\Internal\Request;
 use UserHub\Internal\Transport;
+use UserHub\UserHubError;
 
 /**
  * The invoice methods.
@@ -23,6 +26,8 @@ class Invoices
 
     /**
      * Lists invoices.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
         null|string $organizationId = null,
@@ -57,6 +62,8 @@ class Invoices
 
     /**
      * Retrieves specified invoice.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
         string $invoiceId,

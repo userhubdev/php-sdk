@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -34,20 +36,20 @@ class MemberInput implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'userId' => isset($this->userId) ? $this->userId : null,
-            'roleId' => isset($this->roleId) ? $this->roleId : null,
+            'userId' => $this->userId ?? null,
+            'roleId' => $this->roleId ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new MemberInput(
-            isset($data->{'userId'}) ? $data->{'userId'} : null,
-            isset($data->{'roleId'}) ? $data->{'roleId'} : null,
+        return new self(
+            $data->{'userId'} ?? null,
+            $data->{'roleId'} ?? null,
         );
     }
 }

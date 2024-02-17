@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -81,31 +83,31 @@ class InvoiceChange implements \JsonSerializable, JsonUnserializable
     {
         return (object) [
             'time' => isset($this->time) ? Util::encodeDateTime($this->time) : null,
-            'description' => isset($this->description) ? $this->description : null,
-            'subtotalAmount' => isset($this->subtotalAmount) ? $this->subtotalAmount : null,
-            'discountAmount' => isset($this->discountAmount) ? $this->discountAmount : null,
-            'startQuantity' => isset($this->startQuantity) ? $this->startQuantity : null,
-            'endQuantity' => isset($this->endQuantity) ? $this->endQuantity : null,
-            'startItemIds' => isset($this->startItemIds) ? $this->startItemIds : null,
-            'endItemIds' => isset($this->endItemIds) ? $this->endItemIds : null,
+            'description' => $this->description ?? null,
+            'subtotalAmount' => $this->subtotalAmount ?? null,
+            'discountAmount' => $this->discountAmount ?? null,
+            'startQuantity' => $this->startQuantity ?? null,
+            'endQuantity' => $this->endQuantity ?? null,
+            'startItemIds' => $this->startItemIds ?? null,
+            'endItemIds' => $this->endItemIds ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new InvoiceChange(
+        return new self(
             isset($data->{'time'}) ? Util::decodeDateTime($data->{'time'}) : null,
-            isset($data->{'description'}) ? $data->{'description'} : null,
-            isset($data->{'subtotalAmount'}) ? $data->{'subtotalAmount'} : null,
-            isset($data->{'discountAmount'}) ? $data->{'discountAmount'} : null,
-            isset($data->{'startQuantity'}) ? $data->{'startQuantity'} : null,
-            isset($data->{'endQuantity'}) ? $data->{'endQuantity'} : null,
-            isset($data->{'startItemIds'}) ? $data->{'startItemIds'} : null,
-            isset($data->{'endItemIds'}) ? $data->{'endItemIds'} : null,
+            $data->{'description'} ?? null,
+            $data->{'subtotalAmount'} ?? null,
+            $data->{'discountAmount'} ?? null,
+            $data->{'startQuantity'} ?? null,
+            $data->{'endQuantity'} ?? null,
+            $data->{'startItemIds'} ?? null,
+            $data->{'endItemIds'} ?? null,
         );
     }
 }

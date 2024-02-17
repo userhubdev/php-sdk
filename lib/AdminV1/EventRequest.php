@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -35,20 +37,20 @@ class EventRequest implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'ipAddress' => isset($this->ipAddress) ? $this->ipAddress : null,
-            'traceId' => isset($this->traceId) ? $this->traceId : null,
+            'ipAddress' => $this->ipAddress ?? null,
+            'traceId' => $this->traceId ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new EventRequest(
-            isset($data->{'ipAddress'}) ? $data->{'ipAddress'} : null,
-            isset($data->{'traceId'}) ? $data->{'traceId'} : null,
+        return new self(
+            $data->{'ipAddress'} ?? null,
+            $data->{'traceId'} ?? null,
         );
     }
 }

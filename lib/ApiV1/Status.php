@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\ApiV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -55,26 +57,26 @@ class Status implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'code' => isset($this->code) ? $this->code : null,
-            'message' => isset($this->message) ? $this->message : null,
-            'reason' => isset($this->reason) ? $this->reason : null,
-            'param' => isset($this->param) ? $this->param : null,
-            'metadata' => isset($this->metadata) ? $this->metadata : null,
+            'code' => $this->code ?? null,
+            'message' => $this->message ?? null,
+            'reason' => $this->reason ?? null,
+            'param' => $this->param ?? null,
+            'metadata' => $this->metadata ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Status(
-            isset($data->{'code'}) ? $data->{'code'} : null,
-            isset($data->{'message'}) ? $data->{'message'} : null,
-            isset($data->{'reason'}) ? $data->{'reason'} : null,
-            isset($data->{'param'}) ? $data->{'param'} : null,
-            isset($data->{'metadata'}) ? $data->{'metadata'} : null,
+        return new self(
+            $data->{'code'} ?? null,
+            $data->{'message'} ?? null,
+            $data->{'reason'} ?? null,
+            $data->{'param'} ?? null,
+            $data->{'metadata'} ?? null,
         );
     }
 }

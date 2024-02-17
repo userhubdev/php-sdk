@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -55,24 +57,24 @@ class SearchOrganizationsResponse implements \JsonSerializable, JsonUnserializab
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'organizations' => isset($this->organizations) ? $this->organizations : null,
-            'nextPageToken' => isset($this->nextPageToken) ? $this->nextPageToken : null,
-            'previousPageToken' => isset($this->previousPageToken) ? $this->previousPageToken : null,
-            'totalSize' => isset($this->totalSize) ? $this->totalSize : null,
+            'organizations' => $this->organizations ?? null,
+            'nextPageToken' => $this->nextPageToken ?? null,
+            'previousPageToken' => $this->previousPageToken ?? null,
+            'totalSize' => $this->totalSize ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new SearchOrganizationsResponse(
+        return new self(
             isset($data->{'organizations'}) ? Util::mapArray($data->{'organizations'}, [Organization::class, 'jsonUnserialize']) : null,
-            isset($data->{'nextPageToken'}) ? $data->{'nextPageToken'} : null,
-            isset($data->{'previousPageToken'}) ? $data->{'previousPageToken'} : null,
-            isset($data->{'totalSize'}) ? $data->{'totalSize'} : null,
+            $data->{'nextPageToken'} ?? null,
+            $data->{'previousPageToken'} ?? null,
+            $data->{'totalSize'} ?? null,
         );
     }
 }

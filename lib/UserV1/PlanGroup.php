@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -84,29 +86,29 @@ class PlanGroup implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'uniqueId' => isset($this->uniqueId) ? $this->uniqueId : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'description' => isset($this->description) ? $this->description : null,
-            'accountType' => isset($this->accountType) ? $this->accountType : null,
-            'trial' => isset($this->trial) ? $this->trial : null,
-            'changePath' => isset($this->changePath) ? $this->changePath : null,
-            'plans' => isset($this->plans) ? $this->plans : null,
+            'id' => $this->id ?? null,
+            'uniqueId' => $this->uniqueId ?? null,
+            'displayName' => $this->displayName ?? null,
+            'description' => $this->description ?? null,
+            'accountType' => $this->accountType ?? null,
+            'trial' => $this->trial ?? null,
+            'changePath' => $this->changePath ?? null,
+            'plans' => $this->plans ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PlanGroup(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'uniqueId'}) ? $data->{'uniqueId'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'description'}) ? $data->{'description'} : null,
-            isset($data->{'accountType'}) ? $data->{'accountType'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'uniqueId'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'description'} ?? null,
+            $data->{'accountType'} ?? null,
             isset($data->{'trial'}) ? PlanGroupTrial::jsonUnserialize($data->{'trial'}) : null,
             isset($data->{'changePath'}) ? PlanGroupChangePath::jsonUnserialize($data->{'changePath'}) : null,
             isset($data->{'plans'}) ? Util::mapArray($data->{'plans'}, [Plan::class, 'jsonUnserialize']) : null,

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -62,24 +64,24 @@ class BillingAccount implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'state' => isset($this->state) ? $this->state : null,
-            'balanceAmount' => isset($this->balanceAmount) ? $this->balanceAmount : null,
-            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
-            'paymentMethods' => isset($this->paymentMethods) ? $this->paymentMethods : null,
-            'subscription' => isset($this->subscription) ? $this->subscription : null,
+            'state' => $this->state ?? null,
+            'balanceAmount' => $this->balanceAmount ?? null,
+            'currencyCode' => $this->currencyCode ?? null,
+            'paymentMethods' => $this->paymentMethods ?? null,
+            'subscription' => $this->subscription ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new BillingAccount(
-            isset($data->{'state'}) ? $data->{'state'} : null,
-            isset($data->{'balanceAmount'}) ? $data->{'balanceAmount'} : null,
-            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
+        return new self(
+            $data->{'state'} ?? null,
+            $data->{'balanceAmount'} ?? null,
+            $data->{'currencyCode'} ?? null,
             isset($data->{'paymentMethods'}) ? Util::mapArray($data->{'paymentMethods'}, [PaymentMethod::class, 'jsonUnserialize']) : null,
             isset($data->{'subscription'}) ? Subscription::jsonUnserialize($data->{'subscription'}) : null,
         );

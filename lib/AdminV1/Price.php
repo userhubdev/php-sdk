@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\CommonV1\Interval;
@@ -141,44 +143,44 @@ class Price implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'connection' => isset($this->connection) ? $this->connection : null,
-            'externalId' => isset($this->externalId) ? $this->externalId : null,
-            'state' => isset($this->state) ? $this->state : null,
-            'stateReason' => isset($this->stateReason) ? $this->stateReason : null,
-            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
-            'billingMode' => isset($this->billingMode) ? $this->billingMode : null,
-            'interval' => isset($this->interval) ? $this->interval : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'product' => isset($this->product) ? $this->product : null,
-            'archived' => isset($this->archived) ? $this->archived : null,
+            'id' => $this->id ?? null,
+            'connection' => $this->connection ?? null,
+            'externalId' => $this->externalId ?? null,
+            'state' => $this->state ?? null,
+            'stateReason' => $this->stateReason ?? null,
+            'currencyCode' => $this->currencyCode ?? null,
+            'billingMode' => $this->billingMode ?? null,
+            'interval' => $this->interval ?? null,
+            'displayName' => $this->displayName ?? null,
+            'product' => $this->product ?? null,
+            'archived' => $this->archived ?? null,
             'pullTime' => isset($this->pullTime) ? Util::encodeDateTime($this->pullTime) : null,
             'pushTime' => isset($this->pushTime) ? Util::encodeDateTime($this->pushTime) : null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
-            'fixed' => isset($this->fixed) ? $this->fixed : null,
-            'tiered' => isset($this->tiered) ? $this->tiered : null,
+            'fixed' => $this->fixed ?? null,
+            'tiered' => $this->tiered ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Price(
-            isset($data->{'id'}) ? $data->{'id'} : null,
+        return new self(
+            $data->{'id'} ?? null,
             isset($data->{'connection'}) ? Connection::jsonUnserialize($data->{'connection'}) : null,
-            isset($data->{'externalId'}) ? $data->{'externalId'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
-            isset($data->{'stateReason'}) ? $data->{'stateReason'} : null,
-            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
-            isset($data->{'billingMode'}) ? $data->{'billingMode'} : null,
+            $data->{'externalId'} ?? null,
+            $data->{'state'} ?? null,
+            $data->{'stateReason'} ?? null,
+            $data->{'currencyCode'} ?? null,
+            $data->{'billingMode'} ?? null,
             isset($data->{'interval'}) ? Interval::jsonUnserialize($data->{'interval'}) : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
+            $data->{'displayName'} ?? null,
             isset($data->{'product'}) ? Product::jsonUnserialize($data->{'product'}) : null,
-            isset($data->{'archived'}) ? $data->{'archived'} : null,
+            $data->{'archived'} ?? null,
             isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
             isset($data->{'pushTime'}) ? Util::decodeDateTime($data->{'pushTime'}) : null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,

@@ -2,12 +2,15 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminApi;
 
 use UserHub\AdminV1\ListSubscriptionsResponse;
 use UserHub\AdminV1\Subscription;
 use UserHub\Internal\Request;
 use UserHub\Internal\Transport;
+use UserHub\UserHubError;
 
 /**
  * The subscription methods.
@@ -23,6 +26,8 @@ class Subscriptions
 
     /**
      * Lists subscriptions.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
         null|string $organizationId = null,
@@ -61,6 +66,8 @@ class Subscriptions
 
     /**
      * Retrieves specified subscription.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
         string $subscriptionId,

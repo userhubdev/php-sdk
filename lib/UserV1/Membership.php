@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -42,19 +44,19 @@ class Membership implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'organization' => isset($this->organization) ? $this->organization : null,
-            'role' => isset($this->role) ? $this->role : null,
-            'subscription' => isset($this->subscription) ? $this->subscription : null,
+            'organization' => $this->organization ?? null,
+            'role' => $this->role ?? null,
+            'subscription' => $this->subscription ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Membership(
+        return new self(
             isset($data->{'organization'}) ? Organization::jsonUnserialize($data->{'organization'}) : null,
             isset($data->{'role'}) ? Role::jsonUnserialize($data->{'role'}) : null,
             isset($data->{'subscription'}) ? AccountSubscription::jsonUnserialize($data->{'subscription'}) : null,

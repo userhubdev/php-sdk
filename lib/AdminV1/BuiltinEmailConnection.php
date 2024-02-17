@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -27,18 +29,18 @@ class BuiltinEmailConnection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'allowedEmails' => isset($this->allowedEmails) ? $this->allowedEmails : null,
+            'allowedEmails' => $this->allowedEmails ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new BuiltinEmailConnection(
-            isset($data->{'allowedEmails'}) ? $data->{'allowedEmails'} : null,
+        return new self(
+            $data->{'allowedEmails'} ?? null,
         );
     }
 }

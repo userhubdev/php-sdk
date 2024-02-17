@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -39,22 +41,22 @@ class TieredPriceTier implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'upper' => isset($this->upper) ? $this->upper : null,
-            'unitAmount' => isset($this->unitAmount) ? $this->unitAmount : null,
-            'flatAmount' => isset($this->flatAmount) ? $this->flatAmount : null,
+            'upper' => $this->upper ?? null,
+            'unitAmount' => $this->unitAmount ?? null,
+            'flatAmount' => $this->flatAmount ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new TieredPriceTier(
-            isset($data->{'upper'}) ? $data->{'upper'} : null,
-            isset($data->{'unitAmount'}) ? $data->{'unitAmount'} : null,
-            isset($data->{'flatAmount'}) ? $data->{'flatAmount'} : null,
+        return new self(
+            $data->{'upper'} ?? null,
+            $data->{'unitAmount'} ?? null,
+            $data->{'flatAmount'} ?? null,
         );
     }
 }

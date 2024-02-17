@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -65,10 +67,10 @@ class Member implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'state' => isset($this->state) ? $this->state : null,
-            'user' => isset($this->user) ? $this->user : null,
-            'role' => isset($this->role) ? $this->role : null,
-            'seat' => isset($this->seat) ? $this->seat : null,
+            'state' => $this->state ?? null,
+            'user' => $this->user ?? null,
+            'role' => $this->role ?? null,
+            'seat' => $this->seat ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
         ];
@@ -76,12 +78,12 @@ class Member implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Member(
-            isset($data->{'state'}) ? $data->{'state'} : null,
+        return new self(
+            $data->{'state'} ?? null,
             isset($data->{'user'}) ? User::jsonUnserialize($data->{'user'}) : null,
             isset($data->{'role'}) ? Role::jsonUnserialize($data->{'role'}) : null,
             isset($data->{'seat'}) ? AccountSubscriptionSeat::jsonUnserialize($data->{'seat'}) : null,

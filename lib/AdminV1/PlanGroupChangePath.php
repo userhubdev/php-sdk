@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -55,9 +57,9 @@ class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'target' => isset($this->target) ? $this->target : null,
-            'direction' => isset($this->direction) ? $this->direction : null,
-            'visibility' => isset($this->visibility) ? $this->visibility : null,
+            'target' => $this->target ?? null,
+            'direction' => $this->direction ?? null,
+            'visibility' => $this->visibility ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
         ];
@@ -65,14 +67,14 @@ class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PlanGroupChangePath(
+        return new self(
             isset($data->{'target'}) ? PlanGroup::jsonUnserialize($data->{'target'}) : null,
-            isset($data->{'direction'}) ? $data->{'direction'} : null,
-            isset($data->{'visibility'}) ? $data->{'visibility'} : null,
+            $data->{'direction'} ?? null,
+            $data->{'visibility'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

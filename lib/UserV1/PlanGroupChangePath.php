@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -26,18 +28,18 @@ class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'direction' => isset($this->direction) ? $this->direction : null,
+            'direction' => $this->direction ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PlanGroupChangePath(
-            isset($data->{'direction'}) ? $data->{'direction'} : null,
+        return new self(
+            $data->{'direction'} ?? null,
         );
     }
 }

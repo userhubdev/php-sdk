@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -58,24 +60,24 @@ class OrganizationInput implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'uniqueId' => isset($this->uniqueId) ? $this->uniqueId : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'email' => isset($this->email) ? $this->email : null,
-            'flowId' => isset($this->flowId) ? $this->flowId : null,
+            'uniqueId' => $this->uniqueId ?? null,
+            'displayName' => $this->displayName ?? null,
+            'email' => $this->email ?? null,
+            'flowId' => $this->flowId ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new OrganizationInput(
-            isset($data->{'uniqueId'}) ? $data->{'uniqueId'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'email'}) ? $data->{'email'} : null,
-            isset($data->{'flowId'}) ? $data->{'flowId'} : null,
+        return new self(
+            $data->{'uniqueId'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'email'} ?? null,
+            $data->{'flowId'} ?? null,
         );
     }
 }

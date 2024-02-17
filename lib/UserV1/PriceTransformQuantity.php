@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -32,20 +34,20 @@ class PriceTransformQuantity implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'divisor' => isset($this->divisor) ? $this->divisor : null,
-            'round' => isset($this->round) ? $this->round : null,
+            'divisor' => $this->divisor ?? null,
+            'round' => $this->round ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PriceTransformQuantity(
-            isset($data->{'divisor'}) ? $data->{'divisor'} : null,
-            isset($data->{'round'}) ? $data->{'round'} : null,
+        return new self(
+            $data->{'divisor'} ?? null,
+            $data->{'round'} ?? null,
         );
     }
 }

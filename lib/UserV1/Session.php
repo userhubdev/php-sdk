@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -63,26 +65,26 @@ class Session implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'user' => isset($this->user) ? $this->user : null,
-            'memberships' => isset($this->memberships) ? $this->memberships : null,
-            'subscription' => isset($this->subscription) ? $this->subscription : null,
+            'user' => $this->user ?? null,
+            'memberships' => $this->memberships ?? null,
+            'subscription' => $this->subscription ?? null,
             'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
-            'scopes' => isset($this->scopes) ? $this->scopes : null,
+            'scopes' => $this->scopes ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Session(
+        return new self(
             isset($data->{'user'}) ? User::jsonUnserialize($data->{'user'}) : null,
             isset($data->{'memberships'}) ? Util::mapArray($data->{'memberships'}, [Membership::class, 'jsonUnserialize']) : null,
             isset($data->{'subscription'}) ? AccountSubscription::jsonUnserialize($data->{'subscription'}) : null,
             isset($data->{'expireTime'}) ? Util::decodeDateTime($data->{'expireTime'}) : null,
-            isset($data->{'scopes'}) ? $data->{'scopes'} : null,
+            $data->{'scopes'} ?? null,
         );
     }
 }

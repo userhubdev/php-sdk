@@ -1,8 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace UserHub\Internal;
+
+use UserHub\UserHubError;
 
 interface Transport
 {
-    public function execute(Request $request): Response;
+    /**
+     * @throws UserHubError if there was an error executing the API request
+     */
+    public function execute(Request $req): Response;
 }

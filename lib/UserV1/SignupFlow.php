@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -39,22 +41,22 @@ class SignupFlow implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'email' => isset($this->email) ? $this->email : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'createOrganization' => isset($this->createOrganization) ? $this->createOrganization : null,
+            'email' => $this->email ?? null,
+            'displayName' => $this->displayName ?? null,
+            'createOrganization' => $this->createOrganization ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new SignupFlow(
-            isset($data->{'email'}) ? $data->{'email'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'createOrganization'}) ? $data->{'createOrganization'} : null,
+        return new self(
+            $data->{'email'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'createOrganization'} ?? null,
         );
     }
 }

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -45,22 +47,22 @@ class UpdateSubscriptionItemsRequestItem implements \JsonSerializable, JsonUnser
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'productId' => isset($this->productId) ? $this->productId : null,
-            'userId' => isset($this->userId) ? $this->userId : null,
-            'quantity' => isset($this->quantity) ? $this->quantity : null,
+            'productId' => $this->productId ?? null,
+            'userId' => $this->userId ?? null,
+            'quantity' => $this->quantity ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new UpdateSubscriptionItemsRequestItem(
-            isset($data->{'productId'}) ? $data->{'productId'} : null,
-            isset($data->{'userId'}) ? $data->{'userId'} : null,
-            isset($data->{'quantity'}) ? $data->{'quantity'} : null,
+        return new self(
+            $data->{'productId'} ?? null,
+            $data->{'userId'} ?? null,
+            $data->{'quantity'} ?? null,
         );
     }
 }

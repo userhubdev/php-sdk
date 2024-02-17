@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\ConnectionsV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -26,18 +28,18 @@ class Challenge implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'challenge' => isset($this->challenge) ? $this->challenge : null,
+            'challenge' => $this->challenge ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Challenge(
-            isset($data->{'challenge'}) ? $data->{'challenge'} : null,
+        return new self(
+            $data->{'challenge'} ?? null,
         );
     }
 }

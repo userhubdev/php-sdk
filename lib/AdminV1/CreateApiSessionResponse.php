@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -36,19 +38,19 @@ class CreateApiSessionResponse implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'accessToken' => isset($this->accessToken) ? $this->accessToken : null,
+            'accessToken' => $this->accessToken ?? null,
             'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new CreateApiSessionResponse(
-            isset($data->{'accessToken'}) ? $data->{'accessToken'} : null,
+        return new self(
+            $data->{'accessToken'} ?? null,
             isset($data->{'expireTime'}) ? Util::decodeDateTime($data->{'expireTime'}) : null,
         );
     }

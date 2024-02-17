@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\ApiV1\Status;
@@ -33,18 +35,18 @@ class TriggerResult implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'trigger' => isset($this->trigger) ? $this->trigger : null,
-            'error' => isset($this->error) ? $this->error : null,
+            'trigger' => $this->trigger ?? null,
+            'error' => $this->error ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new TriggerResult(
+        return new self(
             isset($data->{'trigger'}) ? Trigger::jsonUnserialize($data->{'trigger'}) : null,
             isset($data->{'error'}) ? Status::jsonUnserialize($data->{'error'}) : null,
         );

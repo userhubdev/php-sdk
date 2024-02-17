@@ -1,11 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace UserHub;
 
 use UserHub\Internal\Constants;
 
 class AdminApi extends AdminApi\Client
 {
+    /**
+     * @throws UserHubError if arguments are invalid
+     */
     public function __construct(
         string $adminKey,
         ?string $baseUrl = null,

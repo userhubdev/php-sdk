@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminApi;
 
 use UserHub\AdminV1\ListMembersResponse;
@@ -14,6 +16,7 @@ use UserHub\Internal\Request;
 use UserHub\Internal\Transport;
 use UserHub\Internal\Util;
 use UserHub\Undefined;
+use UserHub\UserHubError;
 
 /**
  * The organization methods.
@@ -29,6 +32,8 @@ class Organizations
 
     /**
      * Lists organizations.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
         null|int $pageSize = null,
@@ -63,6 +68,8 @@ class Organizations
 
     /**
      * Creates a new organization.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function create(
         null|string $uniqueId = null,
@@ -135,6 +142,8 @@ class Organizations
 
     /**
      * Retrieves specified organization.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
         string $organizationId,
@@ -149,6 +158,8 @@ class Organizations
 
     /**
      * Updates specified organization.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function update(
         string $organizationId,
@@ -228,6 +239,8 @@ class Organizations
 
     /**
      * Marks specified organization for deletion.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function delete(
         string $organizationId,
@@ -242,6 +255,8 @@ class Organizations
 
     /**
      * Un-marks specified organization for deletion.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function undelete(
         string $organizationId,
@@ -260,6 +275,8 @@ class Organizations
 
     /**
      * Connect specified organization to external account.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function connect(
         string $organizationId,
@@ -294,6 +311,8 @@ class Organizations
      *
      * WARNING: This can irreversibly destroy data and should be
      * used with extreme caution.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function disconnect(
         string $organizationId,
@@ -319,6 +338,8 @@ class Organizations
 
     /**
      * Lists organization members.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function listMembers(
         string $organizationId,
@@ -346,6 +367,8 @@ class Organizations
 
     /**
      * Creates a new organization member.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function addMember(
         string $organizationId,
@@ -371,6 +394,8 @@ class Organizations
 
     /**
      * Retrieves specified organization member.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function getMember(
         string $organizationId,
@@ -386,6 +411,8 @@ class Organizations
 
     /**
      * Updates specified organization member.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function updateMember(
         string $organizationId,
@@ -414,6 +441,8 @@ class Organizations
 
     /**
      * Deletes specified organization member.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function removeMember(
         string $organizationId,

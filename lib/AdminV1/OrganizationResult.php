@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\ApiV1\Status;
@@ -33,18 +35,18 @@ class OrganizationResult implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'organization' => isset($this->organization) ? $this->organization : null,
-            'error' => isset($this->error) ? $this->error : null,
+            'organization' => $this->organization ?? null,
+            'error' => $this->error ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new OrganizationResult(
+        return new self(
             isset($data->{'organization'}) ? Organization::jsonUnserialize($data->{'organization'}) : null,
             isset($data->{'error'}) ? Status::jsonUnserialize($data->{'error'}) : null,
         );

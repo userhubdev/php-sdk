@@ -2,12 +2,15 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserApi;
 
 use UserHub\ApiV1\EmptyResponse;
 use UserHub\Internal\Request;
 use UserHub\Internal\Transport;
 use UserHub\Undefined;
+use UserHub\UserHubError;
 use UserHub\UserV1\ListOrganizationsResponse;
 use UserHub\UserV1\Organization;
 
@@ -25,6 +28,8 @@ class Organizations
 
     /**
      * Lists organizations.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
         null|int $pageSize = null,
@@ -51,6 +56,8 @@ class Organizations
 
     /**
      * Creates a new organization.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function create(
         null|string $uniqueId = null,
@@ -83,6 +90,8 @@ class Organizations
 
     /**
      * Retrieves specified organization.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
         string $organizationId,
@@ -97,6 +106,8 @@ class Organizations
 
     /**
      * Updates specified organization.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function update(
         string $organizationId,
@@ -132,6 +143,8 @@ class Organizations
 
     /**
      * Delete specified organization.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function delete(
         string $organizationId,
@@ -147,6 +160,8 @@ class Organizations
      *
      * This allows a user to remove themselves from an organization
      * without have permission to manage the organization.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function leave(
         string $organizationId,

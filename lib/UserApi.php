@@ -1,9 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace UserHub;
 
 class UserApi extends UserApi\Client
 {
+    /**
+     * @throws UserHubError if arguments are invalid
+     */
     public function __construct(
         string $userKey,
         ?string $accessToken = null,

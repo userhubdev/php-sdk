@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -45,22 +47,22 @@ class ListProductsResponse implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'products' => isset($this->products) ? $this->products : null,
-            'nextPageToken' => isset($this->nextPageToken) ? $this->nextPageToken : null,
-            'previousPageToken' => isset($this->previousPageToken) ? $this->previousPageToken : null,
+            'products' => $this->products ?? null,
+            'nextPageToken' => $this->nextPageToken ?? null,
+            'previousPageToken' => $this->previousPageToken ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new ListProductsResponse(
+        return new self(
             isset($data->{'products'}) ? Util::mapArray($data->{'products'}, [Product::class, 'jsonUnserialize']) : null,
-            isset($data->{'nextPageToken'}) ? $data->{'nextPageToken'} : null,
-            isset($data->{'previousPageToken'}) ? $data->{'previousPageToken'} : null,
+            $data->{'nextPageToken'} ?? null,
+            $data->{'previousPageToken'} ?? null,
         );
     }
 }

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -33,19 +35,19 @@ class PriceFixedPrice implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'amount' => isset($this->amount) ? $this->amount : null,
-            'transformQuantity' => isset($this->transformQuantity) ? $this->transformQuantity : null,
+            'amount' => $this->amount ?? null,
+            'transformQuantity' => $this->transformQuantity ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PriceFixedPrice(
-            isset($data->{'amount'}) ? $data->{'amount'} : null,
+        return new self(
+            $data->{'amount'} ?? null,
             isset($data->{'transformQuantity'}) ? PriceTransformQuantity::jsonUnserialize($data->{'transformQuantity'}) : null,
         );
     }

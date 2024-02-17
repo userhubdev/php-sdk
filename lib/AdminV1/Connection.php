@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -141,38 +143,38 @@ class Connection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'uniqueId' => isset($this->uniqueId) ? $this->uniqueId : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'state' => isset($this->state) ? $this->state : null,
-            'stateReason' => isset($this->stateReason) ? $this->stateReason : null,
-            'type' => isset($this->type) ? $this->type : null,
-            'delegate' => isset($this->delegate) ? $this->delegate : null,
-            'providers' => isset($this->providers) ? $this->providers : null,
+            'id' => $this->id ?? null,
+            'uniqueId' => $this->uniqueId ?? null,
+            'displayName' => $this->displayName ?? null,
+            'state' => $this->state ?? null,
+            'stateReason' => $this->stateReason ?? null,
+            'type' => $this->type ?? null,
+            'delegate' => $this->delegate ?? null,
+            'providers' => $this->providers ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
-            'auth0' => isset($this->auth0) ? $this->auth0 : null,
-            'builtinEmail' => isset($this->builtinEmail) ? $this->builtinEmail : null,
-            'googleCloudIdentityPlatform' => isset($this->googleCloudIdentityPlatform) ? $this->googleCloudIdentityPlatform : null,
-            'postmark' => isset($this->postmark) ? $this->postmark : null,
-            'stripe' => isset($this->stripe) ? $this->stripe : null,
-            'webhook' => isset($this->webhook) ? $this->webhook : null,
+            'auth0' => $this->auth0 ?? null,
+            'builtinEmail' => $this->builtinEmail ?? null,
+            'googleCloudIdentityPlatform' => $this->googleCloudIdentityPlatform ?? null,
+            'postmark' => $this->postmark ?? null,
+            'stripe' => $this->stripe ?? null,
+            'webhook' => $this->webhook ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Connection(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'uniqueId'}) ? $data->{'uniqueId'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
-            isset($data->{'stateReason'}) ? $data->{'stateReason'} : null,
-            isset($data->{'type'}) ? $data->{'type'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'uniqueId'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'state'} ?? null,
+            $data->{'stateReason'} ?? null,
+            $data->{'type'} ?? null,
             isset($data->{'delegate'}) ? ConnectionDelegate::jsonUnserialize($data->{'delegate'}) : null,
             isset($data->{'providers'}) ? Util::mapArray($data->{'providers'}, [ConnectionProvider::class, 'jsonUnserialize']) : null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,

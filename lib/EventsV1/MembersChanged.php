@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\EventsV1;
 
 use UserHub\AdminV1\Member;
@@ -34,18 +36,18 @@ class MembersChanged implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'organization' => isset($this->organization) ? $this->organization : null,
-            'member' => isset($this->member) ? $this->member : null,
+            'organization' => $this->organization ?? null,
+            'member' => $this->member ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new MembersChanged(
+        return new self(
             isset($data->{'organization'}) ? Organization::jsonUnserialize($data->{'organization'}) : null,
             isset($data->{'member'}) ? Member::jsonUnserialize($data->{'member'}) : null,
         );

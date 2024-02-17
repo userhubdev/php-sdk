@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -56,22 +58,22 @@ class SubscriptionTrial implements \JsonSerializable, JsonUnserializable
         return (object) [
             'startTime' => isset($this->startTime) ? Util::encodeDateTime($this->startTime) : null,
             'endTime' => isset($this->endTime) ? Util::encodeDateTime($this->endTime) : null,
-            'days' => isset($this->days) ? $this->days : null,
-            'remainingDays' => isset($this->remainingDays) ? $this->remainingDays : null,
+            'days' => $this->days ?? null,
+            'remainingDays' => $this->remainingDays ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new SubscriptionTrial(
+        return new self(
             isset($data->{'startTime'}) ? Util::decodeDateTime($data->{'startTime'}) : null,
             isset($data->{'endTime'}) ? Util::decodeDateTime($data->{'endTime'}) : null,
-            isset($data->{'days'}) ? $data->{'days'} : null,
-            isset($data->{'remainingDays'}) ? $data->{'remainingDays'} : null,
+            $data->{'days'} ?? null,
+            $data->{'remainingDays'} ?? null,
         );
     }
 }

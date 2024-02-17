@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\CommonV1\Address;
@@ -114,38 +116,38 @@ class PaymentMethod implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'externalId' => isset($this->externalId) ? $this->externalId : null,
-            'state' => isset($this->state) ? $this->state : null,
-            'stateReason' => isset($this->stateReason) ? $this->stateReason : null,
-            'type' => isset($this->type) ? $this->type : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'fullName' => isset($this->fullName) ? $this->fullName : null,
-            'address' => isset($this->address) ? $this->address : null,
-            'default' => isset($this->default) ? $this->default : null,
+            'id' => $this->id ?? null,
+            'externalId' => $this->externalId ?? null,
+            'state' => $this->state ?? null,
+            'stateReason' => $this->stateReason ?? null,
+            'type' => $this->type ?? null,
+            'displayName' => $this->displayName ?? null,
+            'fullName' => $this->fullName ?? null,
+            'address' => $this->address ?? null,
+            'default' => $this->default ?? null,
             'pullTime' => isset($this->pullTime) ? Util::encodeDateTime($this->pullTime) : null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
-            'card' => isset($this->card) ? $this->card : null,
+            'card' => $this->card ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new PaymentMethod(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'externalId'}) ? $data->{'externalId'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
-            isset($data->{'stateReason'}) ? $data->{'stateReason'} : null,
-            isset($data->{'type'}) ? $data->{'type'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'fullName'}) ? $data->{'fullName'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'externalId'} ?? null,
+            $data->{'state'} ?? null,
+            $data->{'stateReason'} ?? null,
+            $data->{'type'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'fullName'} ?? null,
             isset($data->{'address'}) ? Address::jsonUnserialize($data->{'address'}) : null,
-            isset($data->{'default'}) ? $data->{'default'} : null,
+            $data->{'default'} ?? null,
             isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,

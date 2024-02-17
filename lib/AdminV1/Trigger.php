@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -48,8 +50,8 @@ class Trigger implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'connection' => isset($this->connection) ? $this->connection : null,
-            'eventType' => isset($this->eventType) ? $this->eventType : null,
+            'connection' => $this->connection ?? null,
+            'eventType' => $this->eventType ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
         ];
@@ -57,13 +59,13 @@ class Trigger implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Trigger(
+        return new self(
             isset($data->{'connection'}) ? Connection::jsonUnserialize($data->{'connection'}) : null,
-            isset($data->{'eventType'}) ? $data->{'eventType'} : null,
+            $data->{'eventType'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

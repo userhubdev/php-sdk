@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -45,22 +47,22 @@ class ListConnectionsResponse implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'connections' => isset($this->connections) ? $this->connections : null,
-            'nextPageToken' => isset($this->nextPageToken) ? $this->nextPageToken : null,
-            'previousPageToken' => isset($this->previousPageToken) ? $this->previousPageToken : null,
+            'connections' => $this->connections ?? null,
+            'nextPageToken' => $this->nextPageToken ?? null,
+            'previousPageToken' => $this->previousPageToken ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new ListConnectionsResponse(
+        return new self(
             isset($data->{'connections'}) ? Util::mapArray($data->{'connections'}, [Connection::class, 'jsonUnserialize']) : null,
-            isset($data->{'nextPageToken'}) ? $data->{'nextPageToken'} : null,
-            isset($data->{'previousPageToken'}) ? $data->{'previousPageToken'} : null,
+            $data->{'nextPageToken'} ?? null,
+            $data->{'previousPageToken'} ?? null,
         );
     }
 }

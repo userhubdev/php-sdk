@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -35,20 +37,20 @@ class GoogleCloudIdentityPlatformConnection implements \JsonSerializable, JsonUn
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'credentials' => isset($this->credentials) ? $this->credentials : null,
-            'projectId' => isset($this->projectId) ? $this->projectId : null,
+            'credentials' => $this->credentials ?? null,
+            'projectId' => $this->projectId ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new GoogleCloudIdentityPlatformConnection(
-            isset($data->{'credentials'}) ? $data->{'credentials'} : null,
-            isset($data->{'projectId'}) ? $data->{'projectId'} : null,
+        return new self(
+            $data->{'credentials'} ?? null,
+            $data->{'projectId'} ?? null,
         );
     }
 }

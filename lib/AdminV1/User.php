@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\CommonV1\Address;
@@ -181,26 +183,26 @@ class User implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'state' => isset($this->state) ? $this->state : null,
-            'stateReason' => isset($this->stateReason) ? $this->stateReason : null,
-            'uniqueId' => isset($this->uniqueId) ? $this->uniqueId : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'email' => isset($this->email) ? $this->email : null,
-            'emailVerified' => isset($this->emailVerified) ? $this->emailVerified : null,
-            'phoneNumber' => isset($this->phoneNumber) ? $this->phoneNumber : null,
-            'phoneNumberVerified' => isset($this->phoneNumberVerified) ? $this->phoneNumberVerified : null,
-            'imageUrl' => isset($this->imageUrl) ? $this->imageUrl : null,
-            'currencyCode' => isset($this->currencyCode) ? $this->currencyCode : null,
-            'languageCode' => isset($this->languageCode) ? $this->languageCode : null,
-            'regionCode' => isset($this->regionCode) ? $this->regionCode : null,
-            'timeZone' => isset($this->timeZone) ? $this->timeZone : null,
-            'address' => isset($this->address) ? $this->address : null,
-            'accountConnections' => isset($this->accountConnections) ? $this->accountConnections : null,
-            'subscription' => isset($this->subscription) ? $this->subscription : null,
-            'memberships' => isset($this->memberships) ? $this->memberships : null,
+            'id' => $this->id ?? null,
+            'state' => $this->state ?? null,
+            'stateReason' => $this->stateReason ?? null,
+            'uniqueId' => $this->uniqueId ?? null,
+            'displayName' => $this->displayName ?? null,
+            'email' => $this->email ?? null,
+            'emailVerified' => $this->emailVerified ?? null,
+            'phoneNumber' => $this->phoneNumber ?? null,
+            'phoneNumberVerified' => $this->phoneNumberVerified ?? null,
+            'imageUrl' => $this->imageUrl ?? null,
+            'currencyCode' => $this->currencyCode ?? null,
+            'languageCode' => $this->languageCode ?? null,
+            'regionCode' => $this->regionCode ?? null,
+            'timeZone' => $this->timeZone ?? null,
+            'address' => $this->address ?? null,
+            'accountConnections' => $this->accountConnections ?? null,
+            'subscription' => $this->subscription ?? null,
+            'memberships' => $this->memberships ?? null,
             'signupTime' => isset($this->signupTime) ? Util::encodeDateTime($this->signupTime) : null,
-            'disabled' => isset($this->disabled) ? $this->disabled : null,
+            'disabled' => $this->disabled ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
         ];
@@ -208,31 +210,31 @@ class User implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new User(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'state'}) ? $data->{'state'} : null,
-            isset($data->{'stateReason'}) ? $data->{'stateReason'} : null,
-            isset($data->{'uniqueId'}) ? $data->{'uniqueId'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'email'}) ? $data->{'email'} : null,
-            isset($data->{'emailVerified'}) ? $data->{'emailVerified'} : null,
-            isset($data->{'phoneNumber'}) ? $data->{'phoneNumber'} : null,
-            isset($data->{'phoneNumberVerified'}) ? $data->{'phoneNumberVerified'} : null,
-            isset($data->{'imageUrl'}) ? $data->{'imageUrl'} : null,
-            isset($data->{'currencyCode'}) ? $data->{'currencyCode'} : null,
-            isset($data->{'languageCode'}) ? $data->{'languageCode'} : null,
-            isset($data->{'regionCode'}) ? $data->{'regionCode'} : null,
-            isset($data->{'timeZone'}) ? $data->{'timeZone'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'state'} ?? null,
+            $data->{'stateReason'} ?? null,
+            $data->{'uniqueId'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'email'} ?? null,
+            $data->{'emailVerified'} ?? null,
+            $data->{'phoneNumber'} ?? null,
+            $data->{'phoneNumberVerified'} ?? null,
+            $data->{'imageUrl'} ?? null,
+            $data->{'currencyCode'} ?? null,
+            $data->{'languageCode'} ?? null,
+            $data->{'regionCode'} ?? null,
+            $data->{'timeZone'} ?? null,
             isset($data->{'address'}) ? Address::jsonUnserialize($data->{'address'}) : null,
             isset($data->{'accountConnections'}) ? Util::mapArray($data->{'accountConnections'}, [AccountConnection::class, 'jsonUnserialize']) : null,
             isset($data->{'subscription'}) ? AccountSubscription::jsonUnserialize($data->{'subscription'}) : null,
             isset($data->{'memberships'}) ? Util::mapArray($data->{'memberships'}, [Membership::class, 'jsonUnserialize']) : null,
             isset($data->{'signupTime'}) ? Util::decodeDateTime($data->{'signupTime'}) : null,
-            isset($data->{'disabled'}) ? $data->{'disabled'} : null,
+            $data->{'disabled'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

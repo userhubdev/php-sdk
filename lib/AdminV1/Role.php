@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -99,14 +101,14 @@ class Role implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => isset($this->id) ? $this->id : null,
-            'uniqueId' => isset($this->uniqueId) ? $this->uniqueId : null,
-            'displayName' => isset($this->displayName) ? $this->displayName : null,
-            'type' => isset($this->type) ? $this->type : null,
-            'description' => isset($this->description) ? $this->description : null,
-            'permissionSets' => isset($this->permissionSets) ? $this->permissionSets : null,
-            'default' => isset($this->default) ? $this->default : null,
-            'archived' => isset($this->archived) ? $this->archived : null,
+            'id' => $this->id ?? null,
+            'uniqueId' => $this->uniqueId ?? null,
+            'displayName' => $this->displayName ?? null,
+            'type' => $this->type ?? null,
+            'description' => $this->description ?? null,
+            'permissionSets' => $this->permissionSets ?? null,
+            'default' => $this->default ?? null,
+            'archived' => $this->archived ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
         ];
@@ -114,19 +116,19 @@ class Role implements \JsonSerializable, JsonUnserializable
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Role(
-            isset($data->{'id'}) ? $data->{'id'} : null,
-            isset($data->{'uniqueId'}) ? $data->{'uniqueId'} : null,
-            isset($data->{'displayName'}) ? $data->{'displayName'} : null,
-            isset($data->{'type'}) ? $data->{'type'} : null,
-            isset($data->{'description'}) ? $data->{'description'} : null,
-            isset($data->{'permissionSets'}) ? $data->{'permissionSets'} : null,
-            isset($data->{'default'}) ? $data->{'default'} : null,
-            isset($data->{'archived'}) ? $data->{'archived'} : null,
+        return new self(
+            $data->{'id'} ?? null,
+            $data->{'uniqueId'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'type'} ?? null,
+            $data->{'description'} ?? null,
+            $data->{'permissionSets'} ?? null,
+            $data->{'default'} ?? null,
+            $data->{'archived'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

@@ -2,6 +2,8 @@
 
 // Code generated. DO NOT EDIT.
 
+declare(strict_types=1);
+
 namespace UserHub\CommonV1;
 
 use UserHub\Internal\JsonUnserializable;
@@ -32,20 +34,20 @@ class Interval implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'quantity' => isset($this->quantity) ? $this->quantity : null,
-            'unit' => isset($this->unit) ? $this->unit : null,
+            'quantity' => $this->quantity ?? null,
+            'unit' => $this->unit ?? null,
         ];
     }
 
     public static function jsonUnserialize(mixed $data): static
     {
-        if (!is_object($data)) {
-            throw new TypeError('json data must be an object');
+        if (!\is_object($data)) {
+            throw new \TypeError('json data must be an object');
         }
 
-        return new Interval(
-            isset($data->{'quantity'}) ? $data->{'quantity'} : null,
-            isset($data->{'unit'}) ? $data->{'unit'} : null,
+        return new self(
+            $data->{'quantity'} ?? null,
+            $data->{'unit'} ?? null,
         );
     }
 }
