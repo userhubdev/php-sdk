@@ -32,17 +32,17 @@ class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The billing interval for the price.
      */
-    public null|\UserHub\CommonV1\Interval $interval;
+    public null|Interval $interval;
 
     /**
      * The price is fixed per quantity.
      */
-    public null|\UserHub\UserV1\PriceFixedPrice $fixed;
+    public null|PriceFixedPrice $fixed;
 
     /**
      * The price is dependent on the quantity.
      */
-    public null|\UserHub\UserV1\PriceTieredPrice $tiered;
+    public null|PriceTieredPrice $tiered;
 
     public function __construct(
         null|string $id = null,

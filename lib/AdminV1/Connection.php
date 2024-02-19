@@ -55,7 +55,7 @@ class Connection implements \JsonSerializable, JsonUnserializable
     /**
      * The delegated connection.
      */
-    public null|\UserHub\AdminV1\ConnectionDelegate $delegate;
+    public null|ConnectionDelegate $delegate;
 
     /**
      * The connection providers.
@@ -77,32 +77,32 @@ class Connection implements \JsonSerializable, JsonUnserializable
     /**
      * The Auth0 connection data.
      */
-    public null|\UserHub\AdminV1\Auth0Connection $auth0;
+    public null|Auth0Connection $auth0;
 
     /**
      * The builtin email configuration data.
      */
-    public null|\UserHub\AdminV1\BuiltinEmailConnection $builtinEmail;
+    public null|BuiltinEmailConnection $builtinEmail;
 
     /**
      * The Google Cloud Identity Platform (Firebase Auth) connection.
      */
-    public null|\UserHub\AdminV1\GoogleCloudIdentityPlatformConnection $googleCloudIdentityPlatform;
+    public null|GoogleCloudIdentityPlatformConnection $googleCloudIdentityPlatform;
 
     /**
      * The Postmark configuration data.
      */
-    public null|\UserHub\AdminV1\PostmarkConnection $postmark;
+    public null|PostmarkConnection $postmark;
 
     /**
      * The Stripe billing configuration data.
      */
-    public null|\UserHub\AdminV1\StripeConnection $stripe;
+    public null|StripeConnection $stripe;
 
     /**
      * The webhooks configuration data.
      */
-    public null|\UserHub\AdminV1\WebhookConnection $webhook;
+    public null|WebhookConnection $webhook;
 
     public function __construct(
         null|string $id = null,

@@ -30,12 +30,12 @@ class Operation implements \JsonSerializable, JsonUnserializable
     /**
      * The error result of the operation in case of failure.
      */
-    public null|\UserHub\OperationsV1\OperationError $error;
+    public null|OperationError $error;
 
     /**
      * The normal response of the operation in case of success.
      */
-    public null|\UserHub\CommonV1\Any $response;
+    public null|Any $response;
 
     /**
      * The creation time of the operation.

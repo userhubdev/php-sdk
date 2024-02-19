@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/../../vendor/autoload.php';
 
 use UserHub\AdminApi;
 use UserHub\UserApi;
@@ -16,7 +16,7 @@ if (empty($adminKey)) {
 }
 
 $userKey = getenv('USER_KEY');
-if (empty($adminKey)) {
+if (empty($userKey)) {
     echo 'USER_KEY required'.PHP_EOL;
 
     exit(1);

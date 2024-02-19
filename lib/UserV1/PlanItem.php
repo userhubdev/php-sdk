@@ -16,12 +16,12 @@ class PlanItem implements \JsonSerializable, JsonUnserializable
     /**
      * The product associated with the item.
      */
-    public null|\UserHub\UserV1\Product $product;
+    public null|Product $product;
 
     /**
      * The price associated with them item.
      */
-    public null|\UserHub\UserV1\Price $price;
+    public null|Price $price;
 
     /**
      * The plan item type.

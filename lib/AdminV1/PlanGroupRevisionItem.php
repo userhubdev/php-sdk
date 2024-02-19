@@ -16,7 +16,7 @@ class PlanGroupRevisionItem implements \JsonSerializable, JsonUnserializable
     /**
      * The product associated with the item.
      */
-    public null|\UserHub\AdminV1\Product $product;
+    public null|Product $product;
 
     /**
      * The plan item type.

@@ -38,7 +38,7 @@ class Plan implements \JsonSerializable, JsonUnserializable
     /**
      * The billing interval for the plan.
      */
-    public null|\UserHub\CommonV1\Interval $billingInterval;
+    public null|Interval $billingInterval;
 
     /**
      * The items associated with plan.

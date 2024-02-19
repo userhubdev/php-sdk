@@ -17,7 +17,7 @@ class FlowsChanged implements \JsonSerializable, JsonUnserializable
     /**
      * The flow.
      */
-    public null|\UserHub\AdminV1\Flow $flow;
+    public null|Flow $flow;
 
     public function __construct(
         null|Flow $flow = null,

@@ -32,7 +32,7 @@ class AccountSubscription implements \JsonSerializable, JsonUnserializable
     /**
      * The subscription plan.
      */
-    public null|\UserHub\UserV1\AccountSubscriptionPlan $plan;
+    public null|AccountSubscriptionPlan $plan;
 
     /**
      * The user's seat.
@@ -40,7 +40,7 @@ class AccountSubscription implements \JsonSerializable, JsonUnserializable
      * This will only be set for organization subscriptions where
      * the user has been assigned a seat.
      */
-    public null|\UserHub\UserV1\AccountSubscriptionSeat $seat;
+    public null|AccountSubscriptionSeat $seat;
 
     public function __construct(
         null|string $id = null,

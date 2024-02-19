@@ -5,19 +5,23 @@ declare(strict_types=1);
 namespace UserHub\Internal;
 
 use UserHub\ApiV1\Status;
+use UserHub\Code;
 use UserHub\UserHubError;
 
-class HttpTransport implements Transport
+/**
+ * @internal
+ */
+final class HttpTransport implements Transport
 {
     private string $baseUrl;
-    private CaseInsensitiveArray $headers;
+    private Headers $headers;
     private ?\CurlHandle $_curlHandle;
 
     public function __construct(string $baseUrl, ?array $headers = null)
     {
         $this->baseUrl = $baseUrl;
-        $this->headers = new CaseInsensitiveArray(!empty($headers) ? $headers : []);
-        $this->headers['User-Agent'] = 'UserHub-Php/'.Constants::VERSION;
+        $this->headers = new Headers(!empty($headers) ? $headers : []);
+        $this->headers['User-Agent'] = Constants::USER_AGENT;
     }
 
     public function __destruct()
@@ -42,7 +46,7 @@ class HttpTransport implements Transport
             $url .= '?'.implode('&', $query);
         }
 
-        $headers = new CaseInsensitiveArray();
+        $headers = new Headers();
         if (!empty($this->headers)) {
             foreach ($this->headers as $key => $value) {
                 $headers[$key] = $value;
@@ -57,7 +61,7 @@ class HttpTransport implements Transport
         $body = null;
         if (isset($req->body)) {
             $headers['content-type'] = 'application/json';
-            $body = json_encode($req->body);
+            $body = json_encode($req->body, JSON_THROW_ON_ERROR);
         }
 
         while (true) {
@@ -95,7 +99,7 @@ class HttpTransport implements Transport
     private function attempt(
         Request $req,
         string $url,
-        CaseInsensitiveArray $headers,
+        Headers $headers,
         ?string $body,
     ): Response {
         $opts = [
@@ -149,7 +153,7 @@ class HttpTransport implements Transport
             $opts[CURLOPT_POSTFIELDS] = $body;
         }
 
-        $resHeaders = new CaseInsensitiveArray();
+        $resHeaders = new Headers();
 
         $opts[CURLOPT_HEADERFUNCTION] = static function ($curl, $header) use (&$resHeaders) {
             $len = \strlen($header);
@@ -195,7 +199,7 @@ class HttpTransport implements Transport
                     $statusData = json_decode($resBody, flags: JSON_THROW_ON_ERROR);
                 } catch (\Exception $e) {
                     throw new UserHubError(
-                        message: 'Failed to decode error response'.Response::summarizeBody($resBody),
+                        message: 'Failed to decode error response'.Util::summarizeBody($resBody),
                         call: $req->call,
                         statusCode: $statusCode,
                         previous: $e,
@@ -204,11 +208,19 @@ class HttpTransport implements Transport
 
                 $status = Status::jsonUnserialize($statusData);
 
-                throw new UserHubError(call: $req->call, status: $status, statusCode: $statusCode);
+                throw new UserHubError(call: $req->call, statusCode: $statusCode, status: $status);
+            }
+            if (429 === $statusCode) {
+                throw new UserHubError(
+                    message: 'API call rate limited',
+                    apiCode: Code::ResourceExhausted,
+                    call: $req->call,
+                    statusCode: $statusCode,
+                );
             }
 
             throw new UserHubError(
-                message: 'API returned non-JSON error'.Response::summarizeBody($resBody),
+                message: 'API returned non-JSON error'.Util::summarizeBody($resBody),
                 call: $req->call,
                 statusCode: $statusCode,
             );

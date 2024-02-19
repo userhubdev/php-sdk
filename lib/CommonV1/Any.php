@@ -1,7 +1,5 @@
 <?php
 
-// Code generated. DO NOT EDIT.
-
 declare(strict_types=1);
 
 namespace UserHub\CommonV1;

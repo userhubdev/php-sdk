@@ -6,7 +6,10 @@ namespace UserHub\Internal;
 
 use UserHub\UserHubError;
 
-class TestTransport implements Transport
+/**
+ * @internal
+ */
+final class TestTransport implements Transport
 {
     public ?UserHubError $error;
     public ?Request $request;

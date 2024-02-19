@@ -52,8 +52,8 @@ final class UsersTest extends TestCase
 
         $res = $n->list();
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/admin/v1/users', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/admin/v1/users', $tr->request->path);
     }
 
     public function testCreate(): void
@@ -124,8 +124,8 @@ final class UsersTest extends TestCase
 
         $res = $n->create();
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/admin/v1/users', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/admin/v1/users', $tr->request->path);
     }
 
     public function testGet(): void
@@ -196,8 +196,8 @@ final class UsersTest extends TestCase
 
         $res = $n->get(userId: 'userId');
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/admin/v1/users/userId', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/admin/v1/users/userId', $tr->request->path);
     }
 
     public function testUpdate(): void
@@ -268,8 +268,8 @@ final class UsersTest extends TestCase
 
         $res = $n->update(userId: 'userId');
         self::assertNotNull($res);
-        self::assertSame('PATCH', $tr->request->method);
-        self::assertSame('/admin/v1/users/userId', $tr->request->path);
+        self::assertEquals('PATCH', $tr->request->method);
+        self::assertEquals('/admin/v1/users/userId', $tr->request->path);
     }
 
     public function testDelete(): void
@@ -340,8 +340,8 @@ final class UsersTest extends TestCase
 
         $res = $n->delete(userId: 'userId');
         self::assertNotNull($res);
-        self::assertSame('DELETE', $tr->request->method);
-        self::assertSame('/admin/v1/users/userId', $tr->request->path);
+        self::assertEquals('DELETE', $tr->request->method);
+        self::assertEquals('/admin/v1/users/userId', $tr->request->path);
     }
 
     public function testUndelete(): void
@@ -412,8 +412,8 @@ final class UsersTest extends TestCase
 
         $res = $n->undelete(userId: 'userId');
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/admin/v1/users/userId:undelete', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/admin/v1/users/userId:undelete', $tr->request->path);
     }
 
     public function testConnect(): void
@@ -484,8 +484,8 @@ final class UsersTest extends TestCase
 
         $res = $n->connect(userId: 'userId');
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/admin/v1/users/userId:connect', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/admin/v1/users/userId:connect', $tr->request->path);
     }
 
     public function testDisconnect(): void
@@ -556,8 +556,8 @@ final class UsersTest extends TestCase
 
         $res = $n->disconnect(userId: 'userId');
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/admin/v1/users/userId:disconnect', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/admin/v1/users/userId:disconnect', $tr->request->path);
     }
 
     public function testImportAccount(): void
@@ -628,8 +628,8 @@ final class UsersTest extends TestCase
 
         $res = $n->importAccount(userId: 'userId');
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/admin/v1/users/userId:import', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/admin/v1/users/userId:import', $tr->request->path);
     }
 
     public function testCreateApiSession(): void
@@ -646,8 +646,8 @@ final class UsersTest extends TestCase
 
         $res = $n->createApiSession(userId: 'userId');
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/admin/v1/users/userId:createApiSession', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/admin/v1/users/userId:createApiSession', $tr->request->path);
     }
 
     public function testCreatePortalSession(): void
@@ -663,7 +663,7 @@ final class UsersTest extends TestCase
 
         $res = $n->createPortalSession(userId: 'userId');
         self::assertNotNull($res);
-        self::assertSame('POST', $tr->request->method);
-        self::assertSame('/admin/v1/users/userId:createPortalSession', $tr->request->path);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/admin/v1/users/userId:createPortalSession', $tr->request->path);
     }
 }

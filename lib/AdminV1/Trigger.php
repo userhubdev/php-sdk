@@ -18,7 +18,7 @@ class Trigger implements \JsonSerializable, JsonUnserializable
     /**
      * The connection.
      */
-    public null|\UserHub\AdminV1\Connection $connection;
+    public null|Connection $connection;
 
     /**
      * The event type.

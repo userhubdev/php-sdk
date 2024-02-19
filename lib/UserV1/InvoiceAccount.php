@@ -32,7 +32,7 @@ class InvoiceAccount implements \JsonSerializable, JsonUnserializable
     /**
      * The billing address.
      */
-    public null|\UserHub\CommonV1\Address $address;
+    public null|Address $address;
 
     public function __construct(
         null|string $fullName = null,

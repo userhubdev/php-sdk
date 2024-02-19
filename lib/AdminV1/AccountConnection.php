@@ -17,7 +17,7 @@ class AccountConnection implements \JsonSerializable, JsonUnserializable
     /**
      * The tenant connection.
      */
-    public null|\UserHub\AdminV1\Connection $connection;
+    public null|Connection $connection;
 
     /**
      * The external identifier of the connected account.

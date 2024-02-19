@@ -38,16 +38,16 @@ class Invoices
         $req = new Request('user.invoices.list', 'GET', '/user/v1/invoices');
         $req->setIdempotent(true);
 
-        if (isset($organizationId)) {
+        if (!empty($organizationId)) {
             $req->setQuery('organizationId', $organizationId);
         }
-        if (isset($pageSize)) {
+        if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
         }
-        if (isset($pageToken)) {
+        if (!empty($pageToken)) {
             $req->setQuery('pageToken', $pageToken);
         }
-        if (isset($orderBy)) {
+        if (!empty($orderBy)) {
             $req->setQuery('orderBy', $orderBy);
         }
 

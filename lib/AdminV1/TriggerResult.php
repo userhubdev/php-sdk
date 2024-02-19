@@ -17,12 +17,12 @@ class TriggerResult implements \JsonSerializable, JsonUnserializable
     /**
      * The trigger.
      */
-    public null|\UserHub\AdminV1\Trigger $trigger;
+    public null|Trigger $trigger;
 
     /**
      * The trigger error.
      */
-    public null|\UserHub\ApiV1\Status $error;
+    public null|Status $error;
 
     public function __construct(
         null|Trigger $trigger = null,

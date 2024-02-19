@@ -17,12 +17,12 @@ class OrganizationResult implements \JsonSerializable, JsonUnserializable
     /**
      * The organization.
      */
-    public null|\UserHub\AdminV1\Organization $organization;
+    public null|Organization $organization;
 
     /**
      * The organization error.
      */
-    public null|\UserHub\ApiV1\Status $error;
+    public null|Status $error;
 
     public function __construct(
         null|Organization $organization = null,

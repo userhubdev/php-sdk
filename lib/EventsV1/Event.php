@@ -32,27 +32,27 @@ class Event implements \JsonSerializable, JsonUnserializable
     /**
      * The `flows.changed` data.
      */
-    public null|\UserHub\EventsV1\FlowsChanged $flowsChanged;
+    public null|FlowsChanged $flowsChanged;
 
     /**
      * The `members.changed` data.
      */
-    public null|\UserHub\EventsV1\MembersChanged $membersChanged;
+    public null|MembersChanged $membersChanged;
 
     /**
      * The `organizations.changed` data.
      */
-    public null|\UserHub\EventsV1\OrganizationsChanged $organizationsChanged;
+    public null|OrganizationsChanged $organizationsChanged;
 
     /**
      * The `subscriptions.changed` data.
      */
-    public null|\UserHub\EventsV1\SubscriptionsChanged $subscriptionsChanged;
+    public null|SubscriptionsChanged $subscriptionsChanged;
 
     /**
      * The `users.changed` data.
      */
-    public null|\UserHub\EventsV1\UsersChanged $usersChanged;
+    public null|UsersChanged $usersChanged;
 
     public function __construct(
         null|string $id = null,

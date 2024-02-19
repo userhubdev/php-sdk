@@ -32,7 +32,7 @@ class AccountSubscription implements \JsonSerializable, JsonUnserializable
     /**
      * The plan.
      */
-    public null|\UserHub\AdminV1\AccountSubscriptionPlan $plan;
+    public null|AccountSubscriptionPlan $plan;
 
     public function __construct(
         null|string $id = null,

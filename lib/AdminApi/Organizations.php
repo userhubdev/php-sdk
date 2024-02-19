@@ -45,19 +45,19 @@ class Organizations
         $req = new Request('admin.organizations.list', 'GET', '/admin/v1/organizations');
         $req->setIdempotent(true);
 
-        if (isset($pageSize)) {
+        if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
         }
-        if (isset($pageToken)) {
+        if (!empty($pageToken)) {
             $req->setQuery('pageToken', $pageToken);
         }
-        if (isset($orderBy)) {
+        if (!empty($orderBy)) {
             $req->setQuery('orderBy', $orderBy);
         }
-        if (isset($showDeleted)) {
+        if (!empty($showDeleted)) {
             $req->setQuery('showDeleted', $showDeleted);
         }
-        if (isset($view)) {
+        if (!empty($view)) {
             $req->setQuery('view', $view);
         }
 
@@ -90,46 +90,46 @@ class Organizations
         $req = new Request('admin.organizations.create', 'POST', '/admin/v1/organizations');
         $body = [];
 
-        if (isset($uniqueId)) {
+        if (!empty($uniqueId)) {
             $body['uniqueId'] = $uniqueId;
         }
-        if (isset($displayName)) {
+        if (!empty($displayName)) {
             $body['displayName'] = $displayName;
         }
-        if (isset($email)) {
+        if (!empty($email)) {
             $body['email'] = $email;
         }
-        if (isset($emailVerified)) {
+        if (!empty($emailVerified)) {
             $body['emailVerified'] = $emailVerified;
         }
-        if (isset($phoneNumber)) {
+        if (!empty($phoneNumber)) {
             $body['phoneNumber'] = $phoneNumber;
         }
-        if (isset($phoneNumberVerified)) {
+        if (!empty($phoneNumberVerified)) {
             $body['phoneNumberVerified'] = $phoneNumberVerified;
         }
-        if (isset($imageUrl)) {
+        if (!empty($imageUrl)) {
             $body['imageUrl'] = $imageUrl;
         }
-        if (isset($currencyCode)) {
+        if (!empty($currencyCode)) {
             $body['currencyCode'] = $currencyCode;
         }
-        if (isset($languageCode)) {
+        if (!empty($languageCode)) {
             $body['languageCode'] = $languageCode;
         }
-        if (isset($regionCode)) {
+        if (!empty($regionCode)) {
             $body['regionCode'] = $regionCode;
         }
-        if (isset($timeZone)) {
+        if (!empty($timeZone)) {
             $body['timeZone'] = $timeZone;
         }
-        if (isset($address)) {
+        if (!empty($address)) {
             $body['address'] = $address;
         }
-        if (isset($signupTime)) {
+        if (!empty($signupTime)) {
             $body['signupTime'] = Util::encodeDateTime($signupTime);
         }
-        if (isset($disabled)) {
+        if (!empty($disabled)) {
             $body['disabled'] = $disabled;
         }
 
@@ -184,7 +184,7 @@ class Organizations
 
         $body = [];
 
-        if (isset($allowMissing)) {
+        if (!empty($allowMissing)) {
             $req->setQuery('allowMissing', $allowMissing);
         }
         if (!Undefined::is($uniqueId)) {
@@ -286,10 +286,10 @@ class Organizations
         $req = new Request('admin.organizations.connect', 'POST', '/admin/v1/organizations/'.rawurlencode($organizationId).':connect');
         $body = [];
 
-        if (isset($connectionId)) {
+        if (!empty($connectionId)) {
             $body['connectionId'] = $connectionId;
         }
-        if (isset($externalId)) {
+        if (!empty($externalId)) {
             $body['externalId'] = $externalId;
         }
 
@@ -322,10 +322,10 @@ class Organizations
         $req = new Request('admin.organizations.disconnect', 'POST', '/admin/v1/organizations/'.rawurlencode($organizationId).':disconnect');
         $body = [];
 
-        if (isset($connectionId)) {
+        if (!empty($connectionId)) {
             $body['connectionId'] = $connectionId;
         }
-        if (isset($deleteExternalAccount)) {
+        if (!empty($deleteExternalAccount)) {
             $body['deleteExternalAccount'] = $deleteExternalAccount;
         }
 
@@ -350,13 +350,13 @@ class Organizations
         $req = new Request('admin.organizations.listMembers', 'GET', '/admin/v1/organizations/'.rawurlencode($organizationId).'/members');
         $req->setIdempotent(true);
 
-        if (isset($pageSize)) {
+        if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
         }
-        if (isset($pageToken)) {
+        if (!empty($pageToken)) {
             $req->setQuery('pageToken', $pageToken);
         }
-        if (isset($orderBy)) {
+        if (!empty($orderBy)) {
             $req->setQuery('orderBy', $orderBy);
         }
 
@@ -378,10 +378,10 @@ class Organizations
         $req = new Request('admin.organizations.addMember', 'POST', '/admin/v1/organizations/'.rawurlencode($organizationId).'/members');
         $body = [];
 
-        if (isset($userId)) {
+        if (!empty($userId)) {
             $body['userId'] = $userId;
         }
-        if (isset($roleId)) {
+        if (!empty($roleId)) {
             $body['roleId'] = $roleId;
         }
 
@@ -425,7 +425,7 @@ class Organizations
 
         $body = [];
 
-        if (isset($allowMissing)) {
+        if (!empty($allowMissing)) {
             $req->setQuery('allowMissing', $allowMissing);
         }
         if (!Undefined::is($roleId)) {

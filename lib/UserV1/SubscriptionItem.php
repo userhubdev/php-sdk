@@ -21,12 +21,12 @@ class SubscriptionItem implements \JsonSerializable, JsonUnserializable
     /**
      * The details of the associated product.
      */
-    public null|\UserHub\UserV1\Product $product;
+    public null|Product $product;
 
     /**
      * The details of the associated price.
      */
-    public null|\UserHub\UserV1\Price $price;
+    public null|Price $price;
 
     /**
      * The quantity for the item.

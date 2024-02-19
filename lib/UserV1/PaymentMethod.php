@@ -41,7 +41,7 @@ class PaymentMethod implements \JsonSerializable, JsonUnserializable
     /**
      * The address for the payment method.
      */
-    public null|\UserHub\CommonV1\Address $address;
+    public null|Address $address;
 
     /**
      * Whether the payment method is the default for the account.
@@ -61,7 +61,7 @@ class PaymentMethod implements \JsonSerializable, JsonUnserializable
     /**
      * Card payment method (e.g. Visa credit card).
      */
-    public null|\UserHub\UserV1\CardPaymentMethod $card;
+    public null|CardPaymentMethod $card;
 
     public function __construct(
         null|string $id = null,

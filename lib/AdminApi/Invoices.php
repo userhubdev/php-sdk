@@ -39,19 +39,19 @@ class Invoices
         $req = new Request('admin.invoices.list', 'GET', '/admin/v1/invoices');
         $req->setIdempotent(true);
 
-        if (isset($organizationId)) {
+        if (!empty($organizationId)) {
             $req->setQuery('organizationId', $organizationId);
         }
-        if (isset($userId)) {
+        if (!empty($userId)) {
             $req->setQuery('userId', $userId);
         }
-        if (isset($pageSize)) {
+        if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
         }
-        if (isset($pageToken)) {
+        if (!empty($pageToken)) {
             $req->setQuery('pageToken', $pageToken);
         }
-        if (isset($orderBy)) {
+        if (!empty($orderBy)) {
             $req->setQuery('orderBy', $orderBy);
         }
 
@@ -73,10 +73,10 @@ class Invoices
         $req = new Request('admin.invoices.get', 'GET', '/admin/v1/invoices/'.rawurlencode($invoiceId));
         $req->setIdempotent(true);
 
-        if (isset($organizationId)) {
+        if (!empty($organizationId)) {
             $req->setQuery('organizationId', $organizationId);
         }
-        if (isset($userId)) {
+        if (!empty($userId)) {
             $req->setQuery('userId', $userId);
         }
 

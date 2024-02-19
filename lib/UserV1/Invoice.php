@@ -48,7 +48,7 @@ class Invoice implements \JsonSerializable, JsonUnserializable
     /**
      * The contact information associated with the invoice.
      */
-    public null|\UserHub\UserV1\InvoiceAccount $account;
+    public null|InvoiceAccount $account;
 
     /**
      * The time the invoice was finalized.
@@ -58,7 +58,7 @@ class Invoice implements \JsonSerializable, JsonUnserializable
     /**
      * The billing period for the invoice.
      */
-    public null|\UserHub\CommonV1\Period $period;
+    public null|Period $period;
 
     /**
      * The subtotal amount for the invoice.
@@ -78,7 +78,7 @@ class Invoice implements \JsonSerializable, JsonUnserializable
      * The starting and ending account balance as
      * of the time the invoice was finalized.
      */
-    public null|\UserHub\UserV1\InvoiceBalance $balance;
+    public null|InvoiceBalance $balance;
 
     /**
      * The tax amount for the invoice.
@@ -122,7 +122,7 @@ class Invoice implements \JsonSerializable, JsonUnserializable
     /**
      * The payment intent for the invoice.
      */
-    public null|\UserHub\UserV1\PaymentIntent $paymentIntent;
+    public null|PaymentIntent $paymentIntent;
 
     /**
      * The line items for the invoice.

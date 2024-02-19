@@ -54,7 +54,7 @@ final class SessionTest extends TestCase
 
         $res = $n->get();
         self::assertNotNull($res);
-        self::assertSame('GET', $tr->request->method);
-        self::assertSame('/user/v1/session', $tr->request->path);
+        self::assertEquals('GET', $tr->request->method);
+        self::assertEquals('/user/v1/session', $tr->request->path);
     }
 }

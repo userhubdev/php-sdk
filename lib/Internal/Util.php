@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace UserHub\Internal;
 
+/**
+ * @internal
+ */
 abstract class Util
 {
     public static function emptyDateTime(): ?\DateTimeInterface
@@ -57,5 +60,19 @@ abstract class Util
         }
 
         return array_map($callback, $value);
+    }
+
+    public static function summarizeBody(?string $body): string
+    {
+        if (empty($body)) {
+            return '';
+        }
+        $body = trim(preg_replace('/\s+/', ' ', $body));
+        if (empty($body)) {
+            return '';
+        }
+        $body = substr($body, 0, Constants::SUMMARIZE_BODY_LENGTH * 2);
+
+        return ': '.$body.'...';
     }
 }

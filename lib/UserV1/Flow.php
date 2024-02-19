@@ -37,17 +37,17 @@ class Flow implements \JsonSerializable, JsonUnserializable
     /**
      * The target organization for the flow.
      */
-    public null|\UserHub\UserV1\Organization $organization;
+    public null|Organization $organization;
 
     /**
      * The target user for the flow.
      */
-    public null|\UserHub\UserV1\User $user;
+    public null|User $user;
 
     /**
      * The user who created the flow.
      */
-    public null|\UserHub\UserV1\User $creator;
+    public null|User $creator;
 
     /**
      * The time the flow will expires.
@@ -62,12 +62,12 @@ class Flow implements \JsonSerializable, JsonUnserializable
     /**
      * The join organization flow type specific data.
      */
-    public null|\UserHub\UserV1\JoinOrganizationFlow $joinOrganization;
+    public null|JoinOrganizationFlow $joinOrganization;
 
     /**
      * The signup flow type specific data.
      */
-    public null|\UserHub\UserV1\SignupFlow $signup;
+    public null|SignupFlow $signup;
 
     public function __construct(
         null|string $id = null,

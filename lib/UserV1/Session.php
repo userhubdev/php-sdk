@@ -19,7 +19,7 @@ class Session implements \JsonSerializable, JsonUnserializable
      *
      * This will be null if the user is not authenticated.
      */
-    public null|\UserHub\UserV1\User $user;
+    public null|User $user;
 
     /**
      * The authenticated user's organization memberships.
@@ -34,7 +34,7 @@ class Session implements \JsonSerializable, JsonUnserializable
      * See memberships for organization subscription and
      * seat information.
      */
-    public null|\UserHub\UserV1\AccountSubscription $subscription;
+    public null|AccountSubscription $subscription;
 
     /**
      * The expiration time for the current session.

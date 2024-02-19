@@ -39,19 +39,19 @@ class Flows
         $req = new Request('user.flows.list', 'GET', '/user/v1/flows');
         $req->setIdempotent(true);
 
-        if (isset($organizationId)) {
+        if (!empty($organizationId)) {
             $req->setQuery('organizationId', $organizationId);
         }
-        if (isset($type)) {
+        if (!empty($type)) {
             $req->setQuery('type', $type);
         }
-        if (isset($pageSize)) {
+        if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
         }
-        if (isset($pageToken)) {
+        if (!empty($pageToken)) {
             $req->setQuery('pageToken', $pageToken);
         }
-        if (isset($orderBy)) {
+        if (!empty($orderBy)) {
             $req->setQuery('orderBy', $orderBy);
         }
 
@@ -76,16 +76,16 @@ class Flows
         $req = new Request('user.flows.createJoinOrganization', 'POST', '/user/v1/flows:createJoinOrganization');
         $body = [];
 
-        if (isset($organizationId)) {
+        if (!empty($organizationId)) {
             $body['organizationId'] = $organizationId;
         }
-        if (isset($userId)) {
+        if (!empty($userId)) {
             $body['userId'] = $userId;
         }
-        if (isset($email)) {
+        if (!empty($email)) {
             $body['email'] = $email;
         }
-        if (isset($displayName)) {
+        if (!empty($displayName)) {
             $body['displayName'] = $displayName;
         }
 

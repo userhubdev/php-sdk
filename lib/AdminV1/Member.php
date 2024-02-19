@@ -22,12 +22,12 @@ class Member implements \JsonSerializable, JsonUnserializable
     /**
      * The user.
      */
-    public null|\UserHub\AdminV1\User $user;
+    public null|User $user;
 
     /**
      * The user's role within the organization.
      */
-    public null|\UserHub\AdminV1\Role $role;
+    public null|Role $role;
 
     /**
      * The seat associated with the member.
@@ -36,7 +36,7 @@ class Member implements \JsonSerializable, JsonUnserializable
      * subscription for the organization or the user
      * has not been assigned a seat.
      */
-    public null|\UserHub\AdminV1\AccountSubscriptionSeat $seat;
+    public null|AccountSubscriptionSeat $seat;
 
     /**
      * The creation time of the membership.

@@ -19,17 +19,17 @@ class Membership implements \JsonSerializable, JsonUnserializable
     /**
      * The organization.
      */
-    public null|\UserHub\UserV1\Organization $organization;
+    public null|Organization $organization;
 
     /**
      * The user's role within the organization.
      */
-    public null|\UserHub\UserV1\Role $role;
+    public null|Role $role;
 
     /**
      * The subscription associated with the organization.
      */
-    public null|\UserHub\UserV1\AccountSubscription $subscription;
+    public null|AccountSubscription $subscription;
 
     public function __construct(
         null|Organization $organization = null,

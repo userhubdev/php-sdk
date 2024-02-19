@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace UserHub;
 
-class Undefined
+/**
+ * @internal
+ */
+final class Undefined
 {
     public static function is(mixed $v): bool
     {

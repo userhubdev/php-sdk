@@ -57,7 +57,7 @@ class PlanGroup implements \JsonSerializable, JsonUnserializable
     /**
      * The trial settings.
      */
-    public null|\UserHub\AdminV1\PlanGroupTrial $trial;
+    public null|PlanGroupTrial $trial;
 
     /**
      * The visibility of the plan group.
@@ -72,7 +72,7 @@ class PlanGroup implements \JsonSerializable, JsonUnserializable
     /**
      * The current revision for the plan group.
      */
-    public null|\UserHub\AdminV1\PlanGroupRevision $revision;
+    public null|PlanGroupRevision $revision;
 
     /**
      * The creation time of the plan group.
