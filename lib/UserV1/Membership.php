@@ -36,8 +36,8 @@ class Membership implements \JsonSerializable, JsonUnserializable
         null|Role $role = null,
         null|AccountSubscription $subscription = null,
     ) {
-        $this->organization = $organization ?? null;
-        $this->role = $role ?? null;
+        $this->organization = $organization ?? new Organization();
+        $this->role = $role ?? new Role();
         $this->subscription = $subscription ?? null;
     }
 

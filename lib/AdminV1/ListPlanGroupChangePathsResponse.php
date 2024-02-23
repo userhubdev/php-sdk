@@ -25,7 +25,7 @@ class ListPlanGroupChangePathsResponse implements \JsonSerializable, JsonUnseria
      * A token, which can be sent as `pageToken` to retrieve the next page.
      * If this field is omitted, there are no subsequent pages.
      */
-    public null|string $nextPageToken;
+    public string $nextPageToken;
 
     /**
      * A token, which can be sent as `pageToken` to retrieve the previous page.
@@ -40,7 +40,7 @@ class ListPlanGroupChangePathsResponse implements \JsonSerializable, JsonUnseria
         null|string $previousPageToken = null,
     ) {
         $this->planGroupChangePaths = $planGroupChangePaths ?? [];
-        $this->nextPageToken = $nextPageToken ?? null;
+        $this->nextPageToken = $nextPageToken ?? '';
         $this->previousPageToken = $previousPageToken ?? null;
     }
 

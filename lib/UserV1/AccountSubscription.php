@@ -17,12 +17,12 @@ class AccountSubscription implements \JsonSerializable, JsonUnserializable
     /**
      * The system-assigned identifier of the subscription.
      */
-    public null|string $id;
+    public string $id;
 
     /**
      * The state of the subscription.
      */
-    public null|string $state;
+    public string $state;
 
     /**
      * The anchor time of the billing cycle.
@@ -49,8 +49,8 @@ class AccountSubscription implements \JsonSerializable, JsonUnserializable
         null|AccountSubscriptionPlan $plan = null,
         null|AccountSubscriptionSeat $seat = null,
     ) {
-        $this->id = $id ?? null;
-        $this->state = $state ?? null;
+        $this->id = $id ?? '';
+        $this->state = $state ?? '';
         $this->anchorTime = $anchorTime ?? null;
         $this->plan = $plan ?? null;
         $this->seat = $seat ?? null;

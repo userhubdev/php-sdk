@@ -24,7 +24,7 @@ class PostmarkConnection implements \JsonSerializable, JsonUnserializable
      *
      * This is automatically populated when the server token is updated.
      */
-    public null|string $serverId;
+    public string $serverId;
 
     /**
      * The from email address.
@@ -54,7 +54,7 @@ class PostmarkConnection implements \JsonSerializable, JsonUnserializable
         null|array $allowedEmails = null,
     ) {
         $this->serverToken = $serverToken ?? '';
-        $this->serverId = $serverId ?? null;
+        $this->serverId = $serverId ?? '';
         $this->from = $from ?? null;
         $this->replyTo = $replyTo ?? null;
         $this->allowedEmails = $allowedEmails ?? [];

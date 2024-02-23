@@ -21,14 +21,14 @@ class ErrorResponse implements \JsonSerializable, JsonUnserializable
     /**
      * A user-facing error message.
      */
-    public null|string $message;
+    public string $message;
 
     public function __construct(
         null|string $code = null,
         null|string $message = null,
     ) {
         $this->code = $code ?? '';
-        $this->message = $message ?? null;
+        $this->message = $message ?? '';
     }
 
     public function jsonSerialize(): mixed

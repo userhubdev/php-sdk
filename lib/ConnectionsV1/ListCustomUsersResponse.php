@@ -29,14 +29,14 @@ class ListCustomUsersResponse implements \JsonSerializable, JsonUnserializable
      *
      * It must be encoded as a string.
      */
-    public null|string $nextPageToken;
+    public string $nextPageToken;
 
     public function __construct(
         null|array $users = null,
         null|string $nextPageToken = null,
     ) {
         $this->users = $users ?? [];
-        $this->nextPageToken = $nextPageToken ?? null;
+        $this->nextPageToken = $nextPageToken ?? '';
     }
 
     public function jsonSerialize(): mixed

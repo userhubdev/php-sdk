@@ -16,12 +16,12 @@ class DeleteCustomUserRequest implements \JsonSerializable, JsonUnserializable
     /**
      * The external identifier for the user.
      */
-    public null|string $id;
+    public string $id;
 
     public function __construct(
         null|string $id = null,
     ) {
-        $this->id = $id ?? null;
+        $this->id = $id ?? '';
     }
 
     public function jsonSerialize(): mixed

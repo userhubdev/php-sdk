@@ -16,12 +16,12 @@ class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializable
     /**
      * The identifier of the plan.
      */
-    public null|string $id;
+    public string $id;
 
     /**
      * The human-readable display name of the plan.
      */
-    public null|string $displayName;
+    public string $displayName;
 
     /**
      * The plan product.
@@ -33,8 +33,8 @@ class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializable
         null|string $displayName = null,
         null|Product $product = null,
     ) {
-        $this->id = $id ?? null;
-        $this->displayName = $displayName ?? null;
+        $this->id = $id ?? '';
+        $this->displayName = $displayName ?? '';
         $this->product = $product ?? null;
     }
 

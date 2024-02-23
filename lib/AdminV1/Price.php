@@ -28,12 +28,12 @@ class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The external identifier of the connected price.
      */
-    public null|string $externalId;
+    public string $externalId;
 
     /**
      * The status of the connected price.
      */
-    public null|string $state;
+    public string $state;
 
     /**
      * The code that best describes the reason for the state.
@@ -70,7 +70,7 @@ class Price implements \JsonSerializable, JsonUnserializable
      *
      * It determines if the price can be used.
      */
-    public null|bool $archived;
+    public bool $archived;
 
     /**
      * The last time the price was pulled from the connection.
@@ -123,15 +123,15 @@ class Price implements \JsonSerializable, JsonUnserializable
     ) {
         $this->id = $id ?? '';
         $this->connection = $connection ?? null;
-        $this->externalId = $externalId ?? null;
-        $this->state = $state ?? null;
+        $this->externalId = $externalId ?? '';
+        $this->state = $state ?? '';
         $this->stateReason = $stateReason ?? null;
         $this->currencyCode = $currencyCode ?? '';
         $this->billingMode = $billingMode ?? '';
         $this->interval = $interval ?? null;
         $this->displayName = $displayName ?? null;
         $this->product = $product ?? null;
-        $this->archived = $archived ?? null;
+        $this->archived = $archived ?? false;
         $this->pullTime = $pullTime ?? null;
         $this->pushTime = $pushTime ?? null;
         $this->createTime = $createTime ?? Util::emptyDateTime();

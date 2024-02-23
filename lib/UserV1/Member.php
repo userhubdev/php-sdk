@@ -37,8 +37,8 @@ class Member implements \JsonSerializable, JsonUnserializable
         null|Role $role = null,
         null|AccountSubscriptionSeat $seat = null,
     ) {
-        $this->user = $user ?? null;
-        $this->role = $role ?? null;
+        $this->user = $user ?? new User();
+        $this->role = $role ?? new Role();
         $this->seat = $seat ?? null;
     }
 

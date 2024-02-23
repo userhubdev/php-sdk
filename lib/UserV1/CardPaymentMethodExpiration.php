@@ -16,19 +16,19 @@ class CardPaymentMethodExpiration implements \JsonSerializable, JsonUnserializab
     /**
      * The expiration year.
      */
-    public null|int $year;
+    public int $year;
 
     /**
      * The expiration month.
      */
-    public null|int $month;
+    public int $month;
 
     public function __construct(
         null|int $year = null,
         null|int $month = null,
     ) {
-        $this->year = $year ?? null;
-        $this->month = $month ?? null;
+        $this->year = $year ?? 0;
+        $this->month = $month ?? 0;
     }
 
     public function jsonSerialize(): mixed

@@ -40,7 +40,7 @@ class SubscriptionItem implements \JsonSerializable, JsonUnserializable
         null|int $quantity = null,
     ) {
         $this->id = $id ?? '';
-        $this->product = $product ?? null;
+        $this->product = $product ?? new Product();
         $this->price = $price ?? null;
         $this->quantity = $quantity ?? 0;
     }

@@ -16,7 +16,7 @@ class AccountSubscriptionProduct implements \JsonSerializable, JsonUnserializabl
     /**
      * The system-assigned identifier of the product.
      */
-    public null|string $id;
+    public string $id;
 
     /**
      * The client defined unique identifier of the product.
@@ -26,16 +26,16 @@ class AccountSubscriptionProduct implements \JsonSerializable, JsonUnserializabl
     /**
      * The human-readable display name of the product.
      */
-    public null|string $displayName;
+    public string $displayName;
 
     public function __construct(
         null|string $id = null,
         null|string $uniqueId = null,
         null|string $displayName = null,
     ) {
-        $this->id = $id ?? null;
+        $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;
-        $this->displayName = $displayName ?? null;
+        $this->displayName = $displayName ?? '';
     }
 
     public function jsonSerialize(): mixed

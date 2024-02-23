@@ -16,7 +16,7 @@ class EventActor implements \JsonSerializable, JsonUnserializable
     /**
      * The system-assigned identifier of the actor.
      */
-    public null|string $id;
+    public string $id;
 
     /**
      * The human-readable display name of the actor.
@@ -37,7 +37,7 @@ class EventActor implements \JsonSerializable, JsonUnserializable
     /**
      * Whether the actor is a tenant admin.
      */
-    public null|bool $admin;
+    public bool $admin;
 
     public function __construct(
         null|string $id = null,
@@ -45,10 +45,10 @@ class EventActor implements \JsonSerializable, JsonUnserializable
         null|string $email = null,
         null|bool $admin = null,
     ) {
-        $this->id = $id ?? null;
+        $this->id = $id ?? '';
         $this->displayName = $displayName ?? null;
         $this->email = $email ?? null;
-        $this->admin = $admin ?? null;
+        $this->admin = $admin ?? false;
     }
 
     public function jsonSerialize(): mixed

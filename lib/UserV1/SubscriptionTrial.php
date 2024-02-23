@@ -30,7 +30,7 @@ class SubscriptionTrial implements \JsonSerializable, JsonUnserializable
      * This number is rounded to the nearest whole number
      * of days.
      */
-    public null|int $days;
+    public int $days;
 
     /**
      * The number of days remaining in the trial.
@@ -49,7 +49,7 @@ class SubscriptionTrial implements \JsonSerializable, JsonUnserializable
     ) {
         $this->startTime = $startTime ?? null;
         $this->endTime = $endTime ?? null;
-        $this->days = $days ?? null;
+        $this->days = $days ?? 0;
         $this->remainingDays = $remainingDays ?? null;
     }
 

@@ -16,12 +16,12 @@ class OperationInfo implements \JsonSerializable, JsonUnserializable
     /**
      * The message name of the primary return type for this operation.
      */
-    public null|string $responseType;
+    public string $responseType;
 
     public function __construct(
         null|string $responseType = null,
     ) {
-        $this->responseType = $responseType ?? null;
+        $this->responseType = $responseType ?? '';
     }
 
     public function jsonSerialize(): mixed

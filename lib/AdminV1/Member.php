@@ -41,12 +41,12 @@ class Member implements \JsonSerializable, JsonUnserializable
     /**
      * The creation time of the membership.
      */
-    public null|\DateTimeInterface $createTime;
+    public \DateTimeInterface $createTime;
 
     /**
      * The last update time of the membership.
      */
-    public null|\DateTimeInterface $updateTime;
+    public \DateTimeInterface $updateTime;
 
     public function __construct(
         null|string $state = null,
@@ -57,11 +57,11 @@ class Member implements \JsonSerializable, JsonUnserializable
         null|\DateTimeInterface $updateTime = null,
     ) {
         $this->state = $state ?? '';
-        $this->user = $user ?? null;
-        $this->role = $role ?? null;
+        $this->user = $user ?? new User();
+        $this->role = $role ?? new Role();
         $this->seat = $seat ?? null;
-        $this->createTime = $createTime ?? null;
-        $this->updateTime = $updateTime ?? null;
+        $this->createTime = $createTime ?? Util::emptyDateTime();
+        $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
 
     public function jsonSerialize(): mixed

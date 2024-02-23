@@ -18,12 +18,12 @@ class PaymentMethod implements \JsonSerializable, JsonUnserializable
     /**
      * The system-assigned identifier of the payment method.
      */
-    public null|string $id;
+    public string $id;
 
     /**
      * The external identifier of the connected payment method.
      */
-    public null|string $externalId;
+    public string $externalId;
 
     /**
      * The status of the connected payment method.
@@ -41,12 +41,12 @@ class PaymentMethod implements \JsonSerializable, JsonUnserializable
     public string $type;
 
     /**
-     * A human readable description of the payment method.
+     * A human-readable description of the payment method.
      *
      * This can be used to show a description of the payment method
      * when the type is UNKNOWN or not explicitly handled.
      */
-    public null|string $displayName;
+    public string $displayName;
 
     /**
      * The full name of the owner of the payment method.
@@ -98,12 +98,12 @@ class PaymentMethod implements \JsonSerializable, JsonUnserializable
         null|\DateTimeInterface $updateTime = null,
         null|CardPaymentMethod $card = null,
     ) {
-        $this->id = $id ?? null;
-        $this->externalId = $externalId ?? null;
+        $this->id = $id ?? '';
+        $this->externalId = $externalId ?? '';
         $this->state = $state ?? '';
         $this->stateReason = $stateReason ?? null;
         $this->type = $type ?? '';
-        $this->displayName = $displayName ?? null;
+        $this->displayName = $displayName ?? '';
         $this->fullName = $fullName ?? null;
         $this->address = $address ?? null;
         $this->default = $default ?? null;

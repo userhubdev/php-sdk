@@ -22,7 +22,7 @@ class SubscriptionsChanged implements \JsonSerializable, JsonUnserializable
     public function __construct(
         null|Subscription $subscription = null,
     ) {
-        $this->subscription = $subscription ?? null;
+        $this->subscription = $subscription ?? new Subscription();
     }
 
     public function jsonSerialize(): mixed

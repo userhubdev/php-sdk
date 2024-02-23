@@ -27,7 +27,7 @@ class PlanGroupRevisionItem implements \JsonSerializable, JsonUnserializable
         null|Product $product = null,
         null|string $type = null,
     ) {
-        $this->product = $product ?? null;
+        $this->product = $product ?? new Product();
         $this->type = $type ?? '';
     }
 

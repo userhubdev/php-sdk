@@ -16,7 +16,7 @@ class Email implements \JsonSerializable, JsonUnserializable
     /**
      * The email address (e.g. `jane@example.com`).
      */
-    public null|string $address;
+    public string $address;
 
     /**
      * The email name (e.g. `Jane Doe`).
@@ -27,7 +27,7 @@ class Email implements \JsonSerializable, JsonUnserializable
         null|string $address = null,
         null|string $displayName = null,
     ) {
-        $this->address = $address ?? null;
+        $this->address = $address ?? '';
         $this->displayName = $displayName ?? null;
     }
 

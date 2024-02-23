@@ -16,7 +16,7 @@ class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
     /**
      * The brand of the card (e.g. `VISA`).
      */
-    public null|string $brand;
+    public string $brand;
 
     /**
      * The expiration date of the card.
@@ -26,12 +26,12 @@ class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
     /**
      * The last for digits of the card.
      */
-    public null|string $last4;
+    public string $last4;
 
     /**
      * The funding method for the card (e.g. `DEBIT`).
      */
-    public null|string $fundingType;
+    public string $fundingType;
 
     public function __construct(
         null|string $brand = null,
@@ -39,10 +39,10 @@ class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
         null|string $last4 = null,
         null|string $fundingType = null,
     ) {
-        $this->brand = $brand ?? null;
+        $this->brand = $brand ?? '';
         $this->expiration = $expiration ?? null;
-        $this->last4 = $last4 ?? null;
-        $this->fundingType = $fundingType ?? null;
+        $this->last4 = $last4 ?? '';
+        $this->fundingType = $fundingType ?? '';
     }
 
     public function jsonSerialize(): mixed

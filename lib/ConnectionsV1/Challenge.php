@@ -17,12 +17,12 @@ class Challenge implements \JsonSerializable, JsonUnserializable
     /**
      * The challenge string.
      */
-    public null|string $challenge;
+    public string $challenge;
 
     public function __construct(
         null|string $challenge = null,
     ) {
-        $this->challenge = $challenge ?? null;
+        $this->challenge = $challenge ?? '';
     }
 
     public function jsonSerialize(): mixed

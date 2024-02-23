@@ -50,7 +50,7 @@ class Flow implements \JsonSerializable, JsonUnserializable
     public null|User $creator;
 
     /**
-     * The time the flow will expires.
+     * The time the flow will expire.
      */
     public \DateTimeInterface $expireTime;
 

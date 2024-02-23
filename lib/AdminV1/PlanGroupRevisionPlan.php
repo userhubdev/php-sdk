@@ -19,7 +19,7 @@ class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializable
     /**
      * The client defined unique identifier for the plan (e.g. `monthly`).
      */
-    public null|string $uniqueId;
+    public string $uniqueId;
 
     /**
      * The details of the associated connection.
@@ -56,7 +56,7 @@ class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializable
     /**
      * The visibility of the plan.
      */
-    public null|string $visibility;
+    public string $visibility;
 
     public function __construct(
         null|string $uniqueId = null,
@@ -67,13 +67,13 @@ class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializable
         null|array $prices = null,
         null|string $visibility = null,
     ) {
-        $this->uniqueId = $uniqueId ?? null;
+        $this->uniqueId = $uniqueId ?? '';
         $this->connection = $connection ?? null;
-        $this->interval = $interval ?? null;
+        $this->interval = $interval ?? new Interval();
         $this->displayName = $displayName ?? null;
         $this->description = $description ?? null;
         $this->prices = $prices ?? [];
-        $this->visibility = $visibility ?? null;
+        $this->visibility = $visibility ?? '';
     }
 
     public function jsonSerialize(): mixed

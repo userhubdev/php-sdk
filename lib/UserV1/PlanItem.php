@@ -33,8 +33,8 @@ class PlanItem implements \JsonSerializable, JsonUnserializable
         null|Price $price = null,
         null|string $type = null,
     ) {
-        $this->product = $product ?? null;
-        $this->price = $price ?? null;
+        $this->product = $product ?? new Product();
+        $this->price = $price ?? new Price();
         $this->type = $type ?? '';
     }
 
