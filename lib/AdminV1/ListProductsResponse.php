@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListProducts.
  */
-class ListProductsResponse implements \JsonSerializable, JsonUnserializable
+final class ListProductsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of products.
@@ -34,6 +34,9 @@ class ListProductsResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\Product[] $products
+     */
     public function __construct(
         null|array $products = null,
         null|string $nextPageToken = null,

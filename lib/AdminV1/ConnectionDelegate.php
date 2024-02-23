@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The delegated connection.
  */
-class ConnectionDelegate implements \JsonSerializable, JsonUnserializable
+final class ConnectionDelegate implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The delegated connection identifier.

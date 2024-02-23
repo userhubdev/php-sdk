@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The flows changed event.
  */
-class FlowsChanged implements \JsonSerializable, JsonUnserializable
+final class FlowsChanged implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The flow.

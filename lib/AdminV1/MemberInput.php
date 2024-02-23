@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Member input parameters.
  */
-class MemberInput implements \JsonSerializable, JsonUnserializable
+final class MemberInput implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The identifier of the user.

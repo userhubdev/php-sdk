@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * A member's role within an organization.
  */
-class Role implements \JsonSerializable, JsonUnserializable
+final class Role implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the role.
@@ -74,6 +74,9 @@ class Role implements \JsonSerializable, JsonUnserializable
      */
     public \DateTimeInterface $updateTime;
 
+    /**
+     * @param null|string[] $permissionSets
+     */
     public function __construct(
         null|string $id = null,
         null|string $uniqueId = null,

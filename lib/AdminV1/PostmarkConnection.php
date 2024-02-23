@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The Postmark specific connection data.
  */
-class PostmarkConnection implements \JsonSerializable, JsonUnserializable
+final class PostmarkConnection implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The Postmark server token (e.g. `942faf79-bf10-4dc1-830a-dc7943f43f35`).
@@ -46,6 +46,9 @@ class PostmarkConnection implements \JsonSerializable, JsonUnserializable
      */
     public array $allowedEmails;
 
+    /**
+     * @param null|string[] $allowedEmails
+     */
     public function __construct(
         null|string $serverToken = null,
         null|string $serverId = null,

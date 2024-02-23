@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListSubscriptions.
  */
-class ListSubscriptionsResponse implements \JsonSerializable, JsonUnserializable
+final class ListSubscriptionsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of subscriptions.
@@ -34,6 +34,9 @@ class ListSubscriptionsResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\Subscription[] $subscriptions
+     */
     public function __construct(
         null|array $subscriptions = null,
         null|string $nextPageToken = null,

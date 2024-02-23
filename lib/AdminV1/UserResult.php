@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The user or error.
  */
-class UserResult implements \JsonSerializable, JsonUnserializable
+final class UserResult implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The user.

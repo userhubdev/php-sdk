@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
 /**
  * The plan.
  */
-class Plan implements \JsonSerializable, JsonUnserializable
+final class Plan implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the plan.
@@ -47,6 +47,9 @@ class Plan implements \JsonSerializable, JsonUnserializable
      */
     public array $items;
 
+    /**
+     * @param null|\UserHub\UserV1\PlanItem[] $items
+     */
     public function __construct(
         null|string $id = null,
         null|string $displayName = null,

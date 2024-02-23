@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for SearchOrganizations.
  */
-class SearchOrganizationsResponse implements \JsonSerializable, JsonUnserializable
+final class SearchOrganizationsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The search of organizations.
@@ -42,6 +42,9 @@ class SearchOrganizationsResponse implements \JsonSerializable, JsonUnserializab
      */
     public null|int $totalSize;
 
+    /**
+     * @param null|\UserHub\AdminV1\Organization[] $organizations
+     */
     public function __construct(
         null|array $organizations = null,
         null|string $nextPageToken = null,

@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The request associated with event.
  */
-class EventRequest implements \JsonSerializable, JsonUnserializable
+final class EventRequest implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The IP address of the client/user.

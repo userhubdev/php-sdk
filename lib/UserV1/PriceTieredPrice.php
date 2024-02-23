@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
  * A pricing strategy that dynamically sets the price for a given
  * quantity range.
  */
-class PriceTieredPrice implements \JsonSerializable, JsonUnserializable
+final class PriceTieredPrice implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The strategy for evaluating the tiers.
@@ -27,6 +27,9 @@ class PriceTieredPrice implements \JsonSerializable, JsonUnserializable
      */
     public array $tiers;
 
+    /**
+     * @param null|\UserHub\UserV1\TieredPriceTier[] $tiers
+     */
     public function __construct(
         null|string $mode = null,
         null|array $tiers = null,

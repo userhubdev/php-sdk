@@ -17,7 +17,7 @@ use UserHub\Internal\Util;
  * (e.g. Pro) which might contain two options, a monthly and
  * yearly plan.
  */
-class PlanGroup implements \JsonSerializable, JsonUnserializable
+final class PlanGroup implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the plan group.

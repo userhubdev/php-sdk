@@ -61,7 +61,7 @@ class Subscriptions
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([ListSubscriptionsResponse::class, 'jsonUnserialize']);
+        return ListSubscriptionsResponse::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -86,6 +86,6 @@ class Subscriptions
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([Subscription::class, 'jsonUnserialize']);
+        return Subscription::jsonUnserialize($res->decodeBody());
     }
 }

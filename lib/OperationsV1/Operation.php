@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
 /**
  * Operation is a long running background task.
  */
-class Operation implements \JsonSerializable, JsonUnserializable
+final class Operation implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the operation.

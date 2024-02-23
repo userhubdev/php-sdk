@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * The session details.
  */
-class Session implements \JsonSerializable, JsonUnserializable
+final class Session implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The authenticated user.
@@ -48,6 +48,10 @@ class Session implements \JsonSerializable, JsonUnserializable
      */
     public array $scopes;
 
+    /**
+     * @param null|\UserHub\UserV1\Membership[] $memberships
+     * @param null|string[]                     $scopes
+     */
     public function __construct(
         null|User $user = null,
         null|array $memberships = null,

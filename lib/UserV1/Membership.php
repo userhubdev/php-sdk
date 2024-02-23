@@ -14,7 +14,7 @@ use UserHub\Internal\JsonUnserializable;
  * This is the user view, see Member for the organizational
  * view.
  */
-class Membership implements \JsonSerializable, JsonUnserializable
+final class Membership implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The organization.

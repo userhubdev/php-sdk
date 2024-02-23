@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListOrganizations.
  */
-class ListOrganizationsResponse implements \JsonSerializable, JsonUnserializable
+final class ListOrganizationsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of organizations.
@@ -34,6 +34,9 @@ class ListOrganizationsResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\UserV1\Organization[] $organizations
+     */
     public function __construct(
         null|array $organizations = null,
         null|string $nextPageToken = null,

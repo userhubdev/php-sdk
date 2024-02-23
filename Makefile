@@ -15,6 +15,7 @@ fmt:
 .PHONY: lint
 lint:
 	@./vendor/bin/php-cs-fixer check -v
+	@php -d memory_limit=1G ./vendor/bin/phpstan analyse
 
 .PHONY: test
 test:

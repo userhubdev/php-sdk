@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * An email address.
  */
-class Email implements \JsonSerializable, JsonUnserializable
+final class Email implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The email address (e.g. `jane@example.com`).

@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The functionality the connection provides (e.g. `BILLING`).
  */
-class ConnectionProvider implements \JsonSerializable, JsonUnserializable
+final class ConnectionProvider implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The provider type.

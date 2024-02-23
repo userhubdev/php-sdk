@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
  * A pricing strategy that defines a constant price per
  * quantity.
  */
-class PriceFixedPrice implements \JsonSerializable, JsonUnserializable
+final class PriceFixedPrice implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The decimal amount for the defined currency (e.g. `9.95`).

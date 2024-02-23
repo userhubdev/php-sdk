@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for BatchGetOrganizations.
  */
-class BatchGetOrganizationsResponse implements \JsonSerializable, JsonUnserializable
+final class BatchGetOrganizationsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The organizations.
@@ -21,6 +21,9 @@ class BatchGetOrganizationsResponse implements \JsonSerializable, JsonUnserializ
      */
     public array $organizations;
 
+    /**
+     * @param null|\UserHub\AdminV1\OrganizationResult[] $organizations
+     */
     public function __construct(
         null|array $organizations = null,
     ) {

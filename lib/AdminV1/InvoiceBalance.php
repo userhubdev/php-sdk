@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
  * The account balance as of the time the invoice
  * was finalized.
  */
-class InvoiceBalance implements \JsonSerializable, JsonUnserializable
+final class InvoiceBalance implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The starting balance of the account.

@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
 /**
  * A link to an external payment method (e.g. credit card, bank account).
  */
-class PaymentMethod implements \JsonSerializable, JsonUnserializable
+final class PaymentMethod implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the payment method.

@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * A period of time.
  */
-class Period implements \JsonSerializable, JsonUnserializable
+final class Period implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The start time.

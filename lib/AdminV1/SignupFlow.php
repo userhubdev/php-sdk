@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The signup flow.
  */
-class SignupFlow implements \JsonSerializable, JsonUnserializable
+final class SignupFlow implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The email address of the invitee.

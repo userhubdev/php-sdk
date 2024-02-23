@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
 /**
  * A group account.
  */
-class Organization implements \JsonSerializable, JsonUnserializable
+final class Organization implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the organization.
@@ -122,6 +122,9 @@ class Organization implements \JsonSerializable, JsonUnserializable
      */
     public \DateTimeInterface $updateTime;
 
+    /**
+     * @param null|\UserHub\AdminV1\AccountConnection[] $accountConnections
+     */
     public function __construct(
         null|string $id = null,
         null|string $state = null,

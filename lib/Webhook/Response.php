@@ -12,6 +12,9 @@ class Response
     public Headers $headers;
     public string $body;
 
+    /**
+     * @param null|array<string, string>|object $headers
+     */
     public function __construct(
         null|int $statusCode = null,
         null|array|object $headers = null,

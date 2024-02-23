@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * A postal address (billing, mailing, etc...).
  */
-class Address implements \JsonSerializable, JsonUnserializable
+final class Address implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The address lines.
@@ -40,6 +40,9 @@ class Address implements \JsonSerializable, JsonUnserializable
      */
     public null|string $country;
 
+    /**
+     * @param null|string[] $lines
+     */
     public function __construct(
         null|array $lines = null,
         null|string $city = null,

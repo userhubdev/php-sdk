@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * The trial information for the subscription.
  */
-class SubscriptionTrial implements \JsonSerializable, JsonUnserializable
+final class SubscriptionTrial implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The time the trial started.

@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Organization input parameters.
  */
-class OrganizationInput implements \JsonSerializable, JsonUnserializable
+final class OrganizationInput implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The client defined unique identifier of the organization account.

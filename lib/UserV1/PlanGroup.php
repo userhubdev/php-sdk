@@ -16,7 +16,7 @@ use UserHub\Internal\Util;
  * (e.g. Basic vs Pro) which might contain multiple billing options
  * (e.g. monthly vs yearly, USD vs EUR).
  */
-class PlanGroup implements \JsonSerializable, JsonUnserializable
+final class PlanGroup implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the plan group.
@@ -63,6 +63,9 @@ class PlanGroup implements \JsonSerializable, JsonUnserializable
      */
     public array $plans;
 
+    /**
+     * @param null|\UserHub\UserV1\Plan[] $plans
+     */
     public function __construct(
         null|string $id = null,
         null|string $uniqueId = null,

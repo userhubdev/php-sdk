@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * A quantity range within the tiered price.
  */
-class TieredPriceTier implements \JsonSerializable, JsonUnserializable
+final class TieredPriceTier implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The upper quantity for tier (inclusive).

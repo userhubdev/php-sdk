@@ -23,10 +23,10 @@ final class Response
     /**
      * @throws UserHubError if JSON fails to decode
      */
-    public function decodeBody(callable $callback): mixed
+    public function decodeBody(): mixed
     {
         try {
-            $body = json_decode($this->body, flags: JSON_THROW_ON_ERROR);
+            return json_decode($this->body, flags: JSON_THROW_ON_ERROR);
         } catch (\Exception $e) {
             throw new UserHubError(
                 message: 'Failed to decode response'.Util::summarizeBody($this->body),
@@ -35,7 +35,5 @@ final class Response
                 previous: $e,
             );
         }
-
-        return \call_user_func($callback, $body);
     }
 }

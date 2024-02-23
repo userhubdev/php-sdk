@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Request message for listing custom users.
  */
-class ListCustomUsersRequest implements \JsonSerializable, JsonUnserializable
+final class ListCustomUsersRequest implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The maximum number of users to return. The webhook is allowed to

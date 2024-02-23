@@ -1,0 +1,10 @@
+parameters:
+  level: 9
+  paths:
+    - lib
+    - tests
+    - examples
+
+  ignoreErrors:
+    - message: '#Cannot access property#'
+      path: examples/*

@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The line items for the preview.
  */
-class InvoicePreviewItem implements \JsonSerializable, JsonUnserializable
+final class InvoicePreviewItem implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The details of the associated product.

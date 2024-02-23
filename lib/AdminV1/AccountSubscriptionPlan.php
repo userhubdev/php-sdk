@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The plan information.
  */
-class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializable
+final class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The identifier of the plan.

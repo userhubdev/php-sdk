@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * A prorated change that occurred mid-billing cycle.
  */
-class InvoiceChange implements \JsonSerializable, JsonUnserializable
+final class InvoiceChange implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The time the change occurred.
@@ -59,6 +59,10 @@ class InvoiceChange implements \JsonSerializable, JsonUnserializable
      */
     public array $endItemIds;
 
+    /**
+     * @param null|string[] $startItemIds
+     * @param null|string[] $endItemIds
+     */
     public function __construct(
         null|\DateTimeInterface $time = null,
         null|string $description = null,

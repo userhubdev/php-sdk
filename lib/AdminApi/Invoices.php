@@ -57,7 +57,7 @@ class Invoices
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([ListInvoicesResponse::class, 'jsonUnserialize']);
+        return ListInvoicesResponse::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -82,6 +82,6 @@ class Invoices
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([Invoice::class, 'jsonUnserialize']);
+        return Invoice::jsonUnserialize($res->decodeBody());
     }
 }

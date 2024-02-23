@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListConnections.
  */
-class ListConnectionsResponse implements \JsonSerializable, JsonUnserializable
+final class ListConnectionsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of connections.
@@ -34,6 +34,9 @@ class ListConnectionsResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\Connection[] $connections
+     */
     public function __construct(
         null|array $connections = null,
         null|string $nextPageToken = null,

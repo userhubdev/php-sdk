@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * A link between a UserHub product and an external product.
  */
-class ProductConnection implements \JsonSerializable, JsonUnserializable
+final class ProductConnection implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The basic view of the connection.

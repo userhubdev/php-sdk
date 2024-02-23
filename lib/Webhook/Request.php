@@ -13,6 +13,9 @@ class Request
     public Headers $headers;
     public string $body;
 
+    /**
+     * @param null|array<string, string>|object $headers
+     */
     public function __construct(
         null|array|object $headers = null,
         null|string $body = null,

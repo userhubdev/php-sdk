@@ -9,8 +9,9 @@ namespace UserHub\Internal;
  */
 abstract class Util
 {
-    public static function emptyDateTime(): ?\DateTimeInterface
+    public static function emptyDateTime(): \DateTimeImmutable
     {
+        // @phpstan-ignore-next-line
         return \DateTimeImmutable::createFromFormat('U', '0', new \DateTimeZone('UTC'));
     }
 
@@ -40,11 +41,18 @@ abstract class Util
         return $formatted;
     }
 
-    public static function mapObject(?object $value, callable $callback): object
+    /**
+     * @template T
+     *
+     * @param callable(mixed): T $callback
+     *
+     * @return array<string, T>
+     */
+    public static function mapObject(?object $value, callable $callback): array
     {
-        $output = (object) [];
+        $output = [];
 
-        if (\is_object($value)) {
+        if (is_iterable($value)) {
             foreach ($value as $k => $v) {
                 $output->{$k} = \call_user_func($callback, $v);
             }
@@ -53,6 +61,14 @@ abstract class Util
         return $output;
     }
 
+    /**
+     * @template T
+     *
+     * @param null|array<mixed>  $value
+     * @param callable(mixed): T $callback
+     *
+     * @return array<T>
+     */
     public static function mapArray(?array $value, callable $callback): array
     {
         if (!\is_array($value)) {
@@ -67,7 +83,11 @@ abstract class Util
         if (empty($body)) {
             return '';
         }
-        $body = trim(preg_replace('/\s+/', ' ', $body));
+        $body = preg_replace('/\s+/', ' ', $body);
+        if (!\is_string($body)) {
+            return '';
+        }
+        $body = trim($body);
         if (empty($body)) {
             return '';
         }

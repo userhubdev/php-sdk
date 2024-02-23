@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The change path.
  */
-class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
+final class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
 {
     /**
      * Whether the change is considered an upgrade or

@@ -34,6 +34,6 @@ class Session
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([\UserHub\UserV1\Session::class, 'jsonUnserialize']);
+        return \UserHub\UserV1\Session::jsonUnserialize($res->decodeBody());
     }
 }

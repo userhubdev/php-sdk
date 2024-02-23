@@ -17,6 +17,9 @@ final class HttpTransport implements Transport
     private Headers $headers;
     private ?\CurlHandle $_curlHandle;
 
+    /**
+     * @param null|array<string, string> $headers
+     */
     public function __construct(string $baseUrl, ?array $headers = null)
     {
         $this->baseUrl = $baseUrl;
@@ -139,11 +142,17 @@ final class HttpTransport implements Transport
                 throw new \UnexpectedValueException("Method not supported: {$req->method}");
         }
 
-        if (!empty($headers)) {
+        if (\count($headers) > 0) {
             $curlHeaders = [];
 
-            foreach ($headers as $key => $value) {
-                $curlHeaders[] = $key.': '.$value;
+            foreach ($headers as $name => $value) {
+                if (\is_array($value)) {
+                    foreach ($value as $v) {
+                        $curlHeaders[] = $name.': '.$v;
+                    }
+                } elseif (\is_string($value)) {
+                    $curlHeaders[] = $name.': '.$value;
+                }
             }
 
             $opts[CURLOPT_HTTPHEADER] = $curlHeaders;
@@ -176,6 +185,10 @@ final class HttpTransport implements Transport
         $errorNumber = curl_errno($ch);
         $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
+        if (!\is_string($resBody)) {
+            $resBody = '';
+        }
+
         if ($errorNumber) {
             $errorMessage = curl_error($ch);
 
@@ -193,8 +206,8 @@ final class HttpTransport implements Transport
         }
 
         if (2 !== intdiv($statusCode, 100)) {
-            $contentType = $resHeaders['content-type'] ?? '';
-            if (str_contains($contentType, 'json') && !empty($resBody)) {
+            $contentType = $resHeaders['content-type'];
+            if (\is_string($contentType) && str_contains($contentType, 'json') && '' !== $resBody) {
                 try {
                     $statusData = json_decode($resBody, flags: JSON_THROW_ON_ERROR);
                 } catch (\Exception $e) {

@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * THe contact information of the bill to account.
  */
-class InvoiceAccount implements \JsonSerializable, JsonUnserializable
+final class InvoiceAccount implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The company or individual's full name.

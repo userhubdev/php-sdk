@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace UserHub\Webhook;
 
+use UserHub\Internal\Util as IUtil;
 use UserHub\UserHubError;
 
 /**
@@ -29,7 +30,7 @@ final class DecodeHandler
             $data = \call_user_func($this->decoder, json_decode($req->body, flags: JSON_THROW_ON_ERROR));
         } catch (\Exception $e) {
             throw new UserHubError(
-                message: 'Failed to decode request'.Util::summarizeBody($body),
+                message: 'Failed to decode request'.IUtil::summarizeBody($req->body),
                 previous: $e,
             );
         }

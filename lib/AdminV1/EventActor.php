@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The actor associated with event.
  */
-class EventActor implements \JsonSerializable, JsonUnserializable
+final class EventActor implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the actor.

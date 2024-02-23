@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * The billing account for an organization or user.
  */
-class BillingAccount implements \JsonSerializable, JsonUnserializable
+final class BillingAccount implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The status of the billing account.
@@ -47,6 +47,9 @@ class BillingAccount implements \JsonSerializable, JsonUnserializable
      */
     public null|Subscription $subscription;
 
+    /**
+     * @param null|\UserHub\UserV1\PaymentMethod[] $paymentMethods
+     */
     public function __construct(
         null|string $state = null,
         null|string $balanceAmount = null,

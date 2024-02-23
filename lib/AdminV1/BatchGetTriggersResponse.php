@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for BatchGetTriggers.
  */
-class BatchGetTriggersResponse implements \JsonSerializable, JsonUnserializable
+final class BatchGetTriggersResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The triggers.
@@ -21,6 +21,9 @@ class BatchGetTriggersResponse implements \JsonSerializable, JsonUnserializable
      */
     public array $triggers;
 
+    /**
+     * @param null|\UserHub\AdminV1\TriggerResult[] $triggers
+     */
     public function __construct(
         null|array $triggers = null,
     ) {

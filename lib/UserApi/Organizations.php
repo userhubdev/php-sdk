@@ -51,7 +51,7 @@ class Organizations
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([ListOrganizationsResponse::class, 'jsonUnserialize']);
+        return ListOrganizationsResponse::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -85,7 +85,7 @@ class Organizations
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([Organization::class, 'jsonUnserialize']);
+        return Organization::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -101,7 +101,7 @@ class Organizations
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([Organization::class, 'jsonUnserialize']);
+        return Organization::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -121,16 +121,16 @@ class Organizations
 
         $body = [];
 
-        if (!Undefined::is($uniqueId)) {
+        if (!$uniqueId instanceof Undefined) {
             $body['uniqueId'] = $uniqueId;
         }
-        if (!Undefined::is($displayName)) {
+        if (!$displayName instanceof Undefined) {
             $body['displayName'] = $displayName;
         }
-        if (!Undefined::is($email)) {
+        if (!$email instanceof Undefined) {
             $body['email'] = $email;
         }
-        if (!Undefined::is($flowId)) {
+        if (!$flowId instanceof Undefined) {
             $body['flowId'] = $flowId;
         }
 
@@ -138,7 +138,7 @@ class Organizations
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([Organization::class, 'jsonUnserialize']);
+        return Organization::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -152,7 +152,7 @@ class Organizations
         $req = new Request('user.organizations.delete', 'DELETE', '/user/v1/organizations/'.rawurlencode($organizationId));
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([Organization::class, 'jsonUnserialize']);
+        return Organization::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -169,6 +169,6 @@ class Organizations
         $req = new Request('user.organizations.leave', 'DELETE', '/user/v1/organizations/'.rawurlencode($organizationId).':leave');
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([EmptyResponse::class, 'jsonUnserialize']);
+        return EmptyResponse::jsonUnserialize($res->decodeBody());
     }
 }

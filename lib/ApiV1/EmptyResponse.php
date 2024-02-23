@@ -9,7 +9,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Empty response.
  */
-class EmptyResponse implements \JsonSerializable, JsonUnserializable
+final class EmptyResponse implements \JsonSerializable, JsonUnserializable
 {
     public function __construct() {}
 

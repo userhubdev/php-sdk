@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Request message for getting a custom user.
  */
-class GetCustomUserRequest implements \JsonSerializable, JsonUnserializable
+final class GetCustomUserRequest implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The external identifier for the user.

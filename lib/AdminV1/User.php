@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
 /**
  * Individual account.
  */
-class User implements \JsonSerializable, JsonUnserializable
+final class User implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the user.
@@ -132,6 +132,10 @@ class User implements \JsonSerializable, JsonUnserializable
      */
     public \DateTimeInterface $updateTime;
 
+    /**
+     * @param null|\UserHub\AdminV1\AccountConnection[] $accountConnections
+     * @param null|\UserHub\AdminV1\Membership[]        $memberships
+     */
     public function __construct(
         null|string $id = null,
         null|string $state = null,

@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * The account view of the subscription.
  */
-class AccountSubscription implements \JsonSerializable, JsonUnserializable
+final class AccountSubscription implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the subscription.

@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The product.
  */
-class Product implements \JsonSerializable, JsonUnserializable
+final class Product implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the product.

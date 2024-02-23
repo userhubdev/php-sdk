@@ -8,7 +8,7 @@ use UserHub\EventsV1\Event;
 use UserHub\Webhook;
 
 if (PHP_SAPI === 'cli') {
-    $port = getenv('PORT') ?? '8000';
+    $port = getenv('PORT') ?: '8000';
     echo "php -S localhost:{$port} ".__FILE__.PHP_EOL;
 
     exit(1);

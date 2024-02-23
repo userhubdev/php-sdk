@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The expiration date for the card.
  */
-class CardPaymentMethodExpiration implements \JsonSerializable, JsonUnserializable
+final class CardPaymentMethodExpiration implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The expiration year.

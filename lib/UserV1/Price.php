@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Price for a product.
  */
-class Price implements \JsonSerializable, JsonUnserializable
+final class Price implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the price.

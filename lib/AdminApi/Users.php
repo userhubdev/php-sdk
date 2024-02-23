@@ -62,7 +62,7 @@ class Users
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([ListUsersResponse::class, 'jsonUnserialize']);
+        return ListUsersResponse::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -136,7 +136,7 @@ class Users
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([User::class, 'jsonUnserialize']);
+        return User::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -152,7 +152,7 @@ class Users
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([User::class, 'jsonUnserialize']);
+        return User::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -186,46 +186,46 @@ class Users
         if (!empty($allowMissing)) {
             $req->setQuery('allowMissing', $allowMissing);
         }
-        if (!Undefined::is($uniqueId)) {
+        if (!$uniqueId instanceof Undefined) {
             $body['uniqueId'] = $uniqueId;
         }
-        if (!Undefined::is($displayName)) {
+        if (!$displayName instanceof Undefined) {
             $body['displayName'] = $displayName;
         }
-        if (!Undefined::is($email)) {
+        if (!$email instanceof Undefined) {
             $body['email'] = $email;
         }
-        if (!Undefined::is($emailVerified)) {
+        if (!$emailVerified instanceof Undefined) {
             $body['emailVerified'] = $emailVerified;
         }
-        if (!Undefined::is($phoneNumber)) {
+        if (!$phoneNumber instanceof Undefined) {
             $body['phoneNumber'] = $phoneNumber;
         }
-        if (!Undefined::is($phoneNumberVerified)) {
+        if (!$phoneNumberVerified instanceof Undefined) {
             $body['phoneNumberVerified'] = $phoneNumberVerified;
         }
-        if (!Undefined::is($imageUrl)) {
+        if (!$imageUrl instanceof Undefined) {
             $body['imageUrl'] = $imageUrl;
         }
-        if (!Undefined::is($currencyCode)) {
+        if (!$currencyCode instanceof Undefined) {
             $body['currencyCode'] = $currencyCode;
         }
-        if (!Undefined::is($languageCode)) {
+        if (!$languageCode instanceof Undefined) {
             $body['languageCode'] = $languageCode;
         }
-        if (!Undefined::is($regionCode)) {
+        if (!$regionCode instanceof Undefined) {
             $body['regionCode'] = $regionCode;
         }
-        if (!Undefined::is($timeZone)) {
+        if (!$timeZone instanceof Undefined) {
             $body['timeZone'] = $timeZone;
         }
-        if (!Undefined::is($address)) {
+        if (!$address instanceof Undefined) {
             $body['address'] = $address;
         }
-        if (!Undefined::is($signupTime)) {
+        if (!$signupTime instanceof Undefined) {
             $body['signupTime'] = Util::encodeDateTime($signupTime);
         }
-        if (!Undefined::is($disabled)) {
+        if (!$disabled instanceof Undefined) {
             $body['disabled'] = $disabled;
         }
 
@@ -233,7 +233,7 @@ class Users
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([User::class, 'jsonUnserialize']);
+        return User::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -247,7 +247,7 @@ class Users
         $req = new Request('admin.users.delete', 'DELETE', '/admin/v1/users/'.rawurlencode($userId));
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([User::class, 'jsonUnserialize']);
+        return User::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -265,7 +265,7 @@ class Users
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([User::class, 'jsonUnserialize']);
+        return User::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -292,7 +292,7 @@ class Users
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([User::class, 'jsonUnserialize']);
+        return User::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -328,7 +328,7 @@ class Users
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([User::class, 'jsonUnserialize']);
+        return User::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -351,7 +351,7 @@ class Users
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([User::class, 'jsonUnserialize']);
+        return User::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -371,7 +371,7 @@ class Users
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([CreateApiSessionResponse::class, 'jsonUnserialize']);
+        return CreateApiSessionResponse::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -404,6 +404,6 @@ class Users
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([CreatePortalSessionResponse::class, 'jsonUnserialize']);
+        return CreatePortalSessionResponse::jsonUnserialize($res->decodeBody());
     }
 }

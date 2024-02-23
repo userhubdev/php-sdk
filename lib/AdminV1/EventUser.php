@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The user associated with event.
  */
-class EventUser implements \JsonSerializable, JsonUnserializable
+final class EventUser implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the user.

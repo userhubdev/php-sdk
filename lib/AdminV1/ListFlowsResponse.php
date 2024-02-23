@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListFlows.
  */
-class ListFlowsResponse implements \JsonSerializable, JsonUnserializable
+final class ListFlowsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of flows.
@@ -34,6 +34,9 @@ class ListFlowsResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\Flow[] $flows
+     */
     public function __construct(
         null|array $flows = null,
         null|string $nextPageToken = null,

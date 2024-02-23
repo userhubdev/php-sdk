@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Individual account.
  */
-class User implements \JsonSerializable, JsonUnserializable
+final class User implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the user.

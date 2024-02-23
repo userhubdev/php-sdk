@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The API key associated with event.
  */
-class EventApiKey implements \JsonSerializable, JsonUnserializable
+final class EventApiKey implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the API key.

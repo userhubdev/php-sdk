@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Plan group revisions track the configuration options for a plan group.
  */
-class PlanGroupRevision implements \JsonSerializable, JsonUnserializable
+final class PlanGroupRevision implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the plan group revision.
@@ -86,6 +86,12 @@ class PlanGroupRevision implements \JsonSerializable, JsonUnserializable
      */
     public \DateTimeInterface $updateTime;
 
+    /**
+     * @param null|string[]                                 $currencyCodes
+     * @param null|\UserHub\AdminV1\PlanGroupRevisionPlan[] $plans
+     * @param null|\UserHub\AdminV1\PlanGroupRevisionItem[] $items
+     * @param null|string[]                                 $tags
+     */
     public function __construct(
         null|string $id = null,
         null|bool $default = null,

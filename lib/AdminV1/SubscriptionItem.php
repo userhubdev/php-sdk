@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The subscription items.
  */
-class SubscriptionItem implements \JsonSerializable, JsonUnserializable
+final class SubscriptionItem implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The identifier of the item.

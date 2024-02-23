@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListTriggers.
  */
-class ListTriggersResponse implements \JsonSerializable, JsonUnserializable
+final class ListTriggersResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of triggers.
@@ -34,6 +34,9 @@ class ListTriggersResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\Trigger[] $triggers
+     */
     public function __construct(
         null|array $triggers = null,
         null|string $nextPageToken = null,

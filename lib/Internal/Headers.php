@@ -34,11 +34,18 @@ namespace UserHub\Internal;
  * It is used to store HTTP headers. Per RFC 2616, section 4.2:
  * Each header field consists of a name followed by a colon (":") and the field value. Field names
  * are case-insensitive.
+ *
+ * @implements \IteratorAggregate<string|array<string>>
+ * @implements \ArrayAccess<string, string|array<string>>
  */
 final class Headers implements \ArrayAccess, \Countable, \IteratorAggregate
 {
+    /** @var array<string, array<string>|string> */
     private array $container;
 
+    /**
+     * @param array<string, array<string>|string> $initial_array
+     */
     public function __construct(array $initial_array = [])
     {
         $this->container = array_change_key_case($initial_array, CASE_LOWER);
@@ -54,7 +61,7 @@ final class Headers implements \ArrayAccess, \Countable, \IteratorAggregate
     }
 
     /**
-     * @return \ArrayIterator
+     * @return \ArrayIterator<string,array<string>|string>
      */
     #[\ReturnTypeWillChange]
     public function getIterator()
@@ -62,13 +69,15 @@ final class Headers implements \ArrayAccess, \Countable, \IteratorAggregate
         return new \ArrayIterator($this->container);
     }
 
+    /**
+     * @param $offset string
+     * @param $value  string|array<string>
+     */
     #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value): void
     {
-        $offset = self::maybeLowercase($offset);
-        if (null === $offset) {
-            $this->container[] = $value;
-        } else {
+        if (\is_string($offset)) {
+            $offset = strtolower($offset);
             $this->container[$offset] = $value;
         }
     }
@@ -79,7 +88,7 @@ final class Headers implements \ArrayAccess, \Countable, \IteratorAggregate
     #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
-        $offset = self::maybeLowercase($offset);
+        $offset = strtolower($offset);
 
         return isset($this->container[$offset]);
     }
@@ -87,22 +96,22 @@ final class Headers implements \ArrayAccess, \Countable, \IteratorAggregate
     #[\ReturnTypeWillChange]
     public function offsetUnset($offset): void
     {
-        $offset = self::maybeLowercase($offset);
+        $offset = strtolower($offset);
         unset($this->container[$offset]);
     }
 
     /**
-     * @return mixed
+     * @return null|array<string>|string
      */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        $offset = self::maybeLowercase($offset);
+        $offset = strtolower($offset);
 
         return $this->container[$offset] ?? null;
     }
 
-    public function get($name): string
+    public function get(string $name): string
     {
         $value = self::offsetGet($name);
 
@@ -121,7 +130,10 @@ final class Headers implements \ArrayAccess, \Countable, \IteratorAggregate
         return '';
     }
 
-    public function getAll($name): array
+    /**
+     * @return array<string>
+     */
+    public function getAll(string $name): array
     {
         $value = self::offsetGet($name);
 
@@ -140,14 +152,5 @@ final class Headers implements \ArrayAccess, \Countable, \IteratorAggregate
         }
 
         return $headers;
-    }
-
-    private static function maybeLowercase($v)
-    {
-        if (\is_string($v)) {
-            return strtolower($v);
-        }
-
-        return $v;
     }
 }

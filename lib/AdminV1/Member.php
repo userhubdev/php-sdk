@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * A member of an organization.
  */
-class Member implements \JsonSerializable, JsonUnserializable
+final class Member implements \JsonSerializable, JsonUnserializable
 {
     /**
      * Whether the membership is active.

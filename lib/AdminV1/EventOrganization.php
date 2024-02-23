@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The organization associated with event.
  */
-class EventOrganization implements \JsonSerializable, JsonUnserializable
+final class EventOrganization implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the organization.

@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The connection error response.
  */
-class ErrorResponse implements \JsonSerializable, JsonUnserializable
+final class ErrorResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The error code (e.g. `INVALID_ARGUMENT`).

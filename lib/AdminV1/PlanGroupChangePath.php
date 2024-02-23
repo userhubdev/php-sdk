@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * This defines the upgrade/downgrade paths for a plan group.
  */
-class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
+final class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The target plan group for this change path.

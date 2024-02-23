@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
  * A challenge issued by webhooks to validate the
  * endpoint is working correctly.
  */
-class Challenge implements \JsonSerializable, JsonUnserializable
+final class Challenge implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The challenge string.

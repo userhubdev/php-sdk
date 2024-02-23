@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The entity associated with event.
  */
-class EventEntity implements \JsonSerializable, JsonUnserializable
+final class EventEntity implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the entity.
