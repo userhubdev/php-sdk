@@ -25,7 +25,7 @@ class SearchUsersResponse implements \JsonSerializable, JsonUnserializable
      * A token, which can be sent as `pageToken` to retrieve the next page.
      * If this field is omitted, there are no subsequent pages.
      */
-    public null|string $nextPageToken;
+    public string $nextPageToken;
 
     /**
      * A token, which can be sent as `pageToken` to retrieve the previous page.
@@ -49,7 +49,7 @@ class SearchUsersResponse implements \JsonSerializable, JsonUnserializable
         null|int $totalSize = null,
     ) {
         $this->users = $users ?? [];
-        $this->nextPageToken = $nextPageToken ?? null;
+        $this->nextPageToken = $nextPageToken ?? '';
         $this->previousPageToken = $previousPageToken ?? null;
         $this->totalSize = $totalSize ?? null;
     }

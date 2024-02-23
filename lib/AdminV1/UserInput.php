@@ -18,7 +18,7 @@ class UserInput implements \JsonSerializable, JsonUnserializable
     /**
      * The system-assigned identifier of the user.
      */
-    public null|string $id;
+    public string $id;
 
     /**
      * The client defined unique identifier of the user account.
@@ -119,7 +119,7 @@ class UserInput implements \JsonSerializable, JsonUnserializable
         null|\DateTimeInterface $signupTime = null,
         null|bool $disabled = null,
     ) {
-        $this->id = $id ?? null;
+        $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;
         $this->displayName = $displayName ?? null;
         $this->email = $email ?? null;

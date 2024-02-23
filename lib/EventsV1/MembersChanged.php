@@ -29,8 +29,8 @@ class MembersChanged implements \JsonSerializable, JsonUnserializable
         null|Organization $organization = null,
         null|Member $member = null,
     ) {
-        $this->organization = $organization ?? null;
-        $this->member = $member ?? null;
+        $this->organization = $organization ?? new Organization();
+        $this->member = $member ?? new Member();
     }
 
     public function jsonSerialize(): mixed

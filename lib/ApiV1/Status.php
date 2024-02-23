@@ -16,12 +16,12 @@ class Status implements \JsonSerializable, JsonUnserializable
     /**
      * The general error code (e.g. `INVALID_ARGUMENT`).
      */
-    public null|string $code;
+    public string $code;
 
     /**
      * A developer-facing error message.
      */
-    public null|string $message;
+    public string $message;
 
     /**
      * A reason code for the error (e.g. `USER_PENDING_DELETION`).
@@ -47,8 +47,8 @@ class Status implements \JsonSerializable, JsonUnserializable
         null|string $param = null,
         null|object $metadata = null,
     ) {
-        $this->code = $code ?? null;
-        $this->message = $message ?? null;
+        $this->code = $code ?? '';
+        $this->message = $message ?? '';
         $this->reason = $reason ?? null;
         $this->param = $param ?? null;
         $this->metadata = $metadata ?? (object) [];

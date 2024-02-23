@@ -22,12 +22,12 @@ class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The currency for the price.
      */
-    public null|string $currencyCode;
+    public string $currencyCode;
 
     /**
      * The billing mode for the price.
      */
-    public null|string $billingMode;
+    public string $billingMode;
 
     /**
      * The billing interval for the price.
@@ -53,8 +53,8 @@ class Price implements \JsonSerializable, JsonUnserializable
         null|PriceTieredPrice $tiered = null,
     ) {
         $this->id = $id ?? '';
-        $this->currencyCode = $currencyCode ?? null;
-        $this->billingMode = $billingMode ?? null;
+        $this->currencyCode = $currencyCode ?? '';
+        $this->billingMode = $billingMode ?? '';
         $this->interval = $interval ?? null;
         $this->fixed = $fixed ?? null;
         $this->tiered = $tiered ?? null;

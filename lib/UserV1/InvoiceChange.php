@@ -22,13 +22,13 @@ class InvoiceChange implements \JsonSerializable, JsonUnserializable
     /**
      * The user-facing description for the change.
      */
-    public null|string $description;
+    public string $description;
 
     /**
      * The total amount for the change excluding
      * taxes and discounts.
      */
-    public null|string $subtotalAmount;
+    public string $subtotalAmount;
 
     /**
      * The change discount amount.
@@ -38,12 +38,12 @@ class InvoiceChange implements \JsonSerializable, JsonUnserializable
     /**
      * The starting quantity of the change.
      */
-    public null|int $startQuantity;
+    public int $startQuantity;
 
     /**
      * The ending quantity of the change.
      */
-    public null|int $endQuantity;
+    public int $endQuantity;
 
     /**
      * The starting (credited) item identifiers.
@@ -70,11 +70,11 @@ class InvoiceChange implements \JsonSerializable, JsonUnserializable
         null|array $endItemIds = null,
     ) {
         $this->time = $time ?? null;
-        $this->description = $description ?? null;
-        $this->subtotalAmount = $subtotalAmount ?? null;
+        $this->description = $description ?? '';
+        $this->subtotalAmount = $subtotalAmount ?? '';
         $this->discountAmount = $discountAmount ?? null;
-        $this->startQuantity = $startQuantity ?? null;
-        $this->endQuantity = $endQuantity ?? null;
+        $this->startQuantity = $startQuantity ?? 0;
+        $this->endQuantity = $endQuantity ?? 0;
         $this->startItemIds = $startItemIds ?? [];
         $this->endItemIds = $endItemIds ?? [];
     }

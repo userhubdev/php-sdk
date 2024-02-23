@@ -17,12 +17,12 @@ class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
      * Whether the change is considered an upgrade or
      * a downgrade.
      */
-    public null|string $direction;
+    public string $direction;
 
     public function __construct(
         null|string $direction = null,
     ) {
-        $this->direction = $direction ?? null;
+        $this->direction = $direction ?? '';
     }
 
     public function jsonSerialize(): mixed

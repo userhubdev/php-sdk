@@ -19,7 +19,7 @@ class UpdateSubscriptionItemsRequestItem implements \JsonSerializable, JsonUnser
      * If this is empty and the user ID is set, the default
      * seat will be used.
      */
-    public null|string $productId;
+    public string $productId;
 
     /**
      * The member user ID of the organization member. This can
@@ -39,7 +39,7 @@ class UpdateSubscriptionItemsRequestItem implements \JsonSerializable, JsonUnser
         null|string $userId = null,
         null|int $quantity = null,
     ) {
-        $this->productId = $productId ?? null;
+        $this->productId = $productId ?? '';
         $this->userId = $userId ?? null;
         $this->quantity = $quantity ?? null;
     }

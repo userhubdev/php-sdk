@@ -17,7 +17,7 @@ class InvoicePreview implements \JsonSerializable, JsonUnserializable
     /**
      * The currency code for the invoice (e.g. `USD`).
      */
-    public null|string $currencyCode;
+    public string $currencyCode;
 
     /**
      * The contact information associated with the invoice.
@@ -103,7 +103,7 @@ class InvoicePreview implements \JsonSerializable, JsonUnserializable
         null|string $changeToken = null,
         null|array $items = null,
     ) {
-        $this->currencyCode = $currencyCode ?? null;
+        $this->currencyCode = $currencyCode ?? '';
         $this->account = $account ?? null;
         $this->effectiveTime = $effectiveTime ?? null;
         $this->subtotalAmount = $subtotalAmount ?? null;

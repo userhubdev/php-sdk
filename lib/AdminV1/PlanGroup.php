@@ -62,12 +62,12 @@ class PlanGroup implements \JsonSerializable, JsonUnserializable
     /**
      * The visibility of the plan group.
      */
-    public null|string $visibility;
+    public string $visibility;
 
     /**
      * The archived status of the plan group.
      */
-    public null|bool $archived;
+    public bool $archived;
 
     /**
      * The current revision for the plan group.
@@ -103,8 +103,8 @@ class PlanGroup implements \JsonSerializable, JsonUnserializable
         $this->description = $description ?? null;
         $this->accountType = $accountType ?? '';
         $this->trial = $trial ?? null;
-        $this->visibility = $visibility ?? null;
-        $this->archived = $archived ?? null;
+        $this->visibility = $visibility ?? '';
+        $this->archived = $archived ?? false;
         $this->revision = $revision ?? null;
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();

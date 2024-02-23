@@ -17,7 +17,7 @@ class BillingAccount implements \JsonSerializable, JsonUnserializable
     /**
      * The status of the billing account.
      */
-    public null|string $state;
+    public string $state;
 
     /**
      * The balance amount for the account.
@@ -54,7 +54,7 @@ class BillingAccount implements \JsonSerializable, JsonUnserializable
         null|array $paymentMethods = null,
         null|Subscription $subscription = null,
     ) {
-        $this->state = $state ?? null;
+        $this->state = $state ?? '';
         $this->balanceAmount = $balanceAmount ?? null;
         $this->currencyCode = $currencyCode ?? null;
         $this->paymentMethods = $paymentMethods ?? [];

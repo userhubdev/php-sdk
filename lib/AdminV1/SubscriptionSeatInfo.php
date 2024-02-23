@@ -24,7 +24,7 @@ class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializable
      * This might be less than the total quantity while a subscription change
      * is pending or if the subscription is over-provisioned.
      */
-    public null|int $currentPeriodQuantity;
+    public int $currentPeriodQuantity;
 
     /**
      * The quantity scheduled to appear on the next invoice.
@@ -36,17 +36,17 @@ class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializable
     /**
      * The quantity currently in use.
      */
-    public null|int $assignedQuantity;
+    public int $assignedQuantity;
 
     /**
      * The quantity available for use.
      */
-    public null|int $unassignedQuantity;
+    public int $unassignedQuantity;
 
     /**
      * The sum of the assigned and unassigned quantities.
      */
-    public null|int $totalQuantity;
+    public int $totalQuantity;
 
     public function __construct(
         null|Product $product = null,
@@ -57,11 +57,11 @@ class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializable
         null|int $totalQuantity = null,
     ) {
         $this->product = $product ?? null;
-        $this->currentPeriodQuantity = $currentPeriodQuantity ?? null;
+        $this->currentPeriodQuantity = $currentPeriodQuantity ?? 0;
         $this->nextPeriodQuantity = $nextPeriodQuantity ?? null;
-        $this->assignedQuantity = $assignedQuantity ?? null;
-        $this->unassignedQuantity = $unassignedQuantity ?? null;
-        $this->totalQuantity = $totalQuantity ?? null;
+        $this->assignedQuantity = $assignedQuantity ?? 0;
+        $this->unassignedQuantity = $unassignedQuantity ?? 0;
+        $this->totalQuantity = $totalQuantity ?? 0;
     }
 
     public function jsonSerialize(): mixed

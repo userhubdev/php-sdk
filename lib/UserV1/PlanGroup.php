@@ -41,7 +41,7 @@ class PlanGroup implements \JsonSerializable, JsonUnserializable
     /**
      * Whether the plans are for organizations or users.
      */
-    public null|string $accountType;
+    public string $accountType;
 
     /**
      * The trial settings.
@@ -52,7 +52,7 @@ class PlanGroup implements \JsonSerializable, JsonUnserializable
     public null|PlanGroupTrial $trial;
 
     /**
-     * Whether the plan is consider an downgrade/upgrade.
+     * Whether the plan is considered an downgrade or upgrade.
      */
     public null|PlanGroupChangePath $changePath;
 
@@ -77,7 +77,7 @@ class PlanGroup implements \JsonSerializable, JsonUnserializable
         $this->uniqueId = $uniqueId ?? null;
         $this->displayName = $displayName ?? '';
         $this->description = $description ?? null;
-        $this->accountType = $accountType ?? null;
+        $this->accountType = $accountType ?? '';
         $this->trial = $trial ?? null;
         $this->changePath = $changePath ?? null;
         $this->plans = $plans ?? [];

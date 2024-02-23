@@ -22,7 +22,7 @@ class FlowsChanged implements \JsonSerializable, JsonUnserializable
     public function __construct(
         null|Flow $flow = null,
     ) {
-        $this->flow = $flow ?? null;
+        $this->flow = $flow ?? new Flow();
     }
 
     public function jsonSerialize(): mixed

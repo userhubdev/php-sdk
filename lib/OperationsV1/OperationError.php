@@ -16,19 +16,19 @@ class OperationError implements \JsonSerializable, JsonUnserializable
     /**
      * The error code.
      */
-    public null|string $code;
+    public string $code;
 
     /**
      * The error message.
      */
-    public null|string $message;
+    public string $message;
 
     public function __construct(
         null|string $code = null,
         null|string $message = null,
     ) {
-        $this->code = $code ?? null;
-        $this->message = $message ?? null;
+        $this->code = $code ?? '';
+        $this->message = $message ?? '';
     }
 
     public function jsonSerialize(): mixed

@@ -50,14 +50,14 @@ class Product implements \JsonSerializable, JsonUnserializable
      * This is automatically set the first time the product is used
      * in a plan.
      */
-    public null|bool $committed;
+    public bool $committed;
 
     /**
      * The archived status of the product.
      *
      * It determines if the product can be activated by self-serve plans.
      */
-    public null|bool $archived;
+    public bool $archived;
 
     /**
      * The connected products.
@@ -91,8 +91,8 @@ class Product implements \JsonSerializable, JsonUnserializable
         $this->uniqueId = $uniqueId ?? null;
         $this->displayName = $displayName ?? '';
         $this->description = $description ?? null;
-        $this->committed = $committed ?? null;
-        $this->archived = $archived ?? null;
+        $this->committed = $committed ?? false;
+        $this->archived = $archived ?? false;
         $this->productConnections = $productConnections ?? [];
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();

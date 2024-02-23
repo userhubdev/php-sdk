@@ -57,12 +57,12 @@ class Role implements \JsonSerializable, JsonUnserializable
     /**
      * Whether the role is the default for the tenant.
      */
-    public null|bool $default;
+    public bool $default;
 
     /**
      * The archived status of the role.
      */
-    public null|bool $archived;
+    public bool $archived;
 
     /**
      * The creation time of the role.
@@ -92,8 +92,8 @@ class Role implements \JsonSerializable, JsonUnserializable
         $this->type = $type ?? '';
         $this->description = $description ?? null;
         $this->permissionSets = $permissionSets ?? [];
-        $this->default = $default ?? null;
-        $this->archived = $archived ?? null;
+        $this->default = $default ?? false;
+        $this->archived = $archived ?? false;
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }

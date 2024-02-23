@@ -17,12 +17,12 @@ class CreatePortalSessionResponse implements \JsonSerializable, JsonUnserializab
      * The URL you should redirect the user to after calling create portal
      * session.
      */
-    public null|string $redirectUrl;
+    public string $redirectUrl;
 
     public function __construct(
         null|string $redirectUrl = null,
     ) {
-        $this->redirectUrl = $redirectUrl ?? null;
+        $this->redirectUrl = $redirectUrl ?? '';
     }
 
     public function jsonSerialize(): mixed

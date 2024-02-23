@@ -43,7 +43,7 @@ class Invoice implements \JsonSerializable, JsonUnserializable
     /**
      * The external identifier of the invoice.
      */
-    public null|string $externalId;
+    public string $externalId;
 
     /**
      * The invoice number.
@@ -53,7 +53,7 @@ class Invoice implements \JsonSerializable, JsonUnserializable
     /**
      * The currency code for the invoice (e.g. `USD`).
      */
-    public null|string $currencyCode;
+    public string $currencyCode;
 
     /**
      * The user facing description for the invoice.
@@ -203,9 +203,9 @@ class Invoice implements \JsonSerializable, JsonUnserializable
         $this->stateReason = $stateReason ?? null;
         $this->stateTime = $stateTime ?? null;
         $this->connection = $connection ?? null;
-        $this->externalId = $externalId ?? null;
+        $this->externalId = $externalId ?? '';
         $this->number = $number ?? null;
-        $this->currencyCode = $currencyCode ?? null;
+        $this->currencyCode = $currencyCode ?? '';
         $this->description = $description ?? null;
         $this->account = $account ?? null;
         $this->effectiveTime = $effectiveTime ?? null;

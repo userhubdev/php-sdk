@@ -23,12 +23,12 @@ class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
      * Whether the change is considered an upgrade or
      * a downgrade.
      */
-    public null|string $direction;
+    public string $direction;
 
     /**
      * The visibility of the change path.
      */
-    public null|string $visibility;
+    public string $visibility;
 
     /**
      * The creation time of the plan group change path.
@@ -48,8 +48,8 @@ class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
         null|\DateTimeInterface $updateTime = null,
     ) {
         $this->target = $target ?? null;
-        $this->direction = $direction ?? null;
-        $this->visibility = $visibility ?? null;
+        $this->direction = $direction ?? '';
+        $this->visibility = $visibility ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }

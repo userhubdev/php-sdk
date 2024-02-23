@@ -16,21 +16,21 @@ class MemberInput implements \JsonSerializable, JsonUnserializable
     /**
      * The identifier of the user.
      */
-    public null|string $userId;
+    public string $userId;
 
     /**
      * The identifier of the role.
      *
      * This is currently limited to `member`, `admin`, and `owner`.
      */
-    public null|string $roleId;
+    public string $roleId;
 
     public function __construct(
         null|string $userId = null,
         null|string $roleId = null,
     ) {
-        $this->userId = $userId ?? null;
-        $this->roleId = $roleId ?? null;
+        $this->userId = $userId ?? '';
+        $this->roleId = $roleId ?? '';
     }
 
     public function jsonSerialize(): mixed

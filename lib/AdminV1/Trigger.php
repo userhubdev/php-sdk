@@ -41,7 +41,7 @@ class Trigger implements \JsonSerializable, JsonUnserializable
         null|\DateTimeInterface $createTime = null,
         null|\DateTimeInterface $updateTime = null,
     ) {
-        $this->connection = $connection ?? null;
+        $this->connection = $connection ?? new Connection();
         $this->eventType = $eventType ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();

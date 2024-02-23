@@ -16,7 +16,7 @@ class SignupFlow implements \JsonSerializable, JsonUnserializable
     /**
      * The email address of the invitee.
      */
-    public null|string $email;
+    public string $email;
 
     /**
      * The display name of the invitee.
@@ -33,7 +33,7 @@ class SignupFlow implements \JsonSerializable, JsonUnserializable
         null|string $displayName = null,
         null|bool $createOrganization = null,
     ) {
-        $this->email = $email ?? null;
+        $this->email = $email ?? '';
         $this->displayName = $displayName ?? null;
         $this->createOrganization = $createOrganization ?? null;
     }

@@ -22,7 +22,7 @@ class UsersChanged implements \JsonSerializable, JsonUnserializable
     public function __construct(
         null|User $user = null,
     ) {
-        $this->user = $user ?? null;
+        $this->user = $user ?? new User();
     }
 
     public function jsonSerialize(): mixed

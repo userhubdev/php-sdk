@@ -33,7 +33,7 @@ class Plan implements \JsonSerializable, JsonUnserializable
     /**
      * The currency code for the plan (e.g. `USD`).
      */
-    public null|string $currencyCode;
+    public string $currencyCode;
 
     /**
      * The billing interval for the plan.
@@ -66,8 +66,8 @@ class Plan implements \JsonSerializable, JsonUnserializable
         $this->id = $id ?? '';
         $this->displayName = $displayName ?? '';
         $this->description = $description ?? null;
-        $this->currencyCode = $currencyCode ?? null;
-        $this->billingInterval = $billingInterval ?? null;
+        $this->currencyCode = $currencyCode ?? '';
+        $this->billingInterval = $billingInterval ?? new Interval();
         $this->tags = $tags ?? [];
         $this->items = $items ?? [];
     }

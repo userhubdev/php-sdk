@@ -22,7 +22,7 @@ class AccountConnection implements \JsonSerializable, JsonUnserializable
     /**
      * The external identifier of the connected account.
      */
-    public null|string $externalId;
+    public string $externalId;
 
     /**
      * The external admin URL for the connected account.
@@ -97,7 +97,7 @@ class AccountConnection implements \JsonSerializable, JsonUnserializable
         null|\DateTimeInterface $updateTime = null,
     ) {
         $this->connection = $connection ?? null;
-        $this->externalId = $externalId ?? null;
+        $this->externalId = $externalId ?? '';
         $this->adminUrl = $adminUrl ?? null;
         $this->state = $state ?? '';
         $this->stateReason = $stateReason ?? null;

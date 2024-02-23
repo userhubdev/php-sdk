@@ -22,7 +22,7 @@ class OrganizationsChanged implements \JsonSerializable, JsonUnserializable
     public function __construct(
         null|Organization $organization = null,
     ) {
-        $this->organization = $organization ?? null;
+        $this->organization = $organization ?? new Organization();
     }
 
     public function jsonSerialize(): mixed

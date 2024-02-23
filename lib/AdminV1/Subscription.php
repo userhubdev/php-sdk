@@ -118,7 +118,7 @@ class Subscription implements \JsonSerializable, JsonUnserializable
     /**
      * Whether the subscription is the default for the account.
      */
-    public null|bool $default;
+    public bool $default;
 
     /**
      * The last time the subscription was pulled from the connection.
@@ -183,7 +183,7 @@ class Subscription implements \JsonSerializable, JsonUnserializable
         $this->currentPeriod = $currentPeriod ?? null;
         $this->organization = $organization ?? null;
         $this->user = $user ?? null;
-        $this->default = $default ?? null;
+        $this->default = $default ?? false;
         $this->pullTime = $pullTime ?? null;
         $this->pushTime = $pushTime ?? null;
         $this->createTime = $createTime ?? Util::emptyDateTime();

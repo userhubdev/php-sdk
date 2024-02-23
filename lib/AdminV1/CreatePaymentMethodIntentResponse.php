@@ -16,16 +16,16 @@ class CreatePaymentMethodIntentResponse implements \JsonSerializable, JsonUnseri
     /**
      * The setup token for the billing system (e.g. Stripe SetupIntent
      * Client Secret). This is generally used by a frontend
-     * client to securely setup a payment method, the result of which
+     * client to securely set up a payment method, the result of which
      * can be passed to CreatePaymentMethod to complete the setup
      * process.
      */
-    public null|string $token;
+    public string $token;
 
     public function __construct(
         null|string $token = null,
     ) {
-        $this->token = $token ?? null;
+        $this->token = $token ?? '';
     }
 
     public function jsonSerialize(): mixed

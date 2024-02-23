@@ -54,7 +54,7 @@ class PlanGroupRevision implements \JsonSerializable, JsonUnserializable
      * After the revision has been committed, it is available for use, but
      * can no longer be edited.
      */
-    public null|bool $committed;
+    public bool $committed;
 
     /**
      * The tags associated with the revision.
@@ -103,7 +103,7 @@ class PlanGroupRevision implements \JsonSerializable, JsonUnserializable
         $this->currencyCodes = $currencyCodes ?? [];
         $this->plans = $plans ?? [];
         $this->items = $items ?? [];
-        $this->committed = $committed ?? null;
+        $this->committed = $committed ?? false;
         $this->tags = $tags ?? [];
         $this->sourceRevisionId = $sourceRevisionId ?? null;
         $this->createTime = $createTime ?? Util::emptyDateTime();

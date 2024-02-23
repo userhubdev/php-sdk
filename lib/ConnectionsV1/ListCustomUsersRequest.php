@@ -17,7 +17,7 @@ class ListCustomUsersRequest implements \JsonSerializable, JsonUnserializable
      * The maximum number of users to return. The webhook is allowed to
      * return fewer than this value, but it should never return more.
      */
-    public null|int $pageSize;
+    public int $pageSize;
 
     /**
      * A page token, this is from the response of the previous list
@@ -31,7 +31,7 @@ class ListCustomUsersRequest implements \JsonSerializable, JsonUnserializable
         null|int $pageSize = null,
         null|string $pageToken = null,
     ) {
-        $this->pageSize = $pageSize ?? null;
+        $this->pageSize = $pageSize ?? 0;
         $this->pageToken = $pageToken ?? null;
     }
 
