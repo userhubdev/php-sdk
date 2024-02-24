@@ -123,12 +123,12 @@ class BaseWebhook
             throw new UserHubError("Timestamp is invalid: {$timestamp}");
         }
 
-        $diff = ((int) $timestamp - time()) * 1000;
+        $diff = (time() - (int) $timestamp) * 1000;
         if ($diff > Constants::WEBHOOK_MAX_TIMESTAMP_DIFF_MS) {
-            throw new UserHubError("Timestamp is too far in the future: {$timestamp}");
+            throw new UserHubError("Timestamp is too far in the past: {$timestamp}");
         }
         if ($diff < -Constants::WEBHOOK_MAX_TIMESTAMP_DIFF_MS) {
-            throw new UserHubError("Timestamp is too far in the past: {$timestamp}");
+            throw new UserHubError("Timestamp is too far in the future: {$timestamp}");
         }
 
         $digest = hash_hmac('sha256', $timestamp.'.'.$req->body, $this->signingSecret);
