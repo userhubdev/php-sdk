@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The Auth0 connection data.
  */
-class Auth0Connection implements \JsonSerializable, JsonUnserializable
+final class Auth0Connection implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The Auth0 domain.

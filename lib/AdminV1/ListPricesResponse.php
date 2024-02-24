@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListPrices.
  */
-class ListPricesResponse implements \JsonSerializable, JsonUnserializable
+final class ListPricesResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of prices.
@@ -34,6 +34,9 @@ class ListPricesResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\Price[] $prices
+     */
     public function __construct(
         null|array $prices = null,
         null|string $nextPageToken = null,

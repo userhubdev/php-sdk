@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * A tag which references a specific plan group revision.
  */
-class PlanGroupTag implements \JsonSerializable, JsonUnserializable
+final class PlanGroupTag implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The client defined tag (e.g. `2023`).

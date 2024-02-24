@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * A preview of an invoice.
  */
-class InvoicePreview implements \JsonSerializable, JsonUnserializable
+final class InvoicePreview implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The currency code for the preview (e.g. `USD`).
@@ -87,6 +87,9 @@ class InvoicePreview implements \JsonSerializable, JsonUnserializable
      */
     public array $items;
 
+    /**
+     * @param null|\UserHub\AdminV1\InvoicePreviewItem[] $items
+     */
     public function __construct(
         null|string $currencyCode = null,
         null|InvoiceAccount $account = null,

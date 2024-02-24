@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The operation error.
  */
-class OperationError implements \JsonSerializable, JsonUnserializable
+final class OperationError implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The error code.

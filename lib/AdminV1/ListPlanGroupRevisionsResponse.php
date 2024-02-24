@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListPlanGroupRevisions.
  */
-class ListPlanGroupRevisionsResponse implements \JsonSerializable, JsonUnserializable
+final class ListPlanGroupRevisionsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of revisions.
@@ -34,6 +34,9 @@ class ListPlanGroupRevisionsResponse implements \JsonSerializable, JsonUnseriali
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\PlanGroupRevision[] $planGroupRevisions
+     */
     public function __construct(
         null|array $planGroupRevisions = null,
         null|string $nextPageToken = null,

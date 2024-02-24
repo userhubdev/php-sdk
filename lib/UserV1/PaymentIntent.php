@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * An object to track payments.
  */
-class PaymentIntent implements \JsonSerializable, JsonUnserializable
+final class PaymentIntent implements \JsonSerializable, JsonUnserializable
 {
     /**
      * A Stripe payment intent.

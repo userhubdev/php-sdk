@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for BatchGetUsers.
  */
-class BatchGetUsersResponse implements \JsonSerializable, JsonUnserializable
+final class BatchGetUsersResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The user results.
@@ -21,6 +21,9 @@ class BatchGetUsersResponse implements \JsonSerializable, JsonUnserializable
      */
     public array $users;
 
+    /**
+     * @param null|\UserHub\AdminV1\UserResult[] $users
+     */
     public function __construct(
         null|array $users = null,
     ) {

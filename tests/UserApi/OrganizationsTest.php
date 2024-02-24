@@ -41,6 +41,7 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->list();
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/user/v1/organizations', $tr->request->path);
     }
@@ -64,6 +65,7 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->create();
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/user/v1/organizations', $tr->request->path);
     }
@@ -87,6 +89,7 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->get(organizationId: 'organizationId');
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/user/v1/organizations/organizationId', $tr->request->path);
     }
@@ -110,6 +113,7 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->update(organizationId: 'organizationId');
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('PATCH', $tr->request->method);
         self::assertEquals('/user/v1/organizations/organizationId', $tr->request->path);
     }
@@ -133,6 +137,7 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->delete(organizationId: 'organizationId');
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('DELETE', $tr->request->method);
         self::assertEquals('/user/v1/organizations/organizationId', $tr->request->path);
     }
@@ -148,6 +153,7 @@ final class OrganizationsTest extends TestCase
 
         $res = $n->leave(organizationId: 'organizationId');
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('DELETE', $tr->request->method);
         self::assertEquals('/user/v1/organizations/organizationId:leave', $tr->request->path);
     }

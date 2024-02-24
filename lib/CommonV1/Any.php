@@ -9,7 +9,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Contains an arbitrary serialized message along with a @var that describes the type of the serialized message.
  */
-class Any implements \JsonSerializable, JsonUnserializable
+final class Any implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The type of the serialized message.

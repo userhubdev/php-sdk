@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The products which the plan group includes.
  */
-class PlanGroupRevisionItem implements \JsonSerializable, JsonUnserializable
+final class PlanGroupRevisionItem implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The product associated with the item.

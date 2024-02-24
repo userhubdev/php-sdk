@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
 /**
  * A bill or statement.
  */
-class Invoice implements \JsonSerializable, JsonUnserializable
+final class Invoice implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the invoice.
@@ -168,6 +168,10 @@ class Invoice implements \JsonSerializable, JsonUnserializable
      */
     public \DateTimeInterface $updateTime;
 
+    /**
+     * @param null|\UserHub\AdminV1\InvoiceItem[]   $items
+     * @param null|\UserHub\AdminV1\InvoiceChange[] $changes
+     */
     public function __construct(
         null|string $id = null,
         null|string $state = null,

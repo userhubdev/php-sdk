@@ -14,7 +14,7 @@ use UserHub\Internal\Util;
  * The actual plan within the plan group. This defines the associated
  * connection and billing interval.
  */
-class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializable
+final class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The client defined unique identifier for the plan (e.g. `monthly`).
@@ -58,6 +58,9 @@ class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializable
      */
     public string $visibility;
 
+    /**
+     * @param null|\UserHub\AdminV1\Price[] $prices
+     */
     public function __construct(
         null|string $uniqueId = null,
         null|Connection $connection = null,

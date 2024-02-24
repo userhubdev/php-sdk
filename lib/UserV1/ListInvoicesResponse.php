@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListInvoices.
  */
-class ListInvoicesResponse implements \JsonSerializable, JsonUnserializable
+final class ListInvoicesResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of invoices.
@@ -34,6 +34,9 @@ class ListInvoicesResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\UserV1\Invoice[] $invoices
+     */
     public function __construct(
         null|array $invoices = null,
         null|string $nextPageToken = null,

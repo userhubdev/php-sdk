@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for listing custom users.
  */
-class ListCustomUsersResponse implements \JsonSerializable, JsonUnserializable
+final class ListCustomUsersResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of users.
@@ -31,6 +31,9 @@ class ListCustomUsersResponse implements \JsonSerializable, JsonUnserializable
      */
     public string $nextPageToken;
 
+    /**
+     * @param null|\UserHub\ConnectionsV1\CustomUser[] $users
+     */
     public function __construct(
         null|array $users = null,
         null|string $nextPageToken = null,

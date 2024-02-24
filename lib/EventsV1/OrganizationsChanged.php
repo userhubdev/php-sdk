@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The organizations changed event.
  */
-class OrganizationsChanged implements \JsonSerializable, JsonUnserializable
+final class OrganizationsChanged implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The organization.

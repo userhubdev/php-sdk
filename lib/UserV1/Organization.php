@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * A group account.
  */
-class Organization implements \JsonSerializable, JsonUnserializable
+final class Organization implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the organization.

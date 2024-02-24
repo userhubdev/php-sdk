@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListUsers.
  */
-class ListUsersResponse implements \JsonSerializable, JsonUnserializable
+final class ListUsersResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of users.
@@ -34,6 +34,9 @@ class ListUsersResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\User[] $users
+     */
     public function __construct(
         null|array $users = null,
         null|string $nextPageToken = null,

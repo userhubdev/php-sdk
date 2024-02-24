@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The stripe billing specific connection data.
  */
-class StripeConnection implements \JsonSerializable, JsonUnserializable
+final class StripeConnection implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The Stripe account ID (e.g. `acct_1LcUvxQYGbxD2SPK`).

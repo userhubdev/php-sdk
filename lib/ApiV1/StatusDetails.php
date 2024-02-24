@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
  * The API error with the fields that already exist
  * in Status removed.
  */
-class StatusDetails implements \JsonSerializable, JsonUnserializable
+final class StatusDetails implements \JsonSerializable, JsonUnserializable
 {
     /**
      * A reason code for the error (e.g. `PENDING_DELETION`).
@@ -27,18 +27,21 @@ class StatusDetails implements \JsonSerializable, JsonUnserializable
     /**
      * Additional metadata related to the error.
      *
-     * @var object<string, string>
+     * @var array<string, string>
      */
-    public object $metadata;
+    public array $metadata;
 
+    /**
+     * @param null|array<string, string> $metadata
+     */
     public function __construct(
         null|string $reason = null,
         null|string $param = null,
-        null|object $metadata = null,
+        null|array $metadata = null,
     ) {
         $this->reason = $reason ?? null;
         $this->param = $param ?? null;
-        $this->metadata = $metadata ?? (object) [];
+        $this->metadata = $metadata ?? [];
     }
 
     public function jsonSerialize(): mixed
@@ -59,7 +62,7 @@ class StatusDetails implements \JsonSerializable, JsonUnserializable
         return new self(
             $data->{'reason'} ?? null,
             $data->{'param'} ?? null,
-            $data->{'metadata'} ?? null,
+            isset($data->{'metadata'}) ? (array) $data->{'metadata'} : null,
         );
     }
 }

@@ -45,12 +45,12 @@ final class WebhookTest extends TestCase
             $request->headers['UserHub-Timestamp'] = (string) time();
         }
         if ($setSignature || $addSignature) {
-            $timestamp = $request->headers['UserHub-Timestamp'];
+            $timestamp = $request->headers->get('UserHub-Timestamp');
 
             $signature = hash_hmac('sha256', $timestamp.'.'.$request->body, $secret);
 
             if ($setSignature) {
-                $header = $request->headers['UserHub-Signature'] ?: '';
+                $header = $request->headers->get('UserHub-Signature');
 
                 if (!str_contains($header, '{signature}')) {
                     $header = str_replace('{signature}', $signature, $header);
@@ -87,6 +87,9 @@ final class WebhookTest extends TestCase
         self::assertEquals($expected, $actual);
     }
 
+    /**
+     * @return iterable<mixed>
+     */
     public static function provideHandleCases(): iterable
     {
         return [

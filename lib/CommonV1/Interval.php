@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * A time interval.
  */
-class Interval implements \JsonSerializable, JsonUnserializable
+final class Interval implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The interval quantity.

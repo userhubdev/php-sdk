@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Operations metadata.
  */
-class OperationInfo implements \JsonSerializable, JsonUnserializable
+final class OperationInfo implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The message name of the primary return type for this operation.

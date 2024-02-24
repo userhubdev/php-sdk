@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * A card payment method (e.g. credit, debit, etc...).
  */
-class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
+final class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The brand of the card (e.g. `VISA`).

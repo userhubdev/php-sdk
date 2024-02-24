@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The Google Cloud Identity Platform/Firebase specific connection data.
  */
-class GoogleCloudIdentityPlatformConnection implements \JsonSerializable, JsonUnserializable
+final class GoogleCloudIdentityPlatformConnection implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The service account key in JSON format.

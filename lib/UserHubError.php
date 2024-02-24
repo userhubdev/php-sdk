@@ -63,13 +63,13 @@ class UserHubError extends \Exception implements \JsonSerializable
             $this->apiCode = $apiCode;
         }
         if (!empty($reason)) {
-            $status->reason = $reason;
+            $this->reason = $reason;
         }
         if (!empty($param)) {
-            $status->param = $param;
+            $this->param = $param;
         }
         if (!empty($metadata)) {
-            $status->metadata = $metadata;
+            $this->metadata = $metadata;
         }
     }
 
@@ -84,6 +84,7 @@ class UserHubError extends \Exception implements \JsonSerializable
         $hasApiCode = isset($this->apiCode) && Code::Unknown !== $this->apiCode;
 
         if ($hasApiCode) {
+            // @phpstan-ignore-next-line
             $parts[] = "apiCode: {$this->apiCode->value}";
         }
 

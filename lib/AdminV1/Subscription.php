@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * The representation of an activated plan.
  */
-class Subscription implements \JsonSerializable, JsonUnserializable
+final class Subscription implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the subscription.
@@ -140,6 +140,10 @@ class Subscription implements \JsonSerializable, JsonUnserializable
      */
     public \DateTimeInterface $updateTime;
 
+    /**
+     * @param null|\UserHub\AdminV1\SubscriptionItem[]     $items
+     * @param null|\UserHub\AdminV1\SubscriptionSeatInfo[] $seats
+     */
     public function __construct(
         null|string $id = null,
         null|string $state = null,

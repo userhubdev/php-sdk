@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for CreateApiSession.
  */
-class CreateApiSessionResponse implements \JsonSerializable, JsonUnserializable
+final class CreateApiSessionResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * An authorization token which can be used to access the User API.

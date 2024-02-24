@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Result wrapper for an organization.
  */
-class OrganizationResult implements \JsonSerializable, JsonUnserializable
+final class OrganizationResult implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The organization.

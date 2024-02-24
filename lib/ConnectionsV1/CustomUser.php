@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The user object for the Custom Users connection.
  */
-class CustomUser implements \JsonSerializable, JsonUnserializable
+final class CustomUser implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The external identifier for the user.

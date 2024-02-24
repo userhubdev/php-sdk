@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Response message for CreatePortalSession.
  */
-class CreatePortalSessionResponse implements \JsonSerializable, JsonUnserializable
+final class CreatePortalSessionResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The URL you should redirect the user to after calling create portal

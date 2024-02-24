@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
  * A trigger is a way to run connection functionality when specific events
  * occur.
  */
-class Trigger implements \JsonSerializable, JsonUnserializable
+final class Trigger implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The connection.

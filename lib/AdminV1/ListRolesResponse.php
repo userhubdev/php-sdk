@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListRoles.
  */
-class ListRolesResponse implements \JsonSerializable, JsonUnserializable
+final class ListRolesResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of roles.
@@ -34,6 +34,9 @@ class ListRolesResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\Role[] $roles
+     */
     public function __construct(
         null|array $roles = null,
         null|string $nextPageToken = null,

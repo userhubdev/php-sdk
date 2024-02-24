@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * A member of an organization.
  */
-class Member implements \JsonSerializable, JsonUnserializable
+final class Member implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The user.

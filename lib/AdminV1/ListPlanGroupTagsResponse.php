@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListPlanGroupTags.
  */
-class ListPlanGroupTagsResponse implements \JsonSerializable, JsonUnserializable
+final class ListPlanGroupTagsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of plan group tags.
@@ -34,6 +34,9 @@ class ListPlanGroupTagsResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\PlanGroupTag[] $planGroupTags
+     */
     public function __construct(
         null|array $planGroupTags = null,
         null|string $nextPageToken = null,

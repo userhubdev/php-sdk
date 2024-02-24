@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListPlanGroupChangePaths.
  */
-class ListPlanGroupChangePathsResponse implements \JsonSerializable, JsonUnserializable
+final class ListPlanGroupChangePathsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of change paths.
@@ -34,6 +34,9 @@ class ListPlanGroupChangePathsResponse implements \JsonSerializable, JsonUnseria
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\PlanGroupChangePath[] $planGroupChangePaths
+     */
     public function __construct(
         null|array $planGroupChangePaths = null,
         null|string $nextPageToken = null,

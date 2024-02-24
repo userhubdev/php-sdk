@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for SearchUsers.
  */
-class SearchUsersResponse implements \JsonSerializable, JsonUnserializable
+final class SearchUsersResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The search of users.
@@ -42,6 +42,9 @@ class SearchUsersResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|int $totalSize;
 
+    /**
+     * @param null|\UserHub\AdminV1\User[] $users
+     */
     public function __construct(
         null|array $users = null,
         null|string $nextPageToken = null,

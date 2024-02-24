@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The connection associated with the event.
  */
-class EventConnection implements \JsonSerializable, JsonUnserializable
+final class EventConnection implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the connection.

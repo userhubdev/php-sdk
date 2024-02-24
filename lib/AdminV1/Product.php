@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Product describes a service a tenant provides.
  */
-class Product implements \JsonSerializable, JsonUnserializable
+final class Product implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the product.
@@ -76,6 +76,9 @@ class Product implements \JsonSerializable, JsonUnserializable
      */
     public \DateTimeInterface $updateTime;
 
+    /**
+     * @param null|\UserHub\AdminV1\ProductConnection[] $productConnections
+     */
     public function __construct(
         null|string $id = null,
         null|string $uniqueId = null,

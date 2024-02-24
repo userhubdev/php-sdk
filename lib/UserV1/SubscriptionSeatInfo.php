@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The subscription seat.
  */
-class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializable
+final class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The subscription item product.

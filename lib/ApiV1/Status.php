@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The full API error.
  */
-class Status implements \JsonSerializable, JsonUnserializable
+final class Status implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The general error code (e.g. `INVALID_ARGUMENT`).
@@ -36,22 +36,25 @@ class Status implements \JsonSerializable, JsonUnserializable
     /**
      * Additional metadata related to the error.
      *
-     * @var object<string, string>
+     * @var array<string, string>
      */
-    public object $metadata;
+    public array $metadata;
 
+    /**
+     * @param null|array<string, string> $metadata
+     */
     public function __construct(
         null|string $code = null,
         null|string $message = null,
         null|string $reason = null,
         null|string $param = null,
-        null|object $metadata = null,
+        null|array $metadata = null,
     ) {
         $this->code = $code ?? '';
         $this->message = $message ?? '';
         $this->reason = $reason ?? null;
         $this->param = $param ?? null;
-        $this->metadata = $metadata ?? (object) [];
+        $this->metadata = $metadata ?? [];
     }
 
     public function jsonSerialize(): mixed
@@ -76,7 +79,7 @@ class Status implements \JsonSerializable, JsonUnserializable
             $data->{'message'} ?? null,
             $data->{'reason'} ?? null,
             $data->{'param'} ?? null,
-            $data->{'metadata'} ?? null,
+            isset($data->{'metadata'}) ? (array) $data->{'metadata'} : null,
         );
     }
 }

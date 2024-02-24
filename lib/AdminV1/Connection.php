@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * An integration that connects your tenant to an external system.
  */
-class Connection implements \JsonSerializable, JsonUnserializable
+final class Connection implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the connection.
@@ -104,6 +104,9 @@ class Connection implements \JsonSerializable, JsonUnserializable
      */
     public null|WebhookConnection $webhook;
 
+    /**
+     * @param null|\UserHub\AdminV1\ConnectionProvider[] $providers
+     */
     public function __construct(
         null|string $id = null,
         null|string $uniqueId = null,

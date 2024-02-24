@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * The signing secret for the webhook.
  */
-class SigningSecret implements \JsonSerializable, JsonUnserializable
+final class SigningSecret implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The signing secret value.

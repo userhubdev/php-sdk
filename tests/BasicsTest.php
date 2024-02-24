@@ -70,10 +70,11 @@ final class BasicsTest extends TestCase
         self::assertSame('Jane Doe', $user->displayName);
 
         $data = $user->jsonSerialize();
+        self::assertInstanceOf(\stdClass::class, $data);
         self::assertObjectHasProperty('displayName', $data);
         self::assertSame('Jane Doe', $data->displayName);
 
-        $encodedJson = json_encode($data);
+        $encodedJson = json_encode($data) ?: '';
         $decodedUser = User::jsonUnserialize(json_decode($encodedJson));
         self::assertEquals($user, $decodedUser);
     }
@@ -93,6 +94,7 @@ final class BasicsTest extends TestCase
         self::assertEquals('Jane Doe', $res->displayName);
 
         $req = self::$server->getLastRequest();
+        self::assertNotNull($req);
         self::assertEquals('GET', $req->getRequestMethod());
         self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
     }
@@ -112,6 +114,7 @@ final class BasicsTest extends TestCase
         self::assertEquals('Jane Doe', $res->displayName);
 
         $req = self::$server->getLastRequest();
+        self::assertNotNull($req);
         self::assertEquals('POST', $req->getRequestMethod());
         self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
         self::assertEquals('{"displayName":"Jane Doe"}', $req->getInput());
@@ -129,6 +132,7 @@ final class BasicsTest extends TestCase
         self::assertEmpty($res->displayName);
 
         $req = self::$server->getLastRequest();
+        self::assertNotNull($req);
         self::assertEquals('{}', $req->getInput());
     }
 
@@ -147,6 +151,7 @@ final class BasicsTest extends TestCase
         self::assertEquals('Jane Doe', $res->displayName);
 
         $req = self::$server->getLastRequest();
+        self::assertNotNull($req);
         self::assertEquals('PATCH', $req->getRequestMethod());
         self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
         self::assertEquals('{"displayName":"Jane Doe"}', $req->getInput());
@@ -164,6 +169,7 @@ final class BasicsTest extends TestCase
         self::assertEmpty($res->displayName);
 
         $req = self::$server->getLastRequest();
+        self::assertNotNull($req);
         self::assertEquals('{"displayName":""}', $req->getInput());
     }
 
@@ -182,6 +188,7 @@ final class BasicsTest extends TestCase
         self::assertEquals('Jane Doe', $res->displayName);
 
         $req = self::$server->getLastRequest();
+        self::assertNotNull($req);
         self::assertEquals('DELETE', $req->getRequestMethod());
         self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
     }

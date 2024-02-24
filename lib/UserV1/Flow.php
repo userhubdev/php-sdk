@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * An invitation, task, or user request (e.g. join organization).
  */
-class Flow implements \JsonSerializable, JsonUnserializable
+final class Flow implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the flow.

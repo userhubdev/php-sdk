@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The subscriptions changed event.
  */
-class SubscriptionsChanged implements \JsonSerializable, JsonUnserializable
+final class SubscriptionsChanged implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The subscription.

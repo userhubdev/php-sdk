@@ -14,7 +14,11 @@ final class Request
     public string $call;
     public string $method;
     public string $path;
-    public ?Headers $headers;
+    public Headers $headers;
+
+    /**
+     * @var null|array<string, string>
+     */
     public ?array $query;
     public mixed $body;
     public int $attempt;
@@ -25,7 +29,7 @@ final class Request
         $this->call = $call;
         $this->method = $method;
         $this->path = $path;
-        $this->headers = null;
+        $this->headers = new Headers();
         $this->query = null;
         $this->body = null;
         $this->attempt = 0;
@@ -39,9 +43,6 @@ final class Request
 
     public function setHeader(string $name, string $value): void
     {
-        if (empty($this->headers)) {
-            $this->headers = new Headers();
-        }
         $this->headers[$name] = $value;
     }
 
@@ -57,11 +58,15 @@ final class Request
             $value = $value ? 'true' : 'false';
         } elseif ($value instanceof \DateTimeInterface) {
             $value = Util::encodeDateTime($value);
-        } elseif (!\is_string($value)) {
-            $value = "{$value}";
+        } elseif (\is_float($value) || \is_int($value)) {
+            $value = (string) $value;
         }
 
-        $this->query[$name] = $value;
+        if (\is_string($value)) {
+            $this->query[$name] = $value;
+        } else {
+            throw new \TypeError('Got unexpected value: '.\gettype($value));
+        }
     }
 
     public function setBody(mixed $body): void
@@ -100,7 +105,7 @@ final class Request
             }
         }
 
-        if ($e instanceof \Throwable) {
+        if ($e->getPrevious() instanceof \Throwable) {
             return $this->shouldRetry($e->getPrevious());
         }
 
@@ -118,6 +123,7 @@ final class Request
         }
 
         $timeout = (2 ** ($this->attempt - 1)) * Constants::RETRY_MULTIPLIER_MS;
+        // @phpstan-ignore-next-line
         if ($timeout > Constants::RETRY_MAX_SLEEP_MS) {
             $timeout = Constants::RETRY_MAX_SLEEP_MS;
         }

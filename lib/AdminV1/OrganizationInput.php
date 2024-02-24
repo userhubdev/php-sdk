@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
 /**
  * Organization input parameters.
  */
-class OrganizationInput implements \JsonSerializable, JsonUnserializable
+final class OrganizationInput implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the organization.

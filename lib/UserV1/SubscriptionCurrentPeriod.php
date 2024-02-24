@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Information about the current billing period.
  */
-class SubscriptionCurrentPeriod implements \JsonSerializable, JsonUnserializable
+final class SubscriptionCurrentPeriod implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The time the current billing period started.

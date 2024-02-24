@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Request message for deleting a custom user.
  */
-class DeleteCustomUserRequest implements \JsonSerializable, JsonUnserializable
+final class DeleteCustomUserRequest implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The external identifier for the user.

@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListMembers.
  */
-class ListMembersResponse implements \JsonSerializable, JsonUnserializable
+final class ListMembersResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of members.
@@ -34,6 +34,9 @@ class ListMembersResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\Member[] $members
+     */
     public function __construct(
         null|array $members = null,
         null|string $nextPageToken = null,

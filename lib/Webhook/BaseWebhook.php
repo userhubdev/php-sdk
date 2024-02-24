@@ -16,6 +16,10 @@ use UserHub\UserHubError;
 class BaseWebhook
 {
     private string $signingSecret;
+
+    /**
+     * @var array<string, callable(Request): Response>
+     */
     private array $handlers;
     private null|\Closure $onError;
 
@@ -25,7 +29,7 @@ class BaseWebhook
     ) {
         $this->signingSecret = $signingSecret;
         $this->handlers = [];
-        if (Undefined::is($onError)) {
+        if ($onError instanceof Undefined) {
             $this->onError = self::defaultOnError(...);
         } else {
             $this->onError = isset($onError) ? $onError(...) : null;
@@ -63,8 +67,10 @@ class BaseWebhook
     /**
      * Registers a handler for the specified action.
      *
-     * @param string                                $name    is the action name
-     * @param null|callable(string, string): string $handler is the action handler
+     * @param string                           $name    is the action name
+     * @param null|callable(Request): Response $handler is the action handler
+     *
+     * @return static
      */
     public function onAction(string $name, null|callable $handler): self
     {
@@ -82,7 +88,9 @@ class BaseWebhook
     /**
      * Registers a fallback action handler.
      *
-     * @param null|callable(string, string): string $handler is the fallback handler
+     * @param null|callable(Request): Response $handler is the fallback handler
+     *
+     * @return static
      */
     public function onDefault(null|callable $handler): self
     {
@@ -191,7 +199,7 @@ class BaseWebhook
         }
 
         foreach ($res->headers as $name => $value) {
-            header("{$name}: {$value}");
+            header($name.': '.$res->headers->get($name));
         }
 
         http_response_code($res->statusCode);

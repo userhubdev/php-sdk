@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The join organization flow.
  */
-class JoinOrganizationFlow implements \JsonSerializable, JsonUnserializable
+final class JoinOrganizationFlow implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The display name of the invitee.

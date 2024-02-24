@@ -57,7 +57,7 @@ class Flows
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([ListFlowsResponse::class, 'jsonUnserialize']);
+        return ListFlowsResponse::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -93,7 +93,7 @@ class Flows
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([Flow::class, 'jsonUnserialize']);
+        return Flow::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -109,7 +109,7 @@ class Flows
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([Flow::class, 'jsonUnserialize']);
+        return Flow::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -130,7 +130,7 @@ class Flows
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([Flow::class, 'jsonUnserialize']);
+        return Flow::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -152,6 +152,6 @@ class Flows
 
         $res = $this->transport->execute($req);
 
-        return $res->decodeBody([Flow::class, 'jsonUnserialize']);
+        return Flow::jsonUnserialize($res->decodeBody());
     }
 }

@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
 /**
  * User input parameters.
  */
-class UserInput implements \JsonSerializable, JsonUnserializable
+final class UserInput implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the user.

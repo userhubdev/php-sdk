@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The trial settings.
  */
-class PlanGroupTrial implements \JsonSerializable, JsonUnserializable
+final class PlanGroupTrial implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The number of days in the trial.

@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListEvents.
  */
-class ListEventsResponse implements \JsonSerializable, JsonUnserializable
+final class ListEventsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of events.
@@ -34,6 +34,9 @@ class ListEventsResponse implements \JsonSerializable, JsonUnserializable
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\AdminV1\Event[] $events
+     */
     public function __construct(
         null|array $events = null,
         null|string $nextPageToken = null,

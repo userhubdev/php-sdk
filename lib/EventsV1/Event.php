@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * The event.
  */
-class Event implements \JsonSerializable, JsonUnserializable
+final class Event implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The event identifier.

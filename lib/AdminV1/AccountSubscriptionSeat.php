@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The user's seat information.
  */
-class AccountSubscriptionSeat implements \JsonSerializable, JsonUnserializable
+final class AccountSubscriptionSeat implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The seat product.

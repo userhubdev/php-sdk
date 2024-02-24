@@ -13,7 +13,7 @@ use UserHub\Internal\Util;
  * Event describes a service a tenant provides. Multiple
  * events can be multiple and sold using a plan.
  */
-class Event implements \JsonSerializable, JsonUnserializable
+final class Event implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The system-assigned identifier of the event.

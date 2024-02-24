@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * A Stripe payment intent.
  */
-class StripePaymentIntent implements \JsonSerializable, JsonUnserializable
+final class StripePaymentIntent implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The Stripe account ID (e.g. `acct_1LcUvxQYGbxD2SPK`).

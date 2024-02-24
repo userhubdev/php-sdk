@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The line items for the invoice.
  */
-class InvoiceItem implements \JsonSerializable, JsonUnserializable
+final class InvoiceItem implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The identifier of the item.

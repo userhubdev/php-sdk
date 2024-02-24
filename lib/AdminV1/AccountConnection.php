@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * A link between a account and an external account.
  */
-class AccountConnection implements \JsonSerializable, JsonUnserializable
+final class AccountConnection implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The tenant connection.
@@ -82,6 +82,9 @@ class AccountConnection implements \JsonSerializable, JsonUnserializable
      */
     public \DateTimeInterface $updateTime;
 
+    /**
+     * @param null|\UserHub\AdminV1\PaymentMethod[] $paymentMethods
+     */
     public function __construct(
         null|Connection $connection = null,
         null|string $externalId = null,

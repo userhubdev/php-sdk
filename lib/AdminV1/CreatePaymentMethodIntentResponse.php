@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Response message for CreatePaymentMethodIntent.
  */
-class CreatePaymentMethodIntentResponse implements \JsonSerializable, JsonUnserializable
+final class CreatePaymentMethodIntentResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The setup token for the billing system (e.g. Stripe SetupIntent

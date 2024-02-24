@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * The builtin email specific connection data.
  */
-class BuiltinEmailConnection implements \JsonSerializable, JsonUnserializable
+final class BuiltinEmailConnection implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The allowed email list.
@@ -20,6 +20,9 @@ class BuiltinEmailConnection implements \JsonSerializable, JsonUnserializable
      */
     public array $allowedEmails;
 
+    /**
+     * @param null|string[] $allowedEmails
+     */
     public function __construct(
         null|array $allowedEmails = null,
     ) {

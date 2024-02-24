@@ -52,7 +52,7 @@ try {
     echo $e.PHP_EOL;
     echo PHP_EOL;
     echo 'UserHub error:'.PHP_EOL;
-    echo ' - ApiCode: '.$e->getApiCode().PHP_EOL;
+    echo ' - ApiCode: '.$e->getApiCode()->value.PHP_EOL;
     echo ' - Message: '.$e->getMessage().PHP_EOL;
     echo ' - Reason: '.$e->getReason().PHP_EOL;
     echo ' - Param: '.$e->getParam().PHP_EOL;

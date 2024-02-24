@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Configuration for setting up a payment method.
  */
-class PaymentMethodIntent implements \JsonSerializable, JsonUnserializable
+final class PaymentMethodIntent implements \JsonSerializable, JsonUnserializable
 {
     /**
      * A Stripe Setup Intent.

@@ -11,7 +11,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * A quantity transform for fixed prices.
  */
-class PriceTransformQuantity implements \JsonSerializable, JsonUnserializable
+final class PriceTransformQuantity implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The amount to divide the quantity by.

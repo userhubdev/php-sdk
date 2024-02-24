@@ -40,6 +40,7 @@ final class FlowsTest extends TestCase
 
         $res = $n->list();
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/user/v1/flows', $tr->request->path);
     }
@@ -98,6 +99,7 @@ final class FlowsTest extends TestCase
 
         $res = $n->createJoinOrganization();
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/user/v1/flows:createJoinOrganization', $tr->request->path);
     }
@@ -156,6 +158,7 @@ final class FlowsTest extends TestCase
 
         $res = $n->get(flowId: 'flowId');
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/user/v1/flows/flowId', $tr->request->path);
     }
@@ -214,6 +217,7 @@ final class FlowsTest extends TestCase
 
         $res = $n->consume(flowId: 'flowId');
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/user/v1/flows/flowId:consume', $tr->request->path);
     }
@@ -272,6 +276,7 @@ final class FlowsTest extends TestCase
 
         $res = $n->cancel(flowId: 'flowId');
         self::assertNotNull($res);
+        self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/user/v1/flows/flowId:cancel', $tr->request->path);
     }

@@ -12,7 +12,7 @@ use UserHub\Internal\Util;
 /**
  * Response message for ListPaymentMethods.
  */
-class ListPaymentMethodsResponse implements \JsonSerializable, JsonUnserializable
+final class ListPaymentMethodsResponse implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The list of payment methods.
@@ -34,6 +34,9 @@ class ListPaymentMethodsResponse implements \JsonSerializable, JsonUnserializabl
      */
     public null|string $previousPageToken;
 
+    /**
+     * @param null|\UserHub\UserV1\PaymentMethod[] $paymentMethods
+     */
     public function __construct(
         null|array $paymentMethods = null,
         null|string $nextPageToken = null,

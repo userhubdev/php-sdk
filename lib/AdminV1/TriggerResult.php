@@ -12,7 +12,7 @@ use UserHub\Internal\JsonUnserializable;
 /**
  * Result wrapper for a trigger.
  */
-class TriggerResult implements \JsonSerializable, JsonUnserializable
+final class TriggerResult implements \JsonSerializable, JsonUnserializable
 {
     /**
      * The trigger.
