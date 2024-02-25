@@ -118,6 +118,50 @@ class Flows
     }
 
     /**
+     * Create a signup flow.
+     *
+     * This invites a person to join the app.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function createSignup(
+        null|string $email = null,
+        null|string $displayName = null,
+        null|bool $createOrganization = null,
+        null|string $creatorUserId = null,
+        null|\DateTimeInterface $expireTime = null,
+        null|string $ttl = null,
+    ): Flow {
+        $req = new Request('admin.flows.createSignup', 'POST', '/admin/v1/flows:createSignup');
+        $body = [];
+
+        if (!empty($email)) {
+            $body['email'] = $email;
+        }
+        if (!empty($displayName)) {
+            $body['displayName'] = $displayName;
+        }
+        if (!empty($createOrganization)) {
+            $body['createOrganization'] = $createOrganization;
+        }
+        if (!empty($creatorUserId)) {
+            $body['creatorUserId'] = $creatorUserId;
+        }
+        if (!empty($expireTime)) {
+            $body['expireTime'] = Util::encodeDateTime($expireTime);
+        }
+        if (!empty($ttl)) {
+            $body['ttl'] = $ttl;
+        }
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return Flow::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
      * Retrieves specified flow.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
