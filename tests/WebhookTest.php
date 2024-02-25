@@ -10,8 +10,8 @@ use UserHub\EventsV1\Event;
 use UserHub\Internal\Constants;
 use UserHub\UserHubError;
 use UserHub\Webhook;
-use UserHub\Webhook\Request;
-use UserHub\Webhook\Response;
+use UserHub\Webhook\WebhookRequest;
+use UserHub\Webhook\WebhookResponse;
 
 /**
  * @internal
@@ -26,8 +26,8 @@ final class WebhookTest extends TestCase
     public function testHandle(
         string $name,
         string $secret,
-        Request $request,
-        Response $response,
+        WebhookRequest $request,
+        WebhookResponse $response,
         bool $setTimestamp,
         bool $setSignature,
         bool $addSignature,
@@ -96,9 +96,9 @@ final class WebhookTest extends TestCase
             [
                 'Signing secret is required',
                 '',
-                new Request(
+                new WebhookRequest(
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"Signing secret is required","code":"UNKNOWN"}',
                 ),
@@ -109,9 +109,9 @@ final class WebhookTest extends TestCase
             [
                 'Headers are required',
                 'test',
-                new Request(
+                new WebhookRequest(
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"Headers are required","code":"UNKNOWN"}',
                 ),
@@ -122,12 +122,12 @@ final class WebhookTest extends TestCase
             [
                 'Body is required',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'content-type' => 'application/json',
                     ],
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"Body is required","code":"UNKNOWN"}',
                 ),
@@ -138,13 +138,13 @@ final class WebhookTest extends TestCase
             [
                 'UserHub-Action header is missing',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'content-type' => 'application/json',
                     ],
                     body: '{}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"UserHub-Action header is missing","code":"UNKNOWN"}',
                 ),
@@ -155,13 +155,13 @@ final class WebhookTest extends TestCase
             [
                 'UserHub-Timestamp header is missing',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'events.handle',
                     ],
                     body: '{}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"UserHub-Timestamp header is missing","code":"UNKNOWN"}',
                 ),
@@ -172,13 +172,13 @@ final class WebhookTest extends TestCase
             [
                 'UserHub-Signature header is missing',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'events.handle',
                     ],
                     body: '{}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"UserHub-Signature header is missing","code":"UNKNOWN"}',
                 ),
@@ -189,14 +189,14 @@ final class WebhookTest extends TestCase
             [
                 'Signatures normalized to nothing',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'events.handle',
                         'UserHub-Signature' => ',',
                     ],
                     body: '{}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"UserHub-Signature header normalized to nothing","code":"UNKNOWN"}',
                 ),
@@ -207,7 +207,7 @@ final class WebhookTest extends TestCase
             [
                 'Timestamp is invalid',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'events.handle',
                         'UserHub-Timestamp' => 'timestamp',
@@ -215,7 +215,7 @@ final class WebhookTest extends TestCase
                     ],
                     body: '{}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"Timestamp is invalid: timestamp","code":"UNKNOWN"}',
                 ),
@@ -226,7 +226,7 @@ final class WebhookTest extends TestCase
             [
                 'Timestamp is too far in the past',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'events.handle',
                         'UserHub-Timestamp' => '1',
@@ -234,7 +234,7 @@ final class WebhookTest extends TestCase
                     ],
                     body: '{}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"Timestamp is too far in the past: 1","code":"UNKNOWN"}',
                 ),
@@ -245,7 +245,7 @@ final class WebhookTest extends TestCase
             [
                 'Timestamp is too far in the past',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'events.handle',
                         'UserHub-Timestamp' => '5000000000',
@@ -253,7 +253,7 @@ final class WebhookTest extends TestCase
                     ],
                     body: '{}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"Timestamp is too far in the future: 5000000000","code":"UNKNOWN"}',
                 ),
@@ -264,14 +264,14 @@ final class WebhookTest extends TestCase
             [
                 'Signatures do not match',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'events.handle',
                         'UserHub-Signature' => 'fail',
                     ],
                     body: '{}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 500,
                     body: '{"message":"Signatures do not match","code":"UNKNOWN"}',
                 ),
@@ -282,13 +282,13 @@ final class WebhookTest extends TestCase
             [
                 'Challenge',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'challenge',
                     ],
                     body: '{"challenge": "some-value"}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 200,
                     body: '{"challenge": "some-value"}',
                 ),
@@ -299,14 +299,14 @@ final class WebhookTest extends TestCase
             [
                 'Handle multiple signature headers',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'challenge',
                         'UserHub-Signature' => 'fail',
                     ],
                     body: '{"challenge": "some-value"}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 200,
                     body: '{"challenge": "some-value"}',
                 ),
@@ -317,14 +317,14 @@ final class WebhookTest extends TestCase
             [
                 'Handle combined signature headers',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'challenge',
                         'UserHub-Signature' => 'fail, {signature}',
                     ],
                     body: '{"challenge": "some-value"}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 200,
                     body: '{"challenge": "some-value"}',
                 ),
@@ -335,13 +335,13 @@ final class WebhookTest extends TestCase
             [
                 'Handler not implemented',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'unknown',
                     ],
                     body: '{}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 501,
                     body: '{"message":"Handler not implemented: unknown","code":"UNIMPLEMENTED"}',
                 ),
@@ -352,13 +352,13 @@ final class WebhookTest extends TestCase
             [
                 'Event handler succeeds',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'events.handle',
                     ],
                     body: '{"type": "ok"}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 200,
                     body: '{}',
                 ),
@@ -369,13 +369,13 @@ final class WebhookTest extends TestCase
             [
                 'Event handler errors',
                 'test',
-                new Request(
+                new WebhookRequest(
                     headers: [
                         'UserHub-Action' => 'events.handle',
                     ],
                     body: '{"type": "fail"}',
                 ),
-                new Response(
+                new WebhookResponse(
                     statusCode: 400,
                     body: '{"message":"Event failed: fail","code":"INVALID_ARGUMENT"}',
                 ),

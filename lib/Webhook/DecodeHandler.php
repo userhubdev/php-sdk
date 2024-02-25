@@ -24,7 +24,7 @@ final class DecodeHandler
     /**
      * @throws UserHubError
      */
-    public function __invoke(Request $req): Response
+    public function __invoke(WebhookRequest $req): WebhookResponse
     {
         try {
             $data = \call_user_func($this->decoder, json_decode($req->body, flags: JSON_THROW_ON_ERROR));

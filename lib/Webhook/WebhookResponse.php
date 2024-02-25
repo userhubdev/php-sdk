@@ -6,7 +6,7 @@ namespace UserHub\Webhook;
 
 use UserHub\Internal\Headers;
 
-class Response
+class WebhookResponse
 {
     public int $statusCode;
     public Headers $headers;
