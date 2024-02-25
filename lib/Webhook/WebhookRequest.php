@@ -8,7 +8,7 @@ use UserHub\Internal\Constants;
 use UserHub\Internal\Headers;
 use UserHub\UserHubError;
 
-class Request
+class WebhookRequest
 {
     public Headers $headers;
     public string $body;

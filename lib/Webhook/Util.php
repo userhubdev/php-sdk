@@ -12,7 +12,7 @@ use UserHub\UserHubError;
  */
 abstract class Util
 {
-    public static function createResponse(mixed $value): Response
+    public static function createResponse(mixed $value): WebhookResponse
     {
         $statusCode = 200;
 
@@ -20,7 +20,7 @@ abstract class Util
             $body = '{}';
         } elseif (\is_string($value)) {
             $body = $value;
-        } elseif ($value instanceof Response) {
+        } elseif ($value instanceof WebhookResponse) {
             return $value;
         } elseif ($value instanceof \Exception) {
             if ($value instanceof UserHubError) {
@@ -44,7 +44,7 @@ abstract class Util
             }
         }
 
-        return new Response(
+        return new WebhookResponse(
             statusCode: $statusCode,
             headers: [
                 'Content-Type' => 'application/json',

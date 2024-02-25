@@ -18,7 +18,7 @@ class BaseWebhook
     private string $signingSecret;
 
     /**
-     * @var array<string, callable(Request): Response>
+     * @var array<string, callable(WebhookRequest): WebhookResponse>
      */
     private array $handlers;
     private null|\Closure $onError;
@@ -39,7 +39,7 @@ class BaseWebhook
     /**
      * Executes a handler based on specified Request.
      */
-    public function __invoke(Request $req): Response
+    public function __invoke(WebhookRequest $req): WebhookResponse
     {
         try {
             $this->verify($req);
@@ -67,8 +67,8 @@ class BaseWebhook
     /**
      * Registers a handler for the specified action.
      *
-     * @param string                           $name    is the action name
-     * @param null|callable(Request): Response $handler is the action handler
+     * @param string                                         $name    is the action name
+     * @param null|callable(WebhookRequest): WebhookResponse $handler is the action handler
      *
      * @return static
      */
@@ -88,7 +88,7 @@ class BaseWebhook
     /**
      * Registers a fallback action handler.
      *
-     * @param null|callable(Request): Response $handler is the fallback handler
+     * @param null|callable(WebhookRequest): WebhookResponse $handler is the fallback handler
      *
      * @return static
      */
@@ -103,7 +103,7 @@ class BaseWebhook
      *
      * @throws UserHubError
      */
-    public function verify(Request $req): void
+    public function verify(WebhookRequest $req): void
     {
         if (empty($this->signingSecret)) {
             throw new UserHubError('Signing secret is required');
@@ -154,7 +154,7 @@ class BaseWebhook
      * Creates a response from an object that can be encoded
      * using json_encode or an Exception.
      */
-    public function createResponse(mixed $value): Response
+    public function createResponse(mixed $value): WebhookResponse
     {
         if ($value instanceof \Exception) {
             $this->tryOnError($value);
@@ -192,7 +192,7 @@ class BaseWebhook
             if (\strlen($body) === Constants::WEBHOOK_MAX_REQUEST_SIZE_BYTES + 1) {
                 $res = $this->createResponse(new UserHubError('Request body exceeded max length'));
             } else {
-                $res = $this(new Request($headers, $body));
+                $res = $this(new WebhookRequest($headers, $body));
             }
         } else {
             $res = $this->createResponse(new UserHubError('Request should be a POST: '.$_SERVER['REQUEST_METHOD']));
@@ -223,7 +223,7 @@ class BaseWebhook
         error_log('UserHub webhook: '.$ex->getMessage());
     }
 
-    private static function challengeHandler(Request $req): Response
+    private static function challengeHandler(WebhookRequest $req): WebhookResponse
     {
         return Util::createResponse($req->body);
     }
@@ -231,7 +231,7 @@ class BaseWebhook
     /**
      * @throws UserHubError
      */
-    private static function unimplementedHandler(Request $req): Response
+    private static function unimplementedHandler(WebhookRequest $req): WebhookResponse
     {
         $name = $req->getAction();
 
