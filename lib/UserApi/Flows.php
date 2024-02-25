@@ -97,6 +97,38 @@ class Flows
     }
 
     /**
+     * Creates a signup flow.
+     *
+     * This invites a person to join the app.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function createSignup(
+        null|string $email = null,
+        null|string $displayName = null,
+        null|bool $createOrganization = null,
+    ): Flow {
+        $req = new Request('user.flows.createSignup', 'POST', '/user/v1/flows:createSignup');
+        $body = [];
+
+        if (!empty($email)) {
+            $body['email'] = $email;
+        }
+        if (!empty($displayName)) {
+            $body['displayName'] = $displayName;
+        }
+        if (!empty($createOrganization)) {
+            $body['createOrganization'] = $createOrganization;
+        }
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return Flow::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
      * Retrieves specified flow.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
@@ -106,6 +138,30 @@ class Flows
     ): Flow {
         $req = new Request('user.flows.get', 'GET', '/user/v1/flows/'.rawurlencode($flowId));
         $req->setIdempotent(true);
+
+        $res = $this->transport->execute($req);
+
+        return Flow::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Approve a flow.
+     *
+     * This will approve the specified flow and start the next step
+     * in the flow (e.g. for a join organization flow it will send the
+     * invitee an email with a link to join the organization).
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function approve(
+        string $flowId,
+    ): Flow {
+        $req = new Request('user.flows.approve', 'POST', '/user/v1/flows/'.rawurlencode($flowId).':approve');
+        $req->setIdempotent(true);
+
+        $body = [];
+
+        $req->setBody((object) $body);
 
         $res = $this->transport->execute($req);
 
