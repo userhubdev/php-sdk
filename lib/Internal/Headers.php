@@ -153,4 +153,26 @@ final class Headers implements \ArrayAccess, \Countable, \IteratorAggregate
 
         return $headers;
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function array(): array
+    {
+        $headers = [];
+
+        foreach ($this as $name => $value) {
+            if (\is_string($value) && !empty($v)) {
+                $headers[$name] = $value;
+            } elseif (\is_array($value)) {
+                foreach ($value as $v) {
+                    if (!empty($v) && \is_string($v)) {
+                        $headers[$name] = $v;
+                    }
+                }
+            }
+        }
+
+        return $headers;
+    }
 }

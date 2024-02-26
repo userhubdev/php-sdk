@@ -21,9 +21,9 @@ if (empty($signingSecret)) {
     exit(1);
 }
 
-$wh = new Webhook($signingSecret);
+$webhook = new Webhook($signingSecret);
 
-$wh->onEvent(static function (Event $event): void {
+$webhook->onEvent(static function (Event $event): void {
     error_log('Event: '.$event->type);
 
     switch ($event->type) {
@@ -41,4 +41,4 @@ $wh->onEvent(static function (Event $event): void {
     }
 });
 
-$wh->handleFromGlobals();
+$webhook->handleFromGlobals();

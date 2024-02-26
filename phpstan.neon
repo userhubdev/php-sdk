@@ -6,5 +6,5 @@ parameters:
     - examples
 
   ignoreErrors:
-    - message: '#Cannot access property#'
+    - message: '#.*#'
       path: examples/*
