@@ -34,8 +34,8 @@ final class WebhookTest extends TestCase
     ): void {
         $onError = static function (Exception $ex): void {};
 
-        $wh = new Webhook($secret, onError: $onError);
-        $wh->onEvent(static function (Event $event): void {
+        $webhook = new Webhook($secret, onError: $onError);
+        $webhook->onEvent(static function (Event $event): void {
             if ('ok' !== $event->type) {
                 throw new UserHubError("Event failed: {$event->type}", apiCode: Code::InvalidArgument);
             }
@@ -74,7 +74,7 @@ final class WebhookTest extends TestCase
             }
         }
 
-        $res = $wh($request);
+        $res = $webhook->handleAction($request);
 
         self::assertEquals($response->statusCode, $res->statusCode, $res->body ?: '{}');
 

@@ -37,9 +37,21 @@ class BaseWebhook
     }
 
     /**
+     * Executes a handler based on specified headers/body.
+     *
+     * @param null|array<string, string>|object $headers
+     */
+    public function __invoke(
+        null|array|object $headers = null,
+        null|string $body = null,
+    ): WebhookResponse {
+        return $this->handleAction(new WebhookRequest($headers, $body));
+    }
+
+    /**
      * Executes a handler based on specified Request.
      */
-    public function __invoke(WebhookRequest $req): WebhookResponse
+    public function handleAction(WebhookRequest $req): WebhookResponse
     {
         try {
             $this->verify($req);
@@ -192,7 +204,7 @@ class BaseWebhook
             if (\strlen($body) === Constants::WEBHOOK_MAX_REQUEST_SIZE_BYTES + 1) {
                 $res = $this->createResponse(new UserHubError('Request body exceeded max length'));
             } else {
-                $res = $this(new WebhookRequest($headers, $body));
+                $res = $this->handleAction(new WebhookRequest($headers, $body));
             }
         } else {
             $res = $this->createResponse(new UserHubError('Request should be a POST: '.$_SERVER['REQUEST_METHOD']));
