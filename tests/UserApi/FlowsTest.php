@@ -85,7 +85,16 @@ final class FlowsTest extends TestCase
               "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
-                "email": "test@example.com"
+                "email": "test@example.com",
+                "role": {
+                  "id": "string",
+                  "uniqueId": "test",
+                  "displayName": "Test",
+                  "type": "OWNER",
+                  "description": "string",
+                  "permissionSets": [],
+                  "default": true
+                }
               },
               "signup": {
                 "email": "test@example.com",
@@ -144,7 +153,16 @@ final class FlowsTest extends TestCase
               "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
-                "email": "test@example.com"
+                "email": "test@example.com",
+                "role": {
+                  "id": "string",
+                  "uniqueId": "test",
+                  "displayName": "Test",
+                  "type": "OWNER",
+                  "description": "string",
+                  "permissionSets": [],
+                  "default": true
+                }
               },
               "signup": {
                 "email": "test@example.com",
@@ -203,7 +221,16 @@ final class FlowsTest extends TestCase
               "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
-                "email": "test@example.com"
+                "email": "test@example.com",
+                "role": {
+                  "id": "string",
+                  "uniqueId": "test",
+                  "displayName": "Test",
+                  "type": "OWNER",
+                  "description": "string",
+                  "permissionSets": [],
+                  "default": true
+                }
               },
               "signup": {
                 "email": "test@example.com",
@@ -262,7 +289,16 @@ final class FlowsTest extends TestCase
               "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
-                "email": "test@example.com"
+                "email": "test@example.com",
+                "role": {
+                  "id": "string",
+                  "uniqueId": "test",
+                  "displayName": "Test",
+                  "type": "OWNER",
+                  "description": "string",
+                  "permissionSets": [],
+                  "default": true
+                }
               },
               "signup": {
                 "email": "test@example.com",
@@ -321,7 +357,16 @@ final class FlowsTest extends TestCase
               "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
-                "email": "test@example.com"
+                "email": "test@example.com",
+                "role": {
+                  "id": "string",
+                  "uniqueId": "test",
+                  "displayName": "Test",
+                  "type": "OWNER",
+                  "description": "string",
+                  "permissionSets": [],
+                  "default": true
+                }
               },
               "signup": {
                 "email": "test@example.com",
@@ -380,7 +425,16 @@ final class FlowsTest extends TestCase
               "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
-                "email": "test@example.com"
+                "email": "test@example.com",
+                "role": {
+                  "id": "string",
+                  "uniqueId": "test",
+                  "displayName": "Test",
+                  "type": "OWNER",
+                  "description": "string",
+                  "permissionSets": [],
+                  "default": true
+                }
               },
               "signup": {
                 "email": "test@example.com",

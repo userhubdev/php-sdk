@@ -11,7 +11,7 @@
   },
   "require-dev": {
     "donatj/mock-webserver": "^2.7",
-    "friendsofphp/php-cs-fixer": "^3.49",
+    "friendsofphp/php-cs-fixer": "3.49",
     "phpstan/phpstan": "^1.10",
     "phpunit/phpunit": "^10"
   },

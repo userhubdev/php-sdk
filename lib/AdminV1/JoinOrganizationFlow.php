@@ -23,12 +23,19 @@ final class JoinOrganizationFlow implements \JsonSerializable, JsonUnserializabl
      */
     public null|string $email;
 
+    /**
+     * The role to be assigned to the invitee.
+     */
+    public null|Role $role;
+
     public function __construct(
         null|string $displayName = null,
         null|string $email = null,
+        null|Role $role = null,
     ) {
         $this->displayName = $displayName ?? null;
         $this->email = $email ?? null;
+        $this->role = $role ?? null;
     }
 
     public function jsonSerialize(): mixed
@@ -36,6 +43,7 @@ final class JoinOrganizationFlow implements \JsonSerializable, JsonUnserializabl
         return (object) [
             'displayName' => $this->displayName ?? null,
             'email' => $this->email ?? null,
+            'role' => $this->role ?? null,
         ];
     }
 
@@ -48,6 +56,7 @@ final class JoinOrganizationFlow implements \JsonSerializable, JsonUnserializabl
         return new self(
             $data->{'displayName'} ?? null,
             $data->{'email'} ?? null,
+            isset($data->{'role'}) ? Role::jsonUnserialize($data->{'role'}) : null,
         );
     }
 }

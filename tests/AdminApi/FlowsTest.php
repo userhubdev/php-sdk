@@ -167,7 +167,19 @@ final class FlowsTest extends TestCase
               "updateTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
-                "email": "test@example.com"
+                "email": "test@example.com",
+                "role": {
+                  "id": "string",
+                  "uniqueId": "test",
+                  "displayName": "Test",
+                  "type": "OWNER",
+                  "description": "string",
+                  "permissionSets": [],
+                  "default": true,
+                  "archived": true,
+                  "createTime": "2024-02-05T23:07:46.483Z",
+                  "updateTime": "2024-02-05T23:07:46.483Z"
+                }
               },
               "signup": {
                 "email": "test@example.com",
@@ -304,7 +316,19 @@ final class FlowsTest extends TestCase
               "updateTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
-                "email": "test@example.com"
+                "email": "test@example.com",
+                "role": {
+                  "id": "string",
+                  "uniqueId": "test",
+                  "displayName": "Test",
+                  "type": "OWNER",
+                  "description": "string",
+                  "permissionSets": [],
+                  "default": true,
+                  "archived": true,
+                  "createTime": "2024-02-05T23:07:46.483Z",
+                  "updateTime": "2024-02-05T23:07:46.483Z"
+                }
               },
               "signup": {
                 "email": "test@example.com",
@@ -441,7 +465,19 @@ final class FlowsTest extends TestCase
               "updateTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
-                "email": "test@example.com"
+                "email": "test@example.com",
+                "role": {
+                  "id": "string",
+                  "uniqueId": "test",
+                  "displayName": "Test",
+                  "type": "OWNER",
+                  "description": "string",
+                  "permissionSets": [],
+                  "default": true,
+                  "archived": true,
+                  "createTime": "2024-02-05T23:07:46.483Z",
+                  "updateTime": "2024-02-05T23:07:46.483Z"
+                }
               },
               "signup": {
                 "email": "test@example.com",
@@ -578,7 +614,19 @@ final class FlowsTest extends TestCase
               "updateTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
-                "email": "test@example.com"
+                "email": "test@example.com",
+                "role": {
+                  "id": "string",
+                  "uniqueId": "test",
+                  "displayName": "Test",
+                  "type": "OWNER",
+                  "description": "string",
+                  "permissionSets": [],
+                  "default": true,
+                  "archived": true,
+                  "createTime": "2024-02-05T23:07:46.483Z",
+                  "updateTime": "2024-02-05T23:07:46.483Z"
+                }
               },
               "signup": {
                 "email": "test@example.com",
