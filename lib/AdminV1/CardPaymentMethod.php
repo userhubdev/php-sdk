@@ -19,11 +19,6 @@ final class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
     public string $brand;
 
     /**
-     * The expiration date of the card.
-     */
-    public null|CardPaymentMethodExpiration $expiration;
-
-    /**
      * The last for digits of the card.
      */
     public string $last4;
@@ -33,25 +28,38 @@ final class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
      */
     public string $fundingType;
 
+    /**
+     * The expiration year.
+     */
+    public int $expYear;
+
+    /**
+     * The expiration month.
+     */
+    public int $expMonth;
+
     public function __construct(
         null|string $brand = null,
-        null|CardPaymentMethodExpiration $expiration = null,
         null|string $last4 = null,
         null|string $fundingType = null,
+        null|int $expYear = null,
+        null|int $expMonth = null,
     ) {
         $this->brand = $brand ?? '';
-        $this->expiration = $expiration ?? null;
         $this->last4 = $last4 ?? '';
         $this->fundingType = $fundingType ?? '';
+        $this->expYear = $expYear ?? 0;
+        $this->expMonth = $expMonth ?? 0;
     }
 
     public function jsonSerialize(): mixed
     {
         return (object) [
             'brand' => $this->brand ?? null,
-            'expiration' => $this->expiration ?? null,
             'last4' => $this->last4 ?? null,
             'fundingType' => $this->fundingType ?? null,
+            'expYear' => $this->expYear ?? null,
+            'expMonth' => $this->expMonth ?? null,
         ];
     }
 
@@ -63,9 +71,10 @@ final class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
 
         return new self(
             $data->{'brand'} ?? null,
-            isset($data->{'expiration'}) ? CardPaymentMethodExpiration::jsonUnserialize($data->{'expiration'}) : null,
             $data->{'last4'} ?? null,
             $data->{'fundingType'} ?? null,
+            $data->{'expYear'} ?? null,
+            $data->{'expMonth'} ?? null,
         );
     }
 }

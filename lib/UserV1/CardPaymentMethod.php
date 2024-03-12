@@ -19,9 +19,14 @@ final class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
     public string $brand;
 
     /**
-     * The expiration date of the card.
+     * The expiration year.
      */
-    public null|CardPaymentMethodExpiration $expiration;
+    public int $expYear;
+
+    /**
+     * The expiration month.
+     */
+    public int $expMonth;
 
     /**
      * The last for digits of the card.
@@ -35,12 +40,14 @@ final class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
 
     public function __construct(
         null|string $brand = null,
-        null|CardPaymentMethodExpiration $expiration = null,
+        null|int $expYear = null,
+        null|int $expMonth = null,
         null|string $last4 = null,
         null|string $fundingType = null,
     ) {
         $this->brand = $brand ?? '';
-        $this->expiration = $expiration ?? null;
+        $this->expYear = $expYear ?? 0;
+        $this->expMonth = $expMonth ?? 0;
         $this->last4 = $last4 ?? '';
         $this->fundingType = $fundingType ?? '';
     }
@@ -49,7 +56,8 @@ final class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
     {
         return (object) [
             'brand' => $this->brand ?? null,
-            'expiration' => $this->expiration ?? null,
+            'expYear' => $this->expYear ?? null,
+            'expMonth' => $this->expMonth ?? null,
             'last4' => $this->last4 ?? null,
             'fundingType' => $this->fundingType ?? null,
         ];
@@ -63,7 +71,8 @@ final class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
 
         return new self(
             $data->{'brand'} ?? null,
-            isset($data->{'expiration'}) ? CardPaymentMethodExpiration::jsonUnserialize($data->{'expiration'}) : null,
+            $data->{'expYear'} ?? null,
+            $data->{'expMonth'} ?? null,
             $data->{'last4'} ?? null,
             $data->{'fundingType'} ?? null,
         );

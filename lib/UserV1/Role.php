@@ -54,6 +54,11 @@ final class Role implements \JsonSerializable, JsonUnserializable
     public array $permissionSets;
 
     /**
+     * Whether the role is the default for the tenant.
+     */
+    public bool $default;
+
+    /**
      * @param null|string[] $permissionSets
      */
     public function __construct(
@@ -63,6 +68,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
         null|string $type = null,
         null|string $description = null,
         null|array $permissionSets = null,
+        null|bool $default = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? '';
@@ -70,6 +76,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
         $this->type = $type ?? '';
         $this->description = $description ?? null;
         $this->permissionSets = $permissionSets ?? [];
+        $this->default = $default ?? false;
     }
 
     public function jsonSerialize(): mixed
@@ -81,6 +88,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
             'type' => $this->type ?? null,
             'description' => $this->description ?? null,
             'permissionSets' => $this->permissionSets ?? null,
+            'default' => $this->default ?? null,
         ];
     }
 
@@ -97,6 +105,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
             $data->{'type'} ?? null,
             $data->{'description'} ?? null,
             $data->{'permissionSets'} ?? null,
+            $data->{'default'} ?? null,
         );
     }
 }
