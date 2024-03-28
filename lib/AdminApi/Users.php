@@ -35,6 +35,8 @@ class Users
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
+        null|string $displayName = null,
+        null|string $email = null,
         null|int $pageSize = null,
         null|string $pageToken = null,
         null|string $orderBy = null,
@@ -44,6 +46,12 @@ class Users
         $req = new Request('admin.users.list', 'GET', '/admin/v1/users');
         $req->setIdempotent(true);
 
+        if (!empty($displayName)) {
+            $req->setQuery('displayName', $displayName);
+        }
+        if (!empty($email)) {
+            $req->setQuery('email', $email);
+        }
         if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
         }

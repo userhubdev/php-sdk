@@ -122,15 +122,7 @@ final class OrganizationsTest extends TestCase
     {
         $tr = new TestTransport();
         $tr->body = <<<'EOD'
-            {
-              "id": "string",
-              "uniqueId": "test",
-              "displayName": "Test",
-              "email": "test@example.com",
-              "emailVerified": true,
-              "imageUrl": "https://example.com/test.png",
-              "disabled": true
-            }
+            {}
             EOD;
 
         $n = new Organizations($tr);
