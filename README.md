@@ -1,4 +1,7 @@
 # UserHub PHP SDK
+[![Packagist Latest Version](https://poser.pugx.org/userhub/sdk/v/stable.svg)](https://packagist.org/packages/userhub/sdk)
+
+The official [UserHub](https://userhub.com) PHP SDK.
 
 Stability: alpha
 
