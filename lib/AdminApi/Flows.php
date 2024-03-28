@@ -34,6 +34,8 @@ class Flows
         null|string $organizationId = null,
         null|string $userId = null,
         null|string $type = null,
+        null|bool $active = null,
+        null|string $creatorUserId = null,
         null|int $pageSize = null,
         null|string $pageToken = null,
         null|string $orderBy = null,
@@ -50,6 +52,12 @@ class Flows
         }
         if (!empty($type)) {
             $req->setQuery('type', $type);
+        }
+        if (!empty($active)) {
+            $req->setQuery('active', $active);
+        }
+        if (!empty($creatorUserId)) {
+            $req->setQuery('creatorUserId', $creatorUserId);
         }
         if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);

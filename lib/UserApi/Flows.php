@@ -32,6 +32,8 @@ class Flows
     public function list(
         null|string $organizationId = null,
         null|string $type = null,
+        null|bool $active = null,
+        null|bool $creator = null,
         null|int $pageSize = null,
         null|string $pageToken = null,
         null|string $orderBy = null,
@@ -44,6 +46,12 @@ class Flows
         }
         if (!empty($type)) {
             $req->setQuery('type', $type);
+        }
+        if (!empty($active)) {
+            $req->setQuery('active', $active);
+        }
+        if (!empty($creator)) {
+            $req->setQuery('creator', $creator);
         }
         if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);

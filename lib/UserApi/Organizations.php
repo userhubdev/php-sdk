@@ -148,11 +148,11 @@ class Organizations
      */
     public function delete(
         string $organizationId,
-    ): Organization {
+    ): EmptyResponse {
         $req = new Request('user.organizations.delete', 'DELETE', '/user/v1/organizations/'.rawurlencode($organizationId));
         $res = $this->transport->execute($req);
 
-        return Organization::jsonUnserialize($res->decodeBody());
+        return EmptyResponse::jsonUnserialize($res->decodeBody());
     }
 
     /**

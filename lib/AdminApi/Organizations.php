@@ -36,6 +36,8 @@ class Organizations
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
+        null|string $displayName = null,
+        null|string $email = null,
         null|int $pageSize = null,
         null|string $pageToken = null,
         null|string $orderBy = null,
@@ -45,6 +47,12 @@ class Organizations
         $req = new Request('admin.organizations.list', 'GET', '/admin/v1/organizations');
         $req->setIdempotent(true);
 
+        if (!empty($displayName)) {
+            $req->setQuery('displayName', $displayName);
+        }
+        if (!empty($email)) {
+            $req->setQuery('email', $email);
+        }
         if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
         }
@@ -343,6 +351,9 @@ class Organizations
      */
     public function listMembers(
         string $organizationId,
+        null|string $displayName = null,
+        null|string $email = null,
+        null|string $roleId = null,
         null|int $pageSize = null,
         null|string $pageToken = null,
         null|string $orderBy = null,
@@ -350,6 +361,15 @@ class Organizations
         $req = new Request('admin.organizations.listMembers', 'GET', '/admin/v1/organizations/'.rawurlencode($organizationId).'/members');
         $req->setIdempotent(true);
 
+        if (!empty($displayName)) {
+            $req->setQuery('displayName', $displayName);
+        }
+        if (!empty($email)) {
+            $req->setQuery('email', $email);
+        }
+        if (!empty($roleId)) {
+            $req->setQuery('roleId', $roleId);
+        }
         if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
         }

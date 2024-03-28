@@ -20,8 +20,6 @@ final class MemberInput implements \JsonSerializable, JsonUnserializable
 
     /**
      * The identifier of the role.
-     *
-     * This is currently limited to `member`, `admin`, and `owner`.
      */
     public string $roleId;
 
