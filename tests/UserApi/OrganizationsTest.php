@@ -29,6 +29,7 @@ final class OrganizationsTest extends TestCase
                   "email": "test@example.com",
                   "emailVerified": true,
                   "imageUrl": "https://example.com/test.png",
+                  "memberCount": 1,
                   "disabled": true
                 }
               ],
@@ -57,6 +58,7 @@ final class OrganizationsTest extends TestCase
               "email": "test@example.com",
               "emailVerified": true,
               "imageUrl": "https://example.com/test.png",
+              "memberCount": 1,
               "disabled": true
             }
             EOD;
@@ -81,6 +83,7 @@ final class OrganizationsTest extends TestCase
               "email": "test@example.com",
               "emailVerified": true,
               "imageUrl": "https://example.com/test.png",
+              "memberCount": 1,
               "disabled": true
             }
             EOD;
@@ -105,6 +108,7 @@ final class OrganizationsTest extends TestCase
               "email": "test@example.com",
               "emailVerified": true,
               "imageUrl": "https://example.com/test.png",
+              "memberCount": 1,
               "disabled": true
             }
             EOD;

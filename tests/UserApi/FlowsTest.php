@@ -61,6 +61,7 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "emailVerified": true,
                 "imageUrl": "https://example.com/test.png",
+                "memberCount": 1,
                 "disabled": true
               },
               "user": {
@@ -129,6 +130,7 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "emailVerified": true,
                 "imageUrl": "https://example.com/test.png",
+                "memberCount": 1,
                 "disabled": true
               },
               "user": {
@@ -197,6 +199,7 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "emailVerified": true,
                 "imageUrl": "https://example.com/test.png",
+                "memberCount": 1,
                 "disabled": true
               },
               "user": {
@@ -265,6 +268,7 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "emailVerified": true,
                 "imageUrl": "https://example.com/test.png",
+                "memberCount": 1,
                 "disabled": true
               },
               "user": {
@@ -333,6 +337,7 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "emailVerified": true,
                 "imageUrl": "https://example.com/test.png",
+                "memberCount": 1,
                 "disabled": true
               },
               "user": {
@@ -401,6 +406,7 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "emailVerified": true,
                 "imageUrl": "https://example.com/test.png",
+                "memberCount": 1,
                 "disabled": true
               },
               "user": {
