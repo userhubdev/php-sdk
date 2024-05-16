@@ -44,6 +44,13 @@ final class Organization implements \JsonSerializable, JsonUnserializable
     public null|string $imageUrl;
 
     /**
+     * The number of members in the organization.
+     *
+     * This includes disabled users, but does not include user's marked for deletion.
+     */
+    public int $memberCount;
+
+    /**
      * Whether the organization is disabled.
      */
     public null|bool $disabled;
@@ -55,6 +62,7 @@ final class Organization implements \JsonSerializable, JsonUnserializable
         null|string $email = null,
         null|bool $emailVerified = null,
         null|string $imageUrl = null,
+        null|int $memberCount = null,
         null|bool $disabled = null,
     ) {
         $this->id = $id ?? '';
@@ -63,6 +71,7 @@ final class Organization implements \JsonSerializable, JsonUnserializable
         $this->email = $email ?? null;
         $this->emailVerified = $emailVerified ?? null;
         $this->imageUrl = $imageUrl ?? null;
+        $this->memberCount = $memberCount ?? 0;
         $this->disabled = $disabled ?? null;
     }
 
@@ -75,6 +84,7 @@ final class Organization implements \JsonSerializable, JsonUnserializable
             'email' => $this->email ?? null,
             'emailVerified' => $this->emailVerified ?? null,
             'imageUrl' => $this->imageUrl ?? null,
+            'memberCount' => $this->memberCount ?? null,
             'disabled' => $this->disabled ?? null,
         ];
     }
@@ -92,6 +102,7 @@ final class Organization implements \JsonSerializable, JsonUnserializable
             $data->{'email'} ?? null,
             $data->{'emailVerified'} ?? null,
             $data->{'imageUrl'} ?? null,
+            $data->{'memberCount'} ?? null,
             $data->{'disabled'} ?? null,
         );
     }

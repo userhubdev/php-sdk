@@ -108,6 +108,13 @@ final class Organization implements \JsonSerializable, JsonUnserializable
     public null|\DateTimeInterface $signupTime;
 
     /**
+     * The number of members in the organization.
+     *
+     * This includes disabled users, but does not include user's marked for deletion.
+     */
+    public int $memberCount;
+
+    /**
      * Whether the organization is disabled.
      */
     public null|bool $disabled;
@@ -144,6 +151,7 @@ final class Organization implements \JsonSerializable, JsonUnserializable
         null|array $accountConnections = null,
         null|AccountSubscription $subscription = null,
         null|\DateTimeInterface $signupTime = null,
+        null|int $memberCount = null,
         null|bool $disabled = null,
         null|\DateTimeInterface $createTime = null,
         null|\DateTimeInterface $updateTime = null,
@@ -166,6 +174,7 @@ final class Organization implements \JsonSerializable, JsonUnserializable
         $this->accountConnections = $accountConnections ?? [];
         $this->subscription = $subscription ?? null;
         $this->signupTime = $signupTime ?? null;
+        $this->memberCount = $memberCount ?? 0;
         $this->disabled = $disabled ?? null;
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
@@ -192,6 +201,7 @@ final class Organization implements \JsonSerializable, JsonUnserializable
             'accountConnections' => $this->accountConnections ?? null,
             'subscription' => $this->subscription ?? null,
             'signupTime' => isset($this->signupTime) ? Util::encodeDateTime($this->signupTime) : null,
+            'memberCount' => $this->memberCount ?? null,
             'disabled' => $this->disabled ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
@@ -223,6 +233,7 @@ final class Organization implements \JsonSerializable, JsonUnserializable
             isset($data->{'accountConnections'}) ? Util::mapArray($data->{'accountConnections'}, [AccountConnection::class, 'jsonUnserialize']) : null,
             isset($data->{'subscription'}) ? AccountSubscription::jsonUnserialize($data->{'subscription'}) : null,
             isset($data->{'signupTime'}) ? Util::decodeDateTime($data->{'signupTime'}) : null,
+            $data->{'memberCount'} ?? null,
             $data->{'disabled'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,

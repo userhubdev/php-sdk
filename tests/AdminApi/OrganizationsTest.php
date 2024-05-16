@@ -38,6 +38,7 @@ final class OrganizationsTest extends TestCase
                   "regionCode": "US",
                   "timeZone": "America/New_York",
                   "signupTime": "2024-02-05T23:07:46.483Z",
+                  "memberCount": 1,
                   "disabled": true,
                   "createTime": "2024-02-05T23:07:46.483Z",
                   "updateTime": "2024-02-05T23:07:46.483Z"
@@ -109,6 +110,7 @@ final class OrganizationsTest extends TestCase
                 }
               },
               "signupTime": "2024-02-05T23:07:46.483Z",
+              "memberCount": 1,
               "disabled": true,
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
@@ -176,6 +178,7 @@ final class OrganizationsTest extends TestCase
                 }
               },
               "signupTime": "2024-02-05T23:07:46.483Z",
+              "memberCount": 1,
               "disabled": true,
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
@@ -243,6 +246,7 @@ final class OrganizationsTest extends TestCase
                 }
               },
               "signupTime": "2024-02-05T23:07:46.483Z",
+              "memberCount": 1,
               "disabled": true,
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
@@ -310,6 +314,7 @@ final class OrganizationsTest extends TestCase
                 }
               },
               "signupTime": "2024-02-05T23:07:46.483Z",
+              "memberCount": 1,
               "disabled": true,
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
@@ -377,6 +382,7 @@ final class OrganizationsTest extends TestCase
                 }
               },
               "signupTime": "2024-02-05T23:07:46.483Z",
+              "memberCount": 1,
               "disabled": true,
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
@@ -444,6 +450,7 @@ final class OrganizationsTest extends TestCase
                 }
               },
               "signupTime": "2024-02-05T23:07:46.483Z",
+              "memberCount": 1,
               "disabled": true,
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
@@ -511,6 +518,7 @@ final class OrganizationsTest extends TestCase
                 }
               },
               "signupTime": "2024-02-05T23:07:46.483Z",
+              "memberCount": 1,
               "disabled": true,
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
