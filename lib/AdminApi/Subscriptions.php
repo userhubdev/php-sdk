@@ -32,6 +32,8 @@ class Subscriptions
     public function list(
         null|string $organizationId = null,
         null|string $userId = null,
+        null|string $state = null,
+        null|string $planGroupId = null,
         null|int $pageSize = null,
         null|string $pageToken = null,
         null|string $orderBy = null,
@@ -45,6 +47,12 @@ class Subscriptions
         }
         if (!empty($userId)) {
             $req->setQuery('userId', $userId);
+        }
+        if (!empty($state)) {
+            $req->setQuery('state', $state);
+        }
+        if (!empty($planGroupId)) {
+            $req->setQuery('planGroupId', $planGroupId);
         }
         if (!empty($pageSize)) {
             $req->setQuery('pageSize', $pageSize);
