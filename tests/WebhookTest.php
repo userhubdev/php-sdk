@@ -6,12 +6,17 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use UserHub\Code;
+use UserHub\ConnectionsV1\CustomUser;
+use UserHub\ConnectionsV1\GetCustomUserRequest;
+use UserHub\ConnectionsV1\ListCustomUsersRequest;
+use UserHub\ConnectionsV1\ListCustomUsersResponse;
 use UserHub\EventsV1\Event;
 use UserHub\Internal\Constants;
 use UserHub\UserHubError;
 use UserHub\Webhook;
 use UserHub\Webhook\WebhookRequest;
 use UserHub\Webhook\WebhookResponse;
+use UserHub\Webhook\WebhookUserNotFound;
 
 /**
  * @internal
@@ -35,10 +40,27 @@ final class WebhookTest extends TestCase
         $onError = static function (Exception $ex): void {};
 
         $webhook = new Webhook($secret, onError: $onError);
-        $webhook->onEvent(static function (Event $event): void {
-            if ('ok' !== $event->type) {
-                throw new UserHubError("Event failed: {$event->type}", apiCode: Code::InvalidArgument);
+
+        $webhook->onEvent(static function (Event $input): void {
+            if ('ok' !== $input->type) {
+                throw new UserHubError("Event failed: {$input->type}", apiCode: Code::InvalidArgument);
             }
+        });
+
+        $webhook->onListUsers(static function (ListCustomUsersRequest $input): ListCustomUsersResponse {
+            if (100 !== $input->pageSize) {
+                throw new Error("unexpected page size {$input->pageSize}");
+            }
+
+            return new ListCustomUsersResponse(users: [], nextPageToken: '');
+        });
+
+        $webhook->onGetUser(static function (GetCustomUserRequest $input): CustomUser {
+            if ('not-found' === $input->id) {
+                throw new WebhookUserNotFound();
+            }
+
+            return new CustomUser(id: $input->id);
         });
 
         if ($setTimestamp) {
@@ -378,6 +400,57 @@ final class WebhookTest extends TestCase
                 new WebhookResponse(
                     statusCode: 400,
                     body: '{"message":"Event failed: fail","code":"INVALID_ARGUMENT"}',
+                ),
+                true,
+                false,
+                true,
+            ],
+            [
+                'List users',
+                'test',
+                new WebhookRequest(
+                    headers: [
+                        'UserHub-Action' => 'users.list',
+                    ],
+                    body: '{"pageSize":100}',
+                ),
+                new WebhookResponse(
+                    statusCode: 200,
+                    body: '{"nextPageToken":"","users":[]}',
+                ),
+                true,
+                false,
+                true,
+            ],
+            [
+                'Get user',
+                'test',
+                new WebhookRequest(
+                    headers: [
+                        'UserHub-Action' => 'users.get',
+                    ],
+                    body: '{"id": "1"}',
+                ),
+                new WebhookResponse(
+                    statusCode: 200,
+                    body: '{"id":"1","displayName":"","email":"","emailVerified":false,"phoneNumber":"","phoneNumberVerified":false,"imageUrl":"","disabled":false}',
+                ),
+                true,
+                false,
+                true,
+            ],
+            [
+                'Get user not found',
+                'test',
+                new WebhookRequest(
+                    headers: [
+                        'UserHub-Action' => 'users.get',
+                    ],
+                    body: '{"id": "not-found"}',
+                ),
+                new WebhookResponse(
+                    statusCode: 404,
+                    body: '{"message":"User not found","code":"NOT_FOUND"}',
                 ),
                 true,
                 false,
