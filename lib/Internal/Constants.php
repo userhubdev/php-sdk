@@ -9,8 +9,8 @@ namespace UserHub\Internal;
 abstract class Constants
 {
     public const API_BASE_URL = 'https://api.userhub.com';
-    public const USER_AGENT = 'UserHub-PHP/0.6.2';
-    public const VERSION = '0.6.2';
+    public const USER_AGENT = 'UserHub-PHP/0.6.4';
+    public const VERSION = '0.6.4';
 
     public const AUTH_HEADER = 'Authorization';
     public const API_KEY_HEADER = 'UserHub-Api-Key';
