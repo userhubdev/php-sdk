@@ -21,7 +21,7 @@ final class ConnectionDelegate implements \JsonSerializable, JsonUnserializable
     /**
      * The client defined unique identifier of the delegated connection.
      */
-    public null|string $uniqueId;
+    public ?string $uniqueId;
 
     /**
      * The human-readable display name of the delegated connection.
@@ -36,7 +36,7 @@ final class ConnectionDelegate implements \JsonSerializable, JsonUnserializable
     /**
      * The code that best describes the reason for the state.
      */
-    public null|string $stateReason;
+    public ?string $stateReason;
 
     /**
      * The delegated connection type.
@@ -44,12 +44,12 @@ final class ConnectionDelegate implements \JsonSerializable, JsonUnserializable
     public string $type;
 
     public function __construct(
-        null|string $id = null,
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $state = null,
-        null|string $stateReason = null,
-        null|string $type = null,
+        ?string $id = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $state = null,
+        ?string $stateReason = null,
+        ?string $type = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;

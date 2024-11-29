@@ -17,7 +17,7 @@ final class InvoiceChange implements \JsonSerializable, JsonUnserializable
     /**
      * The time the change occurred.
      */
-    public null|\DateTimeInterface $time;
+    public ?\DateTimeInterface $time;
 
     /**
      * The user-facing description for the change.
@@ -33,7 +33,7 @@ final class InvoiceChange implements \JsonSerializable, JsonUnserializable
     /**
      * The change discount amount.
      */
-    public null|string $discountAmount;
+    public ?string $discountAmount;
 
     /**
      * The starting quantity of the change.
@@ -64,14 +64,14 @@ final class InvoiceChange implements \JsonSerializable, JsonUnserializable
      * @param null|string[] $endItemIds
      */
     public function __construct(
-        null|\DateTimeInterface $time = null,
-        null|string $description = null,
-        null|string $subtotalAmount = null,
-        null|string $discountAmount = null,
-        null|int $startQuantity = null,
-        null|int $endQuantity = null,
-        null|array $startItemIds = null,
-        null|array $endItemIds = null,
+        ?\DateTimeInterface $time = null,
+        ?string $description = null,
+        ?string $subtotalAmount = null,
+        ?string $discountAmount = null,
+        ?int $startQuantity = null,
+        ?int $endQuantity = null,
+        ?array $startItemIds = null,
+        ?array $endItemIds = null,
     ) {
         $this->time = $time ?? null;
         $this->description = $description ?? '';

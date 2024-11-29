@@ -24,8 +24,8 @@ final class CardPaymentMethodExpiration implements \JsonSerializable, JsonUnseri
     public int $month;
 
     public function __construct(
-        null|int $year = null,
-        null|int $month = null,
+        ?int $year = null,
+        ?int $month = null,
     ) {
         $this->year = $year ?? 0;
         $this->month = $month ?? 0;

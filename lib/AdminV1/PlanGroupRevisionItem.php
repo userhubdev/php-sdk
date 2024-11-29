@@ -16,7 +16,7 @@ final class PlanGroupRevisionItem implements \JsonSerializable, JsonUnserializab
     /**
      * The product associated with the item.
      */
-    public null|Product $product;
+    public ?Product $product;
 
     /**
      * The plan item type.
@@ -24,8 +24,8 @@ final class PlanGroupRevisionItem implements \JsonSerializable, JsonUnserializab
     public string $type;
 
     public function __construct(
-        null|Product $product = null,
-        null|string $type = null,
+        ?Product $product = null,
+        ?string $type = null,
     ) {
         $this->product = $product ?? new Product();
         $this->type = $type ?? '';

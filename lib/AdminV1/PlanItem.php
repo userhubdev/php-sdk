@@ -16,12 +16,12 @@ final class PlanItem implements \JsonSerializable, JsonUnserializable
     /**
      * The product associated with the item.
      */
-    public null|Product $product;
+    public ?Product $product;
 
     /**
      * The price associated with them item.
      */
-    public null|Price $price;
+    public ?Price $price;
 
     /**
      * The plan item type.
@@ -29,9 +29,9 @@ final class PlanItem implements \JsonSerializable, JsonUnserializable
     public string $type;
 
     public function __construct(
-        null|Product $product = null,
-        null|Price $price = null,
-        null|string $type = null,
+        ?Product $product = null,
+        ?Price $price = null,
+        ?string $type = null,
     ) {
         $this->product = $product ?? new Product();
         $this->price = $price ?? new Price();

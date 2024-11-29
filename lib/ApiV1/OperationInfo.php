@@ -19,7 +19,7 @@ final class OperationInfo implements \JsonSerializable, JsonUnserializable
     public string $responseType;
 
     public function __construct(
-        null|string $responseType = null,
+        ?string $responseType = null,
     ) {
         $this->responseType = $responseType ?? '';
     }

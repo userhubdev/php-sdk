@@ -20,7 +20,7 @@ abstract class Util
         if (!\is_string($value) || '' === $value) {
             return null;
         }
-        $datetime = \DateTimeImmutable::createFromFormat('Y-m-d\\TH:i:s.uP', $value);
+        $datetime = \DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s.uP', $value);
 
         return false !== $datetime ? $datetime : null;
     }
@@ -30,10 +30,8 @@ abstract class Util
         if (!isset($value)) {
             return null;
         }
-        if (!$value instanceof \DateTimeInterface) {
-            throw new \TypeError('value must be a DateTimeInterface');
-        }
-        $formatted = $value->format('Y-m-d\\TH:i:s.uP');
+
+        $formatted = $value->format('Y-m-d\TH:i:s.uP');
         if (str_ends_with($formatted, '+00:00')) {
             $formatted = substr($formatted, 0, -6).'Z';
         }

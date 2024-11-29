@@ -27,7 +27,7 @@ final class Flow implements \JsonSerializable, JsonUnserializable
     /**
      * The code that best describes the reason for the state.
      */
-    public null|string $stateReason;
+    public ?string $stateReason;
 
     /**
      * The flow type.
@@ -37,19 +37,19 @@ final class Flow implements \JsonSerializable, JsonUnserializable
     /**
      * The target organization for the flow.
      */
-    public null|Organization $organization;
+    public ?Organization $organization;
 
     /**
      * The target user for the flow.
      */
-    public null|User $user;
+    public ?User $user;
 
     /**
      * The user who created the flow.
      *
      * This will not be set if the invitation was created by an admin.
      */
-    public null|User $creator;
+    public ?User $creator;
 
     /**
      * The start time of the flow.
@@ -59,19 +59,19 @@ final class Flow implements \JsonSerializable, JsonUnserializable
     /**
      * The time the flow will expire.
      */
-    public null|\DateTimeInterface $expireTime;
+    public ?\DateTimeInterface $expireTime;
 
     /**
      * The expire duration of the flow.
      */
-    public null|string $ttl;
+    public ?string $ttl;
 
     /**
      * The flow secret.
      *
      * This is only populated on create.
      */
-    public null|string $secret;
+    public ?string $secret;
 
     /**
      * The creation time of the flow.
@@ -86,29 +86,29 @@ final class Flow implements \JsonSerializable, JsonUnserializable
     /**
      * The join organization flow type specific data.
      */
-    public null|JoinOrganizationFlow $joinOrganization;
+    public ?JoinOrganizationFlow $joinOrganization;
 
     /**
      * The signup flow type specific data.
      */
-    public null|SignupFlow $signup;
+    public ?SignupFlow $signup;
 
     public function __construct(
-        null|string $id = null,
-        null|string $state = null,
-        null|string $stateReason = null,
-        null|string $type = null,
-        null|Organization $organization = null,
-        null|User $user = null,
-        null|User $creator = null,
-        null|\DateTimeInterface $startTime = null,
-        null|\DateTimeInterface $expireTime = null,
-        null|string $ttl = null,
-        null|string $secret = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
-        null|JoinOrganizationFlow $joinOrganization = null,
-        null|SignupFlow $signup = null,
+        ?string $id = null,
+        ?string $state = null,
+        ?string $stateReason = null,
+        ?string $type = null,
+        ?Organization $organization = null,
+        ?User $user = null,
+        ?User $creator = null,
+        ?\DateTimeInterface $startTime = null,
+        ?\DateTimeInterface $expireTime = null,
+        ?string $ttl = null,
+        ?string $secret = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
+        ?JoinOrganizationFlow $joinOrganization = null,
+        ?SignupFlow $signup = null,
     ) {
         $this->id = $id ?? '';
         $this->state = $state ?? '';

@@ -32,25 +32,25 @@ final class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The billing interval for the price.
      */
-    public null|Interval $interval;
+    public ?Interval $interval;
 
     /**
      * The price is fixed per quantity.
      */
-    public null|PriceFixedPrice $fixed;
+    public ?PriceFixedPrice $fixed;
 
     /**
      * The price is dependent on the quantity.
      */
-    public null|PriceTieredPrice $tiered;
+    public ?PriceTieredPrice $tiered;
 
     public function __construct(
-        null|string $id = null,
-        null|string $currencyCode = null,
-        null|string $billingMode = null,
-        null|Interval $interval = null,
-        null|PriceFixedPrice $fixed = null,
-        null|PriceTieredPrice $tiered = null,
+        ?string $id = null,
+        ?string $currencyCode = null,
+        ?string $billingMode = null,
+        ?Interval $interval = null,
+        ?PriceFixedPrice $fixed = null,
+        ?PriceTieredPrice $tiered = null,
     ) {
         $this->id = $id ?? '';
         $this->currencyCode = $currencyCode ?? '';

@@ -17,7 +17,7 @@ final class ProductConnection implements \JsonSerializable, JsonUnserializable
     /**
      * The basic view of the connection.
      */
-    public null|Connection $connection;
+    public ?Connection $connection;
 
     /**
      * The external identifier of the connected product.
@@ -32,17 +32,17 @@ final class ProductConnection implements \JsonSerializable, JsonUnserializable
     /**
      * The code that best describes the reason for the state.
      */
-    public null|string $stateReason;
+    public ?string $stateReason;
 
     /**
      * The last time the product was pulled from the connection.
      */
-    public null|\DateTimeInterface $pullTime;
+    public ?\DateTimeInterface $pullTime;
 
     /**
      * The last time the product was pushed to the connection.
      */
-    public null|\DateTimeInterface $pushTime;
+    public ?\DateTimeInterface $pushTime;
 
     /**
      * The creation time of the product connection.
@@ -55,14 +55,14 @@ final class ProductConnection implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     public function __construct(
-        null|Connection $connection = null,
-        null|string $externalId = null,
-        null|string $state = null,
-        null|string $stateReason = null,
-        null|\DateTimeInterface $pullTime = null,
-        null|\DateTimeInterface $pushTime = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?Connection $connection = null,
+        ?string $externalId = null,
+        ?string $state = null,
+        ?string $stateReason = null,
+        ?\DateTimeInterface $pullTime = null,
+        ?\DateTimeInterface $pushTime = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->connection = $connection ?? null;
         $this->externalId = $externalId ?? '';

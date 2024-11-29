@@ -8,23 +8,23 @@ use UserHub\ApiV1\Status;
 
 class UserHubError extends \Exception implements \JsonSerializable
 {
-    protected null|Code $apiCode = null;
-    protected null|string $reason = null;
-    protected null|string $param = null;
-    protected null|object $metadata = null;
-    protected null|string $call = null;
-    protected null|int $statusCode = null;
+    protected ?Code $apiCode = null;
+    protected ?string $reason = null;
+    protected ?string $param = null;
+    protected ?object $metadata = null;
+    protected ?string $call = null;
+    protected ?int $statusCode = null;
 
     public function __construct(
-        null|string $message = null,
-        null|Code $apiCode = null,
-        null|string $reason = null,
-        null|string $param = null,
-        null|object $metadata = null,
-        null|string $call = null,
-        null|int $statusCode = null,
-        null|Status $status = null,
-        null|\Throwable $previous = null,
+        ?string $message = null,
+        ?Code $apiCode = null,
+        ?string $reason = null,
+        ?string $param = null,
+        ?object $metadata = null,
+        ?string $call = null,
+        ?int $statusCode = null,
+        ?Status $status = null,
+        ?\Throwable $previous = null,
     ) {
         if (empty($message)) {
             if (isset($status)) {

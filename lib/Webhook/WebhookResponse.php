@@ -16,9 +16,9 @@ class WebhookResponse
      * @param null|array<string, string>|object $headers
      */
     public function __construct(
-        null|int $statusCode = null,
+        ?int $statusCode = null,
         null|array|object $headers = null,
-        null|string $body = null,
+        ?string $body = null,
     ) {
         $this->statusCode = $statusCode ?? 200;
         if (\is_object($headers)) {

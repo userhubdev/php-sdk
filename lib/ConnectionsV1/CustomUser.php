@@ -23,51 +23,51 @@ final class CustomUser implements \JsonSerializable, JsonUnserializable
      *
      * The maximum length is 200 characters.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * The email address of the user.
      *
      * The maximum length is 320 characters.
      */
-    public null|string $email;
+    public ?string $email;
 
     /**
      * Whether the user's email address has been verified.
      */
-    public null|bool $emailVerified;
+    public ?bool $emailVerified;
 
     /**
      * The E164 phone number for the user (e.g. `+12125550123`).
      */
-    public null|string $phoneNumber;
+    public ?string $phoneNumber;
 
     /**
      * Whether the user's phone number has been verified.
      */
-    public null|bool $phoneNumberVerified;
+    public ?bool $phoneNumberVerified;
 
     /**
      * The photo/avatar URL of the user.
      *
      * The maximum length is 2000 characters.
      */
-    public null|string $imageUrl;
+    public ?string $imageUrl;
 
     /**
      * Whether the user is disabled.
      */
-    public null|bool $disabled;
+    public ?bool $disabled;
 
     public function __construct(
-        null|string $id = null,
-        null|string $displayName = null,
-        null|string $email = null,
-        null|bool $emailVerified = null,
-        null|string $phoneNumber = null,
-        null|bool $phoneNumberVerified = null,
-        null|string $imageUrl = null,
-        null|bool $disabled = null,
+        ?string $id = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?bool $emailVerified = null,
+        ?string $phoneNumber = null,
+        ?bool $phoneNumberVerified = null,
+        ?string $imageUrl = null,
+        ?bool $disabled = null,
     ) {
         $this->id = $id ?? '';
         $this->displayName = $displayName ?? null;

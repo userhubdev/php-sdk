@@ -23,16 +23,16 @@ final class PriceTieredPrice implements \JsonSerializable, JsonUnserializable
     /**
      * The tiers for the price.
      *
-     * @var \UserHub\UserV1\TieredPriceTier[]
+     * @var TieredPriceTier[]
      */
     public array $tiers;
 
     /**
-     * @param null|\UserHub\UserV1\TieredPriceTier[] $tiers
+     * @param null|TieredPriceTier[] $tiers
      */
     public function __construct(
-        null|string $mode = null,
-        null|array $tiers = null,
+        ?string $mode = null,
+        ?array $tiers = null,
     ) {
         $this->mode = $mode ?? '';
         $this->tiers = $tiers ?? [];

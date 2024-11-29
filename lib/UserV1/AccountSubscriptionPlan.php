@@ -26,12 +26,12 @@ final class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializ
     /**
      * The plan product.
      */
-    public null|Product $product;
+    public ?Product $product;
 
     public function __construct(
-        null|string $id = null,
-        null|string $displayName = null,
-        null|Product $product = null,
+        ?string $id = null,
+        ?string $displayName = null,
+        ?Product $product = null,
     ) {
         $this->id = $id ?? '';
         $this->displayName = $displayName ?? '';

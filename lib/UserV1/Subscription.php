@@ -27,48 +27,48 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
     /**
      * The currency code for the subscription (e.g. `USD`).
      */
-    public null|string $currencyCode;
+    public ?string $currencyCode;
 
     /**
      * The subscription items.
      */
-    public null|Plan $plan;
+    public ?Plan $plan;
 
     /**
      * The payment method.
      */
-    public null|PaymentMethod $paymentMethod;
+    public ?PaymentMethod $paymentMethod;
 
     /**
      * The subscription is scheduled to be canceled at the end of the
      * current billing period.
      */
-    public null|bool $cancelPeriodEnd;
+    public ?bool $cancelPeriodEnd;
 
     /**
      * The time the subscription started.
      */
-    public null|\DateTimeInterface $startTime;
+    public ?\DateTimeInterface $startTime;
 
     /**
      * The time the subscription ends/ended.
      */
-    public null|\DateTimeInterface $endTime;
+    public ?\DateTimeInterface $endTime;
 
     /**
      * The trial information for the subscription.
      */
-    public null|SubscriptionTrial $trial;
+    public ?SubscriptionTrial $trial;
 
     /**
      * The current billing period for the subscription.
      */
-    public null|SubscriptionCurrentPeriod $currentPeriod;
+    public ?SubscriptionCurrentPeriod $currentPeriod;
 
     /**
      * The subscription items.
      *
-     * @var \UserHub\UserV1\SubscriptionItem[]
+     * @var SubscriptionItem[]
      */
     public array $items;
 
@@ -76,7 +76,7 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
      * The information about the various seats available in
      * the subscription.
      *
-     * @var \UserHub\UserV1\SubscriptionSeatInfo[]
+     * @var SubscriptionSeatInfo[]
      */
     public array $seats;
 
@@ -91,24 +91,24 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     /**
-     * @param null|\UserHub\UserV1\SubscriptionItem[]     $items
-     * @param null|\UserHub\UserV1\SubscriptionSeatInfo[] $seats
+     * @param null|SubscriptionItem[]     $items
+     * @param null|SubscriptionSeatInfo[] $seats
      */
     public function __construct(
-        null|string $id = null,
-        null|string $state = null,
-        null|string $currencyCode = null,
-        null|Plan $plan = null,
-        null|PaymentMethod $paymentMethod = null,
-        null|bool $cancelPeriodEnd = null,
-        null|\DateTimeInterface $startTime = null,
-        null|\DateTimeInterface $endTime = null,
-        null|SubscriptionTrial $trial = null,
-        null|SubscriptionCurrentPeriod $currentPeriod = null,
-        null|array $items = null,
-        null|array $seats = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?string $id = null,
+        ?string $state = null,
+        ?string $currencyCode = null,
+        ?Plan $plan = null,
+        ?PaymentMethod $paymentMethod = null,
+        ?bool $cancelPeriodEnd = null,
+        ?\DateTimeInterface $startTime = null,
+        ?\DateTimeInterface $endTime = null,
+        ?SubscriptionTrial $trial = null,
+        ?SubscriptionCurrentPeriod $currentPeriod = null,
+        ?array $items = null,
+        ?array $seats = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->id = $id ?? '';
         $this->state = $state ?? '';

@@ -19,7 +19,7 @@ final class GetCustomUserRequest implements \JsonSerializable, JsonUnserializabl
     public string $id;
 
     public function __construct(
-        null|string $id = null,
+        ?string $id = null,
     ) {
         $this->id = $id ?? '';
     }

@@ -9,6 +9,7 @@ on:
 
 env:
   CI: "true"
+  PHP_CS_FIXER_IGNORE_ENV: "true"
 
 concurrency:
   group: ${{ github.ref }}
@@ -20,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ["8.1", "8.2", "8.3"]
+        php-version: ["8.2", "8.3", "8.4"]
 
     steps:
       - name: Checkout

@@ -20,7 +20,7 @@ final class CreatePortalSessionResponse implements \JsonSerializable, JsonUnseri
     public string $redirectUrl;
 
     public function __construct(
-        null|string $redirectUrl = null,
+        ?string $redirectUrl = null,
     ) {
         $this->redirectUrl = $redirectUrl ?? '';
     }

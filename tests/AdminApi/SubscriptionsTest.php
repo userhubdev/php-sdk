@@ -47,7 +47,6 @@ final class SubscriptionsTest extends TestCase
         $n = new Subscriptions($tr);
 
         $res = $n->list();
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/admin/v1/subscriptions', $tr->request->path);
@@ -263,7 +262,6 @@ final class SubscriptionsTest extends TestCase
         $n = new Subscriptions($tr);
 
         $res = $n->get(subscriptionId: 'subscriptionId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/admin/v1/subscriptions/subscriptionId', $tr->request->path);

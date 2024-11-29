@@ -22,34 +22,34 @@ final class OrganizationInput implements \JsonSerializable, JsonUnserializable
      *
      * ID's starting with `org_` are reserved.
      */
-    public null|string $uniqueId;
+    public ?string $uniqueId;
 
     /**
      * The human-readable display name of the organization.
      *
      * The maximum length is 200 characters.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * The email address of the organization.
      *
      * The maximum length is 320 characters.
      */
-    public null|string $email;
+    public ?string $email;
 
     /**
      * The flow identifier associated with the creation of the organization.
      *
      * The flow type must be `SIGNUP` and associated with the user creating the organization.
      */
-    public null|string $flowId;
+    public ?string $flowId;
 
     public function __construct(
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $email = null,
-        null|string $flowId = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?string $flowId = null,
     ) {
         $this->uniqueId = $uniqueId ?? null;
         $this->displayName = $displayName ?? null;

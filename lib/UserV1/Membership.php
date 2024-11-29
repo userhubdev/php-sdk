@@ -19,22 +19,22 @@ final class Membership implements \JsonSerializable, JsonUnserializable
     /**
      * The organization.
      */
-    public null|Organization $organization;
+    public ?Organization $organization;
 
     /**
      * The user's role within the organization.
      */
-    public null|Role $role;
+    public ?Role $role;
 
     /**
      * The subscription associated with the organization.
      */
-    public null|AccountSubscription $subscription;
+    public ?AccountSubscription $subscription;
 
     public function __construct(
-        null|Organization $organization = null,
-        null|Role $role = null,
-        null|AccountSubscription $subscription = null,
+        ?Organization $organization = null,
+        ?Role $role = null,
+        ?AccountSubscription $subscription = null,
     ) {
         $this->organization = $organization ?? new Organization();
         $this->role = $role ?? new Role();

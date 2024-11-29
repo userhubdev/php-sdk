@@ -24,8 +24,8 @@ final class PlanGroupTag implements \JsonSerializable, JsonUnserializable
     public string $revisionId;
 
     public function __construct(
-        null|string $tag = null,
-        null|string $revisionId = null,
+        ?string $tag = null,
+        ?string $revisionId = null,
     ) {
         $this->tag = $tag ?? '';
         $this->revisionId = $revisionId ?? '';

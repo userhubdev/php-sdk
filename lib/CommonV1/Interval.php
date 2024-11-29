@@ -24,8 +24,8 @@ final class Interval implements \JsonSerializable, JsonUnserializable
     public string $unit;
 
     public function __construct(
-        null|int $quantity = null,
-        null|string $unit = null,
+        ?int $quantity = null,
+        ?string $unit = null,
     ) {
         $this->quantity = $quantity ?? 0;
         $this->unit = $unit ?? '';

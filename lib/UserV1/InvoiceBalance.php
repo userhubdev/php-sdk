@@ -17,12 +17,12 @@ final class InvoiceBalance implements \JsonSerializable, JsonUnserializable
     /**
      * The starting balance of the account.
      */
-    public null|string $startAmount;
+    public ?string $startAmount;
 
     /**
      * The ending balance of the account.
      */
-    public null|string $endAmount;
+    public ?string $endAmount;
 
     /**
      * The amount applied to the invoice from the balance.
@@ -30,12 +30,12 @@ final class InvoiceBalance implements \JsonSerializable, JsonUnserializable
      * A negative amount means a debit from the account balance.
      * A positive amount means a credit to the account balance.
      */
-    public null|string $appliedAmount;
+    public ?string $appliedAmount;
 
     public function __construct(
-        null|string $startAmount = null,
-        null|string $endAmount = null,
-        null|string $appliedAmount = null,
+        ?string $startAmount = null,
+        ?string $endAmount = null,
+        ?string $appliedAmount = null,
     ) {
         $this->startAmount = $startAmount ?? null;
         $this->endAmount = $endAmount ?? null;

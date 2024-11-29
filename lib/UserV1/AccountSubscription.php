@@ -27,12 +27,12 @@ final class AccountSubscription implements \JsonSerializable, JsonUnserializable
     /**
      * The anchor time of the billing cycle.
      */
-    public null|\DateTimeInterface $anchorTime;
+    public ?\DateTimeInterface $anchorTime;
 
     /**
      * The subscription plan.
      */
-    public null|AccountSubscriptionPlan $plan;
+    public ?AccountSubscriptionPlan $plan;
 
     /**
      * The user's seat.
@@ -40,14 +40,14 @@ final class AccountSubscription implements \JsonSerializable, JsonUnserializable
      * This will only be set for organization subscriptions where
      * the user has been assigned a seat.
      */
-    public null|AccountSubscriptionSeat $seat;
+    public ?AccountSubscriptionSeat $seat;
 
     public function __construct(
-        null|string $id = null,
-        null|string $state = null,
-        null|\DateTimeInterface $anchorTime = null,
-        null|AccountSubscriptionPlan $plan = null,
-        null|AccountSubscriptionSeat $seat = null,
+        ?string $id = null,
+        ?string $state = null,
+        ?\DateTimeInterface $anchorTime = null,
+        ?AccountSubscriptionPlan $plan = null,
+        ?AccountSubscriptionSeat $seat = null,
     ) {
         $this->id = $id ?? '';
         $this->state = $state ?? '';

@@ -16,10 +16,10 @@ final class PaymentMethodIntent implements \JsonSerializable, JsonUnserializable
     /**
      * A Stripe Setup Intent.
      */
-    public null|StripePaymentMethodIntent $stripe;
+    public ?StripePaymentMethodIntent $stripe;
 
     public function __construct(
-        null|StripePaymentMethodIntent $stripe = null,
+        ?StripePaymentMethodIntent $stripe = null,
     ) {
         $this->stripe = $stripe ?? null;
     }

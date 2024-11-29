@@ -23,7 +23,7 @@ final class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The connection.
      */
-    public null|Connection $connection;
+    public ?Connection $connection;
 
     /**
      * The external identifier of the connected price.
@@ -38,7 +38,7 @@ final class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The code that best describes the reason for the state.
      */
-    public null|string $stateReason;
+    public ?string $stateReason;
 
     /**
      * The currency for the price.
@@ -53,17 +53,17 @@ final class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The billing interval for the price.
      */
-    public null|Interval $interval;
+    public ?Interval $interval;
 
     /**
      * The admin-facing display name of the price.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * The product associated with the price.
      */
-    public null|Product $product;
+    public ?Product $product;
 
     /**
      * The archived status of the price.
@@ -75,12 +75,12 @@ final class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The last time the price was pulled from the connection.
      */
-    public null|\DateTimeInterface $pullTime;
+    public ?\DateTimeInterface $pullTime;
 
     /**
      * The last time the price was pushed to the connection.
      */
-    public null|\DateTimeInterface $pushTime;
+    public ?\DateTimeInterface $pushTime;
 
     /**
      * The creation time of the price.
@@ -95,31 +95,31 @@ final class Price implements \JsonSerializable, JsonUnserializable
     /**
      * The price is fixed per quantity.
      */
-    public null|PriceFixedPrice $fixed;
+    public ?PriceFixedPrice $fixed;
 
     /**
      * The price is dependent on the quantity.
      */
-    public null|PriceTieredPrice $tiered;
+    public ?PriceTieredPrice $tiered;
 
     public function __construct(
-        null|string $id = null,
-        null|Connection $connection = null,
-        null|string $externalId = null,
-        null|string $state = null,
-        null|string $stateReason = null,
-        null|string $currencyCode = null,
-        null|string $billingMode = null,
-        null|Interval $interval = null,
-        null|string $displayName = null,
-        null|Product $product = null,
-        null|bool $archived = null,
-        null|\DateTimeInterface $pullTime = null,
-        null|\DateTimeInterface $pushTime = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
-        null|PriceFixedPrice $fixed = null,
-        null|PriceTieredPrice $tiered = null,
+        ?string $id = null,
+        ?Connection $connection = null,
+        ?string $externalId = null,
+        ?string $state = null,
+        ?string $stateReason = null,
+        ?string $currencyCode = null,
+        ?string $billingMode = null,
+        ?Interval $interval = null,
+        ?string $displayName = null,
+        ?Product $product = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $pullTime = null,
+        ?\DateTimeInterface $pushTime = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
+        ?PriceFixedPrice $fixed = null,
+        ?PriceTieredPrice $tiered = null,
     ) {
         $this->id = $id ?? '';
         $this->connection = $connection ?? null;

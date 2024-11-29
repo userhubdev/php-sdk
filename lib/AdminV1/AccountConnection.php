@@ -17,7 +17,7 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
     /**
      * The tenant connection.
      */
-    public null|Connection $connection;
+    public ?Connection $connection;
 
     /**
      * The external identifier of the connected account.
@@ -27,7 +27,7 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
     /**
      * The external admin URL for the connected account.
      */
-    public null|string $adminUrl;
+    public ?string $adminUrl;
 
     /**
      * The status of the connected account.
@@ -37,7 +37,7 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
     /**
      * The code that best describes the reason for the state.
      */
-    public null|string $stateReason;
+    public ?string $stateReason;
 
     /**
      * The balance amount for the account.
@@ -48,29 +48,29 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
      * A positive value indicates an amount which will be added to the next
      * invoice (debt).
      */
-    public null|string $balanceAmount;
+    public ?string $balanceAmount;
 
     /**
      * The currency code for the account.
      */
-    public null|string $currencyCode;
+    public ?string $currencyCode;
 
     /**
      * The payment methods for connections that support it.
      *
-     * @var \UserHub\AdminV1\PaymentMethod[]
+     * @var PaymentMethod[]
      */
     public array $paymentMethods;
 
     /**
      * The last time the account was pulled from the connection.
      */
-    public null|\DateTimeInterface $pullTime;
+    public ?\DateTimeInterface $pullTime;
 
     /**
      * The last time the account was pushed to the connection.
      */
-    public null|\DateTimeInterface $pushTime;
+    public ?\DateTimeInterface $pushTime;
 
     /**
      * The creation time of the account connection.
@@ -83,21 +83,21 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     /**
-     * @param null|\UserHub\AdminV1\PaymentMethod[] $paymentMethods
+     * @param null|PaymentMethod[] $paymentMethods
      */
     public function __construct(
-        null|Connection $connection = null,
-        null|string $externalId = null,
-        null|string $adminUrl = null,
-        null|string $state = null,
-        null|string $stateReason = null,
-        null|string $balanceAmount = null,
-        null|string $currencyCode = null,
-        null|array $paymentMethods = null,
-        null|\DateTimeInterface $pullTime = null,
-        null|\DateTimeInterface $pushTime = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?Connection $connection = null,
+        ?string $externalId = null,
+        ?string $adminUrl = null,
+        ?string $state = null,
+        ?string $stateReason = null,
+        ?string $balanceAmount = null,
+        ?string $currencyCode = null,
+        ?array $paymentMethods = null,
+        ?\DateTimeInterface $pullTime = null,
+        ?\DateTimeInterface $pushTime = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->connection = $connection ?? null;
         $this->externalId = $externalId ?? '';

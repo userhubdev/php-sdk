@@ -29,9 +29,9 @@ final class StripePaymentIntent implements \JsonSerializable, JsonUnserializable
     public string $clientSecret;
 
     public function __construct(
-        null|string $accountId = null,
-        null|bool $live = null,
-        null|string $clientSecret = null,
+        ?string $accountId = null,
+        ?bool $live = null,
+        ?string $clientSecret = null,
     ) {
         $this->accountId = $accountId ?? '';
         $this->live = $live ?? false;

@@ -11,6 +11,7 @@ use UserHub\ConnectionsV1\CustomUser;
 use UserHub\ConnectionsV1\DeleteCustomUserRequest;
 use UserHub\ConnectionsV1\GetCustomUserRequest;
 use UserHub\ConnectionsV1\ListCustomUsersRequest;
+use UserHub\ConnectionsV1\ListCustomUsersResponse;
 use UserHub\EventsV1\Event;
 use UserHub\Webhook\BaseWebhook;
 use UserHub\Webhook\DecodeHandler;
@@ -24,9 +25,9 @@ class Webhook extends BaseWebhook
     /**
      * Registers a handler for the `challenge` action.
      *
-     * @param null|callable(\UserHub\ConnectionsV1\Challenge): \UserHub\ConnectionsV1\Challenge $handler is the action handler
+     * @param null|callable(Challenge): Challenge $handler is the action handler
      */
-    public function onChallenge(null|callable $handler): self
+    public function onChallenge(?callable $handler): self
     {
         if (isset($handler)) {
             $handler = new DecodeHandler($handler, Challenge::jsonUnserialize(...));
@@ -38,9 +39,9 @@ class Webhook extends BaseWebhook
     /**
      * Registers a handler for the `events.handle` action.
      *
-     * @param null|callable(\UserHub\EventsV1\Event): void $handler is the action handler
+     * @param null|callable(Event): void $handler is the action handler
      */
-    public function onEvent(null|callable $handler): self
+    public function onEvent(?callable $handler): self
     {
         if (isset($handler)) {
             $handler = new DecodeHandler($handler, Event::jsonUnserialize(...));
@@ -52,9 +53,9 @@ class Webhook extends BaseWebhook
     /**
      * Registers a handler for the `users.list` action.
      *
-     * @param null|callable(\UserHub\ConnectionsV1\ListCustomUsersRequest): \UserHub\ConnectionsV1\ListCustomUsersResponse $handler is the action handler
+     * @param null|callable(ListCustomUsersRequest): ListCustomUsersResponse $handler is the action handler
      */
-    public function onListUsers(null|callable $handler): self
+    public function onListUsers(?callable $handler): self
     {
         if (isset($handler)) {
             $handler = new DecodeHandler($handler, ListCustomUsersRequest::jsonUnserialize(...));
@@ -66,9 +67,9 @@ class Webhook extends BaseWebhook
     /**
      * Registers a handler for the `users.create` action.
      *
-     * @param null|callable(\UserHub\ConnectionsV1\CustomUser): \UserHub\ConnectionsV1\CustomUser $handler is the action handler
+     * @param null|callable(CustomUser): CustomUser $handler is the action handler
      */
-    public function onCreateUser(null|callable $handler): self
+    public function onCreateUser(?callable $handler): self
     {
         if (isset($handler)) {
             $handler = new DecodeHandler($handler, CustomUser::jsonUnserialize(...));
@@ -80,9 +81,9 @@ class Webhook extends BaseWebhook
     /**
      * Registers a handler for the `users.get` action.
      *
-     * @param null|callable(\UserHub\ConnectionsV1\GetCustomUserRequest): \UserHub\ConnectionsV1\CustomUser $handler is the action handler
+     * @param null|callable(GetCustomUserRequest): CustomUser $handler is the action handler
      */
-    public function onGetUser(null|callable $handler): self
+    public function onGetUser(?callable $handler): self
     {
         if (isset($handler)) {
             $handler = new DecodeHandler($handler, GetCustomUserRequest::jsonUnserialize(...));
@@ -94,9 +95,9 @@ class Webhook extends BaseWebhook
     /**
      * Registers a handler for the `users.update` action.
      *
-     * @param null|callable(\UserHub\ConnectionsV1\CustomUser): \UserHub\ConnectionsV1\CustomUser $handler is the action handler
+     * @param null|callable(CustomUser): CustomUser $handler is the action handler
      */
-    public function onUpdateUser(null|callable $handler): self
+    public function onUpdateUser(?callable $handler): self
     {
         if (isset($handler)) {
             $handler = new DecodeHandler($handler, CustomUser::jsonUnserialize(...));
@@ -108,9 +109,9 @@ class Webhook extends BaseWebhook
     /**
      * Registers a handler for the `users.delete` action.
      *
-     * @param null|callable(\UserHub\ConnectionsV1\DeleteCustomUserRequest): void $handler is the action handler
+     * @param null|callable(DeleteCustomUserRequest): void $handler is the action handler
      */
-    public function onDeleteUser(null|callable $handler): self
+    public function onDeleteUser(?callable $handler): self
     {
         if (isset($handler)) {
             $handler = new DecodeHandler($handler, DeleteCustomUserRequest::jsonUnserialize(...));

@@ -21,7 +21,7 @@ class BaseWebhook
      * @var array<string, callable(WebhookRequest): WebhookResponse>
      */
     private array $handlers;
-    private null|\Closure $onError;
+    private ?\Closure $onError;
 
     public function __construct(
         string $signingSecret,
@@ -43,7 +43,7 @@ class BaseWebhook
      */
     public function __invoke(
         null|array|object $headers = null,
-        null|string $body = null,
+        ?string $body = null,
     ): WebhookResponse {
         return $this->handleAction(new WebhookRequest($headers, $body));
     }
@@ -84,7 +84,7 @@ class BaseWebhook
      *
      * @return static
      */
-    public function onAction(string $name, null|callable $handler): self
+    public function onAction(string $name, ?callable $handler): self
     {
         if (isset($handler)) {
             $this->handlers[$name] = $handler;
@@ -104,7 +104,7 @@ class BaseWebhook
      *
      * @return static
      */
-    public function onDefault(null|callable $handler): self
+    public function onDefault(?callable $handler): self
     {
         return $this->onAction('', $handler);
     }
@@ -206,8 +206,10 @@ class BaseWebhook
             } else {
                 $res = $this->handleAction(new WebhookRequest($headers, $body));
             }
-        } else {
+        } elseif (\is_string($_SERVER['REQUEST_METHOD'])) {
             $res = $this->createResponse(new UserHubError('Request should be a POST: '.$_SERVER['REQUEST_METHOD']));
+        } else {
+            $res = $this->createResponse(new UserHubError('Request should be a POST'));
         }
 
         foreach ($res->headers as $name => $value) {

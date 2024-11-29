@@ -23,32 +23,32 @@ final class Address implements \JsonSerializable, JsonUnserializable
     /**
      * The city, district, suburb, town, or village.
      */
-    public null|string $city;
+    public ?string $city;
 
     /**
      * The state, country, province, or region.
      */
-    public null|string $state;
+    public ?string $state;
 
     /**
      * The ZIP or postal code.
      */
-    public null|string $postalCode;
+    public ?string $postalCode;
 
     /**
      * The 2-letter country code.
      */
-    public null|string $country;
+    public ?string $country;
 
     /**
      * @param null|string[] $lines
      */
     public function __construct(
-        null|array $lines = null,
-        null|string $city = null,
-        null|string $state = null,
-        null|string $postalCode = null,
-        null|string $country = null,
+        ?array $lines = null,
+        ?string $city = null,
+        ?string $state = null,
+        ?string $postalCode = null,
+        ?string $country = null,
     ) {
         $this->lines = $lines ?? [];
         $this->city = $city ?? null;

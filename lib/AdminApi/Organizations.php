@@ -36,13 +36,13 @@ class Organizations
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
-        null|string $displayName = null,
-        null|string $email = null,
-        null|int $pageSize = null,
-        null|string $pageToken = null,
-        null|string $orderBy = null,
-        null|bool $showDeleted = null,
-        null|string $view = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?int $pageSize = null,
+        ?string $pageToken = null,
+        ?string $orderBy = null,
+        ?bool $showDeleted = null,
+        ?string $view = null,
     ): ListOrganizationsResponse {
         $req = new Request('admin.organizations.list', 'GET', '/admin/v1/organizations');
         $req->setIdempotent(true);
@@ -80,20 +80,20 @@ class Organizations
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function create(
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $email = null,
-        null|bool $emailVerified = null,
-        null|string $phoneNumber = null,
-        null|bool $phoneNumberVerified = null,
-        null|string $imageUrl = null,
-        null|string $currencyCode = null,
-        null|string $languageCode = null,
-        null|string $regionCode = null,
-        null|string $timeZone = null,
-        null|Address $address = null,
-        null|\DateTimeInterface $signupTime = null,
-        null|bool $disabled = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?bool $emailVerified = null,
+        ?string $phoneNumber = null,
+        ?bool $phoneNumberVerified = null,
+        ?string $imageUrl = null,
+        ?string $currencyCode = null,
+        ?string $languageCode = null,
+        ?string $regionCode = null,
+        ?string $timeZone = null,
+        ?Address $address = null,
+        ?\DateTimeInterface $signupTime = null,
+        ?bool $disabled = null,
     ): Organization {
         $req = new Request('admin.organizations.create', 'POST', '/admin/v1/organizations');
         $body = [];
@@ -185,7 +185,7 @@ class Organizations
         null|Address|Undefined $address = new Undefined(),
         null|\DateTimeInterface|Undefined $signupTime = new Undefined(),
         null|bool|Undefined $disabled = new Undefined(),
-        null|bool $allowMissing = null,
+        ?bool $allowMissing = null,
     ): Organization {
         $req = new Request('admin.organizations.update', 'PATCH', '/admin/v1/organizations/'.rawurlencode($organizationId));
         $req->setIdempotent(true);
@@ -288,8 +288,8 @@ class Organizations
      */
     public function connect(
         string $organizationId,
-        null|string $connectionId = null,
-        null|string $externalId = null,
+        ?string $connectionId = null,
+        ?string $externalId = null,
     ): Organization {
         $req = new Request('admin.organizations.connect', 'POST', '/admin/v1/organizations/'.rawurlencode($organizationId).':connect');
         $body = [];
@@ -324,8 +324,8 @@ class Organizations
      */
     public function disconnect(
         string $organizationId,
-        null|string $connectionId = null,
-        null|bool $deleteExternalAccount = null,
+        ?string $connectionId = null,
+        ?bool $deleteExternalAccount = null,
     ): Organization {
         $req = new Request('admin.organizations.disconnect', 'POST', '/admin/v1/organizations/'.rawurlencode($organizationId).':disconnect');
         $body = [];
@@ -351,12 +351,12 @@ class Organizations
      */
     public function listMembers(
         string $organizationId,
-        null|string $displayName = null,
-        null|string $email = null,
-        null|string $roleId = null,
-        null|int $pageSize = null,
-        null|string $pageToken = null,
-        null|string $orderBy = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?string $roleId = null,
+        ?int $pageSize = null,
+        ?string $pageToken = null,
+        ?string $orderBy = null,
     ): ListMembersResponse {
         $req = new Request('admin.organizations.listMembers', 'GET', '/admin/v1/organizations/'.rawurlencode($organizationId).'/members');
         $req->setIdempotent(true);
@@ -392,8 +392,8 @@ class Organizations
      */
     public function addMember(
         string $organizationId,
-        null|string $userId = null,
-        null|string $roleId = null,
+        ?string $userId = null,
+        ?string $roleId = null,
     ): Member {
         $req = new Request('admin.organizations.addMember', 'POST', '/admin/v1/organizations/'.rawurlencode($organizationId).'/members');
         $body = [];
@@ -438,7 +438,7 @@ class Organizations
         string $organizationId,
         string $userId,
         null|string|Undefined $roleId = new Undefined(),
-        null|bool $allowMissing = null,
+        ?bool $allowMissing = null,
     ): Member {
         $req = new Request('admin.organizations.updateMember', 'PATCH', '/admin/v1/organizations/'.rawurlencode($organizationId).'/members/'.rawurlencode($userId));
         $req->setIdempotent(true);

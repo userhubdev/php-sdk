@@ -21,11 +21,11 @@ final class Email implements \JsonSerializable, JsonUnserializable
     /**
      * The email name (e.g. `Jane Doe`).
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     public function __construct(
-        null|string $address = null,
-        null|string $displayName = null,
+        ?string $address = null,
+        ?string $displayName = null,
     ) {
         $this->address = $address ?? '';
         $this->displayName = $displayName ?? null;

@@ -32,37 +32,37 @@ final class Event implements \JsonSerializable, JsonUnserializable
     /**
      * The `flows.changed` data.
      */
-    public null|FlowsChanged $flowsChanged;
+    public ?FlowsChanged $flowsChanged;
 
     /**
      * The `members.changed` data.
      */
-    public null|MembersChanged $membersChanged;
+    public ?MembersChanged $membersChanged;
 
     /**
      * The `organizations.changed` data.
      */
-    public null|OrganizationsChanged $organizationsChanged;
+    public ?OrganizationsChanged $organizationsChanged;
 
     /**
      * The `subscriptions.changed` data.
      */
-    public null|SubscriptionsChanged $subscriptionsChanged;
+    public ?SubscriptionsChanged $subscriptionsChanged;
 
     /**
      * The `users.changed` data.
      */
-    public null|UsersChanged $usersChanged;
+    public ?UsersChanged $usersChanged;
 
     public function __construct(
-        null|string $id = null,
-        null|\DateTimeInterface $time = null,
-        null|string $type = null,
-        null|FlowsChanged $flowsChanged = null,
-        null|MembersChanged $membersChanged = null,
-        null|OrganizationsChanged $organizationsChanged = null,
-        null|SubscriptionsChanged $subscriptionsChanged = null,
-        null|UsersChanged $usersChanged = null,
+        ?string $id = null,
+        ?\DateTimeInterface $time = null,
+        ?string $type = null,
+        ?FlowsChanged $flowsChanged = null,
+        ?MembersChanged $membersChanged = null,
+        ?OrganizationsChanged $organizationsChanged = null,
+        ?SubscriptionsChanged $subscriptionsChanged = null,
+        ?UsersChanged $usersChanged = null,
     ) {
         $this->id = $id ?? '';
         $this->time = $time ?? Util::emptyDateTime();

@@ -17,16 +17,16 @@ final class SubscriptionCurrentPeriod implements \JsonSerializable, JsonUnserial
     /**
      * The time the current billing period started.
      */
-    public null|\DateTimeInterface $startTime;
+    public ?\DateTimeInterface $startTime;
 
     /**
      * The time the current billing period ends.
      */
-    public null|\DateTimeInterface $endTime;
+    public ?\DateTimeInterface $endTime;
 
     public function __construct(
-        null|\DateTimeInterface $startTime = null,
-        null|\DateTimeInterface $endTime = null,
+        ?\DateTimeInterface $startTime = null,
+        ?\DateTimeInterface $endTime = null,
     ) {
         $this->startTime = $startTime ?? null;
         $this->endTime = $endTime ?? null;

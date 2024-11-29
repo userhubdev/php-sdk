@@ -17,16 +17,16 @@ final class OrganizationResult implements \JsonSerializable, JsonUnserializable
     /**
      * The organization.
      */
-    public null|Organization $organization;
+    public ?Organization $organization;
 
     /**
      * The organization error.
      */
-    public null|Status $error;
+    public ?Status $error;
 
     public function __construct(
-        null|Organization $organization = null,
-        null|Status $error = null,
+        ?Organization $organization = null,
+        ?Status $error = null,
     ) {
         $this->organization = $organization ?? null;
         $this->error = $error ?? null;

@@ -22,60 +22,60 @@ final class InvoiceItem implements \JsonSerializable, JsonUnserializable
     /**
      * The details of the associated product.
      */
-    public null|Product $product;
+    public ?Product $product;
 
     /**
      * The details of the associated price.
      */
-    public null|Price $price;
+    public ?Price $price;
 
     /**
      * The quantity of the item product/price.
      */
-    public null|int $quantity;
+    public ?int $quantity;
 
     /**
      * The total amount for the line item excluding
      * taxes and discounts.
      */
-    public null|string $subtotalAmount;
+    public ?string $subtotalAmount;
 
     /**
      * The item-level discount amount.
      */
-    public null|string $discountAmount;
+    public ?string $discountAmount;
 
     /**
      * The user facing description for the line item.
      */
-    public null|string $description;
+    public ?string $description;
 
     /**
      * The external identifier of the invoice item.
      */
-    public null|string $externalId;
+    public ?string $externalId;
 
     /**
      * Whether the item was a proration.
      */
-    public null|bool $proration;
+    public ?bool $proration;
 
     /**
      * The billing period for the item.
      */
-    public null|Period $period;
+    public ?Period $period;
 
     public function __construct(
-        null|string $id = null,
-        null|Product $product = null,
-        null|Price $price = null,
-        null|int $quantity = null,
-        null|string $subtotalAmount = null,
-        null|string $discountAmount = null,
-        null|string $description = null,
-        null|string $externalId = null,
-        null|bool $proration = null,
-        null|Period $period = null,
+        ?string $id = null,
+        ?Product $product = null,
+        ?Price $price = null,
+        ?int $quantity = null,
+        ?string $subtotalAmount = null,
+        ?string $discountAmount = null,
+        ?string $description = null,
+        ?string $externalId = null,
+        ?bool $proration = null,
+        ?Period $period = null,
     ) {
         $this->id = $id ?? '';
         $this->product = $product ?? null;

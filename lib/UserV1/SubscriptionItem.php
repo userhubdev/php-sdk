@@ -21,12 +21,12 @@ final class SubscriptionItem implements \JsonSerializable, JsonUnserializable
     /**
      * The details of the associated product.
      */
-    public null|Product $product;
+    public ?Product $product;
 
     /**
      * The details of the associated price.
      */
-    public null|Price $price;
+    public ?Price $price;
 
     /**
      * The quantity for the item.
@@ -34,10 +34,10 @@ final class SubscriptionItem implements \JsonSerializable, JsonUnserializable
     public int $quantity;
 
     public function __construct(
-        null|string $id = null,
-        null|Product $product = null,
-        null|Price $price = null,
-        null|int $quantity = null,
+        ?string $id = null,
+        ?Product $product = null,
+        ?Price $price = null,
+        ?int $quantity = null,
     ) {
         $this->id = $id ?? '';
         $this->product = $product ?? new Product();

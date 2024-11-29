@@ -30,14 +30,14 @@ class Subscriptions
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
-        null|string $organizationId = null,
-        null|string $userId = null,
-        null|string $state = null,
-        null|string $planGroupId = null,
-        null|int $pageSize = null,
-        null|string $pageToken = null,
-        null|string $orderBy = null,
-        null|string $view = null,
+        ?string $organizationId = null,
+        ?string $userId = null,
+        ?string $state = null,
+        ?string $planGroupId = null,
+        ?int $pageSize = null,
+        ?string $pageToken = null,
+        ?string $orderBy = null,
+        ?string $view = null,
     ): ListSubscriptionsResponse {
         $req = new Request('admin.subscriptions.list', 'GET', '/admin/v1/subscriptions');
         $req->setIdempotent(true);
@@ -79,8 +79,8 @@ class Subscriptions
      */
     public function get(
         string $subscriptionId,
-        null|string $organizationId = null,
-        null|string $userId = null,
+        ?string $organizationId = null,
+        ?string $userId = null,
     ): Subscription {
         $req = new Request('admin.subscriptions.get', 'GET', '/admin/v1/subscriptions/'.rawurlencode($subscriptionId));
         $req->setIdempotent(true);

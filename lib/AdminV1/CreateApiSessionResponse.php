@@ -28,8 +28,8 @@ final class CreateApiSessionResponse implements \JsonSerializable, JsonUnseriali
     public \DateTimeInterface $expireTime;
 
     public function __construct(
-        null|string $accessToken = null,
-        null|\DateTimeInterface $expireTime = null,
+        ?string $accessToken = null,
+        ?\DateTimeInterface $expireTime = null,
     ) {
         $this->accessToken = $accessToken ?? '';
         $this->expireTime = $expireTime ?? Util::emptyDateTime();

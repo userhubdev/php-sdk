@@ -17,7 +17,7 @@ final class ListProductsResponse implements \JsonSerializable, JsonUnserializabl
     /**
      * The list of products.
      *
-     * @var \UserHub\AdminV1\Product[]
+     * @var Product[]
      */
     public array $products;
 
@@ -32,15 +32,15 @@ final class ListProductsResponse implements \JsonSerializable, JsonUnserializabl
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\Product[] $products
+     * @param null|Product[] $products
      */
     public function __construct(
-        null|array $products = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $products = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->products = $products ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

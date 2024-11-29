@@ -28,7 +28,7 @@ final class Product implements \JsonSerializable, JsonUnserializable
      *
      * ID's starting with `pd_` are reserved.
      */
-    public null|string $uniqueId;
+    public ?string $uniqueId;
 
     /**
      * The customer facing human-readable display name of the product.
@@ -42,7 +42,7 @@ final class Product implements \JsonSerializable, JsonUnserializable
      *
      * The maximum length is 1000 characters.
      */
-    public null|string $description;
+    public ?string $description;
 
     /**
      * Whether the price has been committed.
@@ -62,7 +62,7 @@ final class Product implements \JsonSerializable, JsonUnserializable
     /**
      * The connected products.
      *
-     * @var \UserHub\AdminV1\ProductConnection[]
+     * @var ProductConnection[]
      */
     public array $productConnections;
 
@@ -77,18 +77,18 @@ final class Product implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     /**
-     * @param null|\UserHub\AdminV1\ProductConnection[] $productConnections
+     * @param null|ProductConnection[] $productConnections
      */
     public function __construct(
-        null|string $id = null,
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $description = null,
-        null|bool $committed = null,
-        null|bool $archived = null,
-        null|array $productConnections = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?string $id = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $description = null,
+        ?bool $committed = null,
+        ?bool $archived = null,
+        ?array $productConnections = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;

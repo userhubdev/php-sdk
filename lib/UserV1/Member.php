@@ -16,12 +16,12 @@ final class Member implements \JsonSerializable, JsonUnserializable
     /**
      * The user.
      */
-    public null|User $user;
+    public ?User $user;
 
     /**
      * The user's role within the organization.
      */
-    public null|Role $role;
+    public ?Role $role;
 
     /**
      * The seat assigned to the member.
@@ -30,12 +30,12 @@ final class Member implements \JsonSerializable, JsonUnserializable
      * subscription for the organization or the user
      * has not been assigned a seat.
      */
-    public null|AccountSubscriptionSeat $seat;
+    public ?AccountSubscriptionSeat $seat;
 
     public function __construct(
-        null|User $user = null,
-        null|Role $role = null,
-        null|AccountSubscriptionSeat $seat = null,
+        ?User $user = null,
+        ?Role $role = null,
+        ?AccountSubscriptionSeat $seat = null,
     ) {
         $this->user = $user ?? new User();
         $this->role = $role ?? new Role();

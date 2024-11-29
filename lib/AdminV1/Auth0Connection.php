@@ -29,9 +29,9 @@ final class Auth0Connection implements \JsonSerializable, JsonUnserializable
     public string $clientSecret;
 
     public function __construct(
-        null|string $domain = null,
-        null|string $clientId = null,
-        null|string $clientSecret = null,
+        ?string $domain = null,
+        ?string $clientId = null,
+        ?string $clientSecret = null,
     ) {
         $this->domain = $domain ?? '';
         $this->clientId = $clientId ?? '';

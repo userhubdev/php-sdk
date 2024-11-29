@@ -17,7 +17,7 @@ final class ListPaymentMethodsResponse implements \JsonSerializable, JsonUnseria
     /**
      * The list of payment methods.
      *
-     * @var \UserHub\UserV1\PaymentMethod[]
+     * @var PaymentMethod[]
      */
     public array $paymentMethods;
 
@@ -32,15 +32,15 @@ final class ListPaymentMethodsResponse implements \JsonSerializable, JsonUnseria
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\UserV1\PaymentMethod[] $paymentMethods
+     * @param null|PaymentMethod[] $paymentMethods
      */
     public function __construct(
-        null|array $paymentMethods = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $paymentMethods = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->paymentMethods = $paymentMethods ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

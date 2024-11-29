@@ -20,7 +20,7 @@ final class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
     public string $direction;
 
     public function __construct(
-        null|string $direction = null,
+        ?string $direction = null,
     ) {
         $this->direction = $direction ?? '';
     }

@@ -51,7 +51,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->list();
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/admin/v1/users', $tr->request->path);
@@ -124,7 +123,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->create();
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/admin/v1/users', $tr->request->path);
@@ -197,7 +195,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->get(userId: 'userId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/admin/v1/users/userId', $tr->request->path);
@@ -270,7 +267,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->update(userId: 'userId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('PATCH', $tr->request->method);
         self::assertEquals('/admin/v1/users/userId', $tr->request->path);
@@ -343,7 +339,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->delete(userId: 'userId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('DELETE', $tr->request->method);
         self::assertEquals('/admin/v1/users/userId', $tr->request->path);
@@ -416,7 +411,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->undelete(userId: 'userId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/admin/v1/users/userId:undelete', $tr->request->path);
@@ -489,7 +483,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->connect(userId: 'userId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/admin/v1/users/userId:connect', $tr->request->path);
@@ -562,7 +555,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->disconnect(userId: 'userId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/admin/v1/users/userId:disconnect', $tr->request->path);
@@ -635,7 +627,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->importAccount(userId: 'userId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/admin/v1/users/userId:import', $tr->request->path);
@@ -654,7 +645,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->createApiSession(userId: 'userId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/admin/v1/users/userId:createApiSession', $tr->request->path);
@@ -672,7 +662,6 @@ final class UsersTest extends TestCase
         $n = new Users($tr);
 
         $res = $n->createPortalSession(userId: 'userId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/admin/v1/users/userId:createPortalSession', $tr->request->path);

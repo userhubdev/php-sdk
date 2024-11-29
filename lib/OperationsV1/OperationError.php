@@ -24,8 +24,8 @@ final class OperationError implements \JsonSerializable, JsonUnserializable
     public string $message;
 
     public function __construct(
-        null|string $code = null,
-        null|string $message = null,
+        ?string $code = null,
+        ?string $message = null,
     ) {
         $this->code = $code ?? '';
         $this->message = $message ?? '';

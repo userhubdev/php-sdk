@@ -17,28 +17,28 @@ final class InvoiceAccount implements \JsonSerializable, JsonUnserializable
     /**
      * The company or individual's full name.
      */
-    public null|string $fullName;
+    public ?string $fullName;
 
     /**
      * The billing email address.
      */
-    public null|string $email;
+    public ?string $email;
 
     /**
      * The billing phone number.
      */
-    public null|string $phoneNumber;
+    public ?string $phoneNumber;
 
     /**
      * The billing address.
      */
-    public null|Address $address;
+    public ?Address $address;
 
     public function __construct(
-        null|string $fullName = null,
-        null|string $email = null,
-        null|string $phoneNumber = null,
-        null|Address $address = null,
+        ?string $fullName = null,
+        ?string $email = null,
+        ?string $phoneNumber = null,
+        ?Address $address = null,
     ) {
         $this->fullName = $fullName ?? null;
         $this->email = $email ?? null;

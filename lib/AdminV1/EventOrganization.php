@@ -24,7 +24,7 @@ final class EventOrganization implements \JsonSerializable, JsonUnserializable
      * NOTE: this is the current display name and not
      * the one as of the time of the event.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * The email address of the organization.
@@ -32,12 +32,12 @@ final class EventOrganization implements \JsonSerializable, JsonUnserializable
      * NOTE: this is the current email and not
      * the one as of the time of the event.
      */
-    public null|string $email;
+    public ?string $email;
 
     public function __construct(
-        null|string $id = null,
-        null|string $displayName = null,
-        null|string $email = null,
+        ?string $id = null,
+        ?string $displayName = null,
+        ?string $email = null,
     ) {
         $this->id = $id ?? '';
         $this->displayName = $displayName ?? null;

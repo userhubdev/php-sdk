@@ -22,12 +22,12 @@ final class Member implements \JsonSerializable, JsonUnserializable
     /**
      * The user.
      */
-    public null|User $user;
+    public ?User $user;
 
     /**
      * The user's role within the organization.
      */
-    public null|Role $role;
+    public ?Role $role;
 
     /**
      * The seat associated with the member.
@@ -36,7 +36,7 @@ final class Member implements \JsonSerializable, JsonUnserializable
      * subscription for the organization or the user
      * has not been assigned a seat.
      */
-    public null|AccountSubscriptionSeat $seat;
+    public ?AccountSubscriptionSeat $seat;
 
     /**
      * The creation time of the membership.
@@ -49,12 +49,12 @@ final class Member implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     public function __construct(
-        null|string $state = null,
-        null|User $user = null,
-        null|Role $role = null,
-        null|AccountSubscriptionSeat $seat = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?string $state = null,
+        ?User $user = null,
+        ?Role $role = null,
+        ?AccountSubscriptionSeat $seat = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->state = $state ?? '';
         $this->user = $user ?? new User();

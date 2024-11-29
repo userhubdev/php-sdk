@@ -8,3 +8,5 @@ parameters:
   ignoreErrors:
     - message: '#.*#'
       path: examples/*
+    - message: '#is_string#'
+      path: lib/Internal/Headers.php

@@ -28,12 +28,12 @@ final class Invoice implements \JsonSerializable, JsonUnserializable
     /**
      * The time associated with the current state (e.g. paid time).
      */
-    public null|\DateTimeInterface $stateTime;
+    public ?\DateTimeInterface $stateTime;
 
     /**
      * The invoice number.
      */
-    public null|string $number;
+    public ?string $number;
 
     /**
      * The currency code for the invoice (e.g. `USD`).
@@ -43,42 +43,42 @@ final class Invoice implements \JsonSerializable, JsonUnserializable
     /**
      * The user facing description for the invoice.
      */
-    public null|string $description;
+    public ?string $description;
 
     /**
      * The contact information associated with the invoice.
      */
-    public null|InvoiceAccount $account;
+    public ?InvoiceAccount $account;
 
     /**
      * The time the invoice was finalized.
      */
-    public null|\DateTimeInterface $effectiveTime;
+    public ?\DateTimeInterface $effectiveTime;
 
     /**
      * The billing period for the invoice.
      */
-    public null|Period $period;
+    public ?Period $period;
 
     /**
      * The subtotal amount for the invoice.
      *
      * This includes item-level discounts.
      */
-    public null|string $subtotalAmount;
+    public ?string $subtotalAmount;
 
     /**
      * The invoice-level discount amount.
      *
      * This does not include item level discounts.
      */
-    public null|string $discountAmount;
+    public ?string $discountAmount;
 
     /**
      * The starting and ending account balance as
      * of the time the invoice was finalized.
      */
-    public null|InvoiceBalance $balance;
+    public ?InvoiceBalance $balance;
 
     /**
      * The tax amount for the invoice.
@@ -86,55 +86,55 @@ final class Invoice implements \JsonSerializable, JsonUnserializable
      * This is for rendering purposes only and is
      * not the reported tax amount.
      */
-    public null|string $taxAmount;
+    public ?string $taxAmount;
 
     /**
      * The total amount for the invoice.
      */
-    public null|string $totalAmount;
+    public ?string $totalAmount;
 
     /**
      * The total amount minus any credits automatically
      * associated with the invoice.
      */
-    public null|string $dueAmount;
+    public ?string $dueAmount;
 
     /**
      * The due amount minus the amount already paid.
      */
-    public null|string $remainingDueAmount;
+    public ?string $remainingDueAmount;
 
     /**
      * The time the invoice must be paid by.
      */
-    public null|\DateTimeInterface $dueTime;
+    public ?\DateTimeInterface $dueTime;
 
     /**
      * The amount already paid towards the invoice.
      */
-    public null|string $paidAmount;
+    public ?string $paidAmount;
 
     /**
      * The status of the invoice payment.
      */
-    public null|string $paymentState;
+    public ?string $paymentState;
 
     /**
      * The payment intent for the invoice.
      */
-    public null|PaymentIntent $paymentIntent;
+    public ?PaymentIntent $paymentIntent;
 
     /**
      * The line items for the invoice.
      *
-     * @var \UserHub\UserV1\InvoiceItem[]
+     * @var InvoiceItem[]
      */
     public array $items;
 
     /**
      * The prorated changes that occurred mid-billing cycle.
      *
-     * @var \UserHub\UserV1\InvoiceChange[]
+     * @var InvoiceChange[]
      */
     public array $changes;
 
@@ -149,34 +149,34 @@ final class Invoice implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     /**
-     * @param null|\UserHub\UserV1\InvoiceItem[]   $items
-     * @param null|\UserHub\UserV1\InvoiceChange[] $changes
+     * @param null|InvoiceItem[]   $items
+     * @param null|InvoiceChange[] $changes
      */
     public function __construct(
-        null|string $id = null,
-        null|string $state = null,
-        null|\DateTimeInterface $stateTime = null,
-        null|string $number = null,
-        null|string $currencyCode = null,
-        null|string $description = null,
-        null|InvoiceAccount $account = null,
-        null|\DateTimeInterface $effectiveTime = null,
-        null|Period $period = null,
-        null|string $subtotalAmount = null,
-        null|string $discountAmount = null,
-        null|InvoiceBalance $balance = null,
-        null|string $taxAmount = null,
-        null|string $totalAmount = null,
-        null|string $dueAmount = null,
-        null|string $remainingDueAmount = null,
-        null|\DateTimeInterface $dueTime = null,
-        null|string $paidAmount = null,
-        null|string $paymentState = null,
-        null|PaymentIntent $paymentIntent = null,
-        null|array $items = null,
-        null|array $changes = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?string $id = null,
+        ?string $state = null,
+        ?\DateTimeInterface $stateTime = null,
+        ?string $number = null,
+        ?string $currencyCode = null,
+        ?string $description = null,
+        ?InvoiceAccount $account = null,
+        ?\DateTimeInterface $effectiveTime = null,
+        ?Period $period = null,
+        ?string $subtotalAmount = null,
+        ?string $discountAmount = null,
+        ?InvoiceBalance $balance = null,
+        ?string $taxAmount = null,
+        ?string $totalAmount = null,
+        ?string $dueAmount = null,
+        ?string $remainingDueAmount = null,
+        ?\DateTimeInterface $dueTime = null,
+        ?string $paidAmount = null,
+        ?string $paymentState = null,
+        ?PaymentIntent $paymentIntent = null,
+        ?array $items = null,
+        ?array $changes = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->id = $id ?? '';
         $this->state = $state ?? '';

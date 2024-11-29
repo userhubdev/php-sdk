@@ -21,11 +21,11 @@ final class ConnectionProvider implements \JsonSerializable, JsonUnserializable
     /**
      * Whether the connection is the default for the provider type.
      */
-    public null|bool $default;
+    public ?bool $default;
 
     public function __construct(
-        null|string $type = null,
-        null|bool $default = null,
+        ?string $type = null,
+        ?bool $default = null,
     ) {
         $this->type = $type ?? '';
         $this->default = $default ?? null;

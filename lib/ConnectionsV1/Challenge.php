@@ -20,7 +20,7 @@ final class Challenge implements \JsonSerializable, JsonUnserializable
     public string $challenge;
 
     public function __construct(
-        null|string $challenge = null,
+        ?string $challenge = null,
     ) {
         $this->challenge = $challenge ?? '';
     }

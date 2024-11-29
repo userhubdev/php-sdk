@@ -17,7 +17,7 @@ final class ListConnectionsResponse implements \JsonSerializable, JsonUnserializ
     /**
      * The list of connections.
      *
-     * @var \UserHub\AdminV1\Connection[]
+     * @var Connection[]
      */
     public array $connections;
 
@@ -32,15 +32,15 @@ final class ListConnectionsResponse implements \JsonSerializable, JsonUnserializ
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\Connection[] $connections
+     * @param null|Connection[] $connections
      */
     public function __construct(
-        null|array $connections = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $connections = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->connections = $connections ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

@@ -37,14 +37,14 @@ final class PlanGroupRevision implements \JsonSerializable, JsonUnserializable
     /**
      * The plans associated with plan group revision.
      *
-     * @var \UserHub\AdminV1\PlanGroupRevisionPlan[]
+     * @var PlanGroupRevisionPlan[]
      */
     public array $plans;
 
     /**
      * The items associated with plan group revision.
      *
-     * @var \UserHub\AdminV1\PlanGroupRevisionItem[]
+     * @var PlanGroupRevisionItem[]
      */
     public array $items;
 
@@ -74,7 +74,7 @@ final class PlanGroupRevision implements \JsonSerializable, JsonUnserializable
      *
      * This allows you to track the revision lineage.
      */
-    public null|string $sourceRevisionId;
+    public ?string $sourceRevisionId;
 
     /**
      * The creation time of the plan group revision.
@@ -87,22 +87,22 @@ final class PlanGroupRevision implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     /**
-     * @param null|string[]                                 $currencyCodes
-     * @param null|\UserHub\AdminV1\PlanGroupRevisionPlan[] $plans
-     * @param null|\UserHub\AdminV1\PlanGroupRevisionItem[] $items
-     * @param null|string[]                                 $tags
+     * @param null|string[]                $currencyCodes
+     * @param null|PlanGroupRevisionPlan[] $plans
+     * @param null|PlanGroupRevisionItem[] $items
+     * @param null|string[]                $tags
      */
     public function __construct(
-        null|string $id = null,
-        null|bool $default = null,
-        null|array $currencyCodes = null,
-        null|array $plans = null,
-        null|array $items = null,
-        null|bool $committed = null,
-        null|array $tags = null,
-        null|string $sourceRevisionId = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?string $id = null,
+        ?bool $default = null,
+        ?array $currencyCodes = null,
+        ?array $plans = null,
+        ?array $items = null,
+        ?bool $committed = null,
+        ?array $tags = null,
+        ?string $sourceRevisionId = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->id = $id ?? '';
         $this->default = $default ?? false;

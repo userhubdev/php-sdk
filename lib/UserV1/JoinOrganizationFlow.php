@@ -16,7 +16,7 @@ final class JoinOrganizationFlow implements \JsonSerializable, JsonUnserializabl
     /**
      * The display name of the invitee.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * The email address of the invitee.
@@ -24,17 +24,17 @@ final class JoinOrganizationFlow implements \JsonSerializable, JsonUnserializabl
      * This is required if a user isn't provided
      * or the user's email address is empty.
      */
-    public null|string $email;
+    public ?string $email;
 
     /**
      * The role to be assigned to the invitee.
      */
-    public null|Role $role;
+    public ?Role $role;
 
     public function __construct(
-        null|string $displayName = null,
-        null|string $email = null,
-        null|Role $role = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?Role $role = null,
     ) {
         $this->displayName = $displayName ?? null;
         $this->email = $email ?? null;

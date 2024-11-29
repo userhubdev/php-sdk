@@ -17,7 +17,7 @@ final class ListPlanGroupChangePathsResponse implements \JsonSerializable, JsonU
     /**
      * The list of change paths.
      *
-     * @var \UserHub\AdminV1\PlanGroupChangePath[]
+     * @var PlanGroupChangePath[]
      */
     public array $planGroupChangePaths;
 
@@ -32,15 +32,15 @@ final class ListPlanGroupChangePathsResponse implements \JsonSerializable, JsonU
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\PlanGroupChangePath[] $planGroupChangePaths
+     * @param null|PlanGroupChangePath[] $planGroupChangePaths
      */
     public function __construct(
-        null|array $planGroupChangePaths = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $planGroupChangePaths = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->planGroupChangePaths = $planGroupChangePaths ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

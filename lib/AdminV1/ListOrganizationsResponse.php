@@ -17,7 +17,7 @@ final class ListOrganizationsResponse implements \JsonSerializable, JsonUnserial
     /**
      * The list of organizations.
      *
-     * @var \UserHub\AdminV1\Organization[]
+     * @var Organization[]
      */
     public array $organizations;
 
@@ -32,15 +32,15 @@ final class ListOrganizationsResponse implements \JsonSerializable, JsonUnserial
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\Organization[] $organizations
+     * @param null|Organization[] $organizations
      */
     public function __construct(
-        null|array $organizations = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $organizations = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->organizations = $organizations ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

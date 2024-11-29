@@ -17,7 +17,7 @@ final class ListRolesResponse implements \JsonSerializable, JsonUnserializable
     /**
      * The list of roles.
      *
-     * @var \UserHub\UserV1\Role[]
+     * @var Role[]
      */
     public array $roles;
 
@@ -32,15 +32,15 @@ final class ListRolesResponse implements \JsonSerializable, JsonUnserializable
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\UserV1\Role[] $roles
+     * @param null|Role[] $roles
      */
     public function __construct(
-        null|array $roles = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $roles = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->roles = $roles ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

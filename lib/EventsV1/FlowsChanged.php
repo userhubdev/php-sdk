@@ -17,10 +17,10 @@ final class FlowsChanged implements \JsonSerializable, JsonUnserializable
     /**
      * The flow.
      */
-    public null|Flow $flow;
+    public ?Flow $flow;
 
     public function __construct(
-        null|Flow $flow = null,
+        ?Flow $flow = null,
     ) {
         $this->flow = $flow ?? new Flow();
     }

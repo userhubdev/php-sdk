@@ -17,10 +17,10 @@ final class UsersChanged implements \JsonSerializable, JsonUnserializable
     /**
      * The user.
      */
-    public null|User $user;
+    public ?User $user;
 
     public function __construct(
-        null|User $user = null,
+        ?User $user = null,
     ) {
         $this->user = $user ?? new User();
     }

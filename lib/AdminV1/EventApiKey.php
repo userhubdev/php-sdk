@@ -19,7 +19,7 @@ final class EventApiKey implements \JsonSerializable, JsonUnserializable
     public string $id;
 
     public function __construct(
-        null|string $id = null,
+        ?string $id = null,
     ) {
         $this->id = $id ?? '';
     }

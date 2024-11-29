@@ -17,7 +17,7 @@ final class ListSubscriptionsResponse implements \JsonSerializable, JsonUnserial
     /**
      * The list of subscriptions.
      *
-     * @var \UserHub\AdminV1\Subscription[]
+     * @var Subscription[]
      */
     public array $subscriptions;
 
@@ -32,15 +32,15 @@ final class ListSubscriptionsResponse implements \JsonSerializable, JsonUnserial
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\Subscription[] $subscriptions
+     * @param null|Subscription[] $subscriptions
      */
     public function __construct(
-        null|array $subscriptions = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $subscriptions = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->subscriptions = $subscriptions ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

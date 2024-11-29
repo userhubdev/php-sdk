@@ -16,7 +16,7 @@ final class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializabl
     /**
      * The subscription item product.
      */
-    public null|Product $product;
+    public ?Product $product;
 
     /**
      * The quantity which has been invoiced for the current billing period.
@@ -31,7 +31,7 @@ final class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializabl
      *
      * This will only be set when different from current period quantity.
      */
-    public null|int $nextPeriodQuantity;
+    public ?int $nextPeriodQuantity;
 
     /**
      * The quantity currently in use.
@@ -49,12 +49,12 @@ final class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializabl
     public int $totalQuantity;
 
     public function __construct(
-        null|Product $product = null,
-        null|int $currentPeriodQuantity = null,
-        null|int $nextPeriodQuantity = null,
-        null|int $assignedQuantity = null,
-        null|int $unassignedQuantity = null,
-        null|int $totalQuantity = null,
+        ?Product $product = null,
+        ?int $currentPeriodQuantity = null,
+        ?int $nextPeriodQuantity = null,
+        ?int $assignedQuantity = null,
+        ?int $unassignedQuantity = null,
+        ?int $totalQuantity = null,
     ) {
         $this->product = $product ?? null;
         $this->currentPeriodQuantity = $currentPeriodQuantity ?? 0;

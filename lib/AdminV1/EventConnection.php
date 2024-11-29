@@ -24,17 +24,17 @@ final class EventConnection implements \JsonSerializable, JsonUnserializable
      * NOTE: this is the current display name and not
      * the one as of the time of the event.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * The connection type.
      */
-    public null|string $type;
+    public ?string $type;
 
     public function __construct(
-        null|string $id = null,
-        null|string $displayName = null,
-        null|string $type = null,
+        ?string $id = null,
+        ?string $displayName = null,
+        ?string $type = null,
     ) {
         $this->id = $id ?? '';
         $this->displayName = $displayName ?? null;

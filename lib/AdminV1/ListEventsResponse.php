@@ -17,7 +17,7 @@ final class ListEventsResponse implements \JsonSerializable, JsonUnserializable
     /**
      * The list of events.
      *
-     * @var \UserHub\AdminV1\Event[]
+     * @var Event[]
      */
     public array $events;
 
@@ -32,15 +32,15 @@ final class ListEventsResponse implements \JsonSerializable, JsonUnserializable
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\Event[] $events
+     * @param null|Event[] $events
      */
     public function __construct(
-        null|array $events = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $events = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->events = $events ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

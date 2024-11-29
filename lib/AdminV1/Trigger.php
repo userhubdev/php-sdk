@@ -18,7 +18,7 @@ final class Trigger implements \JsonSerializable, JsonUnserializable
     /**
      * The connection.
      */
-    public null|Connection $connection;
+    public ?Connection $connection;
 
     /**
      * The event type.
@@ -36,10 +36,10 @@ final class Trigger implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     public function __construct(
-        null|Connection $connection = null,
-        null|string $eventType = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?Connection $connection = null,
+        ?string $eventType = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->connection = $connection ?? new Connection();
         $this->eventType = $eventType ?? '';

@@ -17,7 +17,7 @@ final class ListCustomUsersResponse implements \JsonSerializable, JsonUnserializ
     /**
      * The list of users.
      *
-     * @var \UserHub\ConnectionsV1\CustomUser[]
+     * @var CustomUser[]
      */
     public array $users;
 
@@ -32,11 +32,11 @@ final class ListCustomUsersResponse implements \JsonSerializable, JsonUnserializ
     public string $nextPageToken;
 
     /**
-     * @param null|\UserHub\ConnectionsV1\CustomUser[] $users
+     * @param null|CustomUser[] $users
      */
     public function __construct(
-        null|array $users = null,
-        null|string $nextPageToken = null,
+        ?array $users = null,
+        ?string $nextPageToken = null,
     ) {
         $this->users = $users ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

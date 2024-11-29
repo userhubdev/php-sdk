@@ -45,7 +45,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
      *
      * The maximum length is 1000 characters.
      */
-    public null|string $description;
+    public ?string $description;
 
     /**
      * The additional permissions allowed by the role.
@@ -78,16 +78,16 @@ final class Role implements \JsonSerializable, JsonUnserializable
      * @param null|string[] $permissionSets
      */
     public function __construct(
-        null|string $id = null,
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $type = null,
-        null|string $description = null,
-        null|array $permissionSets = null,
-        null|bool $default = null,
-        null|bool $archived = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?string $id = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $type = null,
+        ?string $description = null,
+        ?array $permissionSets = null,
+        ?bool $default = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? '';

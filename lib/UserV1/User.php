@@ -21,41 +21,41 @@ final class User implements \JsonSerializable, JsonUnserializable
     /**
      * The client defined unique identifier of the user account.
      */
-    public null|string $uniqueId;
+    public ?string $uniqueId;
 
     /**
      * The human-readable display name of the user.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * The email address of the user.
      */
-    public null|string $email;
+    public ?string $email;
 
     /**
      * Whether the user's email address has been verified.
      */
-    public null|bool $emailVerified;
+    public ?bool $emailVerified;
 
     /**
      * The photo/avatar URL of the user.
      */
-    public null|string $imageUrl;
+    public ?string $imageUrl;
 
     /**
      * Whether the user is disabled.
      */
-    public null|bool $disabled;
+    public ?bool $disabled;
 
     public function __construct(
-        null|string $id = null,
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $email = null,
-        null|bool $emailVerified = null,
-        null|string $imageUrl = null,
-        null|bool $disabled = null,
+        ?string $id = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?bool $emailVerified = null,
+        ?string $imageUrl = null,
+        ?bool $disabled = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;
