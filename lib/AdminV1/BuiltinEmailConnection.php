@@ -24,7 +24,7 @@ final class BuiltinEmailConnection implements \JsonSerializable, JsonUnserializa
      * @param null|string[] $allowedEmails
      */
     public function __construct(
-        null|array $allowedEmails = null,
+        ?array $allowedEmails = null,
     ) {
         $this->allowedEmails = $allowedEmails ?? [];
     }

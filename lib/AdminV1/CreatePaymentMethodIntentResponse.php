@@ -23,7 +23,7 @@ final class CreatePaymentMethodIntentResponse implements \JsonSerializable, Json
     public string $token;
 
     public function __construct(
-        null|string $token = null,
+        ?string $token = null,
     ) {
         $this->token = $token ?? '';
     }

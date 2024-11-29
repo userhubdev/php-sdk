@@ -17,15 +17,15 @@ final class BatchGetOrganizationsResponse implements \JsonSerializable, JsonUnse
     /**
      * The organizations.
      *
-     * @var \UserHub\AdminV1\OrganizationResult[]
+     * @var OrganizationResult[]
      */
     public array $organizations;
 
     /**
-     * @param null|\UserHub\AdminV1\OrganizationResult[] $organizations
+     * @param null|OrganizationResult[] $organizations
      */
     public function __construct(
-        null|array $organizations = null,
+        ?array $organizations = null,
     ) {
         $this->organizations = $organizations ?? [];
     }

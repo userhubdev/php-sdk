@@ -39,11 +39,11 @@ final class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
     public string $fundingType;
 
     public function __construct(
-        null|string $brand = null,
-        null|int $expYear = null,
-        null|int $expMonth = null,
-        null|string $last4 = null,
-        null|string $fundingType = null,
+        ?string $brand = null,
+        ?int $expYear = null,
+        ?int $expMonth = null,
+        ?string $last4 = null,
+        ?string $fundingType = null,
     ) {
         $this->brand = $brand ?? '';
         $this->expYear = $expYear ?? 0;

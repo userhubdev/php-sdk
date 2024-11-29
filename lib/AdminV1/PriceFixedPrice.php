@@ -22,11 +22,11 @@ final class PriceFixedPrice implements \JsonSerializable, JsonUnserializable
     /**
      * Whether to transform the quantity before multiplying amount.
      */
-    public null|PriceTransformQuantity $transformQuantity;
+    public ?PriceTransformQuantity $transformQuantity;
 
     public function __construct(
-        null|string $amount = null,
-        null|PriceTransformQuantity $transformQuantity = null,
+        ?string $amount = null,
+        ?PriceTransformQuantity $transformQuantity = null,
     ) {
         $this->amount = $amount ?? '';
         $this->transformQuantity = $transformQuantity ?? null;

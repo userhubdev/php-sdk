@@ -37,12 +37,12 @@ final class PaymentMethod implements \JsonSerializable, JsonUnserializable
     /**
      * The full name of the owner of the payment method.
      */
-    public null|string $fullName;
+    public ?string $fullName;
 
     /**
      * The address for the payment method.
      */
-    public null|Address $address;
+    public ?Address $address;
 
     /**
      * Whether the payment method is the default for the account.
@@ -55,7 +55,7 @@ final class PaymentMethod implements \JsonSerializable, JsonUnserializable
      * This will be unset if the payment method is updated
      * or if a payment succeeds.
      */
-    public null|Status $lastPaymentError;
+    public ?Status $lastPaymentError;
 
     /**
      * The creation time of the payment method connection.
@@ -70,19 +70,19 @@ final class PaymentMethod implements \JsonSerializable, JsonUnserializable
     /**
      * Card payment method (e.g. Visa credit card).
      */
-    public null|CardPaymentMethod $card;
+    public ?CardPaymentMethod $card;
 
     public function __construct(
-        null|string $id = null,
-        null|string $type = null,
-        null|string $displayName = null,
-        null|string $fullName = null,
-        null|Address $address = null,
-        null|bool $default = null,
-        null|Status $lastPaymentError = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
-        null|CardPaymentMethod $card = null,
+        ?string $id = null,
+        ?string $type = null,
+        ?string $displayName = null,
+        ?string $fullName = null,
+        ?Address $address = null,
+        ?bool $default = null,
+        ?Status $lastPaymentError = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
+        ?CardPaymentMethod $card = null,
     ) {
         $this->id = $id ?? '';
         $this->type = $type ?? '';

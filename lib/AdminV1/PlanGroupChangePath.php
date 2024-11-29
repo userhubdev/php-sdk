@@ -17,7 +17,7 @@ final class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
     /**
      * The target plan group for this change path.
      */
-    public null|PlanGroup $target;
+    public ?PlanGroup $target;
 
     /**
      * Whether the change is considered an upgrade or
@@ -41,11 +41,11 @@ final class PlanGroupChangePath implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     public function __construct(
-        null|PlanGroup $target = null,
-        null|string $direction = null,
-        null|string $visibility = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?PlanGroup $target = null,
+        ?string $direction = null,
+        ?string $visibility = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->target = $target ?? null;
         $this->direction = $direction ?? '';

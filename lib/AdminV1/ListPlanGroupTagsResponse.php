@@ -17,7 +17,7 @@ final class ListPlanGroupTagsResponse implements \JsonSerializable, JsonUnserial
     /**
      * The list of plan group tags.
      *
-     * @var \UserHub\AdminV1\PlanGroupTag[]
+     * @var PlanGroupTag[]
      */
     public array $planGroupTags;
 
@@ -32,15 +32,15 @@ final class ListPlanGroupTagsResponse implements \JsonSerializable, JsonUnserial
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\PlanGroupTag[] $planGroupTags
+     * @param null|PlanGroupTag[] $planGroupTags
      */
     public function __construct(
-        null|array $planGroupTags = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $planGroupTags = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->planGroupTags = $planGroupTags ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

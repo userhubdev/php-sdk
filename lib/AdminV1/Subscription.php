@@ -27,77 +27,77 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
     /**
      * The code that best describes the reason for the state.
      */
-    public null|string $stateReason;
+    public ?string $stateReason;
 
     /**
      * The billing connection.
      */
-    public null|Connection $connection;
+    public ?Connection $connection;
 
     /**
      * The external identifier of the subscription.
      */
-    public null|string $externalId;
+    public ?string $externalId;
 
     /**
      * The plan.
      */
-    public null|Plan $plan;
+    public ?Plan $plan;
 
     /**
      * The currency code for the subscription (e.g. `USD`).
      */
-    public null|string $currencyCode;
+    public ?string $currencyCode;
 
     /**
      * The subscription items.
      *
-     * @var \UserHub\AdminV1\SubscriptionItem[]
+     * @var SubscriptionItem[]
      */
     public array $items;
 
     /**
      * The seat information.
      *
-     * @var \UserHub\AdminV1\SubscriptionSeatInfo[]
+     * @var SubscriptionSeatInfo[]
      */
     public array $seats;
 
     /**
      * The payment method.
      */
-    public null|PaymentMethod $paymentMethod;
+    public ?PaymentMethod $paymentMethod;
 
     /**
      * Whether the subscription is scheduled to be canceled
      * at the end of the current billing period.
      */
-    public null|bool $cancelPeriodEnd;
+    public ?bool $cancelPeriodEnd;
 
     /**
      * The anchor time for the billing cycle.
      */
-    public null|\DateTimeInterface $anchorTime;
+    public ?\DateTimeInterface $anchorTime;
 
     /**
      * The time the subscription started.
      */
-    public null|\DateTimeInterface $startTime;
+    public ?\DateTimeInterface $startTime;
 
     /**
      * The time the subscription ends/ended.
      */
-    public null|\DateTimeInterface $endTime;
+    public ?\DateTimeInterface $endTime;
 
     /**
      * The trial information for the subscription.
      */
-    public null|SubscriptionTrial $trial;
+    public ?SubscriptionTrial $trial;
 
     /**
      * The current billing period for the subscription.
      */
-    public null|SubscriptionCurrentPeriod $currentPeriod;
+    public ?SubscriptionCurrentPeriod $currentPeriod;
 
     /**
      * The organization owner of the subscription.
@@ -105,7 +105,7 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
      * The ID field of this object must be populated if
      * if user isn't specified.
      */
-    public null|Organization $organization;
+    public ?Organization $organization;
 
     /**
      * The user owner of the subscription.
@@ -113,7 +113,7 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
      * The ID field of this object must be populated if
      * if organization isn't specified.
      */
-    public null|User $user;
+    public ?User $user;
 
     /**
      * Whether the subscription is the default for the account.
@@ -123,12 +123,12 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
     /**
      * The last time the subscription was pulled from the connection.
      */
-    public null|\DateTimeInterface $pullTime;
+    public ?\DateTimeInterface $pullTime;
 
     /**
      * The last time the subscription was pushed to the connection.
      */
-    public null|\DateTimeInterface $pushTime;
+    public ?\DateTimeInterface $pushTime;
 
     /**
      * The creation time of the subscription.
@@ -141,33 +141,33 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     /**
-     * @param null|\UserHub\AdminV1\SubscriptionItem[]     $items
-     * @param null|\UserHub\AdminV1\SubscriptionSeatInfo[] $seats
+     * @param null|SubscriptionItem[]     $items
+     * @param null|SubscriptionSeatInfo[] $seats
      */
     public function __construct(
-        null|string $id = null,
-        null|string $state = null,
-        null|string $stateReason = null,
-        null|Connection $connection = null,
-        null|string $externalId = null,
-        null|Plan $plan = null,
-        null|string $currencyCode = null,
-        null|array $items = null,
-        null|array $seats = null,
-        null|PaymentMethod $paymentMethod = null,
-        null|bool $cancelPeriodEnd = null,
-        null|\DateTimeInterface $anchorTime = null,
-        null|\DateTimeInterface $startTime = null,
-        null|\DateTimeInterface $endTime = null,
-        null|SubscriptionTrial $trial = null,
-        null|SubscriptionCurrentPeriod $currentPeriod = null,
-        null|Organization $organization = null,
-        null|User $user = null,
-        null|bool $default = null,
-        null|\DateTimeInterface $pullTime = null,
-        null|\DateTimeInterface $pushTime = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?string $id = null,
+        ?string $state = null,
+        ?string $stateReason = null,
+        ?Connection $connection = null,
+        ?string $externalId = null,
+        ?Plan $plan = null,
+        ?string $currencyCode = null,
+        ?array $items = null,
+        ?array $seats = null,
+        ?PaymentMethod $paymentMethod = null,
+        ?bool $cancelPeriodEnd = null,
+        ?\DateTimeInterface $anchorTime = null,
+        ?\DateTimeInterface $startTime = null,
+        ?\DateTimeInterface $endTime = null,
+        ?SubscriptionTrial $trial = null,
+        ?SubscriptionCurrentPeriod $currentPeriod = null,
+        ?Organization $organization = null,
+        ?User $user = null,
+        ?bool $default = null,
+        ?\DateTimeInterface $pullTime = null,
+        ?\DateTimeInterface $pushTime = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->id = $id ?? '';
         $this->state = $state ?? '';

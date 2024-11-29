@@ -26,7 +26,7 @@ final class PlanGroup implements \JsonSerializable, JsonUnserializable
     /**
      * The client defined unique identifier of the plan group (e.g. `pro`).
      */
-    public null|string $uniqueId;
+    public ?string $uniqueId;
 
     /**
      * The name of the plan group.
@@ -36,7 +36,7 @@ final class PlanGroup implements \JsonSerializable, JsonUnserializable
     /**
      * The user facing description of the plan group.
      */
-    public null|string $description;
+    public ?string $description;
 
     /**
      * Whether the plans are for organizations or users.
@@ -49,32 +49,32 @@ final class PlanGroup implements \JsonSerializable, JsonUnserializable
      * For authenticated requests, this will not be set when the account
      * isn't eligible for a trial.
      */
-    public null|PlanGroupTrial $trial;
+    public ?PlanGroupTrial $trial;
 
     /**
      * Whether the plan is considered an downgrade or upgrade.
      */
-    public null|PlanGroupChangePath $changePath;
+    public ?PlanGroupChangePath $changePath;
 
     /**
      * The plans associated with plan group.
      *
-     * @var \UserHub\UserV1\Plan[]
+     * @var Plan[]
      */
     public array $plans;
 
     /**
-     * @param null|\UserHub\UserV1\Plan[] $plans
+     * @param null|Plan[] $plans
      */
     public function __construct(
-        null|string $id = null,
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $description = null,
-        null|string $accountType = null,
-        null|PlanGroupTrial $trial = null,
-        null|PlanGroupChangePath $changePath = null,
-        null|array $plans = null,
+        ?string $id = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $description = null,
+        ?string $accountType = null,
+        ?PlanGroupTrial $trial = null,
+        ?PlanGroupChangePath $changePath = null,
+        ?array $plans = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;

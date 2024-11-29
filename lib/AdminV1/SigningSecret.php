@@ -22,11 +22,11 @@ final class SigningSecret implements \JsonSerializable, JsonUnserializable
     /**
      * The time the signing secret is set to expire.
      */
-    public null|\DateTimeInterface $expireTime;
+    public ?\DateTimeInterface $expireTime;
 
     public function __construct(
-        null|string $secret = null,
-        null|\DateTimeInterface $expireTime = null,
+        ?string $secret = null,
+        ?\DateTimeInterface $expireTime = null,
     ) {
         $this->secret = $secret ?? '';
         $this->expireTime = $expireTime ?? null;

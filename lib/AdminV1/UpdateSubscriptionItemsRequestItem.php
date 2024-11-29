@@ -25,19 +25,19 @@ final class UpdateSubscriptionItemsRequestItem implements \JsonSerializable, Jso
      * The member user ID of the organization member. This can
      * only be specified for seat items.
      */
-    public null|string $userId;
+    public ?string $userId;
 
     /**
      * The quantity for the item.
      *
      * If this is `0` the item will be removed.
      */
-    public null|int $quantity;
+    public ?int $quantity;
 
     public function __construct(
-        null|string $productId = null,
-        null|string $userId = null,
-        null|int $quantity = null,
+        ?string $productId = null,
+        ?string $userId = null,
+        ?int $quantity = null,
     ) {
         $this->productId = $productId ?? '';
         $this->userId = $userId ?? null;

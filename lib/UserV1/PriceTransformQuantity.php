@@ -24,8 +24,8 @@ final class PriceTransformQuantity implements \JsonSerializable, JsonUnserializa
     public string $round;
 
     public function __construct(
-        null|int $divisor = null,
-        null|string $round = null,
+        ?int $divisor = null,
+        ?string $round = null,
     ) {
         $this->divisor = $divisor ?? 0;
         $this->round = $round ?? '';

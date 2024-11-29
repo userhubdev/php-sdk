@@ -28,7 +28,7 @@ final class Plan implements \JsonSerializable, JsonUnserializable
     /**
      * The description of the plan.
      */
-    public null|string $description;
+    public ?string $description;
 
     /**
      * The currency code for the plan (e.g. `USD`).
@@ -38,25 +38,25 @@ final class Plan implements \JsonSerializable, JsonUnserializable
     /**
      * The billing interval for the plan.
      */
-    public null|Interval $billingInterval;
+    public ?Interval $billingInterval;
 
     /**
      * The items associated with plan.
      *
-     * @var \UserHub\UserV1\PlanItem[]
+     * @var PlanItem[]
      */
     public array $items;
 
     /**
-     * @param null|\UserHub\UserV1\PlanItem[] $items
+     * @param null|PlanItem[] $items
      */
     public function __construct(
-        null|string $id = null,
-        null|string $displayName = null,
-        null|string $description = null,
-        null|string $currencyCode = null,
-        null|Interval $billingInterval = null,
-        null|array $items = null,
+        ?string $id = null,
+        ?string $displayName = null,
+        ?string $description = null,
+        ?string $currencyCode = null,
+        ?Interval $billingInterval = null,
+        ?array $items = null,
     ) {
         $this->id = $id ?? '';
         $this->displayName = $displayName ?? '';

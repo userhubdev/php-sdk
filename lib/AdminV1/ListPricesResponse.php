@@ -17,7 +17,7 @@ final class ListPricesResponse implements \JsonSerializable, JsonUnserializable
     /**
      * The list of prices.
      *
-     * @var \UserHub\AdminV1\Price[]
+     * @var Price[]
      */
     public array $prices;
 
@@ -32,15 +32,15 @@ final class ListPricesResponse implements \JsonSerializable, JsonUnserializable
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\Price[] $prices
+     * @param null|Price[] $prices
      */
     public function __construct(
-        null|array $prices = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $prices = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->prices = $prices ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

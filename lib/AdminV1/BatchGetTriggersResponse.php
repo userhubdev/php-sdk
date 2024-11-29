@@ -17,15 +17,15 @@ final class BatchGetTriggersResponse implements \JsonSerializable, JsonUnseriali
     /**
      * The triggers.
      *
-     * @var \UserHub\AdminV1\TriggerResult[]
+     * @var TriggerResult[]
      */
     public array $triggers;
 
     /**
-     * @param null|\UserHub\AdminV1\TriggerResult[] $triggers
+     * @param null|TriggerResult[] $triggers
      */
     public function __construct(
-        null|array $triggers = null,
+        ?array $triggers = null,
     ) {
         $this->triggers = $triggers ?? [];
     }

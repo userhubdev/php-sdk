@@ -19,16 +19,16 @@ final class EventRequest implements \JsonSerializable, JsonUnserializable
      * It's very likely this is the IP address of the
      * API client and not the end-user.
      */
-    public null|string $ipAddress;
+    public ?string $ipAddress;
 
     /**
      * The trace ID associated with the request.
      */
-    public null|string $traceId;
+    public ?string $traceId;
 
     public function __construct(
-        null|string $ipAddress = null,
-        null|string $traceId = null,
+        ?string $ipAddress = null,
+        ?string $traceId = null,
     ) {
         $this->ipAddress = $ipAddress ?? null;
         $this->traceId = $traceId ?? null;

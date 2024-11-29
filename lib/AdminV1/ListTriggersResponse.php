@@ -17,7 +17,7 @@ final class ListTriggersResponse implements \JsonSerializable, JsonUnserializabl
     /**
      * The list of triggers.
      *
-     * @var \UserHub\AdminV1\Trigger[]
+     * @var Trigger[]
      */
     public array $triggers;
 
@@ -32,15 +32,15 @@ final class ListTriggersResponse implements \JsonSerializable, JsonUnserializabl
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\Trigger[] $triggers
+     * @param null|Trigger[] $triggers
      */
     public function __construct(
-        null|array $triggers = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $triggers = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->triggers = $triggers ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

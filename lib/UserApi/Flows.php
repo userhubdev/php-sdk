@@ -30,13 +30,13 @@ class Flows
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
-        null|string $organizationId = null,
-        null|string $type = null,
-        null|bool $active = null,
-        null|bool $creator = null,
-        null|int $pageSize = null,
-        null|string $pageToken = null,
-        null|string $orderBy = null,
+        ?string $organizationId = null,
+        ?string $type = null,
+        ?bool $active = null,
+        ?bool $creator = null,
+        ?int $pageSize = null,
+        ?string $pageToken = null,
+        ?string $orderBy = null,
     ): ListFlowsResponse {
         $req = new Request('user.flows.list', 'GET', '/user/v1/flows');
         $req->setIdempotent(true);
@@ -76,10 +76,10 @@ class Flows
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createJoinOrganization(
-        null|string $organizationId = null,
-        null|string $userId = null,
-        null|string $email = null,
-        null|string $displayName = null,
+        ?string $organizationId = null,
+        ?string $userId = null,
+        ?string $email = null,
+        ?string $displayName = null,
     ): Flow {
         $req = new Request('user.flows.createJoinOrganization', 'POST', '/user/v1/flows:createJoinOrganization');
         $body = [];
@@ -112,9 +112,9 @@ class Flows
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createSignup(
-        null|string $email = null,
-        null|string $displayName = null,
-        null|bool $createOrganization = null,
+        ?string $email = null,
+        ?string $displayName = null,
+        ?bool $createOrganization = null,
     ): Flow {
         $req = new Request('user.flows.createSignup', 'POST', '/user/v1/flows:createSignup');
         $body = [];

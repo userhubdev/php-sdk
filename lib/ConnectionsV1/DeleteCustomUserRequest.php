@@ -19,7 +19,7 @@ final class DeleteCustomUserRequest implements \JsonSerializable, JsonUnserializ
     public string $id;
 
     public function __construct(
-        null|string $id = null,
+        ?string $id = null,
     ) {
         $this->id = $id ?? '';
     }

@@ -22,7 +22,7 @@ final class InvoicePreview implements \JsonSerializable, JsonUnserializable
     /**
      * The contact information associated with the invoice.
      */
-    public null|InvoiceAccount $account;
+    public ?InvoiceAccount $account;
 
     /**
      * The time the upcoming invoice will be finalized.
@@ -33,27 +33,27 @@ final class InvoicePreview implements \JsonSerializable, JsonUnserializable
      * This will be null if the preview would be applied
      * immediately.
      */
-    public null|\DateTimeInterface $effectiveTime;
+    public ?\DateTimeInterface $effectiveTime;
 
     /**
      * The subtotal amount for the invoice.
      *
      * This includes item-level discounts.
      */
-    public null|string $subtotalAmount;
+    public ?string $subtotalAmount;
 
     /**
      * The invoice-level discount amount.
      *
      * This does not include item level discounts.
      */
-    public null|string $discountAmount;
+    public ?string $discountAmount;
 
     /**
      * The starting and ending account balance as
      * of the time the invoice was finalized.
      */
-    public null|InvoiceBalance $balance;
+    public ?InvoiceBalance $balance;
 
     /**
      * The tax amount for the invoice.
@@ -61,18 +61,18 @@ final class InvoicePreview implements \JsonSerializable, JsonUnserializable
      * This is for rendering purposes only and is
      * not the reported tax amount.
      */
-    public null|string $taxAmount;
+    public ?string $taxAmount;
 
     /**
      * The total amount for the invoice.
      */
-    public null|string $totalAmount;
+    public ?string $totalAmount;
 
     /**
      * The total amount minus any credits automatically
      * associated with the invoice.
      */
-    public null|string $dueAmount;
+    public ?string $dueAmount;
 
     /**
      * A token which can be passed to a create or update
@@ -81,30 +81,30 @@ final class InvoicePreview implements \JsonSerializable, JsonUnserializable
      * This token generally expires within 10 minutes of
      * being generated.
      */
-    public null|string $changeToken;
+    public ?string $changeToken;
 
     /**
      * The line items for the invoice.
      *
-     * @var \UserHub\UserV1\InvoicePreviewItem[]
+     * @var InvoicePreviewItem[]
      */
     public array $items;
 
     /**
-     * @param null|\UserHub\UserV1\InvoicePreviewItem[] $items
+     * @param null|InvoicePreviewItem[] $items
      */
     public function __construct(
-        null|string $currencyCode = null,
-        null|InvoiceAccount $account = null,
-        null|\DateTimeInterface $effectiveTime = null,
-        null|string $subtotalAmount = null,
-        null|string $discountAmount = null,
-        null|InvoiceBalance $balance = null,
-        null|string $taxAmount = null,
-        null|string $totalAmount = null,
-        null|string $dueAmount = null,
-        null|string $changeToken = null,
-        null|array $items = null,
+        ?string $currencyCode = null,
+        ?InvoiceAccount $account = null,
+        ?\DateTimeInterface $effectiveTime = null,
+        ?string $subtotalAmount = null,
+        ?string $discountAmount = null,
+        ?InvoiceBalance $balance = null,
+        ?string $taxAmount = null,
+        ?string $totalAmount = null,
+        ?string $dueAmount = null,
+        ?string $changeToken = null,
+        ?array $items = null,
     ) {
         $this->currencyCode = $currencyCode ?? '';
         $this->account = $account ?? null;

@@ -19,12 +19,12 @@ final class Session implements \JsonSerializable, JsonUnserializable
      *
      * This will be null if the user is not authenticated.
      */
-    public null|User $user;
+    public ?User $user;
 
     /**
      * The authenticated user's organization memberships.
      *
-     * @var \UserHub\UserV1\Membership[]
+     * @var Membership[]
      */
     public array $memberships;
 
@@ -34,12 +34,12 @@ final class Session implements \JsonSerializable, JsonUnserializable
      * See memberships for organization subscription and
      * seat information.
      */
-    public null|AccountSubscription $subscription;
+    public ?AccountSubscription $subscription;
 
     /**
      * The expiration time for the current session.
      */
-    public null|\DateTimeInterface $expireTime;
+    public ?\DateTimeInterface $expireTime;
 
     /**
      * The scopes available in the current session.
@@ -49,15 +49,15 @@ final class Session implements \JsonSerializable, JsonUnserializable
     public array $scopes;
 
     /**
-     * @param null|\UserHub\UserV1\Membership[] $memberships
-     * @param null|string[]                     $scopes
+     * @param null|Membership[] $memberships
+     * @param null|string[]     $scopes
      */
     public function __construct(
-        null|User $user = null,
-        null|array $memberships = null,
-        null|AccountSubscription $subscription = null,
-        null|\DateTimeInterface $expireTime = null,
-        null|array $scopes = null,
+        ?User $user = null,
+        ?array $memberships = null,
+        ?AccountSubscription $subscription = null,
+        ?\DateTimeInterface $expireTime = null,
+        ?array $scopes = null,
     ) {
         $this->user = $user ?? null;
         $this->memberships = $memberships ?? [];

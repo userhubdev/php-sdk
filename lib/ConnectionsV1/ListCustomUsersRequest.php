@@ -25,11 +25,11 @@ final class ListCustomUsersRequest implements \JsonSerializable, JsonUnserializa
      *
      * This should be used to determine the next page of results.
      */
-    public null|string $pageToken;
+    public ?string $pageToken;
 
     public function __construct(
-        null|int $pageSize = null,
-        null|string $pageToken = null,
+        ?int $pageSize = null,
+        ?string $pageToken = null,
     ) {
         $this->pageSize = $pageSize ?? 0;
         $this->pageToken = $pageToken ?? null;

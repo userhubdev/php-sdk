@@ -17,12 +17,12 @@ final class StatusDetails implements \JsonSerializable, JsonUnserializable
     /**
      * A reason code for the error (e.g. `PENDING_DELETION`).
      */
-    public null|string $reason;
+    public ?string $reason;
 
     /**
      * The parameter path related to the error (e.g. `member.userId`).
      */
-    public null|string $param;
+    public ?string $param;
 
     /**
      * Additional metadata related to the error.
@@ -35,9 +35,9 @@ final class StatusDetails implements \JsonSerializable, JsonUnserializable
      * @param null|array<string, string> $metadata
      */
     public function __construct(
-        null|string $reason = null,
-        null|string $param = null,
-        null|array $metadata = null,
+        ?string $reason = null,
+        ?string $param = null,
+        ?array $metadata = null,
     ) {
         $this->reason = $reason ?? null;
         $this->param = $param ?? null;

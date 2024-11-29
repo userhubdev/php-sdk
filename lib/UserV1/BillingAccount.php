@@ -28,34 +28,34 @@ final class BillingAccount implements \JsonSerializable, JsonUnserializable
      * A positive value indicates an amount which will be added to the next
      * invoice (debt).
      */
-    public null|string $balanceAmount;
+    public ?string $balanceAmount;
 
     /**
      * The ISO-4217 currency code for the account (e.g. `USD`).
      */
-    public null|string $currencyCode;
+    public ?string $currencyCode;
 
     /**
      * The default and latest 10 payment methods for the account.
      *
-     * @var \UserHub\UserV1\PaymentMethod[]
+     * @var PaymentMethod[]
      */
     public array $paymentMethods;
 
     /**
      * The subscription for the account.
      */
-    public null|Subscription $subscription;
+    public ?Subscription $subscription;
 
     /**
-     * @param null|\UserHub\UserV1\PaymentMethod[] $paymentMethods
+     * @param null|PaymentMethod[] $paymentMethods
      */
     public function __construct(
-        null|string $state = null,
-        null|string $balanceAmount = null,
-        null|string $currencyCode = null,
-        null|array $paymentMethods = null,
-        null|Subscription $subscription = null,
+        ?string $state = null,
+        ?string $balanceAmount = null,
+        ?string $currencyCode = null,
+        ?array $paymentMethods = null,
+        ?Subscription $subscription = null,
     ) {
         $this->state = $state ?? '';
         $this->balanceAmount = $balanceAmount ?? null;

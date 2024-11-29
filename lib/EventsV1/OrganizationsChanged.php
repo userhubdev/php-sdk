@@ -17,10 +17,10 @@ final class OrganizationsChanged implements \JsonSerializable, JsonUnserializabl
     /**
      * The organization.
      */
-    public null|Organization $organization;
+    public ?Organization $organization;
 
     public function __construct(
-        null|Organization $organization = null,
+        ?Organization $organization = null,
     ) {
         $this->organization = $organization ?? new Organization();
     }

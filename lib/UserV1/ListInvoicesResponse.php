@@ -17,7 +17,7 @@ final class ListInvoicesResponse implements \JsonSerializable, JsonUnserializabl
     /**
      * The list of invoices.
      *
-     * @var \UserHub\UserV1\Invoice[]
+     * @var Invoice[]
      */
     public array $invoices;
 
@@ -32,15 +32,15 @@ final class ListInvoicesResponse implements \JsonSerializable, JsonUnserializabl
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\UserV1\Invoice[] $invoices
+     * @param null|Invoice[] $invoices
      */
     public function __construct(
-        null|array $invoices = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $invoices = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->invoices = $invoices ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

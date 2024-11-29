@@ -5,6 +5,7 @@ $finder = (new PhpCsFixer\Finder())
 ;
 
 return (new PhpCsFixer\Config())
+    ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect())
     ->setUsingCache(false)
     ->setRiskyAllowed(true)
     ->setRules([

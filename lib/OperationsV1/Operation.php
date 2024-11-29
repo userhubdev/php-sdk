@@ -30,12 +30,12 @@ final class Operation implements \JsonSerializable, JsonUnserializable
     /**
      * The error result of the operation in case of failure.
      */
-    public null|OperationError $error;
+    public ?OperationError $error;
 
     /**
      * The normal response of the operation in case of success.
      */
-    public null|Any $response;
+    public ?Any $response;
 
     /**
      * The creation time of the operation.
@@ -50,16 +50,16 @@ final class Operation implements \JsonSerializable, JsonUnserializable
     /**
      * The deletion time of the operation.
      */
-    public null|\DateTimeInterface $deleteTime;
+    public ?\DateTimeInterface $deleteTime;
 
     public function __construct(
-        null|string $id = null,
-        null|bool $done = null,
-        null|OperationError $error = null,
-        null|Any $response = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
-        null|\DateTimeInterface $deleteTime = null,
+        ?string $id = null,
+        ?bool $done = null,
+        ?OperationError $error = null,
+        ?Any $response = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
+        ?\DateTimeInterface $deleteTime = null,
     ) {
         $this->id = $id ?? '';
         $this->done = $done ?? false;

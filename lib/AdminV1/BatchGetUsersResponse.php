@@ -17,15 +17,15 @@ final class BatchGetUsersResponse implements \JsonSerializable, JsonUnserializab
     /**
      * The user results.
      *
-     * @var \UserHub\AdminV1\UserResult[]
+     * @var UserResult[]
      */
     public array $users;
 
     /**
-     * @param null|\UserHub\AdminV1\UserResult[] $users
+     * @param null|UserResult[] $users
      */
     public function __construct(
-        null|array $users = null,
+        ?array $users = null,
     ) {
         $this->users = $users ?? [];
     }

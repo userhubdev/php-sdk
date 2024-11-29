@@ -16,22 +16,22 @@ final class TieredPriceTier implements \JsonSerializable, JsonUnserializable
     /**
      * The upper quantity for tier (inclusive).
      */
-    public null|int $upper;
+    public ?int $upper;
 
     /**
      * The per quantity amount for the tier.
      */
-    public null|string $unitAmount;
+    public ?string $unitAmount;
 
     /**
      * The flat amount for the tier.
      */
-    public null|string $flatAmount;
+    public ?string $flatAmount;
 
     public function __construct(
-        null|int $upper = null,
-        null|string $unitAmount = null,
-        null|string $flatAmount = null,
+        ?int $upper = null,
+        ?string $unitAmount = null,
+        ?string $flatAmount = null,
     ) {
         $this->upper = $upper ?? null;
         $this->unitAmount = $unitAmount ?? null;

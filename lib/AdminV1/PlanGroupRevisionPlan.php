@@ -24,24 +24,24 @@ final class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializab
     /**
      * The details of the associated connection.
      */
-    public null|Connection $connection;
+    public ?Connection $connection;
 
     /**
      * The billing interval for the plan.
      */
-    public null|Interval $interval;
+    public ?Interval $interval;
 
     /**
      * The customer facing human-readable display name for the plan.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * The admin facing description of the plan.
      *
      * The maximum length is 1000 characters.
      */
-    public null|string $description;
+    public ?string $description;
 
     /**
      * The prices associated with the plan.
@@ -49,7 +49,7 @@ final class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializab
      * There should be a price for each product/currency
      * combination.
      *
-     * @var \UserHub\AdminV1\Price[]
+     * @var Price[]
      */
     public array $prices;
 
@@ -59,16 +59,16 @@ final class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializab
     public string $visibility;
 
     /**
-     * @param null|\UserHub\AdminV1\Price[] $prices
+     * @param null|Price[] $prices
      */
     public function __construct(
-        null|string $uniqueId = null,
-        null|Connection $connection = null,
-        null|Interval $interval = null,
-        null|string $displayName = null,
-        null|string $description = null,
-        null|array $prices = null,
-        null|string $visibility = null,
+        ?string $uniqueId = null,
+        ?Connection $connection = null,
+        ?Interval $interval = null,
+        ?string $displayName = null,
+        ?string $description = null,
+        ?array $prices = null,
+        ?string $visibility = null,
     ) {
         $this->uniqueId = $uniqueId ?? '';
         $this->connection = $connection ?? null;

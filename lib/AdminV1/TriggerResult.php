@@ -17,16 +17,16 @@ final class TriggerResult implements \JsonSerializable, JsonUnserializable
     /**
      * The trigger.
      */
-    public null|Trigger $trigger;
+    public ?Trigger $trigger;
 
     /**
      * The trigger error.
      */
-    public null|Status $error;
+    public ?Status $error;
 
     public function __construct(
-        null|Trigger $trigger = null,
-        null|Status $error = null,
+        ?Trigger $trigger = null,
+        ?Status $error = null,
     ) {
         $this->trigger = $trigger ?? null;
         $this->error = $error ?? null;

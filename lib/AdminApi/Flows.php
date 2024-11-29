@@ -31,15 +31,15 @@ class Flows
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
-        null|string $organizationId = null,
-        null|string $userId = null,
-        null|string $type = null,
-        null|bool $active = null,
-        null|string $creatorUserId = null,
-        null|int $pageSize = null,
-        null|string $pageToken = null,
-        null|string $orderBy = null,
-        null|string $view = null,
+        ?string $organizationId = null,
+        ?string $userId = null,
+        ?string $type = null,
+        ?bool $active = null,
+        ?string $creatorUserId = null,
+        ?int $pageSize = null,
+        ?string $pageToken = null,
+        ?string $orderBy = null,
+        ?string $view = null,
     ): ListFlowsResponse {
         $req = new Request('admin.flows.list', 'GET', '/admin/v1/flows');
         $req->setIdempotent(true);
@@ -85,13 +85,13 @@ class Flows
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createJoinOrganization(
-        null|string $organizationId = null,
-        null|string $userId = null,
-        null|string $email = null,
-        null|string $displayName = null,
-        null|string $creatorUserId = null,
-        null|\DateTimeInterface $expireTime = null,
-        null|string $ttl = null,
+        ?string $organizationId = null,
+        ?string $userId = null,
+        ?string $email = null,
+        ?string $displayName = null,
+        ?string $creatorUserId = null,
+        ?\DateTimeInterface $expireTime = null,
+        ?string $ttl = null,
     ): Flow {
         $req = new Request('admin.flows.createJoinOrganization', 'POST', '/admin/v1/flows:createJoinOrganization');
         $body = [];
@@ -133,12 +133,12 @@ class Flows
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createSignup(
-        null|string $email = null,
-        null|string $displayName = null,
-        null|bool $createOrganization = null,
-        null|string $creatorUserId = null,
-        null|\DateTimeInterface $expireTime = null,
-        null|string $ttl = null,
+        ?string $email = null,
+        ?string $displayName = null,
+        ?bool $createOrganization = null,
+        ?string $creatorUserId = null,
+        ?\DateTimeInterface $expireTime = null,
+        ?string $ttl = null,
     ): Flow {
         $req = new Request('admin.flows.createSignup', 'POST', '/admin/v1/flows:createSignup');
         $body = [];

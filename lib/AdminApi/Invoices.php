@@ -30,11 +30,11 @@ class Invoices
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
-        null|string $organizationId = null,
-        null|string $userId = null,
-        null|int $pageSize = null,
-        null|string $pageToken = null,
-        null|string $orderBy = null,
+        ?string $organizationId = null,
+        ?string $userId = null,
+        ?int $pageSize = null,
+        ?string $pageToken = null,
+        ?string $orderBy = null,
     ): ListInvoicesResponse {
         $req = new Request('admin.invoices.list', 'GET', '/admin/v1/invoices');
         $req->setIdempotent(true);
@@ -67,8 +67,8 @@ class Invoices
      */
     public function get(
         string $invoiceId,
-        null|string $organizationId = null,
-        null|string $userId = null,
+        ?string $organizationId = null,
+        ?string $userId = null,
     ): Invoice {
         $req = new Request('admin.invoices.get', 'GET', '/admin/v1/invoices/'.rawurlencode($invoiceId));
         $req->setIdempotent(true);

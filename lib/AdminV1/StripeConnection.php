@@ -24,8 +24,8 @@ final class StripeConnection implements \JsonSerializable, JsonUnserializable
     public bool $live;
 
     public function __construct(
-        null|string $accountId = null,
-        null|bool $live = null,
+        ?string $accountId = null,
+        ?bool $live = null,
     ) {
         $this->accountId = $accountId ?? '';
         $this->live = $live ?? false;

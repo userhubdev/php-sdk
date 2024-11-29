@@ -14,10 +14,10 @@ final class Any implements \JsonSerializable, JsonUnserializable
     /**
      * The type of the serialized message.
      */
-    public null|string $objectType;
+    public ?string $objectType;
 
     public function __construct(
-        null|string $objectType = null,
+        ?string $objectType = null,
     ) {
         $this->objectType = $objectType ?? null;
     }

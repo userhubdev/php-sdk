@@ -24,11 +24,11 @@ final class GoogleCloudIdentityPlatformConnection implements \JsonSerializable, 
      * This will default to the project ID in the service account key if
      * not specified.
      */
-    public null|string $projectId;
+    public ?string $projectId;
 
     public function __construct(
-        null|string $credentials = null,
-        null|string $projectId = null,
+        ?string $credentials = null,
+        ?string $projectId = null,
     ) {
         $this->credentials = $credentials ?? '';
         $this->projectId = $projectId ?? null;

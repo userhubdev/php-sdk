@@ -33,49 +33,49 @@ final class Event implements \JsonSerializable, JsonUnserializable
     /**
      * The entity associated with the event.
      */
-    public null|EventEntity $entity;
+    public ?EventEntity $entity;
 
     /**
      * The connection associated with the event.
      */
-    public null|EventConnection $connection;
+    public ?EventConnection $connection;
 
     /**
      * The organization associated with the event.
      */
-    public null|EventOrganization $organization;
+    public ?EventOrganization $organization;
 
     /**
      * The user associated with the event.
      */
-    public null|EventUser $user;
+    public ?EventUser $user;
 
     /**
      * The API key associated with the event.
      */
-    public null|EventApiKey $apiKey;
+    public ?EventApiKey $apiKey;
 
     /**
      * The actor associated with the event.
      */
-    public null|EventActor $actor;
+    public ?EventActor $actor;
 
     /**
      * The request associated with the event.
      */
-    public null|EventRequest $request;
+    public ?EventRequest $request;
 
     public function __construct(
-        null|string $id = null,
-        null|string $type = null,
-        null|\DateTimeInterface $time = null,
-        null|EventEntity $entity = null,
-        null|EventConnection $connection = null,
-        null|EventOrganization $organization = null,
-        null|EventUser $user = null,
-        null|EventApiKey $apiKey = null,
-        null|EventActor $actor = null,
-        null|EventRequest $request = null,
+        ?string $id = null,
+        ?string $type = null,
+        ?\DateTimeInterface $time = null,
+        ?EventEntity $entity = null,
+        ?EventConnection $connection = null,
+        ?EventOrganization $organization = null,
+        ?EventUser $user = null,
+        ?EventApiKey $apiKey = null,
+        ?EventActor $actor = null,
+        ?EventRequest $request = null,
     ) {
         $this->id = $id ?? '';
         $this->type = $type ?? '';

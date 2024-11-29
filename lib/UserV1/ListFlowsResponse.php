@@ -17,7 +17,7 @@ final class ListFlowsResponse implements \JsonSerializable, JsonUnserializable
     /**
      * The list of flows.
      *
-     * @var \UserHub\UserV1\Flow[]
+     * @var Flow[]
      */
     public array $flows;
 
@@ -32,15 +32,15 @@ final class ListFlowsResponse implements \JsonSerializable, JsonUnserializable
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\UserV1\Flow[] $flows
+     * @param null|Flow[] $flows
      */
     public function __construct(
-        null|array $flows = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $flows = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->flows = $flows ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

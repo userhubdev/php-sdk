@@ -17,16 +17,16 @@ final class UserResult implements \JsonSerializable, JsonUnserializable
     /**
      * The user.
      */
-    public null|User $user;
+    public ?User $user;
 
     /**
      * The result error.
      */
-    public null|Status $error;
+    public ?Status $error;
 
     public function __construct(
-        null|User $user = null,
-        null|Status $error = null,
+        ?User $user = null,
+        ?Status $error = null,
     ) {
         $this->user = $user ?? null;
         $this->error = $error ?? null;

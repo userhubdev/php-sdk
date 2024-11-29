@@ -20,12 +20,12 @@ final class Membership implements \JsonSerializable, JsonUnserializable
     /**
      * The organization.
      */
-    public null|Organization $organization;
+    public ?Organization $organization;
 
     /**
      * The user's role within the organization.
      */
-    public null|Role $role;
+    public ?Role $role;
 
     /**
      * The seat associated with the membership.
@@ -34,7 +34,7 @@ final class Membership implements \JsonSerializable, JsonUnserializable
      * subscription for the organization or the user
      * has not been assigned a seat.
      */
-    public null|AccountSubscriptionSeat $seat;
+    public ?AccountSubscriptionSeat $seat;
 
     /**
      * The creation time of the membership.
@@ -47,11 +47,11 @@ final class Membership implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     public function __construct(
-        null|Organization $organization = null,
-        null|Role $role = null,
-        null|AccountSubscriptionSeat $seat = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?Organization $organization = null,
+        ?Role $role = null,
+        ?AccountSubscriptionSeat $seat = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->organization = $organization ?? new Organization();
         $this->role = $role ?? new Role();

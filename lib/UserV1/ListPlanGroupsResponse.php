@@ -17,7 +17,7 @@ final class ListPlanGroupsResponse implements \JsonSerializable, JsonUnserializa
     /**
      * The list of plan groups.
      *
-     * @var \UserHub\UserV1\PlanGroup[]
+     * @var PlanGroup[]
      */
     public array $planGroups;
 
@@ -32,15 +32,15 @@ final class ListPlanGroupsResponse implements \JsonSerializable, JsonUnserializa
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\UserV1\PlanGroup[] $planGroups
+     * @param null|PlanGroup[] $planGroups
      */
     public function __construct(
-        null|array $planGroups = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $planGroups = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->planGroups = $planGroups ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

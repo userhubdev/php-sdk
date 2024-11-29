@@ -29,18 +29,18 @@ final class WebhookConnection implements \JsonSerializable, JsonUnserializable
     /**
      * The webhook secrets.
      *
-     * @var \UserHub\AdminV1\SigningSecret[]
+     * @var SigningSecret[]
      */
     public array $signingSecrets;
 
     /**
-     * @param null|array<string, string>            $headers
-     * @param null|\UserHub\AdminV1\SigningSecret[] $signingSecrets
+     * @param null|array<string, string> $headers
+     * @param null|SigningSecret[]       $signingSecrets
      */
     public function __construct(
-        null|string $url = null,
-        null|array $headers = null,
-        null|array $signingSecrets = null,
+        ?string $url = null,
+        ?array $headers = null,
+        ?array $signingSecrets = null,
     ) {
         $this->url = $url ?? '';
         $this->headers = $headers ?? [];

@@ -18,7 +18,7 @@ class WebhookRequest
      */
     public function __construct(
         null|array|object $headers = null,
-        null|string $body = null,
+        ?string $body = null,
     ) {
         if (\is_object($headers)) {
             $headers = (array) $headers;

@@ -17,12 +17,12 @@ final class SubscriptionTrial implements \JsonSerializable, JsonUnserializable
     /**
      * The time the trial started.
      */
-    public null|\DateTimeInterface $startTime;
+    public ?\DateTimeInterface $startTime;
 
     /**
      * The time the trial ended/ends.
      */
-    public null|\DateTimeInterface $endTime;
+    public ?\DateTimeInterface $endTime;
 
     /**
      * The number of days in the trial.
@@ -39,13 +39,13 @@ final class SubscriptionTrial implements \JsonSerializable, JsonUnserializable
      * less than days. It will be zero on the last day
      * of the trial and null when the trial expires.
      */
-    public null|int $remainingDays;
+    public ?int $remainingDays;
 
     public function __construct(
-        null|\DateTimeInterface $startTime = null,
-        null|\DateTimeInterface $endTime = null,
-        null|int $days = null,
-        null|int $remainingDays = null,
+        ?\DateTimeInterface $startTime = null,
+        ?\DateTimeInterface $endTime = null,
+        ?int $days = null,
+        ?int $remainingDays = null,
     ) {
         $this->startTime = $startTime ?? null;
         $this->endTime = $endTime ?? null;

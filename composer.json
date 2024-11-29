@@ -11,9 +11,9 @@
   },
   "require-dev": {
     "donatj/mock-webserver": "^2.7",
-    "friendsofphp/php-cs-fixer": "3.49",
-    "phpstan/phpstan": "^1.10",
-    "phpunit/phpunit": "^10"
+    "friendsofphp/php-cs-fixer": "3.65",
+    "phpstan/phpstan": "^2.0.3",
+    "phpunit/phpunit": "^11"
   },
   "autoload": {
     "psr-4": {

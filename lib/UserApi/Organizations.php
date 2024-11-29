@@ -32,9 +32,9 @@ class Organizations
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
-        null|int $pageSize = null,
-        null|string $pageToken = null,
-        null|string $orderBy = null,
+        ?int $pageSize = null,
+        ?string $pageToken = null,
+        ?string $orderBy = null,
     ): ListOrganizationsResponse {
         $req = new Request('user.organizations.list', 'GET', '/user/v1/organizations');
         $req->setIdempotent(true);
@@ -60,10 +60,10 @@ class Organizations
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function create(
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $email = null,
-        null|string $flowId = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?string $flowId = null,
     ): Organization {
         $req = new Request('user.organizations.create', 'POST', '/user/v1/organizations');
         $body = [];

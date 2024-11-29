@@ -41,7 +41,6 @@ final class OrganizationsTest extends TestCase
         $n = new Organizations($tr);
 
         $res = $n->list();
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/user/v1/organizations', $tr->request->path);
@@ -66,7 +65,6 @@ final class OrganizationsTest extends TestCase
         $n = new Organizations($tr);
 
         $res = $n->create();
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('POST', $tr->request->method);
         self::assertEquals('/user/v1/organizations', $tr->request->path);
@@ -91,7 +89,6 @@ final class OrganizationsTest extends TestCase
         $n = new Organizations($tr);
 
         $res = $n->get(organizationId: 'organizationId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/user/v1/organizations/organizationId', $tr->request->path);
@@ -116,7 +113,6 @@ final class OrganizationsTest extends TestCase
         $n = new Organizations($tr);
 
         $res = $n->update(organizationId: 'organizationId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('PATCH', $tr->request->method);
         self::assertEquals('/user/v1/organizations/organizationId', $tr->request->path);
@@ -132,7 +128,6 @@ final class OrganizationsTest extends TestCase
         $n = new Organizations($tr);
 
         $res = $n->delete(organizationId: 'organizationId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('DELETE', $tr->request->method);
         self::assertEquals('/user/v1/organizations/organizationId', $tr->request->path);
@@ -148,7 +143,6 @@ final class OrganizationsTest extends TestCase
         $n = new Organizations($tr);
 
         $res = $n->leave(organizationId: 'organizationId');
-        self::assertNotNull($res);
         self::assertNotNull($tr->request);
         self::assertEquals('DELETE', $tr->request->method);
         self::assertEquals('/user/v1/organizations/organizationId:leave', $tr->request->path);

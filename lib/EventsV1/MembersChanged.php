@@ -18,16 +18,16 @@ final class MembersChanged implements \JsonSerializable, JsonUnserializable
     /**
      * The organization.
      */
-    public null|Organization $organization;
+    public ?Organization $organization;
 
     /**
      * The member.
      */
-    public null|Member $member;
+    public ?Member $member;
 
     public function __construct(
-        null|Organization $organization = null,
-        null|Member $member = null,
+        ?Organization $organization = null,
+        ?Member $member = null,
     ) {
         $this->organization = $organization ?? new Organization();
         $this->member = $member ?? new Member();

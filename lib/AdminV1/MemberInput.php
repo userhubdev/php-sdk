@@ -24,8 +24,8 @@ final class MemberInput implements \JsonSerializable, JsonUnserializable
     public string $roleId;
 
     public function __construct(
-        null|string $userId = null,
-        null|string $roleId = null,
+        ?string $userId = null,
+        ?string $roleId = null,
     ) {
         $this->userId = $userId ?? '';
         $this->roleId = $roleId ?? '';

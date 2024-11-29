@@ -30,10 +30,10 @@ class Invoices
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
-        null|string $organizationId = null,
-        null|int $pageSize = null,
-        null|string $pageToken = null,
-        null|string $orderBy = null,
+        ?string $organizationId = null,
+        ?int $pageSize = null,
+        ?string $pageToken = null,
+        ?string $orderBy = null,
     ): ListInvoicesResponse {
         $req = new Request('user.invoices.list', 'GET', '/user/v1/invoices');
         $req->setIdempotent(true);

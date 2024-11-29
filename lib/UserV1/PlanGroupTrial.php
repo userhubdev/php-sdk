@@ -16,10 +16,10 @@ final class PlanGroupTrial implements \JsonSerializable, JsonUnserializable
     /**
      * The number of days in the trial.
      */
-    public null|int $days;
+    public ?int $days;
 
     public function __construct(
-        null|int $days = null,
+        ?int $days = null,
     ) {
         $this->days = $days ?? null;
     }

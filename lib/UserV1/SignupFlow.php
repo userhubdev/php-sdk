@@ -21,17 +21,17 @@ final class SignupFlow implements \JsonSerializable, JsonUnserializable
     /**
      * The display name of the invitee.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * Whether to create an organization as part of the signup flow.
      */
-    public null|bool $createOrganization;
+    public ?bool $createOrganization;
 
     public function __construct(
-        null|string $email = null,
-        null|string $displayName = null,
-        null|bool $createOrganization = null,
+        ?string $email = null,
+        ?string $displayName = null,
+        ?bool $createOrganization = null,
     ) {
         $this->email = $email ?? '';
         $this->displayName = $displayName ?? null;

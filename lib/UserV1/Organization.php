@@ -21,27 +21,27 @@ final class Organization implements \JsonSerializable, JsonUnserializable
     /**
      * The client defined unique identifier of the organization account.
      */
-    public null|string $uniqueId;
+    public ?string $uniqueId;
 
     /**
      * The human-readable display name of the organization.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * The email address of the organization.
      */
-    public null|string $email;
+    public ?string $email;
 
     /**
      * Whether the organization's email address has been verified.
      */
-    public null|bool $emailVerified;
+    public ?bool $emailVerified;
 
     /**
      * The photo/avatar URL of the organization.
      */
-    public null|string $imageUrl;
+    public ?string $imageUrl;
 
     /**
      * The number of members in the organization.
@@ -53,17 +53,17 @@ final class Organization implements \JsonSerializable, JsonUnserializable
     /**
      * Whether the organization is disabled.
      */
-    public null|bool $disabled;
+    public ?bool $disabled;
 
     public function __construct(
-        null|string $id = null,
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $email = null,
-        null|bool $emailVerified = null,
-        null|string $imageUrl = null,
-        null|int $memberCount = null,
-        null|bool $disabled = null,
+        ?string $id = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?bool $emailVerified = null,
+        ?string $imageUrl = null,
+        ?int $memberCount = null,
+        ?bool $disabled = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;

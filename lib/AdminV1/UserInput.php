@@ -29,95 +29,95 @@ final class UserInput implements \JsonSerializable, JsonUnserializable
      *
      * ID's starting with `usr_` are reserved.
      */
-    public null|string $uniqueId;
+    public ?string $uniqueId;
 
     /**
      * The human-readable display name of the user.
      *
      * The maximum length is 200 characters.
      */
-    public null|string $displayName;
+    public ?string $displayName;
 
     /**
      * The email address of the user.
      *
      * The maximum length is 320 characters.
      */
-    public null|string $email;
+    public ?string $email;
 
     /**
      * Whether the user's email address has been verified.
      */
-    public null|bool $emailVerified;
+    public ?bool $emailVerified;
 
     /**
      * The E164 phone number for the user (e.g. `+12125550123`).
      */
-    public null|string $phoneNumber;
+    public ?string $phoneNumber;
 
     /**
      * Whether the user's phone number has been verified.
      */
-    public null|bool $phoneNumberVerified;
+    public ?bool $phoneNumberVerified;
 
     /**
      * The photo/avatar URL of the user.
      *
      * The maximum length is 2000 characters.
      */
-    public null|string $imageUrl;
+    public ?string $imageUrl;
 
     /**
      * The default ISO-4217 currency code for the user (e.g. `USD`).
      */
-    public null|string $currencyCode;
+    public ?string $currencyCode;
 
     /**
      * The IETF BCP-47 language code for the user (e.g. `en`).
      */
-    public null|string $languageCode;
+    public ?string $languageCode;
 
     /**
      * The country/region code for the user (e.g. `US`).
      */
-    public null|string $regionCode;
+    public ?string $regionCode;
 
     /**
      * The IANA time zone for the user (e.g. `America/New_York`).
      */
-    public null|string $timeZone;
+    public ?string $timeZone;
 
     /**
      * The billing address for the user.
      */
-    public null|Address $address;
+    public ?Address $address;
 
     /**
      * The sign-up time for the user.
      */
-    public null|\DateTimeInterface $signupTime;
+    public ?\DateTimeInterface $signupTime;
 
     /**
      * Whether the user is disabled.
      */
-    public null|bool $disabled;
+    public ?bool $disabled;
 
     public function __construct(
-        null|string $id = null,
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $email = null,
-        null|bool $emailVerified = null,
-        null|string $phoneNumber = null,
-        null|bool $phoneNumberVerified = null,
-        null|string $imageUrl = null,
-        null|string $currencyCode = null,
-        null|string $languageCode = null,
-        null|string $regionCode = null,
-        null|string $timeZone = null,
-        null|Address $address = null,
-        null|\DateTimeInterface $signupTime = null,
-        null|bool $disabled = null,
+        ?string $id = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?bool $emailVerified = null,
+        ?string $phoneNumber = null,
+        ?bool $phoneNumberVerified = null,
+        ?string $imageUrl = null,
+        ?string $currencyCode = null,
+        ?string $languageCode = null,
+        ?string $regionCode = null,
+        ?string $timeZone = null,
+        ?Address $address = null,
+        ?\DateTimeInterface $signupTime = null,
+        ?bool $disabled = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;

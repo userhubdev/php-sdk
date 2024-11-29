@@ -17,7 +17,7 @@ final class ListUsersResponse implements \JsonSerializable, JsonUnserializable
     /**
      * The list of users.
      *
-     * @var \UserHub\AdminV1\User[]
+     * @var User[]
      */
     public array $users;
 
@@ -32,15 +32,15 @@ final class ListUsersResponse implements \JsonSerializable, JsonUnserializable
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\User[] $users
+     * @param null|User[] $users
      */
     public function __construct(
-        null|array $users = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $users = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->users = $users ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

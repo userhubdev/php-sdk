@@ -33,7 +33,7 @@ final class PlanGroup implements \JsonSerializable, JsonUnserializable
      *
      * ID's starting with `pg_r are reserved.
      */
-    public null|string $uniqueId;
+    public ?string $uniqueId;
 
     /**
      * The customer facing human-readable display name of the plan group.
@@ -47,7 +47,7 @@ final class PlanGroup implements \JsonSerializable, JsonUnserializable
      *
      * The maximum length is 1000 characters.
      */
-    public null|string $description;
+    public ?string $description;
 
     /**
      * The type of account the plan can be activated for.
@@ -57,7 +57,7 @@ final class PlanGroup implements \JsonSerializable, JsonUnserializable
     /**
      * The trial settings.
      */
-    public null|PlanGroupTrial $trial;
+    public ?PlanGroupTrial $trial;
 
     /**
      * The visibility of the plan group.
@@ -72,7 +72,7 @@ final class PlanGroup implements \JsonSerializable, JsonUnserializable
     /**
      * The current revision for the plan group.
      */
-    public null|PlanGroupRevision $revision;
+    public ?PlanGroupRevision $revision;
 
     /**
      * The creation time of the plan group.
@@ -85,17 +85,17 @@ final class PlanGroup implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     public function __construct(
-        null|string $id = null,
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $description = null,
-        null|string $accountType = null,
-        null|PlanGroupTrial $trial = null,
-        null|string $visibility = null,
-        null|bool $archived = null,
-        null|PlanGroupRevision $revision = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
+        ?string $id = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $description = null,
+        ?string $accountType = null,
+        ?PlanGroupTrial $trial = null,
+        ?string $visibility = null,
+        ?bool $archived = null,
+        ?PlanGroupRevision $revision = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;

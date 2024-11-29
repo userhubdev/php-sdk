@@ -21,7 +21,7 @@ final class AccountSubscriptionProduct implements \JsonSerializable, JsonUnseria
     /**
      * The client defined unique identifier of the product.
      */
-    public null|string $uniqueId;
+    public ?string $uniqueId;
 
     /**
      * The human-readable display name of the product.
@@ -29,9 +29,9 @@ final class AccountSubscriptionProduct implements \JsonSerializable, JsonUnseria
     public string $displayName;
 
     public function __construct(
-        null|string $id = null,
-        null|string $uniqueId = null,
-        null|string $displayName = null,
+        ?string $id = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;

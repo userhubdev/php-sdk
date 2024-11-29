@@ -16,10 +16,10 @@ final class AccountSubscriptionSeat implements \JsonSerializable, JsonUnserializ
     /**
      * The seat product.
      */
-    public null|AccountSubscriptionProduct $product;
+    public ?AccountSubscriptionProduct $product;
 
     public function __construct(
-        null|AccountSubscriptionProduct $product = null,
+        ?AccountSubscriptionProduct $product = null,
     ) {
         $this->product = $product ?? null;
     }

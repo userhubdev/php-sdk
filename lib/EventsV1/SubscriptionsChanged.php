@@ -17,10 +17,10 @@ final class SubscriptionsChanged implements \JsonSerializable, JsonUnserializabl
     /**
      * The subscription.
      */
-    public null|Subscription $subscription;
+    public ?Subscription $subscription;
 
     public function __construct(
-        null|Subscription $subscription = null,
+        ?Subscription $subscription = null,
     ) {
         $this->subscription = $subscription ?? new Subscription();
     }

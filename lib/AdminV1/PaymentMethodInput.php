@@ -17,28 +17,28 @@ final class PaymentMethodInput implements \JsonSerializable, JsonUnserializable
     /**
      * The full name of the owner of the payment method (e.g. `Jane Doe`).
      */
-    public null|string $fullName;
+    public ?string $fullName;
 
     /**
      * The address for the payment method.
      */
-    public null|Address $address;
+    public ?Address $address;
 
     /**
      * The card expiration year (e.g. `2030`).
      */
-    public null|int $expYear;
+    public ?int $expYear;
 
     /**
      * The card expiration month (e.g. `12`).
      */
-    public null|int $expMonth;
+    public ?int $expMonth;
 
     public function __construct(
-        null|string $fullName = null,
-        null|Address $address = null,
-        null|int $expYear = null,
-        null|int $expMonth = null,
+        ?string $fullName = null,
+        ?Address $address = null,
+        ?int $expYear = null,
+        ?int $expMonth = null,
     ) {
         $this->fullName = $fullName ?? null;
         $this->address = $address ?? null;

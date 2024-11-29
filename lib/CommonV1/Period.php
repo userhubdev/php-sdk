@@ -17,16 +17,16 @@ final class Period implements \JsonSerializable, JsonUnserializable
     /**
      * The start time.
      */
-    public null|\DateTimeInterface $startTime;
+    public ?\DateTimeInterface $startTime;
 
     /**
      * The end time.
      */
-    public null|\DateTimeInterface $endTime;
+    public ?\DateTimeInterface $endTime;
 
     public function __construct(
-        null|\DateTimeInterface $startTime = null,
-        null|\DateTimeInterface $endTime = null,
+        ?\DateTimeInterface $startTime = null,
+        ?\DateTimeInterface $endTime = null,
     ) {
         $this->startTime = $startTime ?? null;
         $this->endTime = $endTime ?? null;

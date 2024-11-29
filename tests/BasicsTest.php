@@ -47,14 +47,14 @@ final class BasicsTest extends TestCase
     {
         $adminApi = new AdminApi(self::getEnv('TEST_ADMIN_KEY'));
         $res = $adminApi->users->list();
-        self::assertNotNull($res);
+        self::assertGreaterThanOrEqual(0, \count($res->users));
     }
 
     public function testUserApi(): void
     {
         $userApi = new UserApi(self::getEnv('TEST_USER_KEY'));
         $session = $userApi->session->get();
-        self::assertNotNull($session);
+        self::assertNull($session->user);
     }
 
     public function testModel(): void

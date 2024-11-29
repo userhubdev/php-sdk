@@ -32,12 +32,12 @@ final class PostmarkConnection implements \JsonSerializable, JsonUnserializable
      * The Postmark account must be allowed to send from this email
      * address.
      */
-    public null|Email $from;
+    public ?Email $from;
 
     /**
      * The reply to email address.
      */
-    public null|Email $replyTo;
+    public ?Email $replyTo;
 
     /**
      * The allowed email list.
@@ -50,11 +50,11 @@ final class PostmarkConnection implements \JsonSerializable, JsonUnserializable
      * @param null|string[] $allowedEmails
      */
     public function __construct(
-        null|string $serverToken = null,
-        null|string $serverId = null,
-        null|Email $from = null,
-        null|Email $replyTo = null,
-        null|array $allowedEmails = null,
+        ?string $serverToken = null,
+        ?string $serverId = null,
+        ?Email $from = null,
+        ?Email $replyTo = null,
+        ?array $allowedEmails = null,
     ) {
         $this->serverToken = $serverToken ?? '';
         $this->serverId = $serverId ?? '';

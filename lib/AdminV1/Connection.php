@@ -28,7 +28,7 @@ final class Connection implements \JsonSerializable, JsonUnserializable
      *
      * ID's starting with `conn_` are reserved.
      */
-    public null|string $uniqueId;
+    public ?string $uniqueId;
 
     /**
      * The human-readable display name of the connection.
@@ -45,7 +45,7 @@ final class Connection implements \JsonSerializable, JsonUnserializable
     /**
      * The code that best describes the reason for the state.
      */
-    public null|string $stateReason;
+    public ?string $stateReason;
 
     /**
      * The connection type.
@@ -55,12 +55,12 @@ final class Connection implements \JsonSerializable, JsonUnserializable
     /**
      * The delegated connection.
      */
-    public null|ConnectionDelegate $delegate;
+    public ?ConnectionDelegate $delegate;
 
     /**
      * The connection providers.
      *
-     * @var \UserHub\AdminV1\ConnectionProvider[]
+     * @var ConnectionProvider[]
      */
     public array $providers;
 
@@ -77,53 +77,53 @@ final class Connection implements \JsonSerializable, JsonUnserializable
     /**
      * The Auth0 connection data.
      */
-    public null|Auth0Connection $auth0;
+    public ?Auth0Connection $auth0;
 
     /**
      * The builtin email configuration data.
      */
-    public null|BuiltinEmailConnection $builtinEmail;
+    public ?BuiltinEmailConnection $builtinEmail;
 
     /**
      * The Google Cloud Identity Platform (Firebase Auth) connection.
      */
-    public null|GoogleCloudIdentityPlatformConnection $googleCloudIdentityPlatform;
+    public ?GoogleCloudIdentityPlatformConnection $googleCloudIdentityPlatform;
 
     /**
      * The Postmark configuration data.
      */
-    public null|PostmarkConnection $postmark;
+    public ?PostmarkConnection $postmark;
 
     /**
      * The Stripe billing configuration data.
      */
-    public null|StripeConnection $stripe;
+    public ?StripeConnection $stripe;
 
     /**
      * The webhooks configuration data.
      */
-    public null|WebhookConnection $webhook;
+    public ?WebhookConnection $webhook;
 
     /**
-     * @param null|\UserHub\AdminV1\ConnectionProvider[] $providers
+     * @param null|ConnectionProvider[] $providers
      */
     public function __construct(
-        null|string $id = null,
-        null|string $uniqueId = null,
-        null|string $displayName = null,
-        null|string $state = null,
-        null|string $stateReason = null,
-        null|string $type = null,
-        null|ConnectionDelegate $delegate = null,
-        null|array $providers = null,
-        null|\DateTimeInterface $createTime = null,
-        null|\DateTimeInterface $updateTime = null,
-        null|Auth0Connection $auth0 = null,
-        null|BuiltinEmailConnection $builtinEmail = null,
-        null|GoogleCloudIdentityPlatformConnection $googleCloudIdentityPlatform = null,
-        null|PostmarkConnection $postmark = null,
-        null|StripeConnection $stripe = null,
-        null|WebhookConnection $webhook = null,
+        ?string $id = null,
+        ?string $uniqueId = null,
+        ?string $displayName = null,
+        ?string $state = null,
+        ?string $stateReason = null,
+        ?string $type = null,
+        ?ConnectionDelegate $delegate = null,
+        ?array $providers = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
+        ?Auth0Connection $auth0 = null,
+        ?BuiltinEmailConnection $builtinEmail = null,
+        ?GoogleCloudIdentityPlatformConnection $googleCloudIdentityPlatform = null,
+        ?PostmarkConnection $postmark = null,
+        ?StripeConnection $stripe = null,
+        ?WebhookConnection $webhook = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;

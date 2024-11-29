@@ -17,7 +17,7 @@ final class ListPlanGroupRevisionsResponse implements \JsonSerializable, JsonUns
     /**
      * The list of revisions.
      *
-     * @var \UserHub\AdminV1\PlanGroupRevision[]
+     * @var PlanGroupRevision[]
      */
     public array $planGroupRevisions;
 
@@ -32,15 +32,15 @@ final class ListPlanGroupRevisionsResponse implements \JsonSerializable, JsonUns
      * If this field is absent, there are no preceding pages. If this field is
      * an empty string then the previous page is the first result.
      */
-    public null|string $previousPageToken;
+    public ?string $previousPageToken;
 
     /**
-     * @param null|\UserHub\AdminV1\PlanGroupRevision[] $planGroupRevisions
+     * @param null|PlanGroupRevision[] $planGroupRevisions
      */
     public function __construct(
-        null|array $planGroupRevisions = null,
-        null|string $nextPageToken = null,
-        null|string $previousPageToken = null,
+        ?array $planGroupRevisions = null,
+        ?string $nextPageToken = null,
+        ?string $previousPageToken = null,
     ) {
         $this->planGroupRevisions = $planGroupRevisions ?? [];
         $this->nextPageToken = $nextPageToken ?? '';

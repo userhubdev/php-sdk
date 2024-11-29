@@ -7,7 +7,7 @@ Stability: alpha
 
 ### Requirements
 
-* PHP 8.1 or later
+* PHP 8.2 or later
 
 ### Getting Started
 
