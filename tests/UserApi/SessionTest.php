@@ -57,4 +57,39 @@ final class SessionTest extends TestCase
         self::assertEquals('GET', $tr->request->method);
         self::assertEquals('/user/v1/session', $tr->request->path);
     }
+
+    public function testExchangeToken(): void
+    {
+        $tr = new TestTransport();
+        $tr->body = <<<'EOD'
+            {
+              "accessToken": "string",
+              "expireTime": "2024-02-05T23:07:46.483Z"
+            }
+            EOD;
+
+        $n = new Session($tr);
+
+        $res = $n->exchangeToken();
+        self::assertNotNull($tr->request);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/user/v1/session:exchangeToken', $tr->request->path);
+    }
+
+    public function testCreatePortal(): void
+    {
+        $tr = new TestTransport();
+        $tr->body = <<<'EOD'
+            {
+              "redirectUrl": "https://example.com"
+            }
+            EOD;
+
+        $n = new Session($tr);
+
+        $res = $n->createPortal();
+        self::assertNotNull($tr->request);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/user/v1/session:createPortal', $tr->request->path);
+    }
 }

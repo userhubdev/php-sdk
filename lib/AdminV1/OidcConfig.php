@@ -9,52 +9,41 @@ namespace UserHub\AdminV1;
 use UserHub\Internal\JsonUnserializable;
 
 /**
- * The Auth0 connection data.
+ * OpenID Connect (OIDC) configuration.
  */
-final class Auth0Connection implements \JsonSerializable, JsonUnserializable
+final class OidcConfig implements \JsonSerializable, JsonUnserializable
 {
     /**
-     * The Auth0 domain.
+     * The issuer URL.
      */
-    public string $domain;
+    public string $issuerUrl;
 
     /**
-     * The Auth0 client ID.
+     * The client ID.
      */
     public string $clientId;
 
     /**
-     * The Auth0 client secret.
+     * The client secret.
      */
     public string $clientSecret;
 
-    /**
-     * OpenID Connect (OIDC) configuration.
-     *
-     * If configured, this can be used instead of implementing a
-     * Portal callback.
-     */
-    public ?OidcConfig $oidc;
-
     public function __construct(
-        ?string $domain = null,
+        ?string $issuerUrl = null,
         ?string $clientId = null,
         ?string $clientSecret = null,
-        ?OidcConfig $oidc = null,
     ) {
-        $this->domain = $domain ?? '';
+        $this->issuerUrl = $issuerUrl ?? '';
         $this->clientId = $clientId ?? '';
         $this->clientSecret = $clientSecret ?? '';
-        $this->oidc = $oidc ?? null;
     }
 
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'domain' => $this->domain ?? null,
+            'issuerUrl' => $this->issuerUrl ?? null,
             'clientId' => $this->clientId ?? null,
             'clientSecret' => $this->clientSecret ?? null,
-            'oidc' => $this->oidc ?? null,
         ];
     }
 
@@ -65,10 +54,9 @@ final class Auth0Connection implements \JsonSerializable, JsonUnserializable
         }
 
         return new self(
-            $data->{'domain'} ?? null,
+            $data->{'issuerUrl'} ?? null,
             $data->{'clientId'} ?? null,
             $data->{'clientSecret'} ?? null,
-            isset($data->{'oidc'}) ? OidcConfig::jsonUnserialize($data->{'oidc'}) : null,
         );
     }
 }

@@ -23,12 +23,12 @@ final class PriceTieredPrice implements \JsonSerializable, JsonUnserializable
     /**
      * The tiers for the price.
      *
-     * @var TieredPriceTier[]
+     * @var PriceTieredPriceTier[]
      */
     public array $tiers;
 
     /**
-     * @param null|TieredPriceTier[] $tiers
+     * @param null|PriceTieredPriceTier[] $tiers
      */
     public function __construct(
         ?string $mode = null,
@@ -54,7 +54,7 @@ final class PriceTieredPrice implements \JsonSerializable, JsonUnserializable
 
         return new self(
             $data->{'mode'} ?? null,
-            isset($data->{'tiers'}) ? Util::mapArray($data->{'tiers'}, [TieredPriceTier::class, 'jsonUnserialize']) : null,
+            isset($data->{'tiers'}) ? Util::mapArray($data->{'tiers'}, [PriceTieredPriceTier::class, 'jsonUnserialize']) : null,
         );
     }
 }

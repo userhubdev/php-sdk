@@ -10,6 +10,7 @@ use UserHub\AdminV1\ListMembersResponse;
 use UserHub\AdminV1\ListOrganizationsResponse;
 use UserHub\AdminV1\Member;
 use UserHub\AdminV1\Organization;
+use UserHub\AdminV1\PurgeOrganizationResponse;
 use UserHub\ApiV1\EmptyResponse;
 use UserHub\CommonV1\Address;
 use UserHub\Internal\Request;
@@ -279,6 +280,26 @@ class Organizations
         $res = $this->transport->execute($req);
 
         return Organization::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Hard delete the specified organization.
+     *
+     * The organization must be marked for deletion before it can be purged.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function purge(
+        string $organizationId,
+    ): PurgeOrganizationResponse {
+        $req = new Request('admin.organizations.purge', 'POST', '/admin/v1/organizations/'.rawurlencode($organizationId).':purge');
+        $body = [];
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return PurgeOrganizationResponse::jsonUnserialize($res->decodeBody());
     }
 
     /**

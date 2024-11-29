@@ -9,6 +9,7 @@ namespace UserHub\AdminApi;
 use UserHub\AdminV1\CreateApiSessionResponse;
 use UserHub\AdminV1\CreatePortalSessionResponse;
 use UserHub\AdminV1\ListUsersResponse;
+use UserHub\AdminV1\PurgeUserResponse;
 use UserHub\AdminV1\User;
 use UserHub\CommonV1\Address;
 use UserHub\Internal\Request;
@@ -274,6 +275,26 @@ class Users
         $res = $this->transport->execute($req);
 
         return User::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Hard delete the specified user.
+     *
+     * The user must be marked for deletion before it can be purged.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function purge(
+        string $userId,
+    ): PurgeUserResponse {
+        $req = new Request('admin.users.purge', 'POST', '/admin/v1/users/'.rawurlencode($userId).':purge');
+        $body = [];
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return PurgeUserResponse::jsonUnserialize($res->decodeBody());
     }
 
     /**

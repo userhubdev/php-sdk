@@ -37,7 +37,7 @@ final class PlanGroupRevisionPlan implements \JsonSerializable, JsonUnserializab
     public ?string $displayName;
 
     /**
-     * The admin facing description of the plan.
+     * The admin-facing description of the plan.
      *
      * The maximum length is 1000 characters.
      */

@@ -32,16 +32,23 @@ final class StatusDetails implements \JsonSerializable, JsonUnserializable
     public array $metadata;
 
     /**
+     * A user-facing error message.
+     */
+    public ?string $localeMessage;
+
+    /**
      * @param null|array<string, string> $metadata
      */
     public function __construct(
         ?string $reason = null,
         ?string $param = null,
         ?array $metadata = null,
+        ?string $localeMessage = null,
     ) {
         $this->reason = $reason ?? null;
         $this->param = $param ?? null;
         $this->metadata = $metadata ?? [];
+        $this->localeMessage = $localeMessage ?? null;
     }
 
     public function jsonSerialize(): mixed
@@ -50,6 +57,7 @@ final class StatusDetails implements \JsonSerializable, JsonUnserializable
             'reason' => $this->reason ?? null,
             'param' => $this->param ?? null,
             'metadata' => $this->metadata ?? null,
+            'localeMessage' => $this->localeMessage ?? null,
         ];
     }
 
@@ -63,6 +71,7 @@ final class StatusDetails implements \JsonSerializable, JsonUnserializable
             $data->{'reason'} ?? null,
             $data->{'param'} ?? null,
             isset($data->{'metadata'}) ? (array) $data->{'metadata'} : null,
+            $data->{'localeMessage'} ?? null,
         );
     }
 }

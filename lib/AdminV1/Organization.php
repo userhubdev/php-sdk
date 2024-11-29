@@ -86,7 +86,7 @@ final class Organization implements \JsonSerializable, JsonUnserializable
     public ?string $timeZone;
 
     /**
-     * The address for the organization.
+     * The default address for the organization.
      */
     public ?Address $address;
 

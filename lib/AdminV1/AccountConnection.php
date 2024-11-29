@@ -6,11 +6,12 @@ declare(strict_types=1);
 
 namespace UserHub\AdminV1;
 
+use UserHub\CommonV1\Address;
 use UserHub\Internal\JsonUnserializable;
 use UserHub\Internal\Util;
 
 /**
- * A link between a account and an external account.
+ * A link between an organization/user and an external account.
  */
 final class AccountConnection implements \JsonSerializable, JsonUnserializable
 {
@@ -40,6 +41,41 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
     public ?string $stateReason;
 
     /**
+     * The human-readable display name of the external account.
+     */
+    public ?string $displayName;
+
+    /**
+     * The email address of the external account.
+     */
+    public ?string $email;
+
+    /**
+     * Whether the external account's email address has been verified.
+     */
+    public ?bool $emailVerified;
+
+    /**
+     * The E164 phone number for the external account (e.g. `+12125550123`).
+     */
+    public ?string $phoneNumber;
+
+    /**
+     * Whether the external account's phone number has been verified.
+     */
+    public ?bool $phoneNumberVerified;
+
+    /**
+     * The billing address for the external account.
+     */
+    public ?Address $address;
+
+    /**
+     * The currency code for the account.
+     */
+    public ?string $currencyCode;
+
+    /**
      * The balance amount for the account.
      *
      * A negative value indicates an amount which will be subtracted from the next
@@ -49,11 +85,6 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
      * invoice (debt).
      */
     public ?string $balanceAmount;
-
-    /**
-     * The currency code for the account.
-     */
-    public ?string $currencyCode;
 
     /**
      * The payment methods for connections that support it.
@@ -91,8 +122,14 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
         ?string $adminUrl = null,
         ?string $state = null,
         ?string $stateReason = null,
-        ?string $balanceAmount = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?bool $emailVerified = null,
+        ?string $phoneNumber = null,
+        ?bool $phoneNumberVerified = null,
+        ?Address $address = null,
         ?string $currencyCode = null,
+        ?string $balanceAmount = null,
         ?array $paymentMethods = null,
         ?\DateTimeInterface $pullTime = null,
         ?\DateTimeInterface $pushTime = null,
@@ -104,8 +141,14 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
         $this->adminUrl = $adminUrl ?? null;
         $this->state = $state ?? '';
         $this->stateReason = $stateReason ?? null;
-        $this->balanceAmount = $balanceAmount ?? null;
+        $this->displayName = $displayName ?? null;
+        $this->email = $email ?? null;
+        $this->emailVerified = $emailVerified ?? null;
+        $this->phoneNumber = $phoneNumber ?? null;
+        $this->phoneNumberVerified = $phoneNumberVerified ?? null;
+        $this->address = $address ?? null;
         $this->currencyCode = $currencyCode ?? null;
+        $this->balanceAmount = $balanceAmount ?? null;
         $this->paymentMethods = $paymentMethods ?? [];
         $this->pullTime = $pullTime ?? null;
         $this->pushTime = $pushTime ?? null;
@@ -121,8 +164,14 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
             'adminUrl' => $this->adminUrl ?? null,
             'state' => $this->state ?? null,
             'stateReason' => $this->stateReason ?? null,
-            'balanceAmount' => $this->balanceAmount ?? null,
+            'displayName' => $this->displayName ?? null,
+            'email' => $this->email ?? null,
+            'emailVerified' => $this->emailVerified ?? null,
+            'phoneNumber' => $this->phoneNumber ?? null,
+            'phoneNumberVerified' => $this->phoneNumberVerified ?? null,
+            'address' => $this->address ?? null,
             'currencyCode' => $this->currencyCode ?? null,
+            'balanceAmount' => $this->balanceAmount ?? null,
             'paymentMethods' => $this->paymentMethods ?? null,
             'pullTime' => isset($this->pullTime) ? Util::encodeDateTime($this->pullTime) : null,
             'pushTime' => isset($this->pushTime) ? Util::encodeDateTime($this->pushTime) : null,
@@ -143,8 +192,14 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
             $data->{'adminUrl'} ?? null,
             $data->{'state'} ?? null,
             $data->{'stateReason'} ?? null,
-            $data->{'balanceAmount'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'email'} ?? null,
+            $data->{'emailVerified'} ?? null,
+            $data->{'phoneNumber'} ?? null,
+            $data->{'phoneNumberVerified'} ?? null,
+            isset($data->{'address'}) ? Address::jsonUnserialize($data->{'address'}) : null,
             $data->{'currencyCode'} ?? null,
+            $data->{'balanceAmount'} ?? null,
             isset($data->{'paymentMethods'}) ? Util::mapArray($data->{'paymentMethods'}, [PaymentMethod::class, 'jsonUnserialize']) : null,
             isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
             isset($data->{'pushTime'}) ? Util::decodeDateTime($data->{'pushTime'}) : null,
