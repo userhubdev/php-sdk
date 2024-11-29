@@ -25,7 +25,7 @@ final class FlowsTest extends TestCase
                 {
                   "id": "string",
                   "state": "START_PENDING",
-                  "stateReason": "DELETED",
+                  "stateReason": "UPDATING",
                   "type": "JOIN_ORGANIZATION",
                   "expireTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z"
@@ -51,7 +51,7 @@ final class FlowsTest extends TestCase
             {
               "id": "string",
               "state": "START_PENDING",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "type": "JOIN_ORGANIZATION",
               "organization": {
                 "id": "string",
@@ -81,8 +81,6 @@ final class FlowsTest extends TestCase
                 "imageUrl": "https://example.com/test.png",
                 "disabled": true
               },
-              "expireTime": "2024-02-05T23:07:46.483Z",
-              "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
                 "email": "test@example.com",
@@ -100,7 +98,9 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "displayName": "Test",
                 "createOrganization": true
-              }
+              },
+              "expireTime": "2024-02-05T23:07:46.483Z",
+              "createTime": "2024-02-05T23:07:46.483Z"
             }
             EOD;
 
@@ -119,7 +119,7 @@ final class FlowsTest extends TestCase
             {
               "id": "string",
               "state": "START_PENDING",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "type": "JOIN_ORGANIZATION",
               "organization": {
                 "id": "string",
@@ -149,8 +149,6 @@ final class FlowsTest extends TestCase
                 "imageUrl": "https://example.com/test.png",
                 "disabled": true
               },
-              "expireTime": "2024-02-05T23:07:46.483Z",
-              "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
                 "email": "test@example.com",
@@ -168,7 +166,9 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "displayName": "Test",
                 "createOrganization": true
-              }
+              },
+              "expireTime": "2024-02-05T23:07:46.483Z",
+              "createTime": "2024-02-05T23:07:46.483Z"
             }
             EOD;
 
@@ -187,7 +187,7 @@ final class FlowsTest extends TestCase
             {
               "id": "string",
               "state": "START_PENDING",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "type": "JOIN_ORGANIZATION",
               "organization": {
                 "id": "string",
@@ -217,8 +217,6 @@ final class FlowsTest extends TestCase
                 "imageUrl": "https://example.com/test.png",
                 "disabled": true
               },
-              "expireTime": "2024-02-05T23:07:46.483Z",
-              "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
                 "email": "test@example.com",
@@ -236,7 +234,9 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "displayName": "Test",
                 "createOrganization": true
-              }
+              },
+              "expireTime": "2024-02-05T23:07:46.483Z",
+              "createTime": "2024-02-05T23:07:46.483Z"
             }
             EOD;
 
@@ -255,7 +255,7 @@ final class FlowsTest extends TestCase
             {
               "id": "string",
               "state": "START_PENDING",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "type": "JOIN_ORGANIZATION",
               "organization": {
                 "id": "string",
@@ -285,8 +285,6 @@ final class FlowsTest extends TestCase
                 "imageUrl": "https://example.com/test.png",
                 "disabled": true
               },
-              "expireTime": "2024-02-05T23:07:46.483Z",
-              "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
                 "email": "test@example.com",
@@ -304,7 +302,9 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "displayName": "Test",
                 "createOrganization": true
-              }
+              },
+              "expireTime": "2024-02-05T23:07:46.483Z",
+              "createTime": "2024-02-05T23:07:46.483Z"
             }
             EOD;
 
@@ -323,7 +323,7 @@ final class FlowsTest extends TestCase
             {
               "id": "string",
               "state": "START_PENDING",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "type": "JOIN_ORGANIZATION",
               "organization": {
                 "id": "string",
@@ -353,8 +353,6 @@ final class FlowsTest extends TestCase
                 "imageUrl": "https://example.com/test.png",
                 "disabled": true
               },
-              "expireTime": "2024-02-05T23:07:46.483Z",
-              "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
                 "email": "test@example.com",
@@ -372,7 +370,9 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "displayName": "Test",
                 "createOrganization": true
-              }
+              },
+              "expireTime": "2024-02-05T23:07:46.483Z",
+              "createTime": "2024-02-05T23:07:46.483Z"
             }
             EOD;
 
@@ -391,7 +391,7 @@ final class FlowsTest extends TestCase
             {
               "id": "string",
               "state": "START_PENDING",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "type": "JOIN_ORGANIZATION",
               "organization": {
                 "id": "string",
@@ -421,8 +421,6 @@ final class FlowsTest extends TestCase
                 "imageUrl": "https://example.com/test.png",
                 "disabled": true
               },
-              "expireTime": "2024-02-05T23:07:46.483Z",
-              "createTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
                 "displayName": "Test",
                 "email": "test@example.com",
@@ -440,7 +438,9 @@ final class FlowsTest extends TestCase
                 "email": "test@example.com",
                 "displayName": "Test",
                 "createOrganization": true
-              }
+              },
+              "expireTime": "2024-02-05T23:07:46.483Z",
+              "createTime": "2024-02-05T23:07:46.483Z"
             }
             EOD;
 

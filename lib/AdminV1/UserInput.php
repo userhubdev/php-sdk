@@ -88,7 +88,7 @@ final class UserInput implements \JsonSerializable, JsonUnserializable
     public ?string $timeZone;
 
     /**
-     * The billing address for the user.
+     * The default address for the user.
      */
     public ?Address $address;
 

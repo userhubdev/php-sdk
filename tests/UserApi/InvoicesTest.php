@@ -30,14 +30,14 @@ final class InvoicesTest extends TestCase
                   "currencyCode": "USD",
                   "description": "string",
                   "effectiveTime": "2024-02-05T23:07:46.483Z",
-                  "subtotalAmount": "string",
-                  "discountAmount": "string",
-                  "taxAmount": "string",
-                  "totalAmount": "string",
-                  "dueAmount": "string",
-                  "remainingDueAmount": "string",
+                  "subtotalAmount": "10",
+                  "discountAmount": "0",
+                  "taxAmount": "0",
+                  "totalAmount": "10",
+                  "dueAmount": "10",
+                  "remainingDueAmount": "0",
                   "dueTime": "2024-02-05T23:07:46.483Z",
-                  "paidAmount": "string",
+                  "paidAmount": "10",
                   "paymentState": "PAYMENT_METHOD_REQUIRED",
                   "createTime": "2024-02-05T23:07:46.483Z",
                   "updateTime": "2024-02-05T23:07:46.483Z"
@@ -68,7 +68,7 @@ final class InvoicesTest extends TestCase
               "currencyCode": "USD",
               "description": "string",
               "account": {
-                "fullName": "Test",
+                "fullName": "Jane Doe",
                 "email": "test@example.com",
                 "phoneNumber": "+12125550123",
                 "address": {
@@ -84,19 +84,19 @@ final class InvoicesTest extends TestCase
                 "startTime": "2024-02-05T23:07:46.483Z",
                 "endTime": "2024-02-05T23:07:46.483Z"
               },
-              "subtotalAmount": "string",
-              "discountAmount": "string",
+              "subtotalAmount": "10",
+              "discountAmount": "0",
               "balance": {
-                "startAmount": "string",
-                "endAmount": "string",
-                "appliedAmount": "string"
+                "startAmount": "10",
+                "endAmount": "10",
+                "appliedAmount": "10"
               },
-              "taxAmount": "string",
-              "totalAmount": "string",
-              "dueAmount": "string",
-              "remainingDueAmount": "string",
+              "taxAmount": "0",
+              "totalAmount": "10",
+              "dueAmount": "10",
+              "remainingDueAmount": "0",
               "dueTime": "2024-02-05T23:07:46.483Z",
-              "paidAmount": "string",
+              "paidAmount": "10",
               "paymentState": "PAYMENT_METHOD_REQUIRED",
               "paymentIntent": {
                 "stripe": {
@@ -109,8 +109,8 @@ final class InvoicesTest extends TestCase
                 {
                   "id": "string",
                   "quantity": 1,
-                  "subtotalAmount": "string",
-                  "discountAmount": "string",
+                  "subtotalAmount": "10",
+                  "discountAmount": "0",
                   "description": "string",
                   "proration": true
                 }
@@ -119,8 +119,8 @@ final class InvoicesTest extends TestCase
                 {
                   "time": "2024-02-05T23:07:46.483Z",
                   "description": "string",
-                  "subtotalAmount": "string",
-                  "discountAmount": "string",
+                  "subtotalAmount": "10",
+                  "discountAmount": "0",
                   "startQuantity": 1,
                   "endQuantity": 1,
                   "startItemIds": [],

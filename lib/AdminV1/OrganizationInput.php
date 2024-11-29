@@ -88,7 +88,7 @@ final class OrganizationInput implements \JsonSerializable, JsonUnserializable
     public ?string $timeZone;
 
     /**
-     * The billing address for the organization.
+     * The default address for the organization.
      */
     public ?Address $address;
 

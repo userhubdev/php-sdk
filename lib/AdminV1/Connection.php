@@ -75,6 +75,11 @@ final class Connection implements \JsonSerializable, JsonUnserializable
     public \DateTimeInterface $updateTime;
 
     /**
+     * The Amazon Cognito connection data.
+     */
+    public ?AmazonCognitoConnection $amazonCognito;
+
+    /**
      * The Auth0 connection data.
      */
     public ?Auth0Connection $auth0;
@@ -118,6 +123,7 @@ final class Connection implements \JsonSerializable, JsonUnserializable
         ?array $providers = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
+        ?AmazonCognitoConnection $amazonCognito = null,
         ?Auth0Connection $auth0 = null,
         ?BuiltinEmailConnection $builtinEmail = null,
         ?GoogleCloudIdentityPlatformConnection $googleCloudIdentityPlatform = null,
@@ -135,6 +141,7 @@ final class Connection implements \JsonSerializable, JsonUnserializable
         $this->providers = $providers ?? [];
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
+        $this->amazonCognito = $amazonCognito ?? null;
         $this->auth0 = $auth0 ?? null;
         $this->builtinEmail = $builtinEmail ?? null;
         $this->googleCloudIdentityPlatform = $googleCloudIdentityPlatform ?? null;
@@ -156,6 +163,7 @@ final class Connection implements \JsonSerializable, JsonUnserializable
             'providers' => $this->providers ?? null,
             'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
             'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
+            'amazonCognito' => $this->amazonCognito ?? null,
             'auth0' => $this->auth0 ?? null,
             'builtinEmail' => $this->builtinEmail ?? null,
             'googleCloudIdentityPlatform' => $this->googleCloudIdentityPlatform ?? null,
@@ -182,6 +190,7 @@ final class Connection implements \JsonSerializable, JsonUnserializable
             isset($data->{'providers'}) ? Util::mapArray($data->{'providers'}, [ConnectionProvider::class, 'jsonUnserialize']) : null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
+            isset($data->{'amazonCognito'}) ? AmazonCognitoConnection::jsonUnserialize($data->{'amazonCognito'}) : null,
             isset($data->{'auth0'}) ? Auth0Connection::jsonUnserialize($data->{'auth0'}) : null,
             isset($data->{'builtinEmail'}) ? BuiltinEmailConnection::jsonUnserialize($data->{'builtinEmail'}) : null,
             isset($data->{'googleCloudIdentityPlatform'}) ? GoogleCloudIdentityPlatformConnection::jsonUnserialize($data->{'googleCloudIdentityPlatform'}) : null,

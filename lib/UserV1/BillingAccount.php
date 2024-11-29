@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace UserHub\UserV1;
 
+use UserHub\CommonV1\Address;
 use UserHub\Internal\JsonUnserializable;
 use UserHub\Internal\Util;
 
@@ -20,6 +21,31 @@ final class BillingAccount implements \JsonSerializable, JsonUnserializable
     public string $state;
 
     /**
+     * The human-readable display name of the billing account.
+     */
+    public ?string $displayName;
+
+    /**
+     * The email address of the billing account.
+     */
+    public ?string $email;
+
+    /**
+     * The E164 phone number for the billing account (e.g. `+12125550123`).
+     */
+    public ?string $phoneNumber;
+
+    /**
+     * The billing address for the billing account.
+     */
+    public ?Address $address;
+
+    /**
+     * The ISO-4217 currency code for the billing account (e.g. `USD`).
+     */
+    public ?string $currencyCode;
+
+    /**
      * The balance amount for the account.
      *
      * A negative value indicates an amount which will be subtracted from the next
@@ -31,9 +57,11 @@ final class BillingAccount implements \JsonSerializable, JsonUnserializable
     public ?string $balanceAmount;
 
     /**
-     * The ISO-4217 currency code for the account (e.g. `USD`).
+     * The available checkouts.
+     *
+     * @var BillingAccountCheckout[]
      */
-    public ?string $currencyCode;
+    public array $checkouts;
 
     /**
      * The default and latest 10 payment methods for the account.
@@ -48,18 +76,29 @@ final class BillingAccount implements \JsonSerializable, JsonUnserializable
     public ?Subscription $subscription;
 
     /**
-     * @param null|PaymentMethod[] $paymentMethods
+     * @param null|BillingAccountCheckout[] $checkouts
+     * @param null|PaymentMethod[]          $paymentMethods
      */
     public function __construct(
         ?string $state = null,
-        ?string $balanceAmount = null,
+        ?string $displayName = null,
+        ?string $email = null,
+        ?string $phoneNumber = null,
+        ?Address $address = null,
         ?string $currencyCode = null,
+        ?string $balanceAmount = null,
+        ?array $checkouts = null,
         ?array $paymentMethods = null,
         ?Subscription $subscription = null,
     ) {
         $this->state = $state ?? '';
-        $this->balanceAmount = $balanceAmount ?? null;
+        $this->displayName = $displayName ?? null;
+        $this->email = $email ?? null;
+        $this->phoneNumber = $phoneNumber ?? null;
+        $this->address = $address ?? null;
         $this->currencyCode = $currencyCode ?? null;
+        $this->balanceAmount = $balanceAmount ?? null;
+        $this->checkouts = $checkouts ?? [];
         $this->paymentMethods = $paymentMethods ?? [];
         $this->subscription = $subscription ?? null;
     }
@@ -68,8 +107,13 @@ final class BillingAccount implements \JsonSerializable, JsonUnserializable
     {
         return (object) [
             'state' => $this->state ?? null,
-            'balanceAmount' => $this->balanceAmount ?? null,
+            'displayName' => $this->displayName ?? null,
+            'email' => $this->email ?? null,
+            'phoneNumber' => $this->phoneNumber ?? null,
+            'address' => $this->address ?? null,
             'currencyCode' => $this->currencyCode ?? null,
+            'balanceAmount' => $this->balanceAmount ?? null,
+            'checkouts' => $this->checkouts ?? null,
             'paymentMethods' => $this->paymentMethods ?? null,
             'subscription' => $this->subscription ?? null,
         ];
@@ -83,8 +127,13 @@ final class BillingAccount implements \JsonSerializable, JsonUnserializable
 
         return new self(
             $data->{'state'} ?? null,
-            $data->{'balanceAmount'} ?? null,
+            $data->{'displayName'} ?? null,
+            $data->{'email'} ?? null,
+            $data->{'phoneNumber'} ?? null,
+            isset($data->{'address'}) ? Address::jsonUnserialize($data->{'address'}) : null,
             $data->{'currencyCode'} ?? null,
+            $data->{'balanceAmount'} ?? null,
+            isset($data->{'checkouts'}) ? Util::mapArray($data->{'checkouts'}, [BillingAccountCheckout::class, 'jsonUnserialize']) : null,
             isset($data->{'paymentMethods'}) ? Util::mapArray($data->{'paymentMethods'}, [PaymentMethod::class, 'jsonUnserialize']) : null,
             isset($data->{'subscription'}) ? Subscription::jsonUnserialize($data->{'subscription'}) : null,
         );

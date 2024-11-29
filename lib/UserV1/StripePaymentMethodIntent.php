@@ -28,14 +28,26 @@ final class StripePaymentMethodIntent implements \JsonSerializable, JsonUnserial
      */
     public string $clientSecret;
 
+    /**
+     * The Stripe.js Payment Element options.
+     *
+     * @var array<string, mixed>
+     */
+    public array $paymentElementOptions;
+
+    /**
+     * @param null|array<string, mixed> $paymentElementOptions
+     */
     public function __construct(
         ?string $accountId = null,
         ?bool $live = null,
         ?string $clientSecret = null,
+        ?array $paymentElementOptions = null,
     ) {
         $this->accountId = $accountId ?? '';
         $this->live = $live ?? false;
         $this->clientSecret = $clientSecret ?? '';
+        $this->paymentElementOptions = $paymentElementOptions ?? [];
     }
 
     public function jsonSerialize(): mixed
@@ -44,6 +56,7 @@ final class StripePaymentMethodIntent implements \JsonSerializable, JsonUnserial
             'accountId' => $this->accountId ?? null,
             'live' => $this->live ?? null,
             'clientSecret' => $this->clientSecret ?? null,
+            'paymentElementOptions' => $this->paymentElementOptions ?? null,
         ];
     }
 
@@ -57,6 +70,7 @@ final class StripePaymentMethodIntent implements \JsonSerializable, JsonUnserial
             $data->{'accountId'} ?? null,
             $data->{'live'} ?? null,
             $data->{'clientSecret'} ?? null,
+            isset($data->{'paymentElementOptions'}) ? (array) $data->{'paymentElementOptions'} : null,
         );
     }
 }

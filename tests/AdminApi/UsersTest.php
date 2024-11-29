@@ -25,7 +25,7 @@ final class UsersTest extends TestCase
                 {
                   "id": "string",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
+                  "stateReason": "UPDATING",
                   "uniqueId": "test",
                   "displayName": "Test",
                   "email": "test@example.com",
@@ -63,7 +63,7 @@ final class UsersTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -89,9 +89,14 @@ final class UsersTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -135,7 +140,7 @@ final class UsersTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -161,9 +166,14 @@ final class UsersTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -207,7 +217,7 @@ final class UsersTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -233,9 +243,14 @@ final class UsersTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -279,7 +294,7 @@ final class UsersTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -305,9 +320,14 @@ final class UsersTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -351,7 +371,7 @@ final class UsersTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -377,9 +397,14 @@ final class UsersTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -416,6 +441,21 @@ final class UsersTest extends TestCase
         self::assertEquals('/admin/v1/users/userId:undelete', $tr->request->path);
     }
 
+    public function testPurge(): void
+    {
+        $tr = new TestTransport();
+        $tr->body = <<<'EOD'
+            {}
+            EOD;
+
+        $n = new Users($tr);
+
+        $res = $n->purge(userId: 'userId');
+        self::assertNotNull($tr->request);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/admin/v1/users/userId:purge', $tr->request->path);
+    }
+
     public function testConnect(): void
     {
         $tr = new TestTransport();
@@ -423,7 +463,7 @@ final class UsersTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -449,9 +489,14 @@ final class UsersTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -495,7 +540,7 @@ final class UsersTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -521,9 +566,14 @@ final class UsersTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -567,7 +617,7 @@ final class UsersTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -593,9 +643,14 @@ final class UsersTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",

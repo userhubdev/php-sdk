@@ -25,7 +25,7 @@ final class OrganizationsTest extends TestCase
                 {
                   "id": "string",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
+                  "stateReason": "UPDATING",
                   "uniqueId": "test",
                   "displayName": "Test",
                   "email": "test@example.com",
@@ -64,7 +64,7 @@ final class OrganizationsTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -90,9 +90,14 @@ final class OrganizationsTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -131,7 +136,7 @@ final class OrganizationsTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -157,9 +162,14 @@ final class OrganizationsTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -198,7 +208,7 @@ final class OrganizationsTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -224,9 +234,14 @@ final class OrganizationsTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -265,7 +280,7 @@ final class OrganizationsTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -291,9 +306,14 @@ final class OrganizationsTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -332,7 +352,7 @@ final class OrganizationsTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -358,9 +378,14 @@ final class OrganizationsTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -392,6 +417,21 @@ final class OrganizationsTest extends TestCase
         self::assertEquals('/admin/v1/organizations/organizationId:undelete', $tr->request->path);
     }
 
+    public function testPurge(): void
+    {
+        $tr = new TestTransport();
+        $tr->body = <<<'EOD'
+            {}
+            EOD;
+
+        $n = new Organizations($tr);
+
+        $res = $n->purge(organizationId: 'organizationId');
+        self::assertNotNull($tr->request);
+        self::assertEquals('POST', $tr->request->method);
+        self::assertEquals('/admin/v1/organizations/organizationId:purge', $tr->request->path);
+    }
+
     public function testConnect(): void
     {
         $tr = new TestTransport();
@@ -399,7 +439,7 @@ final class OrganizationsTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -425,9 +465,14 @@ final class OrganizationsTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -466,7 +511,7 @@ final class OrganizationsTest extends TestCase
             {
               "id": "string",
               "state": "ACTIVE",
-              "stateReason": "DELETED",
+              "stateReason": "UPDATING",
               "uniqueId": "test",
               "displayName": "Test",
               "email": "test@example.com",
@@ -492,9 +537,14 @@ final class OrganizationsTest extends TestCase
                   "externalId": "string",
                   "adminUrl": "https://example.com",
                   "state": "ACTIVE",
-                  "stateReason": "DELETED",
-                  "balanceAmount": "string",
+                  "stateReason": "UPDATING",
+                  "displayName": "Test",
+                  "email": "test@example.com",
+                  "emailVerified": true,
+                  "phoneNumber": "+12125550123",
+                  "phoneNumberVerified": true,
                   "currencyCode": "USD",
+                  "balanceAmount": "10",
                   "pullTime": "2024-02-05T23:07:46.483Z",
                   "pushTime": "2024-02-05T23:07:46.483Z",
                   "createTime": "2024-02-05T23:07:46.483Z",
@@ -560,7 +610,7 @@ final class OrganizationsTest extends TestCase
               "user": {
                 "id": "string",
                 "state": "ACTIVE",
-                "stateReason": "DELETED",
+                "stateReason": "UPDATING",
                 "uniqueId": "test",
                 "displayName": "Test",
                 "email": "test@example.com",
@@ -634,7 +684,7 @@ final class OrganizationsTest extends TestCase
               "user": {
                 "id": "string",
                 "state": "ACTIVE",
-                "stateReason": "DELETED",
+                "stateReason": "UPDATING",
                 "uniqueId": "test",
                 "displayName": "Test",
                 "email": "test@example.com",
@@ -708,7 +758,7 @@ final class OrganizationsTest extends TestCase
               "user": {
                 "id": "string",
                 "state": "ACTIVE",
-                "stateReason": "DELETED",
+                "stateReason": "UPDATING",
                 "uniqueId": "test",
                 "displayName": "Test",
                 "email": "test@example.com",
