@@ -14,9 +14,9 @@ if (PHP_SAPI === 'cli') {
     exit(1);
 }
 
-$signingSecret = getenv('SIGNING_SECRET');
+$signingSecret = getenv('USERHUB_SIGNING_SECRET');
 if (empty($signingSecret)) {
-    echo 'SIGNING_SECRET required'.PHP_EOL;
+    echo 'USERHUB_SIGNING_SECRET required'.PHP_EOL;
 
     exit(1);
 }
