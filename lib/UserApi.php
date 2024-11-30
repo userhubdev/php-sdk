@@ -25,9 +25,6 @@ class UserApi extends UserApi\Client
         if (empty($userKey)) {
             throw new UserHubError('userKey required');
         }
-        if (!str_starts_with($userKey, Internal\Constants::USER_KEY_PREFIX)) {
-            throw new UserHubError('userKey must start with `'.Internal\Constants::USER_KEY_PREFIX.'`');
-        }
         $headers[Internal\Constants::API_KEY_HEADER] = $userKey;
 
         $accessToken = empty($accessToken) ? '' : trim($accessToken);
