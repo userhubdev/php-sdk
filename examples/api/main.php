@@ -8,16 +8,16 @@ use UserHub\AdminApi;
 use UserHub\UserApi;
 use UserHub\UserHubError;
 
-$adminKey = getenv('ADMIN_KEY');
+$adminKey = getenv('USERHUB_ADMIN_KEY');
 if (empty($adminKey)) {
-    echo 'ADMIN_KEY required'.PHP_EOL;
+    echo 'USERHUB_ADMIN_KEY required'.PHP_EOL;
 
     exit(1);
 }
 
-$userKey = getenv('USER_KEY');
+$userKey = getenv('USERHUB_USER_KEY');
 if (empty($userKey)) {
-    echo 'USER_KEY required'.PHP_EOL;
+    echo 'USERHUB_USER_KEY required'.PHP_EOL;
 
     exit(1);
 }
