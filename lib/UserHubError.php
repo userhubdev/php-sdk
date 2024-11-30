@@ -12,6 +12,7 @@ class UserHubError extends \Exception implements \JsonSerializable
     protected ?string $reason = null;
     protected ?string $param = null;
     protected ?object $metadata = null;
+    protected ?string $localeMessage = null;
     protected ?string $call = null;
     protected ?int $statusCode = null;
 
@@ -21,6 +22,7 @@ class UserHubError extends \Exception implements \JsonSerializable
         ?string $reason = null,
         ?string $param = null,
         ?object $metadata = null,
+        ?string $localeMessage = null,
         ?string $call = null,
         ?int $statusCode = null,
         ?Status $status = null,
@@ -46,16 +48,19 @@ class UserHubError extends \Exception implements \JsonSerializable
 
         if (isset($status)) {
             if (isset($status->code)) {
-                $this->apiCode = Code::tryFrom($status->code);
+                $apiCode = Code::tryFrom($status->code);
             }
             if (!empty($status->reason)) {
-                $this->reason = $status->reason;
+                $reason = $status->reason;
             }
             if (!empty($status->param)) {
-                $this->param = $status->param;
+                $param = $status->param;
             }
-            if (!empty($metadata)) {
-                $this->metadata = $metadata;
+            if (!empty($status->metadata)) {
+                $metadata = (object) $status->metadata;
+            }
+            if (!empty($status->localeMessage)) {
+                $localeMessage = $status->localeMessage;
             }
         }
 
@@ -70,6 +75,9 @@ class UserHubError extends \Exception implements \JsonSerializable
         }
         if (!empty($metadata)) {
             $this->metadata = $metadata;
+        }
+        if (!empty($localeMessage)) {
+            $this->localeMessage = $localeMessage;
         }
     }
 
@@ -131,6 +139,11 @@ class UserHubError extends \Exception implements \JsonSerializable
         }
 
         return (object) [];
+    }
+
+    public function getLocaleMessage(): ?string
+    {
+        return $this->localeMessage;
     }
 
     public function getCall(): ?string
