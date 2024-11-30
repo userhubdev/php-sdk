@@ -26,9 +26,6 @@ class AdminApi extends AdminApi\Client
         if (empty($adminKey)) {
             throw new UserHubError('adminKey required');
         }
-        if (!str_starts_with($adminKey, Constants::ADMIN_KEY_PREFIX)) {
-            throw new UserHubError('adminKey must start with `'.Constants::ADMIN_KEY_PREFIX.'`');
-        }
         $headers[Constants::AUTH_HEADER] = "Bearer {$adminKey}";
 
         $transport = new Internal\HttpTransport($baseUrl, $headers);

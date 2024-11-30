@@ -14,8 +14,6 @@ abstract class Constants
 
     public const AUTH_HEADER = 'Authorization';
     public const API_KEY_HEADER = 'UserHub-Api-Key';
-    public const ADMIN_KEY_PREFIX = 'sk_';
-    public const USER_KEY_PREFIX = 'pk_';
 
     public const SUMMARIZE_BODY_LENGTH = 20;
 
