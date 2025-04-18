@@ -35,8 +35,8 @@ final class SigningSecret implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'secret' => $this->secret ?? null,
-            'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
+            'secret' => $this->secret,
+            'expireTime' => Util::encodeDateTime($this->expireTime),
         ];
     }
 

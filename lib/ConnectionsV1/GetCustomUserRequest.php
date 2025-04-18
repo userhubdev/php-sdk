@@ -27,7 +27,7 @@ final class GetCustomUserRequest implements \JsonSerializable, JsonUnserializabl
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
+            'id' => $this->id,
         ];
     }
 

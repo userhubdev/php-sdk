@@ -60,11 +60,11 @@ final class Address implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'lines' => $this->lines ?? null,
-            'city' => $this->city ?? null,
-            'state' => $this->state ?? null,
-            'postalCode' => $this->postalCode ?? null,
-            'country' => $this->country ?? null,
+            'lines' => $this->lines,
+            'city' => $this->city,
+            'state' => $this->state,
+            'postalCode' => $this->postalCode,
+            'country' => $this->country,
         ];
     }
 

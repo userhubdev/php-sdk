@@ -51,10 +51,10 @@ final class Auth0Connection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'domain' => $this->domain ?? null,
-            'clientId' => $this->clientId ?? null,
-            'clientSecret' => $this->clientSecret ?? null,
-            'oidc' => $this->oidc ?? null,
+            'domain' => $this->domain,
+            'clientId' => $this->clientId,
+            'clientSecret' => $this->clientSecret,
+            'oidc' => $this->oidc,
         ];
     }
 

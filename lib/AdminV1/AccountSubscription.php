@@ -49,10 +49,10 @@ final class AccountSubscription implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'state' => $this->state ?? null,
-            'anchorTime' => isset($this->anchorTime) ? Util::encodeDateTime($this->anchorTime) : null,
-            'plan' => $this->plan ?? null,
+            'id' => $this->id,
+            'state' => $this->state,
+            'anchorTime' => Util::encodeDateTime($this->anchorTime),
+            'plan' => $this->plan,
         ];
     }
 

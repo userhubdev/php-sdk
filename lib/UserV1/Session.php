@@ -69,11 +69,11 @@ final class Session implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'user' => $this->user ?? null,
-            'memberships' => $this->memberships ?? null,
-            'subscription' => $this->subscription ?? null,
-            'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
-            'scopes' => $this->scopes ?? null,
+            'user' => $this->user,
+            'memberships' => $this->memberships,
+            'subscription' => $this->subscription,
+            'expireTime' => Util::encodeDateTime($this->expireTime),
+            'scopes' => $this->scopes,
         ];
     }
 

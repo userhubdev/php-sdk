@@ -27,7 +27,7 @@ final class PaymentIntent implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'stripe' => $this->stripe ?? null,
+            'stripe' => $this->stripe,
         ];
     }
 

@@ -41,9 +41,9 @@ final class AccountSubscriptionProduct implements \JsonSerializable, JsonUnseria
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'uniqueId' => $this->uniqueId ?? null,
-            'displayName' => $this->displayName ?? null,
+            'id' => $this->id,
+            'uniqueId' => $this->uniqueId,
+            'displayName' => $this->displayName,
         ];
     }
 

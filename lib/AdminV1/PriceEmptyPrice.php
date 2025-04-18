@@ -4,30 +4,21 @@
 
 declare(strict_types=1);
 
-namespace UserHub\UserV1;
+namespace UserHub\AdminV1;
 
 use UserHub\Internal\JsonUnserializable;
 
 /**
- * The trial settings.
+ * An empty price.
  */
-final class PlanGroupTrial implements \JsonSerializable, JsonUnserializable
+final class PriceEmptyPrice implements \JsonSerializable, JsonUnserializable
 {
-    /**
-     * The number of days in the trial.
-     */
-    public ?int $days;
-
     public function __construct(
-        ?int $days = null,
-    ) {
-        $this->days = $days ?? null;
-    }
+    ) {}
 
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'days' => $this->days ?? null,
         ];
     }
 
@@ -38,7 +29,6 @@ final class PlanGroupTrial implements \JsonSerializable, JsonUnserializable
         }
 
         return new self(
-            $data->{'days'} ?? null,
         );
     }
 }

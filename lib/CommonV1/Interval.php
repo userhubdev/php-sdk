@@ -34,8 +34,8 @@ final class Interval implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'quantity' => $this->quantity ?? null,
-            'unit' => $this->unit ?? null,
+            'quantity' => $this->quantity,
+            'unit' => $this->unit,
         ];
     }
 

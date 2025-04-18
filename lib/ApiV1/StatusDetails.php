@@ -54,10 +54,10 @@ final class StatusDetails implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'reason' => $this->reason ?? null,
-            'param' => $this->param ?? null,
-            'metadata' => $this->metadata ?? null,
-            'localeMessage' => $this->localeMessage ?? null,
+            'reason' => $this->reason,
+            'param' => $this->param,
+            'metadata' => $this->metadata,
+            'localeMessage' => $this->localeMessage,
         ];
     }
 

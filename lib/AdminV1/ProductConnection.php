@@ -77,14 +77,14 @@ final class ProductConnection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'connection' => $this->connection ?? null,
-            'externalId' => $this->externalId ?? null,
-            'state' => $this->state ?? null,
-            'stateReason' => $this->stateReason ?? null,
-            'pullTime' => isset($this->pullTime) ? Util::encodeDateTime($this->pullTime) : null,
-            'pushTime' => isset($this->pushTime) ? Util::encodeDateTime($this->pushTime) : null,
-            'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
-            'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
+            'connection' => $this->connection,
+            'externalId' => $this->externalId,
+            'state' => $this->state,
+            'stateReason' => $this->stateReason,
+            'pullTime' => Util::encodeDateTime($this->pullTime),
+            'pushTime' => Util::encodeDateTime($this->pushTime),
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
     }
 

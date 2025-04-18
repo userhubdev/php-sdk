@@ -9,25 +9,25 @@ namespace UserHub\AdminV1;
 use UserHub\Internal\JsonUnserializable;
 
 /**
- * The API key associated with event.
+ * The trial details.
  */
-final class EventApiKey implements \JsonSerializable, JsonUnserializable
+final class PlanTrial implements \JsonSerializable, JsonUnserializable
 {
     /**
-     * The system-assigned identifier of the API key.
+     * The number of days in the trial.
      */
-    public string $id;
+    public int $days;
 
     public function __construct(
-        ?string $id = null,
+        ?int $days = null,
     ) {
-        $this->id = $id ?? '';
+        $this->days = $days ?? 0;
     }
 
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
+            'days' => $this->days,
         ];
     }
 
@@ -38,7 +38,7 @@ final class EventApiKey implements \JsonSerializable, JsonUnserializable
         }
 
         return new self(
-            $data->{'id'} ?? null,
+            $data->{'days'} ?? null,
         );
     }
 }

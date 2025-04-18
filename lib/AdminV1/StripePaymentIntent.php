@@ -41,9 +41,9 @@ final class StripePaymentIntent implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'accountId' => $this->accountId ?? null,
-            'live' => $this->live ?? null,
-            'clientSecret' => $this->clientSecret ?? null,
+            'accountId' => $this->accountId,
+            'live' => $this->live,
+            'clientSecret' => $this->clientSecret,
         ];
     }
 

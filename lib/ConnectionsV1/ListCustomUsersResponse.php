@@ -45,8 +45,8 @@ final class ListCustomUsersResponse implements \JsonSerializable, JsonUnserializ
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'users' => $this->users ?? null,
-            'nextPageToken' => $this->nextPageToken ?? null,
+            'users' => $this->users,
+            'nextPageToken' => $this->nextPageToken,
         ];
     }
 

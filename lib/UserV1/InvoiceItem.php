@@ -85,15 +85,15 @@ final class InvoiceItem implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'product' => $this->product ?? null,
-            'price' => $this->price ?? null,
-            'quantity' => $this->quantity ?? null,
-            'subtotalAmount' => $this->subtotalAmount ?? null,
-            'discountAmount' => $this->discountAmount ?? null,
-            'description' => $this->description ?? null,
-            'proration' => $this->proration ?? null,
-            'period' => $this->period ?? null,
+            'id' => $this->id,
+            'product' => $this->product,
+            'price' => $this->price,
+            'quantity' => $this->quantity,
+            'subtotalAmount' => $this->subtotalAmount,
+            'discountAmount' => $this->discountAmount,
+            'description' => $this->description,
+            'proration' => $this->proration,
+            'period' => $this->period,
         ];
     }
 

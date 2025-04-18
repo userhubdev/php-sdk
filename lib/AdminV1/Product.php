@@ -67,6 +67,11 @@ final class Product implements \JsonSerializable, JsonUnserializable
     public array $productConnections;
 
     /**
+     * The product view.
+     */
+    public string $view;
+
+    /**
      * The creation time of the product.
      */
     public \DateTimeInterface $createTime;
@@ -87,6 +92,7 @@ final class Product implements \JsonSerializable, JsonUnserializable
         ?bool $committed = null,
         ?bool $archived = null,
         ?array $productConnections = null,
+        ?string $view = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
     ) {
@@ -97,6 +103,7 @@ final class Product implements \JsonSerializable, JsonUnserializable
         $this->committed = $committed ?? false;
         $this->archived = $archived ?? false;
         $this->productConnections = $productConnections ?? [];
+        $this->view = $view ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
@@ -104,15 +111,16 @@ final class Product implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'uniqueId' => $this->uniqueId ?? null,
-            'displayName' => $this->displayName ?? null,
-            'description' => $this->description ?? null,
-            'committed' => $this->committed ?? null,
-            'archived' => $this->archived ?? null,
-            'productConnections' => $this->productConnections ?? null,
-            'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
-            'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
+            'id' => $this->id,
+            'uniqueId' => $this->uniqueId,
+            'displayName' => $this->displayName,
+            'description' => $this->description,
+            'committed' => $this->committed,
+            'archived' => $this->archived,
+            'productConnections' => $this->productConnections,
+            'view' => $this->view,
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
     }
 
@@ -130,6 +138,7 @@ final class Product implements \JsonSerializable, JsonUnserializable
             $data->{'committed'} ?? null,
             $data->{'archived'} ?? null,
             isset($data->{'productConnections'}) ? Util::mapArray($data->{'productConnections'}, [ProductConnection::class, 'jsonUnserialize']) : null,
+            $data->{'view'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

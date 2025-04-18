@@ -28,7 +28,7 @@ final class Challenge implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'challenge' => $this->challenge ?? null,
+            'challenge' => $this->challenge,
         ];
     }
 

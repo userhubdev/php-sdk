@@ -35,8 +35,8 @@ final class PriceFixedPrice implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'amount' => $this->amount ?? null,
-            'transformQuantity' => $this->transformQuantity ?? null,
+            'amount' => $this->amount,
+            'transformQuantity' => $this->transformQuantity,
         ];
     }
 

@@ -38,8 +38,8 @@ final class ListCustomUsersRequest implements \JsonSerializable, JsonUnserializa
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'pageSize' => $this->pageSize ?? null,
-            'pageToken' => $this->pageToken ?? null,
+            'pageSize' => $this->pageSize,
+            'pageToken' => $this->pageToken,
         ];
     }
 

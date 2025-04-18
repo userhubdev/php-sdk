@@ -67,12 +67,12 @@ final class Status implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'code' => $this->code ?? null,
-            'message' => $this->message ?? null,
-            'reason' => $this->reason ?? null,
-            'param' => $this->param ?? null,
-            'metadata' => $this->metadata ?? null,
-            'localeMessage' => $this->localeMessage ?? null,
+            'code' => $this->code,
+            'message' => $this->message,
+            'reason' => $this->reason,
+            'param' => $this->param,
+            'metadata' => $this->metadata,
+            'localeMessage' => $this->localeMessage,
         ];
     }
 

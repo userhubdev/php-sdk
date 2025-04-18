@@ -78,14 +78,14 @@ final class Organization implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'uniqueId' => $this->uniqueId ?? null,
-            'displayName' => $this->displayName ?? null,
-            'email' => $this->email ?? null,
-            'emailVerified' => $this->emailVerified ?? null,
-            'imageUrl' => $this->imageUrl ?? null,
-            'memberCount' => $this->memberCount ?? null,
-            'disabled' => $this->disabled ?? null,
+            'id' => $this->id,
+            'uniqueId' => $this->uniqueId,
+            'displayName' => $this->displayName,
+            'email' => $this->email,
+            'emailVerified' => $this->emailVerified,
+            'imageUrl' => $this->imageUrl,
+            'memberCount' => $this->memberCount,
+            'disabled' => $this->disabled,
         ];
     }
 

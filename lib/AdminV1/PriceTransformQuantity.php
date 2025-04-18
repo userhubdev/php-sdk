@@ -34,8 +34,8 @@ final class PriceTransformQuantity implements \JsonSerializable, JsonUnserializa
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'divisor' => $this->divisor ?? null,
-            'round' => $this->round ?? null,
+            'divisor' => $this->divisor,
+            'round' => $this->round,
         ];
     }
 

@@ -48,6 +48,11 @@ final class Role implements \JsonSerializable, JsonUnserializable
     public ?string $description;
 
     /**
+     * The policy that defines how a member is assigned a seat.
+     */
+    public ?string $seatPolicy;
+
+    /**
      * The additional permissions allowed by the role.
      *
      * @var string[]
@@ -83,6 +88,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
         ?string $displayName = null,
         ?string $type = null,
         ?string $description = null,
+        ?string $seatPolicy = null,
         ?array $permissionSets = null,
         ?bool $default = null,
         ?bool $archived = null,
@@ -94,6 +100,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
         $this->displayName = $displayName ?? '';
         $this->type = $type ?? '';
         $this->description = $description ?? null;
+        $this->seatPolicy = $seatPolicy ?? null;
         $this->permissionSets = $permissionSets ?? [];
         $this->default = $default ?? false;
         $this->archived = $archived ?? false;
@@ -104,16 +111,17 @@ final class Role implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'uniqueId' => $this->uniqueId ?? null,
-            'displayName' => $this->displayName ?? null,
-            'type' => $this->type ?? null,
-            'description' => $this->description ?? null,
-            'permissionSets' => $this->permissionSets ?? null,
-            'default' => $this->default ?? null,
-            'archived' => $this->archived ?? null,
-            'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
-            'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
+            'id' => $this->id,
+            'uniqueId' => $this->uniqueId,
+            'displayName' => $this->displayName,
+            'type' => $this->type,
+            'description' => $this->description,
+            'seatPolicy' => $this->seatPolicy,
+            'permissionSets' => $this->permissionSets,
+            'default' => $this->default,
+            'archived' => $this->archived,
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
     }
 
@@ -129,6 +137,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
             $data->{'displayName'} ?? null,
             $data->{'type'} ?? null,
             $data->{'description'} ?? null,
+            $data->{'seatPolicy'} ?? null,
             $data->{'permissionSets'} ?? null,
             $data->{'default'} ?? null,
             $data->{'archived'} ?? null,

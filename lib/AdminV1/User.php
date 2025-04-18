@@ -123,6 +123,11 @@ final class User implements \JsonSerializable, JsonUnserializable
     public ?bool $disabled;
 
     /**
+     * The user view.
+     */
+    public string $view;
+
+    /**
      * The creation time of the user.
      */
     public \DateTimeInterface $createTime;
@@ -157,6 +162,7 @@ final class User implements \JsonSerializable, JsonUnserializable
         ?array $memberships = null,
         ?\DateTimeInterface $signupTime = null,
         ?bool $disabled = null,
+        ?string $view = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
     ) {
@@ -180,6 +186,7 @@ final class User implements \JsonSerializable, JsonUnserializable
         $this->memberships = $memberships ?? [];
         $this->signupTime = $signupTime ?? null;
         $this->disabled = $disabled ?? null;
+        $this->view = $view ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
@@ -187,28 +194,29 @@ final class User implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'state' => $this->state ?? null,
-            'stateReason' => $this->stateReason ?? null,
-            'uniqueId' => $this->uniqueId ?? null,
-            'displayName' => $this->displayName ?? null,
-            'email' => $this->email ?? null,
-            'emailVerified' => $this->emailVerified ?? null,
-            'phoneNumber' => $this->phoneNumber ?? null,
-            'phoneNumberVerified' => $this->phoneNumberVerified ?? null,
-            'imageUrl' => $this->imageUrl ?? null,
-            'currencyCode' => $this->currencyCode ?? null,
-            'languageCode' => $this->languageCode ?? null,
-            'regionCode' => $this->regionCode ?? null,
-            'timeZone' => $this->timeZone ?? null,
-            'address' => $this->address ?? null,
-            'accountConnections' => $this->accountConnections ?? null,
-            'subscription' => $this->subscription ?? null,
-            'memberships' => $this->memberships ?? null,
-            'signupTime' => isset($this->signupTime) ? Util::encodeDateTime($this->signupTime) : null,
-            'disabled' => $this->disabled ?? null,
-            'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
-            'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
+            'id' => $this->id,
+            'state' => $this->state,
+            'stateReason' => $this->stateReason,
+            'uniqueId' => $this->uniqueId,
+            'displayName' => $this->displayName,
+            'email' => $this->email,
+            'emailVerified' => $this->emailVerified,
+            'phoneNumber' => $this->phoneNumber,
+            'phoneNumberVerified' => $this->phoneNumberVerified,
+            'imageUrl' => $this->imageUrl,
+            'currencyCode' => $this->currencyCode,
+            'languageCode' => $this->languageCode,
+            'regionCode' => $this->regionCode,
+            'timeZone' => $this->timeZone,
+            'address' => $this->address,
+            'accountConnections' => $this->accountConnections,
+            'subscription' => $this->subscription,
+            'memberships' => $this->memberships,
+            'signupTime' => Util::encodeDateTime($this->signupTime),
+            'disabled' => $this->disabled,
+            'view' => $this->view,
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
     }
 
@@ -239,6 +247,7 @@ final class User implements \JsonSerializable, JsonUnserializable
             isset($data->{'memberships'}) ? Util::mapArray($data->{'memberships'}, [Membership::class, 'jsonUnserialize']) : null,
             isset($data->{'signupTime'}) ? Util::decodeDateTime($data->{'signupTime'}) : null,
             $data->{'disabled'} ?? null,
+            $data->{'view'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

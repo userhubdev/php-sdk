@@ -74,6 +74,11 @@ final class Flow implements \JsonSerializable, JsonUnserializable
     public ?string $secret;
 
     /**
+     * The flow view.
+     */
+    public string $view;
+
+    /**
      * The creation time of the flow.
      */
     public \DateTimeInterface $createTime;
@@ -105,6 +110,7 @@ final class Flow implements \JsonSerializable, JsonUnserializable
         ?\DateTimeInterface $expireTime = null,
         ?string $ttl = null,
         ?string $secret = null,
+        ?string $view = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
         ?JoinOrganizationFlow $joinOrganization = null,
@@ -121,6 +127,7 @@ final class Flow implements \JsonSerializable, JsonUnserializable
         $this->expireTime = $expireTime ?? null;
         $this->ttl = $ttl ?? null;
         $this->secret = $secret ?? null;
+        $this->view = $view ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
         $this->joinOrganization = $joinOrganization ?? null;
@@ -130,21 +137,22 @@ final class Flow implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'state' => $this->state ?? null,
-            'stateReason' => $this->stateReason ?? null,
-            'type' => $this->type ?? null,
-            'organization' => $this->organization ?? null,
-            'user' => $this->user ?? null,
-            'creator' => $this->creator ?? null,
-            'startTime' => isset($this->startTime) ? Util::encodeDateTime($this->startTime) : null,
-            'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
-            'ttl' => $this->ttl ?? null,
-            'secret' => $this->secret ?? null,
-            'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
-            'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
-            'joinOrganization' => $this->joinOrganization ?? null,
-            'signup' => $this->signup ?? null,
+            'id' => $this->id,
+            'state' => $this->state,
+            'stateReason' => $this->stateReason,
+            'type' => $this->type,
+            'organization' => $this->organization,
+            'user' => $this->user,
+            'creator' => $this->creator,
+            'startTime' => Util::encodeDateTime($this->startTime),
+            'expireTime' => Util::encodeDateTime($this->expireTime),
+            'ttl' => $this->ttl,
+            'secret' => $this->secret,
+            'view' => $this->view,
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
+            'joinOrganization' => $this->joinOrganization,
+            'signup' => $this->signup,
         ];
     }
 
@@ -166,6 +174,7 @@ final class Flow implements \JsonSerializable, JsonUnserializable
             isset($data->{'expireTime'}) ? Util::decodeDateTime($data->{'expireTime'}) : null,
             $data->{'ttl'} ?? null,
             $data->{'secret'} ?? null,
+            $data->{'view'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
             isset($data->{'joinOrganization'}) ? JoinOrganizationFlow::jsonUnserialize($data->{'joinOrganization'}) : null,

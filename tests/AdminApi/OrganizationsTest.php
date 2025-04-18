@@ -40,6 +40,7 @@ final class OrganizationsTest extends TestCase
                   "signupTime": "2024-02-05T23:07:46.483Z",
                   "memberCount": 1,
                   "disabled": true,
+                  "view": "BASIC",
                   "createTime": "2024-02-05T23:07:46.483Z",
                   "updateTime": "2024-02-05T23:07:46.483Z"
                 }
@@ -116,6 +117,7 @@ final class OrganizationsTest extends TestCase
               "signupTime": "2024-02-05T23:07:46.483Z",
               "memberCount": 1,
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -188,6 +190,7 @@ final class OrganizationsTest extends TestCase
               "signupTime": "2024-02-05T23:07:46.483Z",
               "memberCount": 1,
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -260,6 +263,7 @@ final class OrganizationsTest extends TestCase
               "signupTime": "2024-02-05T23:07:46.483Z",
               "memberCount": 1,
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -332,6 +336,7 @@ final class OrganizationsTest extends TestCase
               "signupTime": "2024-02-05T23:07:46.483Z",
               "memberCount": 1,
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -404,6 +409,7 @@ final class OrganizationsTest extends TestCase
               "signupTime": "2024-02-05T23:07:46.483Z",
               "memberCount": 1,
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -491,6 +497,7 @@ final class OrganizationsTest extends TestCase
               "signupTime": "2024-02-05T23:07:46.483Z",
               "memberCount": 1,
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -563,6 +570,7 @@ final class OrganizationsTest extends TestCase
               "signupTime": "2024-02-05T23:07:46.483Z",
               "memberCount": 1,
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -638,6 +646,7 @@ final class OrganizationsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -647,6 +656,7 @@ final class OrganizationsTest extends TestCase
                 "displayName": "Test",
                 "type": "OWNER",
                 "description": "string",
+                "seatPolicy": "DEFAULT",
                 "permissionSets": [
                   "string"
                 ],
@@ -712,6 +722,7 @@ final class OrganizationsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -721,6 +732,7 @@ final class OrganizationsTest extends TestCase
                 "displayName": "Test",
                 "type": "OWNER",
                 "description": "string",
+                "seatPolicy": "DEFAULT",
                 "permissionSets": [
                   "string"
                 ],
@@ -786,6 +798,7 @@ final class OrganizationsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -795,6 +808,7 @@ final class OrganizationsTest extends TestCase
                 "displayName": "Test",
                 "type": "OWNER",
                 "description": "string",
+                "seatPolicy": "DEFAULT",
                 "permissionSets": [
                   "string"
                 ],

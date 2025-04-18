@@ -50,10 +50,8 @@ final class HttpTransport implements Transport
         }
 
         $headers = new Headers();
-        if (!empty($this->headers)) {
-            foreach ($this->headers as $key => $value) {
-                $headers[$key] = $value;
-            }
+        foreach ($this->headers as $key => $value) {
+            $headers[$key] = $value;
         }
         if (!empty($req->headers)) {
             foreach ($req->headers as $key => $value) {

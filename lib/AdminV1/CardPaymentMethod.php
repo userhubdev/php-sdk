@@ -55,11 +55,11 @@ final class CardPaymentMethod implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'brand' => $this->brand ?? null,
-            'last4' => $this->last4 ?? null,
-            'fundingType' => $this->fundingType ?? null,
-            'expYear' => $this->expYear ?? null,
-            'expMonth' => $this->expMonth ?? null,
+            'brand' => $this->brand,
+            'last4' => $this->last4,
+            'fundingType' => $this->fundingType,
+            'expYear' => $this->expYear,
+            'expMonth' => $this->expMonth,
         ];
     }
 

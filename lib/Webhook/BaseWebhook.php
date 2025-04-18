@@ -147,13 +147,11 @@ class BaseWebhook
 
         $matched = false;
 
-        if (!empty($digest)) {
-            foreach ($signatures as $signature) {
-                if (hash_equals($signature, $digest)) {
-                    $matched = true;
+        foreach ($signatures as $signature) {
+            if (hash_equals($signature, $digest)) {
+                $matched = true;
 
-                    break;
-                }
+                break;
             }
         }
 

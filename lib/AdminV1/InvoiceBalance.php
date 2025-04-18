@@ -45,9 +45,9 @@ final class InvoiceBalance implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'startAmount' => $this->startAmount ?? null,
-            'endAmount' => $this->endAmount ?? null,
-            'appliedAmount' => $this->appliedAmount ?? null,
+            'startAmount' => $this->startAmount,
+            'endAmount' => $this->endAmount,
+            'appliedAmount' => $this->appliedAmount,
         ];
     }
 

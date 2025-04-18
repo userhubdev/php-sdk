@@ -50,9 +50,9 @@ final class ListFlowsResponse implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'flows' => $this->flows ?? null,
-            'nextPageToken' => $this->nextPageToken ?? null,
-            'previousPageToken' => $this->previousPageToken ?? null,
+            'flows' => $this->flows,
+            'nextPageToken' => $this->nextPageToken,
+            'previousPageToken' => $this->previousPageToken,
         ];
     }
 

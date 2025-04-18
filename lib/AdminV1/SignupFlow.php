@@ -41,9 +41,9 @@ final class SignupFlow implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'email' => $this->email ?? null,
-            'displayName' => $this->displayName ?? null,
-            'createOrganization' => $this->createOrganization ?? null,
+            'email' => $this->email,
+            'displayName' => $this->displayName,
+            'createOrganization' => $this->createOrganization,
         ];
     }
 

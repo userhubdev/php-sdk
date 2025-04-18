@@ -34,8 +34,8 @@ final class Email implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'address' => $this->address ?? null,
-            'displayName' => $this->displayName ?? null,
+            'address' => $this->address,
+            'displayName' => $this->displayName,
         ];
     }
 

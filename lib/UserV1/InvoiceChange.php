@@ -86,14 +86,14 @@ final class InvoiceChange implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'time' => isset($this->time) ? Util::encodeDateTime($this->time) : null,
-            'description' => $this->description ?? null,
-            'subtotalAmount' => $this->subtotalAmount ?? null,
-            'discountAmount' => $this->discountAmount ?? null,
-            'startQuantity' => $this->startQuantity ?? null,
-            'endQuantity' => $this->endQuantity ?? null,
-            'startItemIds' => $this->startItemIds ?? null,
-            'endItemIds' => $this->endItemIds ?? null,
+            'time' => Util::encodeDateTime($this->time),
+            'description' => $this->description,
+            'subtotalAmount' => $this->subtotalAmount,
+            'discountAmount' => $this->discountAmount,
+            'startQuantity' => $this->startQuantity,
+            'endQuantity' => $this->endQuantity,
+            'startItemIds' => $this->startItemIds,
+            'endItemIds' => $this->endItemIds,
         ];
     }
 

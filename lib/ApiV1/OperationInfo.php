@@ -27,7 +27,7 @@ final class OperationInfo implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'responseType' => $this->responseType ?? null,
+            'responseType' => $this->responseType,
         ];
     }
 

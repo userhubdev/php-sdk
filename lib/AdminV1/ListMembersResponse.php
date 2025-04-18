@@ -50,9 +50,9 @@ final class ListMembersResponse implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'members' => $this->members ?? null,
-            'nextPageToken' => $this->nextPageToken ?? null,
-            'previousPageToken' => $this->previousPageToken ?? null,
+            'members' => $this->members,
+            'nextPageToken' => $this->nextPageToken,
+            'previousPageToken' => $this->previousPageToken,
         ];
     }
 

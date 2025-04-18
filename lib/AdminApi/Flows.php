@@ -89,6 +89,7 @@ class Flows
         ?string $userId = null,
         ?string $email = null,
         ?string $displayName = null,
+        ?string $roleId = null,
         ?string $creatorUserId = null,
         ?\DateTimeInterface $expireTime = null,
         ?string $ttl = null,
@@ -107,6 +108,9 @@ class Flows
         }
         if (!empty($displayName)) {
             $body['displayName'] = $displayName;
+        }
+        if (!empty($roleId)) {
+            $body['roleId'] = $roleId;
         }
         if (!empty($creatorUserId)) {
             $body['creatorUserId'] = $creatorUserId;

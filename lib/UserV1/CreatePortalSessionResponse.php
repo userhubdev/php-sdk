@@ -28,7 +28,7 @@ final class CreatePortalSessionResponse implements \JsonSerializable, JsonUnseri
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'redirectUrl' => $this->redirectUrl ?? null,
+            'redirectUrl' => $this->redirectUrl,
         ];
     }
 

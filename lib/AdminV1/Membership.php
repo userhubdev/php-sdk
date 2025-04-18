@@ -63,11 +63,11 @@ final class Membership implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'organization' => $this->organization ?? null,
-            'role' => $this->role ?? null,
-            'seat' => $this->seat ?? null,
-            'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
-            'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
+            'organization' => $this->organization,
+            'role' => $this->role,
+            'seat' => $this->seat,
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
     }
 

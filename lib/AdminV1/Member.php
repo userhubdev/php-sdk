@@ -67,12 +67,12 @@ final class Member implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'state' => $this->state ?? null,
-            'user' => $this->user ?? null,
-            'role' => $this->role ?? null,
-            'seat' => $this->seat ?? null,
-            'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
-            'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
+            'state' => $this->state,
+            'user' => $this->user,
+            'role' => $this->role,
+            'seat' => $this->seat,
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
     }
 
