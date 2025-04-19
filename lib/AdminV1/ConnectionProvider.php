@@ -34,8 +34,8 @@ final class ConnectionProvider implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'type' => $this->type ?? null,
-            'default' => $this->default ?? null,
+            'type' => $this->type,
+            'default' => $this->default,
         ];
     }
 

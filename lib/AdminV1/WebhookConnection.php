@@ -50,9 +50,9 @@ final class WebhookConnection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'url' => $this->url ?? null,
-            'headers' => $this->headers ?? null,
-            'signingSecrets' => $this->signingSecrets ?? null,
+            'url' => $this->url,
+            'headers' => $this->headers,
+            'signingSecrets' => $this->signingSecrets,
         ];
     }
 

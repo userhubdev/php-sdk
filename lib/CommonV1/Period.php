@@ -35,8 +35,8 @@ final class Period implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'startTime' => isset($this->startTime) ? Util::encodeDateTime($this->startTime) : null,
-            'endTime' => isset($this->endTime) ? Util::encodeDateTime($this->endTime) : null,
+            'startTime' => Util::encodeDateTime($this->startTime),
+            'endTime' => Util::encodeDateTime($this->endTime),
         ];
     }
 

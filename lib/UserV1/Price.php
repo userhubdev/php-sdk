@@ -63,12 +63,12 @@ final class Price implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'currencyCode' => $this->currencyCode ?? null,
-            'billingMode' => $this->billingMode ?? null,
-            'interval' => $this->interval ?? null,
-            'fixed' => $this->fixed ?? null,
-            'tiered' => $this->tiered ?? null,
+            'id' => $this->id,
+            'currencyCode' => $this->currencyCode,
+            'billingMode' => $this->billingMode,
+            'interval' => $this->interval,
+            'fixed' => $this->fixed,
+            'tiered' => $this->tiered,
         ];
     }
 

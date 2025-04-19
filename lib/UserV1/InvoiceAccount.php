@@ -49,10 +49,10 @@ final class InvoiceAccount implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'fullName' => $this->fullName ?? null,
-            'email' => $this->email ?? null,
-            'phoneNumber' => $this->phoneNumber ?? null,
-            'address' => $this->address ?? null,
+            'fullName' => $this->fullName,
+            'email' => $this->email,
+            'phoneNumber' => $this->phoneNumber,
+            'address' => $this->address,
         ];
     }
 

@@ -44,9 +44,9 @@ final class Membership implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'organization' => $this->organization ?? null,
-            'role' => $this->role ?? null,
-            'subscription' => $this->subscription ?? null,
+            'organization' => $this->organization,
+            'role' => $this->role,
+            'subscription' => $this->subscription,
         ];
     }
 

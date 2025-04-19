@@ -77,14 +77,14 @@ final class Event implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'time' => isset($this->time) ? Util::encodeDateTime($this->time) : null,
-            'type' => $this->type ?? null,
-            'flowsChanged' => $this->flowsChanged ?? null,
-            'membersChanged' => $this->membersChanged ?? null,
-            'organizationsChanged' => $this->organizationsChanged ?? null,
-            'subscriptionsChanged' => $this->subscriptionsChanged ?? null,
-            'usersChanged' => $this->usersChanged ?? null,
+            'id' => $this->id,
+            'time' => Util::encodeDateTime($this->time),
+            'type' => $this->type,
+            'flowsChanged' => $this->flowsChanged,
+            'membersChanged' => $this->membersChanged,
+            'organizationsChanged' => $this->organizationsChanged,
+            'subscriptionsChanged' => $this->subscriptionsChanged,
+            'usersChanged' => $this->usersChanged,
         ];
     }
 

@@ -80,6 +80,7 @@ class Flows
         ?string $userId = null,
         ?string $email = null,
         ?string $displayName = null,
+        ?string $roleId = null,
     ): Flow {
         $req = new Request('user.flows.createJoinOrganization', 'POST', '/user/v1/flows:createJoinOrganization');
         $body = [];
@@ -95,6 +96,9 @@ class Flows
         }
         if (!empty($displayName)) {
             $body['displayName'] = $displayName;
+        }
+        if (!empty($roleId)) {
+            $body['roleId'] = $roleId;
         }
 
         $req->setBody((object) $body);

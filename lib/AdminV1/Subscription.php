@@ -131,6 +131,11 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
     public ?\DateTimeInterface $pushTime;
 
     /**
+     * The subscription view.
+     */
+    public string $view;
+
+    /**
      * The creation time of the subscription.
      */
     public \DateTimeInterface $createTime;
@@ -166,6 +171,7 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
         ?bool $default = null,
         ?\DateTimeInterface $pullTime = null,
         ?\DateTimeInterface $pushTime = null,
+        ?string $view = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
     ) {
@@ -190,6 +196,7 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
         $this->default = $default ?? false;
         $this->pullTime = $pullTime ?? null;
         $this->pushTime = $pushTime ?? null;
+        $this->view = $view ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
@@ -197,29 +204,30 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'state' => $this->state ?? null,
-            'stateReason' => $this->stateReason ?? null,
-            'connection' => $this->connection ?? null,
-            'externalId' => $this->externalId ?? null,
-            'plan' => $this->plan ?? null,
-            'currencyCode' => $this->currencyCode ?? null,
-            'items' => $this->items ?? null,
-            'seats' => $this->seats ?? null,
-            'paymentMethod' => $this->paymentMethod ?? null,
-            'cancelPeriodEnd' => $this->cancelPeriodEnd ?? null,
-            'anchorTime' => isset($this->anchorTime) ? Util::encodeDateTime($this->anchorTime) : null,
-            'startTime' => isset($this->startTime) ? Util::encodeDateTime($this->startTime) : null,
-            'endTime' => isset($this->endTime) ? Util::encodeDateTime($this->endTime) : null,
-            'trial' => $this->trial ?? null,
-            'currentPeriod' => $this->currentPeriod ?? null,
-            'organization' => $this->organization ?? null,
-            'user' => $this->user ?? null,
-            'default' => $this->default ?? null,
-            'pullTime' => isset($this->pullTime) ? Util::encodeDateTime($this->pullTime) : null,
-            'pushTime' => isset($this->pushTime) ? Util::encodeDateTime($this->pushTime) : null,
-            'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
-            'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
+            'id' => $this->id,
+            'state' => $this->state,
+            'stateReason' => $this->stateReason,
+            'connection' => $this->connection,
+            'externalId' => $this->externalId,
+            'plan' => $this->plan,
+            'currencyCode' => $this->currencyCode,
+            'items' => $this->items,
+            'seats' => $this->seats,
+            'paymentMethod' => $this->paymentMethod,
+            'cancelPeriodEnd' => $this->cancelPeriodEnd,
+            'anchorTime' => Util::encodeDateTime($this->anchorTime),
+            'startTime' => Util::encodeDateTime($this->startTime),
+            'endTime' => Util::encodeDateTime($this->endTime),
+            'trial' => $this->trial,
+            'currentPeriod' => $this->currentPeriod,
+            'organization' => $this->organization,
+            'user' => $this->user,
+            'default' => $this->default,
+            'pullTime' => Util::encodeDateTime($this->pullTime),
+            'pushTime' => Util::encodeDateTime($this->pushTime),
+            'view' => $this->view,
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
     }
 
@@ -251,6 +259,7 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
             $data->{'default'} ?? null,
             isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
             isset($data->{'pushTime'}) ? Util::decodeDateTime($data->{'pushTime'}) : null,
+            $data->{'view'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

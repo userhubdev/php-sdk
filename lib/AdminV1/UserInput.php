@@ -139,21 +139,21 @@ final class UserInput implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'uniqueId' => $this->uniqueId ?? null,
-            'displayName' => $this->displayName ?? null,
-            'email' => $this->email ?? null,
-            'emailVerified' => $this->emailVerified ?? null,
-            'phoneNumber' => $this->phoneNumber ?? null,
-            'phoneNumberVerified' => $this->phoneNumberVerified ?? null,
-            'imageUrl' => $this->imageUrl ?? null,
-            'currencyCode' => $this->currencyCode ?? null,
-            'languageCode' => $this->languageCode ?? null,
-            'regionCode' => $this->regionCode ?? null,
-            'timeZone' => $this->timeZone ?? null,
-            'address' => $this->address ?? null,
-            'signupTime' => isset($this->signupTime) ? Util::encodeDateTime($this->signupTime) : null,
-            'disabled' => $this->disabled ?? null,
+            'id' => $this->id,
+            'uniqueId' => $this->uniqueId,
+            'displayName' => $this->displayName,
+            'email' => $this->email,
+            'emailVerified' => $this->emailVerified,
+            'phoneNumber' => $this->phoneNumber,
+            'phoneNumberVerified' => $this->phoneNumberVerified,
+            'imageUrl' => $this->imageUrl,
+            'currencyCode' => $this->currencyCode,
+            'languageCode' => $this->languageCode,
+            'regionCode' => $this->regionCode,
+            'timeZone' => $this->timeZone,
+            'address' => $this->address,
+            'signupTime' => Util::encodeDateTime($this->signupTime),
+            'disabled' => $this->disabled,
         ];
     }
 

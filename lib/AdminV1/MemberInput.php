@@ -34,8 +34,8 @@ final class MemberInput implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'userId' => $this->userId ?? null,
-            'roleId' => $this->roleId ?? null,
+            'userId' => $this->userId,
+            'roleId' => $this->roleId,
         ];
     }
 

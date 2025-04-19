@@ -98,17 +98,17 @@ final class Flow implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'state' => $this->state ?? null,
-            'stateReason' => $this->stateReason ?? null,
-            'type' => $this->type ?? null,
-            'organization' => $this->organization ?? null,
-            'user' => $this->user ?? null,
-            'creator' => $this->creator ?? null,
-            'joinOrganization' => $this->joinOrganization ?? null,
-            'signup' => $this->signup ?? null,
-            'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
-            'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
+            'id' => $this->id,
+            'state' => $this->state,
+            'stateReason' => $this->stateReason,
+            'type' => $this->type,
+            'organization' => $this->organization,
+            'user' => $this->user,
+            'creator' => $this->creator,
+            'joinOrganization' => $this->joinOrganization,
+            'signup' => $this->signup,
+            'expireTime' => Util::encodeDateTime($this->expireTime),
+            'createTime' => Util::encodeDateTime($this->createTime),
         ];
     }
 

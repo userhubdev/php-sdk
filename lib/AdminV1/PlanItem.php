@@ -9,10 +9,15 @@ namespace UserHub\AdminV1;
 use UserHub\Internal\JsonUnserializable;
 
 /**
- * The plan products.
+ * The products which the plan includes.
  */
 final class PlanItem implements \JsonSerializable, JsonUnserializable
 {
+    /**
+     * The plan item type.
+     */
+    public string $type;
+
     /**
      * The product associated with the item.
      */
@@ -23,27 +28,22 @@ final class PlanItem implements \JsonSerializable, JsonUnserializable
      */
     public ?Price $price;
 
-    /**
-     * The plan item type.
-     */
-    public string $type;
-
     public function __construct(
+        ?string $type = null,
         ?Product $product = null,
         ?Price $price = null,
-        ?string $type = null,
     ) {
+        $this->type = $type ?? '';
         $this->product = $product ?? new Product();
         $this->price = $price ?? new Price();
-        $this->type = $type ?? '';
     }
 
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'product' => $this->product ?? null,
-            'price' => $this->price ?? null,
-            'type' => $this->type ?? null,
+            'type' => $this->type,
+            'product' => $this->product,
+            'price' => $this->price,
         ];
     }
 
@@ -54,9 +54,9 @@ final class PlanItem implements \JsonSerializable, JsonUnserializable
         }
 
         return new self(
+            $data->{'type'} ?? null,
             isset($data->{'product'}) ? Product::jsonUnserialize($data->{'product'}) : null,
             isset($data->{'price'}) ? Price::jsonUnserialize($data->{'price'}) : null,
-            $data->{'type'} ?? null,
         );
     }
 }

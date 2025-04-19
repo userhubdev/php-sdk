@@ -27,7 +27,7 @@ final class AccountSubscriptionSeat implements \JsonSerializable, JsonUnserializ
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'product' => $this->product ?? null,
+            'product' => $this->product,
         ];
     }
 

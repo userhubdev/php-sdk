@@ -28,7 +28,7 @@ final class FlowsChanged implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'flow' => $this->flow ?? null,
+            'flow' => $this->flow,
         ];
     }
 

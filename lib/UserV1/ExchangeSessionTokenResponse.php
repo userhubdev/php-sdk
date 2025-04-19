@@ -39,8 +39,8 @@ final class ExchangeSessionTokenResponse implements \JsonSerializable, JsonUnser
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'accessToken' => $this->accessToken ?? null,
-            'expireTime' => isset($this->expireTime) ? Util::encodeDateTime($this->expireTime) : null,
+            'accessToken' => $this->accessToken,
+            'expireTime' => Util::encodeDateTime($this->expireTime),
         ];
     }
 

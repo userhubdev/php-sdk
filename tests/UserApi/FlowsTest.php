@@ -90,6 +90,7 @@ final class FlowsTest extends TestCase
                   "displayName": "Test",
                   "type": "OWNER",
                   "description": "string",
+                  "seatPolicy": "DEFAULT",
                   "permissionSets": [],
                   "default": true
                 }
@@ -158,6 +159,7 @@ final class FlowsTest extends TestCase
                   "displayName": "Test",
                   "type": "OWNER",
                   "description": "string",
+                  "seatPolicy": "DEFAULT",
                   "permissionSets": [],
                   "default": true
                 }
@@ -226,6 +228,7 @@ final class FlowsTest extends TestCase
                   "displayName": "Test",
                   "type": "OWNER",
                   "description": "string",
+                  "seatPolicy": "DEFAULT",
                   "permissionSets": [],
                   "default": true
                 }
@@ -294,6 +297,7 @@ final class FlowsTest extends TestCase
                   "displayName": "Test",
                   "type": "OWNER",
                   "description": "string",
+                  "seatPolicy": "DEFAULT",
                   "permissionSets": [],
                   "default": true
                 }
@@ -362,6 +366,7 @@ final class FlowsTest extends TestCase
                   "displayName": "Test",
                   "type": "OWNER",
                   "description": "string",
+                  "seatPolicy": "DEFAULT",
                   "permissionSets": [],
                   "default": true
                 }
@@ -430,6 +435,7 @@ final class FlowsTest extends TestCase
                   "displayName": "Test",
                   "type": "OWNER",
                   "description": "string",
+                  "seatPolicy": "DEFAULT",
                   "permissionSets": [],
                   "default": true
                 }

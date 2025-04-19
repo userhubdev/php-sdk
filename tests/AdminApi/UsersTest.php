@@ -39,6 +39,7 @@ final class UsersTest extends TestCase
                   "timeZone": "America/New_York",
                   "signupTime": "2024-02-05T23:07:46.483Z",
                   "disabled": true,
+                  "view": "BASIC",
                   "createTime": "2024-02-05T23:07:46.483Z",
                   "updateTime": "2024-02-05T23:07:46.483Z"
                 }
@@ -120,6 +121,7 @@ final class UsersTest extends TestCase
               ],
               "signupTime": "2024-02-05T23:07:46.483Z",
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -197,6 +199,7 @@ final class UsersTest extends TestCase
               ],
               "signupTime": "2024-02-05T23:07:46.483Z",
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -274,6 +277,7 @@ final class UsersTest extends TestCase
               ],
               "signupTime": "2024-02-05T23:07:46.483Z",
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -351,6 +355,7 @@ final class UsersTest extends TestCase
               ],
               "signupTime": "2024-02-05T23:07:46.483Z",
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -428,6 +433,7 @@ final class UsersTest extends TestCase
               ],
               "signupTime": "2024-02-05T23:07:46.483Z",
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -520,6 +526,7 @@ final class UsersTest extends TestCase
               ],
               "signupTime": "2024-02-05T23:07:46.483Z",
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -597,6 +604,7 @@ final class UsersTest extends TestCase
               ],
               "signupTime": "2024-02-05T23:07:46.483Z",
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }
@@ -674,6 +682,7 @@ final class UsersTest extends TestCase
               ],
               "signupTime": "2024-02-05T23:07:46.483Z",
               "disabled": true,
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z"
             }

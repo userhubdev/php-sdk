@@ -60,10 +60,10 @@ final class OrganizationInput implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'uniqueId' => $this->uniqueId ?? null,
-            'displayName' => $this->displayName ?? null,
-            'email' => $this->email ?? null,
-            'flowId' => $this->flowId ?? null,
+            'uniqueId' => $this->uniqueId,
+            'displayName' => $this->displayName,
+            'email' => $this->email,
+            'flowId' => $this->flowId,
         ];
     }
 

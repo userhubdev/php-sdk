@@ -34,8 +34,8 @@ final class StripeConnection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'accountId' => $this->accountId ?? null,
-            'live' => $this->live ?? null,
+            'accountId' => $this->accountId,
+            'live' => $this->live,
         ];
     }
 

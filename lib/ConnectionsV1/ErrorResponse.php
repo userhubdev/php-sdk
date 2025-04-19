@@ -34,8 +34,8 @@ final class ErrorResponse implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'code' => $this->code ?? null,
-            'message' => $this->message ?? null,
+            'code' => $this->code,
+            'message' => $this->message,
         ];
     }
 

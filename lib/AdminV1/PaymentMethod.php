@@ -127,20 +127,20 @@ final class PaymentMethod implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'externalId' => $this->externalId ?? null,
-            'state' => $this->state ?? null,
-            'stateReason' => $this->stateReason ?? null,
-            'type' => $this->type ?? null,
-            'displayName' => $this->displayName ?? null,
-            'fullName' => $this->fullName ?? null,
-            'address' => $this->address ?? null,
-            'default' => $this->default ?? null,
-            'lastPaymentError' => $this->lastPaymentError ?? null,
-            'pullTime' => isset($this->pullTime) ? Util::encodeDateTime($this->pullTime) : null,
-            'createTime' => isset($this->createTime) ? Util::encodeDateTime($this->createTime) : null,
-            'updateTime' => isset($this->updateTime) ? Util::encodeDateTime($this->updateTime) : null,
-            'card' => $this->card ?? null,
+            'id' => $this->id,
+            'externalId' => $this->externalId,
+            'state' => $this->state,
+            'stateReason' => $this->stateReason,
+            'type' => $this->type,
+            'displayName' => $this->displayName,
+            'fullName' => $this->fullName,
+            'address' => $this->address,
+            'default' => $this->default,
+            'lastPaymentError' => $this->lastPaymentError,
+            'pullTime' => Util::encodeDateTime($this->pullTime),
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
+            'card' => $this->card,
         ];
     }
 

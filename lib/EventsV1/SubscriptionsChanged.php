@@ -28,7 +28,7 @@ final class SubscriptionsChanged implements \JsonSerializable, JsonUnserializabl
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'subscription' => $this->subscription ?? null,
+            'subscription' => $this->subscription,
         ];
     }
 

@@ -21,6 +21,11 @@ final class Plan implements \JsonSerializable, JsonUnserializable
     public string $id;
 
     /**
+     * The status of the plan.
+     */
+    public string $state;
+
+    /**
      * The name of the plan.
      */
     public string $displayName;
@@ -31,6 +36,13 @@ final class Plan implements \JsonSerializable, JsonUnserializable
     public ?string $description;
 
     /**
+     * The tier for the plan.
+     *
+     * This is only available in checkout and pricing.
+     */
+    public ?string $tier;
+
+    /**
      * The currency code for the plan (e.g. `USD`).
      */
     public string $currencyCode;
@@ -39,6 +51,46 @@ final class Plan implements \JsonSerializable, JsonUnserializable
      * The billing interval for the plan.
      */
     public ?Interval $billingInterval;
+
+    /**
+     * The revision for the plan.
+     */
+    public ?PlanRevision $revision;
+
+    /**
+     * Whether this is the current plan for the subscription.
+     *
+     * This is only set in checkout.
+     */
+    public ?bool $current;
+
+    /**
+     * Whether this is the selected plan.
+     *
+     * This is only set in checkout.
+     */
+    public ?bool $selected;
+
+    /**
+     * Whether this is the default term for the plan.
+     */
+    public ?bool $default;
+
+    /**
+     * The trial settings.
+     *
+     * For authenticated requests, this will only be set for accounts that
+     * are eligible for a new trial.
+     */
+    public ?PlanTrial $trial;
+
+    /**
+     * Whether the change is considered an upgrade or
+     * a downgrade.
+     *
+     * This is only set in checkout.
+     */
+    public ?string $changePath;
 
     /**
      * The tags associated with the revision.
@@ -55,37 +107,69 @@ final class Plan implements \JsonSerializable, JsonUnserializable
     public array $items;
 
     /**
+     * The subscription view.
+     */
+    public string $view;
+
+    /**
      * @param null|string[]   $tags
      * @param null|PlanItem[] $items
      */
     public function __construct(
         ?string $id = null,
+        ?string $state = null,
         ?string $displayName = null,
         ?string $description = null,
+        ?string $tier = null,
         ?string $currencyCode = null,
         ?Interval $billingInterval = null,
+        ?PlanRevision $revision = null,
+        ?bool $current = null,
+        ?bool $selected = null,
+        ?bool $default = null,
+        ?PlanTrial $trial = null,
+        ?string $changePath = null,
         ?array $tags = null,
         ?array $items = null,
+        ?string $view = null,
     ) {
         $this->id = $id ?? '';
+        $this->state = $state ?? '';
         $this->displayName = $displayName ?? '';
         $this->description = $description ?? null;
+        $this->tier = $tier ?? null;
         $this->currencyCode = $currencyCode ?? '';
         $this->billingInterval = $billingInterval ?? new Interval();
+        $this->revision = $revision ?? new PlanRevision();
+        $this->current = $current ?? null;
+        $this->selected = $selected ?? null;
+        $this->default = $default ?? null;
+        $this->trial = $trial ?? null;
+        $this->changePath = $changePath ?? null;
         $this->tags = $tags ?? [];
         $this->items = $items ?? [];
+        $this->view = $view ?? '';
     }
 
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'displayName' => $this->displayName ?? null,
-            'description' => $this->description ?? null,
-            'currencyCode' => $this->currencyCode ?? null,
-            'billingInterval' => $this->billingInterval ?? null,
-            'tags' => $this->tags ?? null,
-            'items' => $this->items ?? null,
+            'id' => $this->id,
+            'state' => $this->state,
+            'displayName' => $this->displayName,
+            'description' => $this->description,
+            'tier' => $this->tier,
+            'currencyCode' => $this->currencyCode,
+            'billingInterval' => $this->billingInterval,
+            'revision' => $this->revision,
+            'current' => $this->current,
+            'selected' => $this->selected,
+            'default' => $this->default,
+            'trial' => $this->trial,
+            'changePath' => $this->changePath,
+            'tags' => $this->tags,
+            'items' => $this->items,
+            'view' => $this->view,
         ];
     }
 
@@ -97,12 +181,21 @@ final class Plan implements \JsonSerializable, JsonUnserializable
 
         return new self(
             $data->{'id'} ?? null,
+            $data->{'state'} ?? null,
             $data->{'displayName'} ?? null,
             $data->{'description'} ?? null,
+            $data->{'tier'} ?? null,
             $data->{'currencyCode'} ?? null,
             isset($data->{'billingInterval'}) ? Interval::jsonUnserialize($data->{'billingInterval'}) : null,
+            isset($data->{'revision'}) ? PlanRevision::jsonUnserialize($data->{'revision'}) : null,
+            $data->{'current'} ?? null,
+            $data->{'selected'} ?? null,
+            $data->{'default'} ?? null,
+            isset($data->{'trial'}) ? PlanTrial::jsonUnserialize($data->{'trial'}) : null,
+            $data->{'changePath'} ?? null,
             $data->{'tags'} ?? null,
             isset($data->{'items'}) ? Util::mapArray($data->{'items'}, [PlanItem::class, 'jsonUnserialize']) : null,
+            $data->{'view'} ?? null,
         );
     }
 }

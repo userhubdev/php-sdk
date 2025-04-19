@@ -48,10 +48,10 @@ final class SubscriptionItem implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'product' => $this->product ?? null,
-            'price' => $this->price ?? null,
-            'quantity' => $this->quantity ?? null,
+            'id' => $this->id,
+            'product' => $this->product,
+            'price' => $this->price,
+            'quantity' => $this->quantity,
         ];
     }
 

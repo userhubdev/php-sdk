@@ -50,9 +50,9 @@ final class ListSubscriptionsResponse implements \JsonSerializable, JsonUnserial
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'subscriptions' => $this->subscriptions ?? null,
-            'nextPageToken' => $this->nextPageToken ?? null,
-            'previousPageToken' => $this->previousPageToken ?? null,
+            'subscriptions' => $this->subscriptions,
+            'nextPageToken' => $this->nextPageToken,
+            'previousPageToken' => $this->previousPageToken,
         ];
     }
 

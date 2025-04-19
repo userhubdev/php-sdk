@@ -41,9 +41,9 @@ final class OidcConfig implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'issuerUrl' => $this->issuerUrl ?? null,
-            'clientId' => $this->clientId ?? null,
-            'clientSecret' => $this->clientSecret ?? null,
+            'issuerUrl' => $this->issuerUrl,
+            'clientId' => $this->clientId,
+            'clientSecret' => $this->clientSecret,
         ];
     }
 

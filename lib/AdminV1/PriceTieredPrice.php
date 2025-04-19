@@ -41,8 +41,8 @@ final class PriceTieredPrice implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'mode' => $this->mode ?? null,
-            'tiers' => $this->tiers ?? null,
+            'mode' => $this->mode,
+            'tiers' => $this->tiers,
         ];
     }
 

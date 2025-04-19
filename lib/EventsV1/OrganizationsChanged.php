@@ -28,7 +28,7 @@ final class OrganizationsChanged implements \JsonSerializable, JsonUnserializabl
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'organization' => $this->organization ?? null,
+            'organization' => $this->organization,
         ];
     }
 

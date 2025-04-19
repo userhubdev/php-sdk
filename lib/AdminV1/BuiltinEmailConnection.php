@@ -32,7 +32,7 @@ final class BuiltinEmailConnection implements \JsonSerializable, JsonUnserializa
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'allowedEmails' => $this->allowedEmails ?? null,
+            'allowedEmails' => $this->allowedEmails,
         ];
     }
 

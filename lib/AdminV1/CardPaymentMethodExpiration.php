@@ -34,8 +34,8 @@ final class CardPaymentMethodExpiration implements \JsonSerializable, JsonUnseri
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'year' => $this->year ?? null,
-            'month' => $this->month ?? null,
+            'year' => $this->year,
+            'month' => $this->month,
         ];
     }
 

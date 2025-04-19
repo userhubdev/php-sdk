@@ -50,9 +50,9 @@ final class ListOrganizationsResponse implements \JsonSerializable, JsonUnserial
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'organizations' => $this->organizations ?? null,
-            'nextPageToken' => $this->nextPageToken ?? null,
-            'previousPageToken' => $this->previousPageToken ?? null,
+            'organizations' => $this->organizations,
+            'nextPageToken' => $this->nextPageToken,
+            'previousPageToken' => $this->previousPageToken,
         ];
     }
 

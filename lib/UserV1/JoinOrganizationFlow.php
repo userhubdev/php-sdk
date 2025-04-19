@@ -44,9 +44,9 @@ final class JoinOrganizationFlow implements \JsonSerializable, JsonUnserializabl
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'displayName' => $this->displayName ?? null,
-            'email' => $this->email ?? null,
-            'role' => $this->role ?? null,
+            'displayName' => $this->displayName,
+            'email' => $this->email,
+            'role' => $this->role,
         ];
     }
 

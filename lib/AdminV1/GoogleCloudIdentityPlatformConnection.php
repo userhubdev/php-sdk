@@ -37,8 +37,8 @@ final class GoogleCloudIdentityPlatformConnection implements \JsonSerializable, 
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'credentials' => $this->credentials ?? null,
-            'projectId' => $this->projectId ?? null,
+            'credentials' => $this->credentials,
+            'projectId' => $this->projectId,
         ];
     }
 

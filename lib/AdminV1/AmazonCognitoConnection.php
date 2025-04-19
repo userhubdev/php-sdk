@@ -58,11 +58,11 @@ final class AmazonCognitoConnection implements \JsonSerializable, JsonUnserializ
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'userPoolId' => $this->userPoolId ?? null,
-            'region' => $this->region ?? null,
-            'accessKeyId' => $this->accessKeyId ?? null,
-            'accessKeySecret' => $this->accessKeySecret ?? null,
-            'oidc' => $this->oidc ?? null,
+            'userPoolId' => $this->userPoolId,
+            'region' => $this->region,
+            'accessKeyId' => $this->accessKeyId,
+            'accessKeySecret' => $this->accessKeySecret,
+            'oidc' => $this->oidc,
         ];
     }
 

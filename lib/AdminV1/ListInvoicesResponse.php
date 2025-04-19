@@ -50,9 +50,9 @@ final class ListInvoicesResponse implements \JsonSerializable, JsonUnserializabl
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'invoices' => $this->invoices ?? null,
-            'nextPageToken' => $this->nextPageToken ?? null,
-            'previousPageToken' => $this->previousPageToken ?? null,
+            'invoices' => $this->invoices,
+            'nextPageToken' => $this->nextPageToken,
+            'previousPageToken' => $this->previousPageToken,
         ];
     }
 

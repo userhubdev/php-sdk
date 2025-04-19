@@ -31,6 +31,7 @@ final class FlowsTest extends TestCase
                   "expireTime": "2024-02-05T23:07:46.483Z",
                   "ttl": "string",
                   "secret": "string",
+                  "view": "BASIC",
                   "createTime": "2024-02-05T23:07:46.483Z",
                   "updateTime": "2024-02-05T23:07:46.483Z"
                 }
@@ -88,6 +89,7 @@ final class FlowsTest extends TestCase
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "memberCount": 1,
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -122,6 +124,7 @@ final class FlowsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -156,6 +159,7 @@ final class FlowsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -163,6 +167,7 @@ final class FlowsTest extends TestCase
               "expireTime": "2024-02-05T23:07:46.483Z",
               "ttl": "string",
               "secret": "string",
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
@@ -174,6 +179,7 @@ final class FlowsTest extends TestCase
                   "displayName": "Test",
                   "type": "OWNER",
                   "description": "string",
+                  "seatPolicy": "DEFAULT",
                   "permissionSets": [],
                   "default": true,
                   "archived": true,
@@ -237,6 +243,7 @@ final class FlowsTest extends TestCase
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "memberCount": 1,
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -271,6 +278,7 @@ final class FlowsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -305,6 +313,7 @@ final class FlowsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -312,6 +321,7 @@ final class FlowsTest extends TestCase
               "expireTime": "2024-02-05T23:07:46.483Z",
               "ttl": "string",
               "secret": "string",
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
@@ -323,6 +333,7 @@ final class FlowsTest extends TestCase
                   "displayName": "Test",
                   "type": "OWNER",
                   "description": "string",
+                  "seatPolicy": "DEFAULT",
                   "permissionSets": [],
                   "default": true,
                   "archived": true,
@@ -386,6 +397,7 @@ final class FlowsTest extends TestCase
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "memberCount": 1,
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -420,6 +432,7 @@ final class FlowsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -454,6 +467,7 @@ final class FlowsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -461,6 +475,7 @@ final class FlowsTest extends TestCase
               "expireTime": "2024-02-05T23:07:46.483Z",
               "ttl": "string",
               "secret": "string",
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
@@ -472,6 +487,7 @@ final class FlowsTest extends TestCase
                   "displayName": "Test",
                   "type": "OWNER",
                   "description": "string",
+                  "seatPolicy": "DEFAULT",
                   "permissionSets": [],
                   "default": true,
                   "archived": true,
@@ -535,6 +551,7 @@ final class FlowsTest extends TestCase
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "memberCount": 1,
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -569,6 +586,7 @@ final class FlowsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -603,6 +621,7 @@ final class FlowsTest extends TestCase
                 "memberships": [],
                 "signupTime": "2024-02-05T23:07:46.483Z",
                 "disabled": true,
+                "view": "BASIC",
                 "createTime": "2024-02-05T23:07:46.483Z",
                 "updateTime": "2024-02-05T23:07:46.483Z"
               },
@@ -610,6 +629,7 @@ final class FlowsTest extends TestCase
               "expireTime": "2024-02-05T23:07:46.483Z",
               "ttl": "string",
               "secret": "string",
+              "view": "BASIC",
               "createTime": "2024-02-05T23:07:46.483Z",
               "updateTime": "2024-02-05T23:07:46.483Z",
               "joinOrganization": {
@@ -621,6 +641,7 @@ final class FlowsTest extends TestCase
                   "displayName": "Test",
                   "type": "OWNER",
                   "description": "string",
+                  "seatPolicy": "DEFAULT",
                   "permissionSets": [],
                   "default": true,
                   "archived": true,

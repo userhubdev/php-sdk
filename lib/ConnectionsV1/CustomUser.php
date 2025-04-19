@@ -82,14 +82,14 @@ final class CustomUser implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'id' => $this->id ?? null,
-            'displayName' => $this->displayName ?? null,
-            'email' => $this->email ?? null,
-            'emailVerified' => $this->emailVerified ?? null,
-            'phoneNumber' => $this->phoneNumber ?? null,
-            'phoneNumberVerified' => $this->phoneNumberVerified ?? null,
-            'imageUrl' => $this->imageUrl ?? null,
-            'disabled' => $this->disabled ?? null,
+            'id' => $this->id,
+            'displayName' => $this->displayName,
+            'email' => $this->email,
+            'emailVerified' => $this->emailVerified,
+            'phoneNumber' => $this->phoneNumber,
+            'phoneNumberVerified' => $this->phoneNumberVerified,
+            'imageUrl' => $this->imageUrl,
+            'disabled' => $this->disabled,
         ];
     }
 

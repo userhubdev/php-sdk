@@ -66,11 +66,11 @@ final class PostmarkConnection implements \JsonSerializable, JsonUnserializable
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'serverToken' => $this->serverToken ?? null,
-            'serverId' => $this->serverId ?? null,
-            'from' => $this->from ?? null,
-            'replyTo' => $this->replyTo ?? null,
-            'allowedEmails' => $this->allowedEmails ?? null,
+            'serverToken' => $this->serverToken,
+            'serverId' => $this->serverId,
+            'from' => $this->from,
+            'replyTo' => $this->replyTo,
+            'allowedEmails' => $this->allowedEmails,
         ];
     }
 
