@@ -9,6 +9,7 @@ use donatj\MockWebServer\Response;
 use PHPUnit\Framework\TestCase;
 use UserHub\AdminV1\AccountConnection;
 use UserHub\AdminV1\User;
+use UserHub\Internal\Constants;
 
 /**
  * @internal
@@ -96,6 +97,7 @@ final class BasicsTest extends TestCase
         $req = self::$server->getLastRequest();
         self::assertNotNull($req);
         self::assertEquals('GET', $req->getRequestMethod());
+        self::assertEquals(Constants::API_VERSION, $req->getHeaders()['userhub-api-version']);
         self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
     }
 
@@ -116,6 +118,7 @@ final class BasicsTest extends TestCase
         $req = self::$server->getLastRequest();
         self::assertNotNull($req);
         self::assertEquals('POST', $req->getRequestMethod());
+        self::assertEquals(Constants::API_VERSION, $req->getHeaders()['userhub-api-version']);
         self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
         self::assertEquals('{"displayName":"Jane Doe"}', $req->getInput());
 
@@ -153,6 +156,7 @@ final class BasicsTest extends TestCase
         $req = self::$server->getLastRequest();
         self::assertNotNull($req);
         self::assertEquals('PATCH', $req->getRequestMethod());
+        self::assertEquals(Constants::API_VERSION, $req->getHeaders()['userhub-api-version']);
         self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
         self::assertEquals('{"displayName":"Jane Doe"}', $req->getInput());
 
@@ -190,6 +194,7 @@ final class BasicsTest extends TestCase
         $req = self::$server->getLastRequest();
         self::assertNotNull($req);
         self::assertEquals('DELETE', $req->getRequestMethod());
+        self::assertEquals(Constants::API_VERSION, $req->getHeaders()['userhub-api-version']);
         self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
     }
 
