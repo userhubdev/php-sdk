@@ -29,6 +29,19 @@ class Organizations
     /**
      * Lists organizations.
      *
+     * @param null|int    $pageSize  The maximum number of organizations to return. The API may return fewer than
+     *                               this value.
+     *                               If unspecified, at most 20 organizations will be returned.
+     *                               The maximum value is 100; values above 100 will be coerced to 100.
+     * @param null|string $pageToken A page token, received from a previous list organizations call.
+     *                               Provide this to retrieve the subsequent page.
+     *                               When paginating, all other parameters provided to list organizations must match
+     *                               the call that provided the page token.
+     * @param null|string $orderBy   A comma-separated list of fields to order by.
+     *                               Supports:
+     *                               - `displayName asc`
+     *                               - `email asc`
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
@@ -56,6 +69,18 @@ class Organizations
 
     /**
      * Creates a new organization.
+     *
+     * @param null|string $uniqueId    The client defined unique identifier of the organization account.
+     *                                 It is restricted to letters, numbers, underscores, and hyphens,
+     *                                 with the first character a letter or a number, and a 255
+     *                                 character maximum.
+     *                                 ID's starting with `org_` are reserved.
+     * @param null|string $displayName The human-readable display name of the organization.
+     *                                 The maximum length is 200 characters.
+     * @param null|string $email       The email address of the organization.
+     *                                 The maximum length is 320 characters.
+     * @param null|string $flowId      The flow identifier associated with the creation of the organization.
+     *                                 The flow type must be `SIGNUP` and associated with the user creating the organization.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -91,6 +116,8 @@ class Organizations
     /**
      * Retrieves specified organization.
      *
+     * @param string $organizationId the identifier of the organization
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
@@ -106,6 +133,19 @@ class Organizations
 
     /**
      * Updates specified organization.
+     *
+     * @param string                $organizationId the identifier of the organization
+     * @param null|string|Undefined $uniqueId       The client defined unique identifier of the organization account.
+     *                                              It is restricted to letters, numbers, underscores, and hyphens,
+     *                                              with the first character a letter or a number, and a 255
+     *                                              character maximum.
+     *                                              ID's starting with `org_` are reserved.
+     * @param null|string|Undefined $displayName    The human-readable display name of the organization.
+     *                                              The maximum length is 200 characters.
+     * @param null|string|Undefined $email          The email address of the organization.
+     *                                              The maximum length is 320 characters.
+     * @param null|string|Undefined $flowId         The flow identifier associated with the creation of the organization.
+     *                                              The flow type must be `SIGNUP` and associated with the user creating the organization.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -144,6 +184,8 @@ class Organizations
     /**
      * Delete specified organization.
      *
+     * @param string $organizationId the identifier of the organization
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function delete(
@@ -160,6 +202,8 @@ class Organizations
      *
      * This allows a user to remove themselves from an organization
      * without have permission to manage the organization.
+     *
+     * @param string $organizationId the identifier of the organization
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */

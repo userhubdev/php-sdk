@@ -27,6 +27,23 @@ class Invoices
     /**
      * Lists invoices.
      *
+     * @param null|string $organizationId Filter results by organization identifier.
+     *                                    This is required if user identifier is not specified.
+     * @param null|string $userId         Filter results by user identifier.
+     *                                    This is required if organization identifier is not specified.
+     * @param null|int    $pageSize       The maximum number of invoices to return. The API may return fewer than
+     *                                    this value.
+     *                                    If unspecified, at most 20 invoices will be returned.
+     *                                    The maximum value is 100; values above 100 will be coerced to 100.
+     * @param null|string $pageToken      A page token, received from a previous list invoices call.
+     *                                    Provide this to retrieve the subsequent page.
+     *                                    When paginating, all other parameters provided to list invoices must match
+     *                                    the call that provided the page token.
+     * @param null|string $orderBy        A comma-separated list of fields to order by.
+     *                                    Supports:
+     *                                    - `createTime asc`
+     *                                    - `createTime desc`
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
@@ -62,6 +79,10 @@ class Invoices
 
     /**
      * Retrieves specified invoice.
+     *
+     * @param string      $invoiceId      the identifier of the invoice
+     * @param null|string $organizationId restrict by organization identifier
+     * @param null|string $userId         restrict by user identifier
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */

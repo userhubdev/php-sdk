@@ -27,6 +27,26 @@ class Flows
     /**
      * Lists flows.
      *
+     * @param null|string $organizationId The identifier of the organization.
+     *                                    When not set the user's flows are returned.
+     *                                    Otherwise if the user is an admin of the provided organization then
+     *                                    the flows associated with that organization are returned.
+     * @param null|string $type           filter the results by the specified flow type
+     * @param null|bool   $active         whether to filter out flows not in the `START_PENDING` or `STARTED`
+     *                                    state
+     * @param null|bool   $creator        whether to only return flows created by the authenticated user
+     * @param null|int    $pageSize       The maximum number of flows to return. The API may return fewer than
+     *                                    this value.
+     *                                    If unspecified, at most 20 flows will be returned.
+     *                                    The maximum value is 100; values above 100 will be coerced to 100.
+     * @param null|string $pageToken      A page token, received from a previous list flows call.
+     *                                    Provide this to retrieve the subsequent page.
+     *                                    When paginating, all other parameters provided to list flows must match
+     *                                    the call that provided the page token.
+     * @param null|string $orderBy        A comma-separated list of fields to order by.
+     *                                    Supports:
+     *                                    - `createTime desc`
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
@@ -73,6 +93,15 @@ class Flows
      *
      * This invites a person to join an organization.
      *
+     * @param null|string $organizationId the identifier of the organization
+     * @param null|string $userId         The identifier of the user.
+     *                                    This is required if email is not specified.
+     * @param null|string $email          The email address of the person to invite.
+     *                                    This is required if user is not specified or the user
+     *                                    does not have an email address.
+     * @param null|string $displayName    the display name of the person to invite
+     * @param null|string $roleId         the identifier of the role
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createJoinOrganization(
@@ -113,6 +142,10 @@ class Flows
      *
      * This invites a person to join the app.
      *
+     * @param null|string $email              the email address of the person to invite
+     * @param null|string $displayName        the display name of the person to invite
+     * @param null|bool   $createOrganization whether to create an organization as part of the signup flow
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createSignup(
@@ -143,6 +176,8 @@ class Flows
     /**
      * Retrieves specified flow.
      *
+     * @param string $flowId the identifier of the flow or the flow secret
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
@@ -157,34 +192,12 @@ class Flows
     }
 
     /**
-     * Approve a flow.
-     *
-     * This will approve the specified flow and start the next step
-     * in the flow (e.g. for a join organization flow it will send the
-     * invitee an email with a link to join the organization).
-     *
-     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
-     */
-    public function approve(
-        string $flowId,
-    ): Flow {
-        $req = new Request('user.flows.approve', 'POST', '/user/v1/flows/'.rawurlencode($flowId).':approve');
-        $req->setIdempotent(true);
-
-        $body = [];
-
-        $req->setBody((object) $body);
-
-        $res = $this->transport->execute($req);
-
-        return Flow::jsonUnserialize($res->decodeBody());
-    }
-
-    /**
      * Consume the flow.
      *
      * This accepts the flow (e.g. for a join organization flow it will
      * accept the invitation and add the member to the organization).
+     *
+     * @param string $flowId the identifier of the flow or the flow secret
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -205,6 +218,8 @@ class Flows
      * Cancels specified flow.
      *
      * This cancels the flow and hides it from the user.
+     *
+     * @param string $flowId the identifier of the flow or the flow secret
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */

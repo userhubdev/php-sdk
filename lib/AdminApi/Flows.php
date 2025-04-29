@@ -28,6 +28,28 @@ class Flows
     /**
      * Lists flows.
      *
+     * @param null|string $organizationId filter results by organization identifier
+     * @param null|string $userId         filter results by user identifier
+     * @param null|string $type           filter the results by the specified flow type
+     * @param null|bool   $active         whether to filter out flows not in the `START_PENDING` or `STARTED`
+     *                                    state
+     * @param null|string $creatorUserId  The identifier of the user that created the flow.
+     *                                    When this is specified only the flows created by the user are
+     *                                    returned.
+     * @param null|int    $pageSize       The maximum number of flows to return. The API may return fewer than
+     *                                    this value.
+     *                                    If unspecified, at most 20 flows will be returned.
+     *                                    The maximum value is 100; values above 100 will be coerced to 100.
+     * @param null|string $pageToken      A page token, received from a previous list flows call.
+     *                                    Provide this to retrieve the subsequent page.
+     *                                    When paginating, all other parameters provided to list flows must match
+     *                                    the call that provided the page token.
+     * @param null|string $orderBy        A comma-separated list of fields to order by.
+     *                                    Supports:
+     *                                    - `createTime desc`
+     * @param null|string $view           The Flow view to return in the results.
+     *                                    This defaults to the `BASIC` view.
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
@@ -82,6 +104,22 @@ class Flows
      *
      * This invites a person to join an organization.
      *
+     * @param null|string             $organizationId the identifier of the organization
+     * @param null|string             $userId         The identifier of the user.
+     *                                                This is required if email is not specified.
+     * @param null|string             $email          The email address of the person to invite.
+     *                                                This is required if user is not specified or the user
+     *                                                does not have an email address.
+     * @param null|string             $displayName    the display name of the person to invite
+     * @param null|string             $roleId         the identifier of the role
+     * @param null|string             $creatorUserId  the identifier of the user sending the invite
+     * @param null|\DateTimeInterface $expireTime     The time the flow will expire.
+     *                                                This field is not allowed if `ttl` is specified.
+     * @param null|string             $ttl            The amount of time a flow will be available (e.g. `86400s`).
+     *                                                This must be a string with the number of seconds followed by a
+     *                                                trailing `s`.
+     *                                                This field is not allowed if `expireTime` is specified.
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createJoinOrganization(
@@ -134,6 +172,17 @@ class Flows
      *
      * This invites a person to join the app.
      *
+     * @param null|string             $email              the email address of the person to invite
+     * @param null|string             $displayName        the display name of the person to invite
+     * @param null|bool               $createOrganization whether to create an organization as part of the signup flow
+     * @param null|string             $creatorUserId      the identifier of the user sending the invite
+     * @param null|\DateTimeInterface $expireTime         The time the flow will expire.
+     *                                                    This field is not allowed if `ttl` is specified.
+     * @param null|string             $ttl                The amount of time a flow will be available (e.g. `86400s`).
+     *                                                    This must be a string with the number of seconds followed by a
+     *                                                    trailing `s`.
+     *                                                    This field is not allowed if `expireTime` is specified.
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createSignup(
@@ -176,6 +225,8 @@ class Flows
     /**
      * Retrieves specified flow.
      *
+     * @param string $flowId the identifier of the flow
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
@@ -191,6 +242,8 @@ class Flows
 
     /**
      * Cancels specified flow.
+     *
+     * @param string $flowId the identifier of the flow
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
