@@ -34,6 +34,35 @@ class Organizations
     /**
      * Lists organizations.
      *
+     * @param null|string $displayName Filter the results by display name.
+     *                                 To enable prefix filtering append `*` to the end of the value
+     *                                 and ensure you provide at least 3 characters excluding the
+     *                                 wildcard.
+     *                                 This filter is case-insensitivity.
+     * @param null|string $email       Filter the results by email address.
+     *                                 To enable prefix filtering append `*` to the end of the value
+     *                                 and ensure you provide at least 3 characters excluding the
+     *                                 wildcard.
+     *                                 This filter is case-insensitivity.
+     * @param null|int    $pageSize    The maximum number of organizations to return. The API may return fewer than
+     *                                 this value.
+     *                                 If unspecified, at most 20 organizations will be returned.
+     *                                 The maximum value is 100; values above 100 will be coerced to 100.
+     * @param null|string $pageToken   A page token, received from a previous list organizations call.
+     *                                 Provide this to retrieve the subsequent page.
+     *                                 When paginating, all other parameters provided to list organizations must match
+     *                                 the call that provided the page token.
+     * @param null|string $orderBy     A comma-separated list of fields to order by.
+     *                                 Supports:
+     *                                 - `displayName asc`
+     *                                 - `email asc`
+     *                                 - `signupTime desc`
+     *                                 - `createTime desc`
+     *                                 - `deleteTime desc`
+     * @param null|bool   $showDeleted whether to show deleted organizations
+     * @param null|string $view        The organization view to return in the results.
+     *                                 This defaults to the `BASIC` view.
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
@@ -77,6 +106,28 @@ class Organizations
 
     /**
      * Creates a new organization.
+     *
+     * @param null|string             $uniqueId            The client defined unique identifier of the organization account.
+     *                                                     It is restricted to letters, numbers, underscores, and hyphens,
+     *                                                     with the first character a letter or a number, and a 255
+     *                                                     character maximum.
+     *                                                     ID's starting with `org_` are reserved.
+     * @param null|string             $displayName         The human-readable display name of the organization.
+     *                                                     The maximum length is 200 characters.
+     * @param null|string             $email               The email address of the organization.
+     *                                                     The maximum length is 320 characters.
+     * @param null|bool               $emailVerified       whether the organization's email address has been verified
+     * @param null|string             $phoneNumber         The E164 phone number for the organization (e.g. `+12125550123`).
+     * @param null|bool               $phoneNumberVerified whether the organization's phone number has been verified
+     * @param null|string             $imageUrl            The photo/avatar URL of the organization.
+     *                                                     The maximum length is 2000 characters.
+     * @param null|string             $currencyCode        The default ISO-4217 currency code for the organization (e.g. `USD`).
+     * @param null|string             $languageCode        The IETF BCP-47 language code for the organization (e.g. `en`).
+     * @param null|string             $regionCode          The country/region code for the organization (e.g. `US`).
+     * @param null|string             $timeZone            The IANA time zone for the organization (e.g. `America/New_York`).
+     * @param null|Address            $address             the default address for the organization
+     * @param null|\DateTimeInterface $signupTime          the sign-up time for the organization
+     * @param null|bool               $disabled            whether the organization is disabled
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -152,6 +203,8 @@ class Organizations
     /**
      * Retrieves specified organization.
      *
+     * @param string $organizationId the identifier of the organization
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
@@ -167,6 +220,31 @@ class Organizations
 
     /**
      * Updates specified organization.
+     *
+     * @param string                            $organizationId      the identifier of the organization
+     * @param null|bool                         $allowMissing        If set to true, and the organization is not found, a new organization will be created.
+     *                                                               You must use the unique identifier for the identifier when this is true.
+     * @param null|string|Undefined             $uniqueId            The client defined unique identifier of the organization account.
+     *                                                               It is restricted to letters, numbers, underscores, and hyphens,
+     *                                                               with the first character a letter or a number, and a 255
+     *                                                               character maximum.
+     *                                                               ID's starting with `org_` are reserved.
+     * @param null|string|Undefined             $displayName         The human-readable display name of the organization.
+     *                                                               The maximum length is 200 characters.
+     * @param null|string|Undefined             $email               The email address of the organization.
+     *                                                               The maximum length is 320 characters.
+     * @param null|bool|Undefined               $emailVerified       whether the organization's email address has been verified
+     * @param null|string|Undefined             $phoneNumber         The E164 phone number for the organization (e.g. `+12125550123`).
+     * @param null|bool|Undefined               $phoneNumberVerified whether the organization's phone number has been verified
+     * @param null|string|Undefined             $imageUrl            The photo/avatar URL of the organization.
+     *                                                               The maximum length is 2000 characters.
+     * @param null|string|Undefined             $currencyCode        The default ISO-4217 currency code for the organization (e.g. `USD`).
+     * @param null|string|Undefined             $languageCode        The IETF BCP-47 language code for the organization (e.g. `en`).
+     * @param null|string|Undefined             $regionCode          The country/region code for the organization (e.g. `US`).
+     * @param null|string|Undefined             $timeZone            The IANA time zone for the organization (e.g. `America/New_York`).
+     * @param null|Address|Undefined            $address             the default address for the organization
+     * @param null|\DateTimeInterface|Undefined $signupTime          the sign-up time for the organization
+     * @param null|bool|Undefined               $disabled            whether the organization is disabled
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -249,6 +327,8 @@ class Organizations
     /**
      * Marks specified organization for deletion.
      *
+     * @param string $organizationId the identifier of the organization
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function delete(
@@ -264,6 +344,8 @@ class Organizations
 
     /**
      * Un-marks specified organization for deletion.
+     *
+     * @param string $organizationId the identifier of the organization
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -287,6 +369,8 @@ class Organizations
      *
      * The organization must be marked for deletion before it can be purged.
      *
+     * @param string $organizationId the identifier of the organization
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function purge(
@@ -304,6 +388,12 @@ class Organizations
 
     /**
      * Connect specified organization to external account.
+     *
+     * @param string      $organizationId the organization identifier
+     * @param null|string $connectionId   the identifier of the connection
+     * @param null|string $externalId     The external identifier of the organization to connect.
+     *                                    On create if this is empty a new external organization will
+     *                                    be created if the connection supports it.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -341,6 +431,11 @@ class Organizations
      * WARNING: This can irreversibly destroy data and should be
      * used with extreme caution.
      *
+     * @param string      $organizationId        the organization identifier
+     * @param null|string $connectionId          the identifier of the connection
+     * @param null|bool   $deleteExternalAccount Whether to attempt to delete the external account and all
+     *                                           it's associated data (e.g. Stripe Customer object).
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function disconnect(
@@ -367,6 +462,32 @@ class Organizations
 
     /**
      * Lists organization members.
+     *
+     * @param string      $organizationId the identifier of the organization
+     * @param null|string $displayName    Filter the results by display name.
+     *                                    To enable prefix filtering append `*` to the end of the value
+     *                                    and ensure you provide at least 3 characters excluding the
+     *                                    wildcard.
+     *                                    This filter is case-insensitivity.
+     * @param null|string $email          Filter the results by email address.
+     *                                    To enable prefix filtering append `*` to the end of the value
+     *                                    and ensure you provide at least 3 characters excluding the
+     *                                    wildcard.
+     *                                    This filter is case-insensitivity.
+     * @param null|string $roleId         filter the results by a role identifier
+     * @param null|int    $pageSize       The maximum number of members to return. The API may return fewer than
+     *                                    this value.
+     *                                    If unspecified, at most 20 members will be returned.
+     *                                    The maximum value is 100; values above 100 will be coerced to 100.
+     * @param null|string $pageToken      A page token, received from a previous list members call.
+     *                                    Provide this to retrieve the subsequent page.
+     *                                    When paginating, all other parameters provided to list members must match
+     *                                    the call that provided the page token.
+     * @param null|string $orderBy        A comma-separated list of fields to order by.
+     *                                    Supports:
+     *                                    - `displayName asc`
+     *                                    - `email asc`
+     *                                    - `createTime desc`
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -409,6 +530,10 @@ class Organizations
     /**
      * Creates a new organization member.
      *
+     * @param string      $organizationId the identifier of the organization
+     * @param null|string $userId         the identifier of the user
+     * @param null|string $roleId         the identifier of the role
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function addMember(
@@ -436,6 +561,9 @@ class Organizations
     /**
      * Retrieves specified organization member.
      *
+     * @param string $organizationId the identifier of the organization
+     * @param string $userId         the identifier of the user
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function getMember(
@@ -452,6 +580,11 @@ class Organizations
 
     /**
      * Updates specified organization member.
+     *
+     * @param string                $organizationId the identifier of the organization
+     * @param string                $userId         the identifier of the user
+     * @param null|bool             $allowMissing   if set to true, and the member is not found, a new member will be created
+     * @param null|string|Undefined $roleId         the identifier of the role
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -482,6 +615,9 @@ class Organizations
 
     /**
      * Deletes specified organization member.
+     *
+     * @param string $organizationId the identifier of the organization
+     * @param string $userId         the identifier of the user
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */

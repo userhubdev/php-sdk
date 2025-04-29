@@ -42,6 +42,8 @@ class Session
     /**
      * Exchange an ID token from your IdP for an access token.
      *
+     * @param null|string $token the IdP ID token which is used to authenticated the user
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function exchangeToken(
@@ -63,6 +65,32 @@ class Session
 
     /**
      * Create Portal session.
+     *
+     * @param null|string $organizationId The identifier of the organization.
+     *                                    When specified the `{accountId}` in the `portalUrl` will be
+     *                                    replaced with the organization ID, otherwise the user ID
+     *                                    will be used.
+     * @param null|string $portalUrl      The Portal URL, this is the target URL on the portal site.
+     *                                    If not defined the root URL for the portal will be used.
+     *                                    This does not need to be the full URL, you have the option
+     *                                    of passing in a path instead (e.g. `/`).
+     *                                    You also have the option of including the `{accountId}`
+     *                                    string in the path/URL which will be replaced with either the
+     *                                    UserHub user ID (if `organizationId` is not specified)
+     *                                    or the UserHub organization ID (if specified).
+     *                                    Examples:
+     *                                    * `/{accountId}` - the billing dashboard
+     *                                    * `/{accountId}/checkout` - start a checkout
+     *                                    * `/{accountId}/checkout/<some-plan-id>` - start a checkout with a specified plan
+     *                                    * `/{accountId}/cancel` - cancel current plan
+     *                                    * `/{accountId}/members` - manage organization members
+     *                                    * `/{accountId}/invite` - invite a user to an organization
+     * @param null|string $returnUrl      The URL the user should be sent to when they want to return to
+     *                                    the app (e.g. cancel checkout).
+     *                                    If not defined the app URL will be used.
+     * @param null|string $successUrl     The URL the user should be sent after they successfully complete
+     *                                    an action (e.g. checkout).
+     *                                    If not defined the return URL will be used.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */

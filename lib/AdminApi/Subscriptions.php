@@ -27,6 +27,28 @@ class Subscriptions
     /**
      * Lists subscriptions.
      *
+     * @param null|string $organizationId filter results by organization identifier
+     * @param null|string $userId         filter results by user identifier
+     * @param null|string $state          filter results by state
+     * @param null|string $planGroupId    Filter results by plan group identifier.
+     *                                    You can specify `unmanaged` to see all subscriptions without a plan.
+     * @param null|int    $pageSize       The maximum number of subscriptions to return. The API may return fewer than
+     *                                    this value.
+     *                                    If unspecified, at most 20 subscriptions will be returned.
+     *                                    The maximum value is 100; values above 100 will be coerced to 100.
+     * @param null|string $pageToken      A page token, received from a previous list subscriptions call.
+     *                                    Provide this to retrieve the subsequent page.
+     *                                    When paginating, all other parameters provided to list subscriptions must match
+     *                                    the call that provided the page token.
+     * @param null|string $orderBy        A comma-separated list of fields to order by.
+     *                                    This is only supported when either `organizationId` or `userId` is specified.
+     *                                    Supports:
+     *                                    - `active desc`
+     *                                    - `createTime desc`
+     *                                    - `startTime desc`
+     * @param null|string $view           The Subscription view to return in the results.
+     *                                    This defaults to the `BASIC` view.
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
@@ -74,6 +96,10 @@ class Subscriptions
 
     /**
      * Retrieves specified subscription.
+     *
+     * @param string      $subscriptionId the identifier of the subscription
+     * @param null|string $organizationId restrict by organization identifier
+     * @param null|string $userId         restrict by user identifier
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */

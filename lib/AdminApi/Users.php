@@ -33,6 +33,35 @@ class Users
     /**
      * Lists users.
      *
+     * @param null|string $displayName Filter the results by display name.
+     *                                 To enable prefix filtering append `*` to the end of the value
+     *                                 and ensure you provide at least 3 characters excluding the
+     *                                 wildcard.
+     *                                 This filter is case-insensitivity.
+     * @param null|string $email       Filter the results by email address.
+     *                                 To enable prefix filtering append `*` to the end of the value
+     *                                 and ensure you provide at least 3 characters excluding the
+     *                                 wildcard.
+     *                                 This filter is case-insensitivity.
+     * @param null|int    $pageSize    The maximum number of users to return. The API may return fewer than
+     *                                 this value.
+     *                                 If unspecified, at most 20 users will be returned.
+     *                                 The maximum value is 100; values above 100 will be coerced to 100.
+     * @param null|string $pageToken   A page token, received from a previous list users call.
+     *                                 Provide this to retrieve the subsequent page.
+     *                                 When paginating, all other parameters provided to list users must match
+     *                                 the call that provided the page token.
+     * @param null|string $orderBy     A comma-separated list of fields to order by.
+     *                                 Supports:
+     *                                 - `displayName asc`
+     *                                 - `email asc`
+     *                                 - `signupTime desc`
+     *                                 - `createTime desc`
+     *                                 - `deleteTime desc`
+     * @param null|bool   $showDeleted whether to show deleted users
+     * @param null|string $view        The User view to return in the results.
+     *                                 This defaults to the `BASIC` view.
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function list(
@@ -76,6 +105,28 @@ class Users
 
     /**
      * Creates a new user.
+     *
+     * @param null|string             $uniqueId            The client defined unique identifier of the user account.
+     *                                                     It is restricted to letters, numbers, underscores, and hyphens,
+     *                                                     with the first character a letter or a number, and a 255
+     *                                                     character maximum.
+     *                                                     ID's starting with `usr_` are reserved.
+     * @param null|string             $displayName         The human-readable display name of the user.
+     *                                                     The maximum length is 200 characters.
+     * @param null|string             $email               The email address of the user.
+     *                                                     The maximum length is 320 characters.
+     * @param null|bool               $emailVerified       whether the user's email address has been verified
+     * @param null|string             $phoneNumber         The E164 phone number for the user (e.g. `+12125550123`).
+     * @param null|bool               $phoneNumberVerified whether the user's phone number has been verified
+     * @param null|string             $imageUrl            The photo/avatar URL of the user.
+     *                                                     The maximum length is 2000 characters.
+     * @param null|string             $currencyCode        The default ISO-4217 currency code for the user (e.g. `USD`).
+     * @param null|string             $languageCode        The IETF BCP-47 language code for the user (e.g. `en`).
+     * @param null|string             $regionCode          The country/region code for the user (e.g. `US`).
+     * @param null|string             $timeZone            The IANA time zone for the user (e.g. `America/New_York`).
+     * @param null|Address            $address             the default address for the user
+     * @param null|\DateTimeInterface $signupTime          the sign-up time for the user
+     * @param null|bool               $disabled            whether the user is disabled
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -151,6 +202,8 @@ class Users
     /**
      * Retrieves specified user.
      *
+     * @param string $userId the identifier of the user
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function get(
@@ -166,6 +219,31 @@ class Users
 
     /**
      * Updates specified user.
+     *
+     * @param string                            $userId              the identifier of the user
+     * @param null|bool                         $allowMissing        If set to true, and the user is not found, a new user will be created.
+     *                                                               You must use the unique identifier for the identifier when this is true.
+     * @param null|string|Undefined             $uniqueId            The client defined unique identifier of the user account.
+     *                                                               It is restricted to letters, numbers, underscores, and hyphens,
+     *                                                               with the first character a letter or a number, and a 255
+     *                                                               character maximum.
+     *                                                               ID's starting with `usr_` are reserved.
+     * @param null|string|Undefined             $displayName         The human-readable display name of the user.
+     *                                                               The maximum length is 200 characters.
+     * @param null|string|Undefined             $email               The email address of the user.
+     *                                                               The maximum length is 320 characters.
+     * @param null|bool|Undefined               $emailVerified       whether the user's email address has been verified
+     * @param null|string|Undefined             $phoneNumber         The E164 phone number for the user (e.g. `+12125550123`).
+     * @param null|bool|Undefined               $phoneNumberVerified whether the user's phone number has been verified
+     * @param null|string|Undefined             $imageUrl            The photo/avatar URL of the user.
+     *                                                               The maximum length is 2000 characters.
+     * @param null|string|Undefined             $currencyCode        The default ISO-4217 currency code for the user (e.g. `USD`).
+     * @param null|string|Undefined             $languageCode        The IETF BCP-47 language code for the user (e.g. `en`).
+     * @param null|string|Undefined             $regionCode          The country/region code for the user (e.g. `US`).
+     * @param null|string|Undefined             $timeZone            The IANA time zone for the user (e.g. `America/New_York`).
+     * @param null|Address|Undefined            $address             the default address for the user
+     * @param null|\DateTimeInterface|Undefined $signupTime          the sign-up time for the user
+     * @param null|bool|Undefined               $disabled            whether the user is disabled
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -248,6 +326,8 @@ class Users
     /**
      * Marks specified user for deletion.
      *
+     * @param string $userId the identifier of the user
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function delete(
@@ -261,6 +341,8 @@ class Users
 
     /**
      * Un-marks specified user for deletion.
+     *
+     * @param string $userId the identifier of the user
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -282,6 +364,8 @@ class Users
      *
      * The user must be marked for deletion before it can be purged.
      *
+     * @param string $userId the identifier of the user
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function purge(
@@ -299,6 +383,12 @@ class Users
 
     /**
      * Connect specified user to external account.
+     *
+     * @param string      $userId       the user identifier
+     * @param null|string $connectionId the identifier of the connection
+     * @param null|string $externalId   The external identifier of the user to connect.
+     *                                  On create if this is empty a new external user will
+     *                                  be created if the connection supports it.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -336,6 +426,11 @@ class Users
      * WARNING: This can irreversibly destroy data and should be
      * used with extreme caution.
      *
+     * @param string      $userId                the user identifier
+     * @param null|string $connectionId          the identifier of the connection
+     * @param null|bool   $deleteExternalAccount Whether to attempt to delete the external account and all
+     *                                           it's associated data (e.g. Stripe Customer object).
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function disconnect(
@@ -366,6 +461,11 @@ class Users
      *
      * If the user already exists in UserHub, this is a no-op.
      *
+     * @param string $userId The identifier of the user.
+     *                       This must be in the format `<externalId>@<connectionId>` where
+     *                       `externalId` is the identity provider user identifier and
+     *                       and `connectionId` is the User Provider connection identifier.
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function importAccount(
@@ -386,6 +486,8 @@ class Users
     /**
      * Create a User API session.
      *
+     * @param string $userId the identifier of the user
+     *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
     public function createApiSession(
@@ -405,6 +507,37 @@ class Users
 
     /**
      * Create Portal session.
+     *
+     * @param string      $userId         The user ID.
+     *                                    In addition to supporting the UserHub user ID,
+     *                                    you can also pass in the User Provider external identifier in the
+     *                                    format `<externalId>@<connectionId>` and if the user doesn't
+     *                                    exist in UserHub they will automatically be imported.
+     * @param null|string $portalUrl      The Portal URL, this is the target URL on the portal site.
+     *                                    If not defined the root URL for the portal will be used.
+     *                                    This does not need to be the full URL, you have the option
+     *                                    of passing in a path instead (e.g. `/`).
+     *                                    You also have the option of including the `{accountId}`
+     *                                    string in the path/URL which will be replaced with either the
+     *                                    UserHub user ID (if `organizationId` is not specified)
+     *                                    or the UserHub organization ID (if specified).
+     *                                    Examples:
+     *                                    * `/{accountId}` - the billing dashboard
+     *                                    * `/{accountId}/checkout` - start a checkout
+     *                                    * `/{accountId}/checkout/<some-plan-id>` - start a checkout with a specified plan
+     *                                    * `/{accountId}/cancel` - cancel current plan
+     *                                    * `/{accountId}/members` - manage organization members
+     *                                    * `/{accountId}/invite` - invite a user to an organization
+     * @param null|string $returnUrl      The URL the user should be sent to when they want to return to
+     *                                    the app (e.g. cancel checkout).
+     *                                    If not defined the app URL will be used.
+     * @param null|string $successUrl     The URL the user should be sent after they successfully complete
+     *                                    an action (e.g. checkout).
+     *                                    If not defined the return URL will be used.
+     * @param null|string $organizationId The organization ID.
+     *                                    When specified the `{accountId}` in the `portalUrl` will be
+     *                                    replaced with the organization ID, otherwise the user ID
+     *                                    will be used.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
