@@ -13,13 +13,19 @@ class AdminApi extends AdminApi\Client
      */
     public function __construct(
         string $adminKey,
+        ?string $apiVersion = null,
         ?string $baseUrl = null,
     ) {
+        if (empty($apiVersion)) {
+            $apiVersion = Constants::API_VERSION;
+        }
         if (empty($baseUrl)) {
             $baseUrl = Constants::API_BASE_URL;
         }
 
         $headers = [];
+
+        $headers[Constants::API_VERSION_HEADER] = $apiVersion;
 
         $adminKey = empty($adminKey) ? '' : trim($adminKey);
 
