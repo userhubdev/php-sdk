@@ -3,8 +3,6 @@
 
 The official [UserHub](https://userhub.com) PHP SDK.
 
-Stability: alpha
-
 ### Requirements
 
 * PHP 8.2 or later
@@ -26,7 +24,7 @@ require __DIR__.'/vendor/autoload.php';
 
 use UserHub\AdminApi;
 
-$adminApi = new AdminApi('sk_123...');
+$adminApi = new AdminApi('userhub_admin_123...');
 
 $res = $adminApi->users->list(pageSize: 5);
 
