@@ -26,7 +26,7 @@ final class BasicsTest extends TestCase
         self::$server = new MockWebServer();
         self::$server->start();
 
-        self::$adminApi = new AdminApi('sk_test', baseUrl: self::$server->getServerRoot());
+        self::$adminApi = new AdminApi('userhub_admin_test', baseUrl: self::$server->getServerRoot());
     }
 
     public static function tearDownAfterClass(): void
@@ -98,7 +98,7 @@ final class BasicsTest extends TestCase
         self::assertNotNull($req);
         self::assertEquals('GET', $req->getRequestMethod());
         self::assertEquals(Constants::API_VERSION, $req->getHeaders()['userhub-api-version']);
-        self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
+        self::assertEquals('Bearer userhub_admin_test', $req->getHeaders()['authorization']);
     }
 
     public function testApiPost(): void
@@ -119,7 +119,7 @@ final class BasicsTest extends TestCase
         self::assertNotNull($req);
         self::assertEquals('POST', $req->getRequestMethod());
         self::assertEquals(Constants::API_VERSION, $req->getHeaders()['userhub-api-version']);
-        self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
+        self::assertEquals('Bearer userhub_admin_test', $req->getHeaders()['authorization']);
         self::assertEquals('{"displayName":"Jane Doe"}', $req->getInput());
 
         self::$server->setResponseOfPath(
@@ -157,7 +157,7 @@ final class BasicsTest extends TestCase
         self::assertNotNull($req);
         self::assertEquals('PATCH', $req->getRequestMethod());
         self::assertEquals(Constants::API_VERSION, $req->getHeaders()['userhub-api-version']);
-        self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
+        self::assertEquals('Bearer userhub_admin_test', $req->getHeaders()['authorization']);
         self::assertEquals('{"displayName":"Jane Doe"}', $req->getInput());
 
         self::$server->setResponseOfPath(
@@ -195,7 +195,7 @@ final class BasicsTest extends TestCase
         self::assertNotNull($req);
         self::assertEquals('DELETE', $req->getRequestMethod());
         self::assertEquals(Constants::API_VERSION, $req->getHeaders()['userhub-api-version']);
-        self::assertEquals('Bearer sk_test', $req->getHeaders()['authorization']);
+        self::assertEquals('Bearer userhub_admin_test', $req->getHeaders()['authorization']);
     }
 
     public function testApiError(): void
