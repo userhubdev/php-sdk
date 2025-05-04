@@ -25,12 +25,12 @@ class Invoices
     }
 
     /**
-     * Lists invoices.
+     * List invoices.
      *
      * @param null|string $organizationId Filter results by organization identifier.
-     *                                    This is required if user identifier is not specified.
+     *                                    This is required if the user identifier is not specified.
      * @param null|string $userId         Filter results by user identifier.
-     *                                    This is required if organization identifier is not specified.
+     *                                    This is required if the organization identifier is not specified.
      * @param null|int    $pageSize       The maximum number of invoices to return. The API may return fewer than
      *                                    this value.
      *                                    If unspecified, at most 20 invoices will be returned.
@@ -39,10 +39,9 @@ class Invoices
      *                                    Provide this to retrieve the subsequent page.
      *                                    When paginating, all other parameters provided to list invoices must match
      *                                    the call that provided the page token.
-     * @param null|string $orderBy        A comma-separated list of fields to order by.
-     *                                    Supports:
-     *                                    - `createTime asc`
-     *                                    - `createTime desc`
+     * @param null|string $orderBy        a comma-separated list of fields to order by
+     * @param null|string $view           The Invoice view to return in the results.
+     *                                    This defaults to the `BASIC` view.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -52,6 +51,7 @@ class Invoices
         ?int $pageSize = null,
         ?string $pageToken = null,
         ?string $orderBy = null,
+        ?string $view = null,
     ): ListInvoicesResponse {
         $req = new Request('admin.invoices.list', 'GET', '/admin/v1/invoices');
         $req->setIdempotent(true);
@@ -71,6 +71,9 @@ class Invoices
         if (!empty($orderBy)) {
             $req->setQuery('orderBy', $orderBy);
         }
+        if (!empty($view)) {
+            $req->setQuery('view', $view);
+        }
 
         $res = $this->transport->execute($req);
 
@@ -78,7 +81,7 @@ class Invoices
     }
 
     /**
-     * Retrieves specified invoice.
+     * Get an invoice.
      *
      * @param string      $invoiceId      the identifier of the invoice
      * @param null|string $organizationId restrict by organization identifier
@@ -100,6 +103,43 @@ class Invoices
         if (!empty($userId)) {
             $req->setQuery('userId', $userId);
         }
+
+        $res = $this->transport->execute($req);
+
+        return Invoice::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Pay an invoice.
+     *
+     * @param string      $invoiceId       the identifier of the invoice
+     * @param null|string $organizationId  restrict by organization identifier
+     * @param null|string $userId          restrict by user identifier
+     * @param null|string $paymentMethodId The identifier of the payment method.
+     *                                     The default payment method will be used if not specified.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function pay(
+        string $invoiceId,
+        ?string $organizationId = null,
+        ?string $userId = null,
+        ?string $paymentMethodId = null,
+    ): Invoice {
+        $req = new Request('admin.invoices.pay', 'POST', '/admin/v1/invoices/'.rawurlencode($invoiceId).':pay');
+        $body = [];
+
+        if (!empty($organizationId)) {
+            $body['organizationId'] = $organizationId;
+        }
+        if (!empty($userId)) {
+            $body['userId'] = $userId;
+        }
+        if (!empty($paymentMethodId)) {
+            $body['paymentMethodId'] = $paymentMethodId;
+        }
+
+        $req->setBody((object) $body);
 
         $res = $this->transport->execute($req);
 

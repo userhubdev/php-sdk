@@ -9,33 +9,25 @@ namespace UserHub\AdminV1;
 use UserHub\Internal\JsonUnserializable;
 
 /**
- * The expiration date for the card.
+ * Configuration for setting up a payment method.
  */
-final class CardPaymentMethodExpiration implements \JsonSerializable, JsonUnserializable
+final class PaymentMethodIntent implements \JsonSerializable, JsonUnserializable
 {
     /**
-     * The expiration year.
+     * A Stripe Setup Intent.
      */
-    public int $year;
-
-    /**
-     * The expiration month.
-     */
-    public int $month;
+    public ?StripePaymentMethodIntent $stripe;
 
     public function __construct(
-        ?int $year = null,
-        ?int $month = null,
+        ?StripePaymentMethodIntent $stripe = null,
     ) {
-        $this->year = $year ?? 0;
-        $this->month = $month ?? 0;
+        $this->stripe = $stripe ?? null;
     }
 
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'year' => $this->year,
-            'month' => $this->month,
+            'stripe' => $this->stripe,
         ];
     }
 
@@ -46,8 +38,7 @@ final class CardPaymentMethodExpiration implements \JsonSerializable, JsonUnseri
         }
 
         return new self(
-            $data->{'year'} ?? null,
-            $data->{'month'} ?? null,
+            isset($data->{'stripe'}) ? StripePaymentMethodIntent::jsonUnserialize($data->{'stripe'}) : null,
         );
     }
 }

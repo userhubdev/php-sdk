@@ -25,7 +25,7 @@ final class ListInvoicesResponse implements \JsonSerializable, JsonUnserializabl
      * A token, which can be sent as `pageToken` to retrieve the next page.
      * If this field is omitted, there are no subsequent pages.
      */
-    public string $nextPageToken;
+    public ?string $nextPageToken;
 
     /**
      * A token, which can be sent as `pageToken` to retrieve the previous page.
@@ -43,7 +43,7 @@ final class ListInvoicesResponse implements \JsonSerializable, JsonUnserializabl
         ?string $previousPageToken = null,
     ) {
         $this->invoices = $invoices ?? [];
-        $this->nextPageToken = $nextPageToken ?? '';
+        $this->nextPageToken = $nextPageToken ?? null;
         $this->previousPageToken = $previousPageToken ?? null;
     }
 

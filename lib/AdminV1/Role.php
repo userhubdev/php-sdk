@@ -70,6 +70,11 @@ final class Role implements \JsonSerializable, JsonUnserializable
     public bool $archived;
 
     /**
+     * The role view.
+     */
+    public string $view;
+
+    /**
      * The creation time of the role.
      */
     public \DateTimeInterface $createTime;
@@ -92,6 +97,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
         ?array $permissionSets = null,
         ?bool $default = null,
         ?bool $archived = null,
+        ?string $view = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
     ) {
@@ -104,6 +110,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
         $this->permissionSets = $permissionSets ?? [];
         $this->default = $default ?? false;
         $this->archived = $archived ?? false;
+        $this->view = $view ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
@@ -120,6 +127,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
             'permissionSets' => $this->permissionSets,
             'default' => $this->default,
             'archived' => $this->archived,
+            'view' => $this->view,
             'createTime' => Util::encodeDateTime($this->createTime),
             'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
@@ -141,6 +149,7 @@ final class Role implements \JsonSerializable, JsonUnserializable
             $data->{'permissionSets'} ?? null,
             $data->{'default'} ?? null,
             $data->{'archived'} ?? null,
+            $data->{'view'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

@@ -66,21 +66,26 @@ final class Price implements \JsonSerializable, JsonUnserializable
     public ?Product $product;
 
     /**
+     * The price is dependent on the quantity.
+     */
+    public ?PriceEmptyPrice $empty;
+
+    /**
+     * The price is fixed per quantity.
+     */
+    public ?PriceFixedPrice $fixed;
+
+    /**
+     * The price is dependent on the quantity.
+     */
+    public ?PriceTieredPrice $tiered;
+
+    /**
      * The archived status of the price.
      *
      * It determines if the price can be used.
      */
     public bool $archived;
-
-    /**
-     * The last time the price was pulled from the connection.
-     */
-    public ?\DateTimeInterface $pullTime;
-
-    /**
-     * The last time the price was pushed to the connection.
-     */
-    public ?\DateTimeInterface $pushTime;
 
     /**
      * The price view.
@@ -97,21 +102,6 @@ final class Price implements \JsonSerializable, JsonUnserializable
      */
     public \DateTimeInterface $updateTime;
 
-    /**
-     * The price is dependent on the quantity.
-     */
-    public ?PriceEmptyPrice $empty;
-
-    /**
-     * The price is fixed per quantity.
-     */
-    public ?PriceFixedPrice $fixed;
-
-    /**
-     * The price is dependent on the quantity.
-     */
-    public ?PriceTieredPrice $tiered;
-
     public function __construct(
         ?string $id = null,
         ?Connection $connection = null,
@@ -123,15 +113,13 @@ final class Price implements \JsonSerializable, JsonUnserializable
         ?Interval $interval = null,
         ?string $displayName = null,
         ?Product $product = null,
-        ?bool $archived = null,
-        ?\DateTimeInterface $pullTime = null,
-        ?\DateTimeInterface $pushTime = null,
-        ?string $view = null,
-        ?\DateTimeInterface $createTime = null,
-        ?\DateTimeInterface $updateTime = null,
         ?PriceEmptyPrice $empty = null,
         ?PriceFixedPrice $fixed = null,
         ?PriceTieredPrice $tiered = null,
+        ?bool $archived = null,
+        ?string $view = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->id = $id ?? '';
         $this->connection = $connection ?? null;
@@ -143,15 +131,13 @@ final class Price implements \JsonSerializable, JsonUnserializable
         $this->interval = $interval ?? null;
         $this->displayName = $displayName ?? null;
         $this->product = $product ?? null;
-        $this->archived = $archived ?? false;
-        $this->pullTime = $pullTime ?? null;
-        $this->pushTime = $pushTime ?? null;
-        $this->view = $view ?? '';
-        $this->createTime = $createTime ?? Util::emptyDateTime();
-        $this->updateTime = $updateTime ?? Util::emptyDateTime();
         $this->empty = $empty ?? null;
         $this->fixed = $fixed ?? null;
         $this->tiered = $tiered ?? null;
+        $this->archived = $archived ?? false;
+        $this->view = $view ?? '';
+        $this->createTime = $createTime ?? Util::emptyDateTime();
+        $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
 
     public function jsonSerialize(): mixed
@@ -167,15 +153,13 @@ final class Price implements \JsonSerializable, JsonUnserializable
             'interval' => $this->interval,
             'displayName' => $this->displayName,
             'product' => $this->product,
-            'archived' => $this->archived,
-            'pullTime' => Util::encodeDateTime($this->pullTime),
-            'pushTime' => Util::encodeDateTime($this->pushTime),
-            'view' => $this->view,
-            'createTime' => Util::encodeDateTime($this->createTime),
-            'updateTime' => Util::encodeDateTime($this->updateTime),
             'empty' => $this->empty,
             'fixed' => $this->fixed,
             'tiered' => $this->tiered,
+            'archived' => $this->archived,
+            'view' => $this->view,
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
     }
 
@@ -196,15 +180,13 @@ final class Price implements \JsonSerializable, JsonUnserializable
             isset($data->{'interval'}) ? Interval::jsonUnserialize($data->{'interval'}) : null,
             $data->{'displayName'} ?? null,
             isset($data->{'product'}) ? Product::jsonUnserialize($data->{'product'}) : null,
-            $data->{'archived'} ?? null,
-            isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
-            isset($data->{'pushTime'}) ? Util::decodeDateTime($data->{'pushTime'}) : null,
-            $data->{'view'} ?? null,
-            isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
-            isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
             isset($data->{'empty'}) ? PriceEmptyPrice::jsonUnserialize($data->{'empty'}) : null,
             isset($data->{'fixed'}) ? PriceFixedPrice::jsonUnserialize($data->{'fixed'}) : null,
             isset($data->{'tiered'}) ? PriceTieredPrice::jsonUnserialize($data->{'tiered'}) : null,
+            $data->{'archived'} ?? null,
+            $data->{'view'} ?? null,
+            isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
+            isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );
     }
 }

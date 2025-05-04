@@ -11,7 +11,9 @@ use UserHub\Internal\Request;
 use UserHub\Internal\Transport;
 use UserHub\Undefined;
 use UserHub\UserHubError;
+use UserHub\UserV1\ListMembersResponse;
 use UserHub\UserV1\ListOrganizationsResponse;
+use UserHub\UserV1\Member;
 use UserHub\UserV1\Organization;
 
 /**
@@ -27,7 +29,7 @@ class Organizations
     }
 
     /**
-     * Lists organizations.
+     * List organizations.
      *
      * @param null|int    $pageSize  The maximum number of organizations to return. The API may return fewer than
      *                               this value.
@@ -37,10 +39,7 @@ class Organizations
      *                               Provide this to retrieve the subsequent page.
      *                               When paginating, all other parameters provided to list organizations must match
      *                               the call that provided the page token.
-     * @param null|string $orderBy   A comma-separated list of fields to order by.
-     *                               Supports:
-     *                               - `displayName asc`
-     *                               - `email asc`
+     * @param null|string $orderBy   a comma-separated list of fields to order by
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -68,7 +67,7 @@ class Organizations
     }
 
     /**
-     * Creates a new organization.
+     * Create a new organization.
      *
      * @param null|string $uniqueId    The client defined unique identifier of the organization account.
      *                                 It is restricted to letters, numbers, underscores, and hyphens,
@@ -114,7 +113,7 @@ class Organizations
     }
 
     /**
-     * Retrieves specified organization.
+     * Get an organization.
      *
      * @param string $organizationId the identifier of the organization
      *
@@ -132,7 +131,7 @@ class Organizations
     }
 
     /**
-     * Updates specified organization.
+     * Update an organization.
      *
      * @param string                $organizationId the identifier of the organization
      * @param null|string|Undefined $uniqueId       The client defined unique identifier of the organization account.
@@ -182,7 +181,163 @@ class Organizations
     }
 
     /**
-     * Delete specified organization.
+     * List organization members.
+     *
+     * @param string      $organizationId the identifier of the organization
+     * @param null|int    $pageSize       The maximum number of members to return. The API may return fewer than
+     *                                    this value.
+     *                                    If unspecified, at most 20 members will be returned.
+     *                                    The maximum value is 100; values above 100 will be coerced to 100.
+     * @param null|string $pageToken      A page token, received from a previous list members call.
+     *                                    Provide this to retrieve the subsequent page.
+     *                                    When paginating, all other parameters provided to list members must match
+     *                                    the call that provided the page token.
+     * @param null|string $orderBy        a comma-separated list of fields to order by
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function listMembers(
+        string $organizationId,
+        ?int $pageSize = null,
+        ?string $pageToken = null,
+        ?string $orderBy = null,
+    ): ListMembersResponse {
+        $req = new Request('user.organizations.listMembers', 'GET', '/user/v1/organizations/'.rawurlencode($organizationId).'/members');
+        $req->setIdempotent(true);
+
+        if (!empty($pageSize)) {
+            $req->setQuery('pageSize', $pageSize);
+        }
+        if (!empty($pageToken)) {
+            $req->setQuery('pageToken', $pageToken);
+        }
+        if (!empty($orderBy)) {
+            $req->setQuery('orderBy', $orderBy);
+        }
+
+        $res = $this->transport->execute($req);
+
+        return ListMembersResponse::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Get an organization member.
+     *
+     * @param string $organizationId the identifier of the organization
+     * @param string $userId         the identifier of the user
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function getMember(
+        string $organizationId,
+        string $userId,
+    ): Member {
+        $req = new Request('user.organizations.getMember', 'GET', '/user/v1/organizations/'.rawurlencode($organizationId).'/members/'.rawurlencode($userId));
+        $req->setIdempotent(true);
+
+        $res = $this->transport->execute($req);
+
+        return Member::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Update an organization member.
+     *
+     * @param string                $organizationId the identifier of the organization
+     * @param string                $userId         the identifier of the user
+     * @param null|string|Undefined $roleId         the identifier of the role
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function updateMember(
+        string $organizationId,
+        string $userId,
+        null|string|Undefined $roleId = new Undefined(),
+    ): Member {
+        $req = new Request('user.organizations.updateMember', 'PATCH', '/user/v1/organizations/'.rawurlencode($organizationId).'/members/'.rawurlencode($userId));
+        $req->setIdempotent(true);
+
+        $body = [];
+
+        if (!$roleId instanceof Undefined) {
+            $body['roleId'] = $roleId;
+        }
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return Member::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Assign a seat to an organization member.
+     *
+     * This will automatically purchase additional seats if none
+     * are available and the plan has just-in-time seat provisioning
+     * enabled.
+     *
+     * @param string $organizationId the identifier of the organization
+     * @param string $userId         the identifier of the user
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function assignMemberSeat(
+        string $organizationId,
+        string $userId,
+    ): Member {
+        $req = new Request('user.organizations.assignMemberSeat', 'POST', '/user/v1/organizations/'.rawurlencode($organizationId).'/members/'.rawurlencode($userId).':assignSeat');
+        $body = [];
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return Member::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Unassign a seat from an organization member.
+     *
+     * @param string $organizationId the identifier of the organization
+     * @param string $userId         the identifier of the user
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function unassignMemberSeat(
+        string $organizationId,
+        string $userId,
+    ): Member {
+        $req = new Request('user.organizations.unassignMemberSeat', 'POST', '/user/v1/organizations/'.rawurlencode($organizationId).'/members/'.rawurlencode($userId).':unassignSeat');
+        $body = [];
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return Member::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Remove a member from an organization.
+     *
+     * @param string $organizationId the identifier of the organization
+     * @param string $userId         the identifier of the user
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function removeMember(
+        string $organizationId,
+        string $userId,
+    ): EmptyResponse {
+        $req = new Request('user.organizations.removeMember', 'DELETE', '/user/v1/organizations/'.rawurlencode($organizationId).'/members/'.rawurlencode($userId));
+        $res = $this->transport->execute($req);
+
+        return EmptyResponse::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Delete an organization.
      *
      * @param string $organizationId the identifier of the organization
      *
@@ -198,7 +353,7 @@ class Organizations
     }
 
     /**
-     * Leave organization.
+     * Leave an organization.
      *
      * This allows a user to remove themselves from an organization
      * without have permission to manage the organization.

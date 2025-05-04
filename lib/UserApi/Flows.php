@@ -8,6 +8,7 @@ namespace UserHub\UserApi;
 
 use UserHub\Internal\Request;
 use UserHub\Internal\Transport;
+use UserHub\Undefined;
 use UserHub\UserHubError;
 use UserHub\UserV1\Flow;
 use UserHub\UserV1\ListFlowsResponse;
@@ -25,7 +26,7 @@ class Flows
     }
 
     /**
-     * Lists flows.
+     * List flows.
      *
      * @param null|string $organizationId The identifier of the organization.
      *                                    When not set the user's flows are returned.
@@ -43,9 +44,7 @@ class Flows
      *                                    Provide this to retrieve the subsequent page.
      *                                    When paginating, all other parameters provided to list flows must match
      *                                    the call that provided the page token.
-     * @param null|string $orderBy        A comma-separated list of fields to order by.
-     *                                    Supports:
-     *                                    - `createTime desc`
+     * @param null|string $orderBy        a comma-separated list of fields to order by
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -89,7 +88,7 @@ class Flows
     }
 
     /**
-     * Creates a join organization flow.
+     * Create a new join organization flow.
      *
      * This invites a person to join an organization.
      *
@@ -138,7 +137,35 @@ class Flows
     }
 
     /**
-     * Creates a signup flow.
+     * Update a join organization flow.
+     *
+     * @param string                $flowId the identifier of the flow
+     * @param null|string|Undefined $roleId the identifier of the role
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function updateJoinOrganization(
+        string $flowId,
+        null|string|Undefined $roleId = new Undefined(),
+    ): Flow {
+        $req = new Request('user.flows.updateJoinOrganization', 'PATCH', '/user/v1/flows/'.rawurlencode($flowId).':updateJoinOrganization');
+        $req->setIdempotent(true);
+
+        $body = [];
+
+        if (!$roleId instanceof Undefined) {
+            $body['roleId'] = $roleId;
+        }
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return Flow::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Create a new signup flow.
      *
      * This invites a person to join the app.
      *
@@ -174,7 +201,7 @@ class Flows
     }
 
     /**
-     * Retrieves specified flow.
+     * Get a flow.
      *
      * @param string $flowId the identifier of the flow or the flow secret
      *
@@ -192,7 +219,7 @@ class Flows
     }
 
     /**
-     * Consume the flow.
+     * Consume a flow.
      *
      * This accepts the flow (e.g. for a join organization flow it will
      * accept the invitation and add the member to the organization).
@@ -215,7 +242,7 @@ class Flows
     }
 
     /**
-     * Cancels specified flow.
+     * Cancel a flow.
      *
      * This cancels the flow and hides it from the user.
      *

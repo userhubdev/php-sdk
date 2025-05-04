@@ -26,6 +26,11 @@ final class Plan implements \JsonSerializable, JsonUnserializable
     public string $state;
 
     /**
+     * The client defined unique identifier of the plan.
+     */
+    public ?string $uniqueId;
+
+    /**
      * The name of the plan.
      */
     public string $displayName;
@@ -45,12 +50,12 @@ final class Plan implements \JsonSerializable, JsonUnserializable
     /**
      * The currency code for the plan (e.g. `USD`).
      */
-    public string $currencyCode;
+    public ?string $currencyCode;
 
     /**
      * The billing interval for the plan.
      */
-    public ?Interval $billingInterval;
+    public ?Interval $interval;
 
     /**
      * The revision for the plan.
@@ -118,11 +123,12 @@ final class Plan implements \JsonSerializable, JsonUnserializable
     public function __construct(
         ?string $id = null,
         ?string $state = null,
+        ?string $uniqueId = null,
         ?string $displayName = null,
         ?string $description = null,
         ?string $tier = null,
         ?string $currencyCode = null,
-        ?Interval $billingInterval = null,
+        ?Interval $interval = null,
         ?PlanRevision $revision = null,
         ?bool $current = null,
         ?bool $selected = null,
@@ -135,12 +141,13 @@ final class Plan implements \JsonSerializable, JsonUnserializable
     ) {
         $this->id = $id ?? '';
         $this->state = $state ?? '';
+        $this->uniqueId = $uniqueId ?? null;
         $this->displayName = $displayName ?? '';
         $this->description = $description ?? null;
         $this->tier = $tier ?? null;
-        $this->currencyCode = $currencyCode ?? '';
-        $this->billingInterval = $billingInterval ?? new Interval();
-        $this->revision = $revision ?? new PlanRevision();
+        $this->currencyCode = $currencyCode ?? null;
+        $this->interval = $interval ?? null;
+        $this->revision = $revision ?? null;
         $this->current = $current ?? null;
         $this->selected = $selected ?? null;
         $this->default = $default ?? null;
@@ -156,11 +163,12 @@ final class Plan implements \JsonSerializable, JsonUnserializable
         return (object) [
             'id' => $this->id,
             'state' => $this->state,
+            'uniqueId' => $this->uniqueId,
             'displayName' => $this->displayName,
             'description' => $this->description,
             'tier' => $this->tier,
             'currencyCode' => $this->currencyCode,
-            'billingInterval' => $this->billingInterval,
+            'interval' => $this->interval,
             'revision' => $this->revision,
             'current' => $this->current,
             'selected' => $this->selected,
@@ -182,11 +190,12 @@ final class Plan implements \JsonSerializable, JsonUnserializable
         return new self(
             $data->{'id'} ?? null,
             $data->{'state'} ?? null,
+            $data->{'uniqueId'} ?? null,
             $data->{'displayName'} ?? null,
             $data->{'description'} ?? null,
             $data->{'tier'} ?? null,
             $data->{'currencyCode'} ?? null,
-            isset($data->{'billingInterval'}) ? Interval::jsonUnserialize($data->{'billingInterval'}) : null,
+            isset($data->{'interval'}) ? Interval::jsonUnserialize($data->{'interval'}) : null,
             isset($data->{'revision'}) ? PlanRevision::jsonUnserialize($data->{'revision'}) : null,
             $data->{'current'} ?? null,
             $data->{'selected'} ?? null,

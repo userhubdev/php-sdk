@@ -72,6 +72,14 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
      * Whether the subscription is scheduled to be canceled
      * at the end of the current billing period.
      */
+    public ?bool $renewCanceled;
+
+    /**
+     * Whether the subscription is scheduled to be canceled
+     * at the end of the current billing period.
+     *
+     * @deprecated use `renewCanceled` instead
+     */
     public ?bool $cancelPeriodEnd;
 
     /**
@@ -101,17 +109,11 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
 
     /**
      * The organization owner of the subscription.
-     *
-     * The ID field of this object must be populated if
-     * if user isn't specified.
      */
     public ?Organization $organization;
 
     /**
      * The user owner of the subscription.
-     *
-     * The ID field of this object must be populated if
-     * if organization isn't specified.
      */
     public ?User $user;
 
@@ -119,16 +121,6 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
      * Whether the subscription is the default for the account.
      */
     public bool $default;
-
-    /**
-     * The last time the subscription was pulled from the connection.
-     */
-    public ?\DateTimeInterface $pullTime;
-
-    /**
-     * The last time the subscription was pushed to the connection.
-     */
-    public ?\DateTimeInterface $pushTime;
 
     /**
      * The subscription view.
@@ -160,6 +152,7 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
         ?array $items = null,
         ?array $seats = null,
         ?PaymentMethod $paymentMethod = null,
+        ?bool $renewCanceled = null,
         ?bool $cancelPeriodEnd = null,
         ?\DateTimeInterface $anchorTime = null,
         ?\DateTimeInterface $startTime = null,
@@ -169,8 +162,6 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
         ?Organization $organization = null,
         ?User $user = null,
         ?bool $default = null,
-        ?\DateTimeInterface $pullTime = null,
-        ?\DateTimeInterface $pushTime = null,
         ?string $view = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
@@ -185,6 +176,7 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
         $this->items = $items ?? [];
         $this->seats = $seats ?? [];
         $this->paymentMethod = $paymentMethod ?? null;
+        $this->renewCanceled = $renewCanceled ?? null;
         $this->cancelPeriodEnd = $cancelPeriodEnd ?? null;
         $this->anchorTime = $anchorTime ?? null;
         $this->startTime = $startTime ?? null;
@@ -194,8 +186,6 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
         $this->organization = $organization ?? null;
         $this->user = $user ?? null;
         $this->default = $default ?? false;
-        $this->pullTime = $pullTime ?? null;
-        $this->pushTime = $pushTime ?? null;
         $this->view = $view ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
@@ -214,6 +204,7 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
             'items' => $this->items,
             'seats' => $this->seats,
             'paymentMethod' => $this->paymentMethod,
+            'renewCanceled' => $this->renewCanceled,
             'cancelPeriodEnd' => $this->cancelPeriodEnd,
             'anchorTime' => Util::encodeDateTime($this->anchorTime),
             'startTime' => Util::encodeDateTime($this->startTime),
@@ -223,8 +214,6 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
             'organization' => $this->organization,
             'user' => $this->user,
             'default' => $this->default,
-            'pullTime' => Util::encodeDateTime($this->pullTime),
-            'pushTime' => Util::encodeDateTime($this->pushTime),
             'view' => $this->view,
             'createTime' => Util::encodeDateTime($this->createTime),
             'updateTime' => Util::encodeDateTime($this->updateTime),
@@ -248,6 +237,7 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
             isset($data->{'items'}) ? Util::mapArray($data->{'items'}, [SubscriptionItem::class, 'jsonUnserialize']) : null,
             isset($data->{'seats'}) ? Util::mapArray($data->{'seats'}, [SubscriptionSeatInfo::class, 'jsonUnserialize']) : null,
             isset($data->{'paymentMethod'}) ? PaymentMethod::jsonUnserialize($data->{'paymentMethod'}) : null,
+            $data->{'renewCanceled'} ?? null,
             $data->{'cancelPeriodEnd'} ?? null,
             isset($data->{'anchorTime'}) ? Util::decodeDateTime($data->{'anchorTime'}) : null,
             isset($data->{'startTime'}) ? Util::decodeDateTime($data->{'startTime'}) : null,
@@ -257,8 +247,6 @@ final class Subscription implements \JsonSerializable, JsonUnserializable
             isset($data->{'organization'}) ? Organization::jsonUnserialize($data->{'organization'}) : null,
             isset($data->{'user'}) ? User::jsonUnserialize($data->{'user'}) : null,
             $data->{'default'} ?? null,
-            isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
-            isset($data->{'pushTime'}) ? Util::decodeDateTime($data->{'pushTime'}) : null,
             $data->{'view'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,

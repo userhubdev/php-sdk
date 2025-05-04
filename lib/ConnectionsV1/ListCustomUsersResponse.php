@@ -29,7 +29,7 @@ final class ListCustomUsersResponse implements \JsonSerializable, JsonUnserializ
      *
      * It must be encoded as a string.
      */
-    public string $nextPageToken;
+    public ?string $nextPageToken;
 
     /**
      * @param null|CustomUser[] $users
@@ -39,7 +39,7 @@ final class ListCustomUsersResponse implements \JsonSerializable, JsonUnserializ
         ?string $nextPageToken = null,
     ) {
         $this->users = $users ?? [];
-        $this->nextPageToken = $nextPageToken ?? '';
+        $this->nextPageToken = $nextPageToken ?? null;
     }
 
     public function jsonSerialize(): mixed

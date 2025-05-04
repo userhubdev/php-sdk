@@ -11,10 +11,15 @@ use UserHub\Internal\Transport;
 /**
  * The User API.
  *
- * @property Flows         $flows
- * @property Invoices      $invoices
- * @property Organizations $organizations
- * @property Session       $session
+ * @property BillingAccount $billingAccount
+ * @property Checkouts      $checkouts
+ * @property Flows          $flows
+ * @property Invoices       $invoices
+ * @property Organizations  $organizations
+ * @property PaymentMethods $paymentMethods
+ * @property Pricing        $pricing
+ * @property Roles          $roles
+ * @property Session        $session
  */
 class Client
 {
@@ -28,6 +33,12 @@ class Client
     public function __get(string $name): mixed
     {
         switch ($name) {
+            case 'billingAccount':
+                return new BillingAccount($this->transport);
+
+            case 'checkouts':
+                return new Checkouts($this->transport);
+
             case 'flows':
                 return new Flows($this->transport);
 
@@ -36,6 +47,15 @@ class Client
 
             case 'organizations':
                 return new Organizations($this->transport);
+
+            case 'paymentMethods':
+                return new PaymentMethods($this->transport);
+
+            case 'pricing':
+                return new Pricing($this->transport);
+
+            case 'roles':
+                return new Roles($this->transport);
 
             case 'session':
                 return new Session($this->transport);
