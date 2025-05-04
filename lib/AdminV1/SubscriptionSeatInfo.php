@@ -34,14 +34,14 @@ final class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializabl
      * This might be less than the total quantity while a subscription change
      * is pending or if the subscription is over-provisioned.
      */
-    public int $currentPeriodQuantity;
+    public int $currentQuantity;
 
     /**
-     * The number of seats scheduled to appear on the next invoice.
+     * The number of seats expected at renewal.
      *
-     * This will only be set when different from current period quantity.
+     * This will only be set when different from current quantity.
      */
-    public ?int $nextPeriodQuantity;
+    public ?int $renewQuantity;
 
     /**
      * The number of seats currently assigned.
@@ -66,7 +66,7 @@ final class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializabl
     public ?int $availableQuantity;
 
     /**
-     * The total number of seats for the current period.
+     * The total number of seats associated with the subscription.
      */
     public int $totalQuantity;
 
@@ -74,8 +74,8 @@ final class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializabl
         ?string $state = null,
         ?string $stateReason = null,
         ?Product $product = null,
-        ?int $currentPeriodQuantity = null,
-        ?int $nextPeriodQuantity = null,
+        ?int $currentQuantity = null,
+        ?int $renewQuantity = null,
         ?int $assignedQuantity = null,
         ?int $unassignedQuantity = null,
         ?int $reservedQuantity = null,
@@ -85,8 +85,8 @@ final class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializabl
         $this->state = $state ?? '';
         $this->stateReason = $stateReason ?? null;
         $this->product = $product ?? null;
-        $this->currentPeriodQuantity = $currentPeriodQuantity ?? 0;
-        $this->nextPeriodQuantity = $nextPeriodQuantity ?? null;
+        $this->currentQuantity = $currentQuantity ?? 0;
+        $this->renewQuantity = $renewQuantity ?? null;
         $this->assignedQuantity = $assignedQuantity ?? 0;
         $this->unassignedQuantity = $unassignedQuantity ?? 0;
         $this->reservedQuantity = $reservedQuantity ?? null;
@@ -100,8 +100,8 @@ final class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializabl
             'state' => $this->state,
             'stateReason' => $this->stateReason,
             'product' => $this->product,
-            'currentPeriodQuantity' => $this->currentPeriodQuantity,
-            'nextPeriodQuantity' => $this->nextPeriodQuantity,
+            'currentQuantity' => $this->currentQuantity,
+            'renewQuantity' => $this->renewQuantity,
             'assignedQuantity' => $this->assignedQuantity,
             'unassignedQuantity' => $this->unassignedQuantity,
             'reservedQuantity' => $this->reservedQuantity,
@@ -120,8 +120,8 @@ final class SubscriptionSeatInfo implements \JsonSerializable, JsonUnserializabl
             $data->{'state'} ?? null,
             $data->{'stateReason'} ?? null,
             isset($data->{'product'}) ? Product::jsonUnserialize($data->{'product'}) : null,
-            $data->{'currentPeriodQuantity'} ?? null,
-            $data->{'nextPeriodQuantity'} ?? null,
+            $data->{'currentQuantity'} ?? null,
+            $data->{'renewQuantity'} ?? null,
             $data->{'assignedQuantity'} ?? null,
             $data->{'unassignedQuantity'} ?? null,
             $data->{'reservedQuantity'} ?? null,

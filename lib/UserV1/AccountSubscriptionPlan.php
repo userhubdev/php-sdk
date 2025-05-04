@@ -19,6 +19,11 @@ final class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializ
     public string $id;
 
     /**
+     * The client defined unique identifier of the plan.
+     */
+    public ?string $uniqueId;
+
+    /**
      * The human-readable display name of the plan.
      */
     public string $displayName;
@@ -30,10 +35,12 @@ final class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializ
 
     public function __construct(
         ?string $id = null,
+        ?string $uniqueId = null,
         ?string $displayName = null,
         ?Product $product = null,
     ) {
         $this->id = $id ?? '';
+        $this->uniqueId = $uniqueId ?? null;
         $this->displayName = $displayName ?? '';
         $this->product = $product ?? null;
     }
@@ -42,6 +49,7 @@ final class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializ
     {
         return (object) [
             'id' => $this->id,
+            'uniqueId' => $this->uniqueId,
             'displayName' => $this->displayName,
             'product' => $this->product,
         ];
@@ -55,6 +63,7 @@ final class AccountSubscriptionPlan implements \JsonSerializable, JsonUnserializ
 
         return new self(
             $data->{'id'} ?? null,
+            $data->{'uniqueId'} ?? null,
             $data->{'displayName'} ?? null,
             isset($data->{'product'}) ? Product::jsonUnserialize($data->{'product'}) : null,
         );

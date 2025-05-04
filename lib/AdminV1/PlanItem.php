@@ -9,7 +9,7 @@ namespace UserHub\AdminV1;
 use UserHub\Internal\JsonUnserializable;
 
 /**
- * The products which the plan includes.
+ * The products included in the plan.
  */
 final class PlanItem implements \JsonSerializable, JsonUnserializable
 {
@@ -24,7 +24,7 @@ final class PlanItem implements \JsonSerializable, JsonUnserializable
     public ?Product $product;
 
     /**
-     * The price associated with them item.
+     * The price associated with the item.
      */
     public ?Price $price;
 

@@ -65,21 +65,6 @@ final class Connection implements \JsonSerializable, JsonUnserializable
     public array $providers;
 
     /**
-     * The connection view.
-     */
-    public string $view;
-
-    /**
-     * The creation time of the connection.
-     */
-    public \DateTimeInterface $createTime;
-
-    /**
-     * The last update time of the connection.
-     */
-    public \DateTimeInterface $updateTime;
-
-    /**
      * The Amazon Cognito connection data.
      */
     public ?AmazonCognitoConnection $amazonCognito;
@@ -115,6 +100,21 @@ final class Connection implements \JsonSerializable, JsonUnserializable
     public ?WebhookConnection $webhook;
 
     /**
+     * The connection view.
+     */
+    public string $view;
+
+    /**
+     * The creation time of the connection.
+     */
+    public \DateTimeInterface $createTime;
+
+    /**
+     * The last update time of the connection.
+     */
+    public \DateTimeInterface $updateTime;
+
+    /**
      * @param null|ConnectionProvider[] $providers
      */
     public function __construct(
@@ -126,9 +126,6 @@ final class Connection implements \JsonSerializable, JsonUnserializable
         ?string $type = null,
         ?ConnectionDelegate $delegate = null,
         ?array $providers = null,
-        ?string $view = null,
-        ?\DateTimeInterface $createTime = null,
-        ?\DateTimeInterface $updateTime = null,
         ?AmazonCognitoConnection $amazonCognito = null,
         ?Auth0Connection $auth0 = null,
         ?BuiltinEmailConnection $builtinEmail = null,
@@ -136,6 +133,9 @@ final class Connection implements \JsonSerializable, JsonUnserializable
         ?PostmarkConnection $postmark = null,
         ?StripeConnection $stripe = null,
         ?WebhookConnection $webhook = null,
+        ?string $view = null,
+        ?\DateTimeInterface $createTime = null,
+        ?\DateTimeInterface $updateTime = null,
     ) {
         $this->id = $id ?? '';
         $this->uniqueId = $uniqueId ?? null;
@@ -145,9 +145,6 @@ final class Connection implements \JsonSerializable, JsonUnserializable
         $this->type = $type ?? '';
         $this->delegate = $delegate ?? null;
         $this->providers = $providers ?? [];
-        $this->view = $view ?? '';
-        $this->createTime = $createTime ?? Util::emptyDateTime();
-        $this->updateTime = $updateTime ?? Util::emptyDateTime();
         $this->amazonCognito = $amazonCognito ?? null;
         $this->auth0 = $auth0 ?? null;
         $this->builtinEmail = $builtinEmail ?? null;
@@ -155,6 +152,9 @@ final class Connection implements \JsonSerializable, JsonUnserializable
         $this->postmark = $postmark ?? null;
         $this->stripe = $stripe ?? null;
         $this->webhook = $webhook ?? null;
+        $this->view = $view ?? '';
+        $this->createTime = $createTime ?? Util::emptyDateTime();
+        $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
 
     public function jsonSerialize(): mixed
@@ -168,9 +168,6 @@ final class Connection implements \JsonSerializable, JsonUnserializable
             'type' => $this->type,
             'delegate' => $this->delegate,
             'providers' => $this->providers,
-            'view' => $this->view,
-            'createTime' => Util::encodeDateTime($this->createTime),
-            'updateTime' => Util::encodeDateTime($this->updateTime),
             'amazonCognito' => $this->amazonCognito,
             'auth0' => $this->auth0,
             'builtinEmail' => $this->builtinEmail,
@@ -178,6 +175,9 @@ final class Connection implements \JsonSerializable, JsonUnserializable
             'postmark' => $this->postmark,
             'stripe' => $this->stripe,
             'webhook' => $this->webhook,
+            'view' => $this->view,
+            'createTime' => Util::encodeDateTime($this->createTime),
+            'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
     }
 
@@ -196,9 +196,6 @@ final class Connection implements \JsonSerializable, JsonUnserializable
             $data->{'type'} ?? null,
             isset($data->{'delegate'}) ? ConnectionDelegate::jsonUnserialize($data->{'delegate'}) : null,
             isset($data->{'providers'}) ? Util::mapArray($data->{'providers'}, [ConnectionProvider::class, 'jsonUnserialize']) : null,
-            $data->{'view'} ?? null,
-            isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
-            isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
             isset($data->{'amazonCognito'}) ? AmazonCognitoConnection::jsonUnserialize($data->{'amazonCognito'}) : null,
             isset($data->{'auth0'}) ? Auth0Connection::jsonUnserialize($data->{'auth0'}) : null,
             isset($data->{'builtinEmail'}) ? BuiltinEmailConnection::jsonUnserialize($data->{'builtinEmail'}) : null,
@@ -206,6 +203,9 @@ final class Connection implements \JsonSerializable, JsonUnserializable
             isset($data->{'postmark'}) ? PostmarkConnection::jsonUnserialize($data->{'postmark'}) : null,
             isset($data->{'stripe'}) ? StripeConnection::jsonUnserialize($data->{'stripe'}) : null,
             isset($data->{'webhook'}) ? WebhookConnection::jsonUnserialize($data->{'webhook'}) : null,
+            $data->{'view'} ?? null,
+            isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
+            isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );
     }
 }

@@ -31,7 +31,7 @@ class Users
     }
 
     /**
-     * Lists users.
+     * List users.
      *
      * @param null|string $displayName Filter the results by display name.
      *                                 To enable prefix filtering append `*` to the end of the value
@@ -51,13 +51,7 @@ class Users
      *                                 Provide this to retrieve the subsequent page.
      *                                 When paginating, all other parameters provided to list users must match
      *                                 the call that provided the page token.
-     * @param null|string $orderBy     A comma-separated list of fields to order by.
-     *                                 Supports:
-     *                                 - `displayName asc`
-     *                                 - `email asc`
-     *                                 - `signupTime desc`
-     *                                 - `createTime desc`
-     *                                 - `deleteTime desc`
+     * @param null|string $orderBy     a comma-separated list of fields to order by
      * @param null|bool   $showDeleted whether to show deleted users
      * @param null|string $view        The User view to return in the results.
      *                                 This defaults to the `BASIC` view.
@@ -104,7 +98,7 @@ class Users
     }
 
     /**
-     * Creates a new user.
+     * Create a user.
      *
      * @param null|string             $uniqueId            The client defined unique identifier of the user account.
      *                                                     It is restricted to letters, numbers, underscores, and hyphens,
@@ -200,7 +194,7 @@ class Users
     }
 
     /**
-     * Retrieves specified user.
+     * Get a user.
      *
      * @param string $userId the identifier of the user
      *
@@ -218,7 +212,7 @@ class Users
     }
 
     /**
-     * Updates specified user.
+     * Update a user.
      *
      * @param string                            $userId              the identifier of the user
      * @param null|bool                         $allowMissing        If set to true, and the user is not found, a new user will be created.
@@ -324,7 +318,12 @@ class Users
     }
 
     /**
-     * Marks specified user for deletion.
+     * Delete a user.
+     *
+     * This marks the user for deletion and can be restored during
+     * a grace period.
+     *
+     * To immediately delete a user, you must also call purge user.
      *
      * @param string $userId the identifier of the user
      *
@@ -340,7 +339,7 @@ class Users
     }
 
     /**
-     * Un-marks specified user for deletion.
+     * Restore a user.
      *
      * @param string $userId the identifier of the user
      *
@@ -360,7 +359,7 @@ class Users
     }
 
     /**
-     * Hard delete the specified user.
+     * Purge a deleted user.
      *
      * The user must be marked for deletion before it can be purged.
      *
@@ -382,7 +381,7 @@ class Users
     }
 
     /**
-     * Connect specified user to external account.
+     * Connect a user to an external account.
      *
      * @param string      $userId       the user identifier
      * @param null|string $connectionId the identifier of the connection
@@ -415,7 +414,79 @@ class Users
     }
 
     /**
-     * Disconnect specified user from external account.
+     * Update a user's external account.
+     *
+     * @param string                 $userId              the identifier of the user
+     * @param null|string            $connectionId        the system-assigned identifier for the connection of the external account
+     * @param null|string|Undefined  $displayName         The human-readable display name of the external account.
+     *                                                    The maximum length is 200 characters.
+     *                                                    This might be further restricted by the external provider.
+     * @param null|string|Undefined  $email               The email address of the external account.
+     *                                                    The maximum length is 320 characters.
+     *                                                    This might be further restricted by the external provider.
+     * @param null|bool|Undefined    $emailVerified       whether the external account's email address has been verified
+     * @param null|string|Undefined  $phoneNumber         The E164 phone number for the external account (e.g. `+12125550123`).
+     * @param null|bool|Undefined    $phoneNumberVerified whether the external account's phone number has been verified
+     * @param null|string|Undefined  $currencyCode        The default ISO-4217 currency code for the external account (e.g. `USD`).
+     * @param null|Address|Undefined $address             the billing address for the external account
+     * @param null|bool|Undefined    $disabled            whether the external account is disabled
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function updateConnection(
+        string $userId,
+        ?string $connectionId = null,
+        null|string|Undefined $displayName = new Undefined(),
+        null|string|Undefined $email = new Undefined(),
+        null|bool|Undefined $emailVerified = new Undefined(),
+        null|string|Undefined $phoneNumber = new Undefined(),
+        null|bool|Undefined $phoneNumberVerified = new Undefined(),
+        null|string|Undefined $currencyCode = new Undefined(),
+        null|Address|Undefined $address = new Undefined(),
+        null|bool|Undefined $disabled = new Undefined(),
+    ): User {
+        $req = new Request('admin.users.updateConnection', 'PATCH', '/admin/v1/users/'.rawurlencode($userId).':updateConnection');
+        $req->setIdempotent(true);
+
+        $body = [];
+
+        if (!empty($connectionId)) {
+            $body['connectionId'] = $connectionId;
+        }
+        if (!$displayName instanceof Undefined) {
+            $body['displayName'] = $displayName;
+        }
+        if (!$email instanceof Undefined) {
+            $body['email'] = $email;
+        }
+        if (!$emailVerified instanceof Undefined) {
+            $body['emailVerified'] = $emailVerified;
+        }
+        if (!$phoneNumber instanceof Undefined) {
+            $body['phoneNumber'] = $phoneNumber;
+        }
+        if (!$phoneNumberVerified instanceof Undefined) {
+            $body['phoneNumberVerified'] = $phoneNumberVerified;
+        }
+        if (!$currencyCode instanceof Undefined) {
+            $body['currencyCode'] = $currencyCode;
+        }
+        if (!$address instanceof Undefined) {
+            $body['address'] = $address;
+        }
+        if (!$disabled instanceof Undefined) {
+            $body['disabled'] = $disabled;
+        }
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return User::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Disconnect a user from an external account.
      *
      * This will delete all the data associated with the connected account, including
      * payment methods, invoices, and subscriptions.
@@ -456,10 +527,9 @@ class Users
     }
 
     /**
-     * Import user from external identity provider if they don't already
-     * exist.
+     * Import a user from a user provider.
      *
-     * If the user already exists in UserHub, this is a no-op.
+     * If the user already exists, this is a no-op.
      *
      * @param string $userId The identifier of the user.
      *                       This must be in the format `<externalId>@<connectionId>` where
@@ -506,7 +576,7 @@ class Users
     }
 
     /**
-     * Create Portal session.
+     * Create a Portal session.
      *
      * @param string      $userId         The user ID.
      *                                    In addition to supporting the UserHub user ID,
@@ -523,8 +593,6 @@ class Users
      *                                    or the UserHub organization ID (if specified).
      *                                    Examples:
      *                                    * `/{accountId}` - the billing dashboard
-     *                                    * `/{accountId}/checkout` - start a checkout
-     *                                    * `/{accountId}/checkout/<some-plan-id>` - start a checkout with a specified plan
      *                                    * `/{accountId}/cancel` - cancel current plan
      *                                    * `/{accountId}/members` - manage organization members
      *                                    * `/{accountId}/invite` - invite a user to an organization

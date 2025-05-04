@@ -11,6 +11,7 @@ use UserHub\AdminV1\ListFlowsResponse;
 use UserHub\Internal\Request;
 use UserHub\Internal\Transport;
 use UserHub\Internal\Util;
+use UserHub\Undefined;
 use UserHub\UserHubError;
 
 /**
@@ -26,7 +27,7 @@ class Flows
     }
 
     /**
-     * Lists flows.
+     * List flows.
      *
      * @param null|string $organizationId filter results by organization identifier
      * @param null|string $userId         filter results by user identifier
@@ -44,9 +45,7 @@ class Flows
      *                                    Provide this to retrieve the subsequent page.
      *                                    When paginating, all other parameters provided to list flows must match
      *                                    the call that provided the page token.
-     * @param null|string $orderBy        A comma-separated list of fields to order by.
-     *                                    Supports:
-     *                                    - `createTime desc`
+     * @param null|string $orderBy        a comma-separated list of fields to order by
      * @param null|string $view           The Flow view to return in the results.
      *                                    This defaults to the `BASIC` view.
      *
@@ -108,7 +107,7 @@ class Flows
      * @param null|string             $userId         The identifier of the user.
      *                                                This is required if email is not specified.
      * @param null|string             $email          The email address of the person to invite.
-     *                                                This is required if user is not specified or the user
+     *                                                This is required if the user is not specified or
      *                                                does not have an email address.
      * @param null|string             $displayName    the display name of the person to invite
      * @param null|string             $roleId         the identifier of the role
@@ -158,6 +157,34 @@ class Flows
         }
         if (!empty($ttl)) {
             $body['ttl'] = $ttl;
+        }
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return Flow::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Update a join organization flow.
+     *
+     * @param string                $flowId the identifier of the flow
+     * @param null|string|Undefined $roleId the identifier of the role
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function updateJoinOrganization(
+        string $flowId,
+        null|string|Undefined $roleId = new Undefined(),
+    ): Flow {
+        $req = new Request('admin.flows.updateJoinOrganization', 'PATCH', '/admin/v1/flows/'.rawurlencode($flowId).':updateJoinOrganization');
+        $req->setIdempotent(true);
+
+        $body = [];
+
+        if (!$roleId instanceof Undefined) {
+            $body['roleId'] = $roleId;
         }
 
         $req->setBody((object) $body);
@@ -223,7 +250,7 @@ class Flows
     }
 
     /**
-     * Retrieves specified flow.
+     * Get a flow.
      *
      * @param string $flowId the identifier of the flow
      *
@@ -241,7 +268,7 @@ class Flows
     }
 
     /**
-     * Cancels specified flow.
+     * Cancel a flow.
      *
      * @param string $flowId the identifier of the flow
      *

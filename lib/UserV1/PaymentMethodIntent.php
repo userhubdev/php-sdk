@@ -4,30 +4,30 @@
 
 declare(strict_types=1);
 
-namespace UserHub\ApiV1;
+namespace UserHub\UserV1;
 
 use UserHub\Internal\JsonUnserializable;
 
 /**
- * Operations metadata.
+ * Configuration for setting up a payment method.
  */
-final class OperationInfo implements \JsonSerializable, JsonUnserializable
+final class PaymentMethodIntent implements \JsonSerializable, JsonUnserializable
 {
     /**
-     * The message name of the primary return type for this operation.
+     * A Stripe Setup Intent.
      */
-    public string $responseType;
+    public ?StripePaymentMethodIntent $stripe;
 
     public function __construct(
-        ?string $responseType = null,
+        ?StripePaymentMethodIntent $stripe = null,
     ) {
-        $this->responseType = $responseType ?? '';
+        $this->stripe = $stripe ?? null;
     }
 
     public function jsonSerialize(): mixed
     {
         return (object) [
-            'responseType' => $this->responseType,
+            'stripe' => $this->stripe,
         ];
     }
 
@@ -38,7 +38,7 @@ final class OperationInfo implements \JsonSerializable, JsonUnserializable
         }
 
         return new self(
-            $data->{'responseType'} ?? null,
+            isset($data->{'stripe'}) ? StripePaymentMethodIntent::jsonUnserialize($data->{'stripe'}) : null,
         );
     }
 }

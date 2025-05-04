@@ -94,16 +94,6 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
     public array $paymentMethods;
 
     /**
-     * The last time the account was pulled from the connection.
-     */
-    public ?\DateTimeInterface $pullTime;
-
-    /**
-     * The last time the account was pushed to the connection.
-     */
-    public ?\DateTimeInterface $pushTime;
-
-    /**
      * The creation time of the account connection.
      */
     public \DateTimeInterface $createTime;
@@ -131,8 +121,6 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
         ?string $currencyCode = null,
         ?string $balanceAmount = null,
         ?array $paymentMethods = null,
-        ?\DateTimeInterface $pullTime = null,
-        ?\DateTimeInterface $pushTime = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
     ) {
@@ -150,8 +138,6 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
         $this->currencyCode = $currencyCode ?? null;
         $this->balanceAmount = $balanceAmount ?? null;
         $this->paymentMethods = $paymentMethods ?? [];
-        $this->pullTime = $pullTime ?? null;
-        $this->pushTime = $pushTime ?? null;
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
@@ -173,8 +159,6 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
             'currencyCode' => $this->currencyCode,
             'balanceAmount' => $this->balanceAmount,
             'paymentMethods' => $this->paymentMethods,
-            'pullTime' => Util::encodeDateTime($this->pullTime),
-            'pushTime' => Util::encodeDateTime($this->pushTime),
             'createTime' => Util::encodeDateTime($this->createTime),
             'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
@@ -201,8 +185,6 @@ final class AccountConnection implements \JsonSerializable, JsonUnserializable
             $data->{'currencyCode'} ?? null,
             $data->{'balanceAmount'} ?? null,
             isset($data->{'paymentMethods'}) ? Util::mapArray($data->{'paymentMethods'}, [PaymentMethod::class, 'jsonUnserialize']) : null,
-            isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
-            isset($data->{'pushTime'}) ? Util::decodeDateTime($data->{'pushTime'}) : null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

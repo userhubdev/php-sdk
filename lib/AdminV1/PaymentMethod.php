@@ -73,9 +73,14 @@ final class PaymentMethod implements \JsonSerializable, JsonUnserializable
     public ?Status $lastPaymentError;
 
     /**
-     * The last time the payment method was pulled from the connection.
+     * Card payment method (e.g. Visa credit card).
      */
-    public ?\DateTimeInterface $pullTime;
+    public ?CardPaymentMethod $card;
+
+    /**
+     * The payment method view.
+     */
+    public string $view;
 
     /**
      * The creation time of the payment method connection.
@@ -86,11 +91,6 @@ final class PaymentMethod implements \JsonSerializable, JsonUnserializable
      * The last update time of the payment method connection.
      */
     public \DateTimeInterface $updateTime;
-
-    /**
-     * Card payment method (e.g. Visa credit card).
-     */
-    public ?CardPaymentMethod $card;
 
     public function __construct(
         ?string $id = null,
@@ -103,10 +103,10 @@ final class PaymentMethod implements \JsonSerializable, JsonUnserializable
         ?Address $address = null,
         ?bool $default = null,
         ?Status $lastPaymentError = null,
-        ?\DateTimeInterface $pullTime = null,
+        ?CardPaymentMethod $card = null,
+        ?string $view = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
-        ?CardPaymentMethod $card = null,
     ) {
         $this->id = $id ?? '';
         $this->externalId = $externalId ?? '';
@@ -118,10 +118,10 @@ final class PaymentMethod implements \JsonSerializable, JsonUnserializable
         $this->address = $address ?? null;
         $this->default = $default ?? null;
         $this->lastPaymentError = $lastPaymentError ?? null;
-        $this->pullTime = $pullTime ?? null;
+        $this->card = $card ?? null;
+        $this->view = $view ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
-        $this->card = $card ?? null;
     }
 
     public function jsonSerialize(): mixed
@@ -137,10 +137,10 @@ final class PaymentMethod implements \JsonSerializable, JsonUnserializable
             'address' => $this->address,
             'default' => $this->default,
             'lastPaymentError' => $this->lastPaymentError,
-            'pullTime' => Util::encodeDateTime($this->pullTime),
+            'card' => $this->card,
+            'view' => $this->view,
             'createTime' => Util::encodeDateTime($this->createTime),
             'updateTime' => Util::encodeDateTime($this->updateTime),
-            'card' => $this->card,
         ];
     }
 
@@ -161,10 +161,10 @@ final class PaymentMethod implements \JsonSerializable, JsonUnserializable
             isset($data->{'address'}) ? Address::jsonUnserialize($data->{'address'}) : null,
             $data->{'default'} ?? null,
             isset($data->{'lastPaymentError'}) ? Status::jsonUnserialize($data->{'lastPaymentError'}) : null,
-            isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
+            isset($data->{'card'}) ? CardPaymentMethod::jsonUnserialize($data->{'card'}) : null,
+            $data->{'view'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
-            isset($data->{'card'}) ? CardPaymentMethod::jsonUnserialize($data->{'card'}) : null,
         );
     }
 }

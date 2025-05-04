@@ -25,7 +25,7 @@ class Subscriptions
     }
 
     /**
-     * Lists subscriptions.
+     * List subscriptions.
      *
      * @param null|string $organizationId filter results by organization identifier
      * @param null|string $userId         filter results by user identifier
@@ -42,10 +42,6 @@ class Subscriptions
      *                                    the call that provided the page token.
      * @param null|string $orderBy        A comma-separated list of fields to order by.
      *                                    This is only supported when either `organizationId` or `userId` is specified.
-     *                                    Supports:
-     *                                    - `active desc`
-     *                                    - `createTime desc`
-     *                                    - `startTime desc`
      * @param null|string $view           The Subscription view to return in the results.
      *                                    This defaults to the `BASIC` view.
      *
@@ -95,7 +91,7 @@ class Subscriptions
     }
 
     /**
-     * Retrieves specified subscription.
+     * Get a subscription.
      *
      * @param string      $subscriptionId the identifier of the subscription
      * @param null|string $organizationId restrict by organization identifier

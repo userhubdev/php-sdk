@@ -25,7 +25,7 @@ class Invoices
     }
 
     /**
-     * Lists invoices.
+     * List invoices.
      *
      * @param null|string $organizationId Show results for specified organization.
      *                                    If this is not provided the user's individual subscription(s)
@@ -38,10 +38,7 @@ class Invoices
      *                                    Provide this to retrieve the subsequent page.
      *                                    When paginating, all other parameters provided to list invoices must match
      *                                    the call that provided the page token.
-     * @param null|string $orderBy        A comma-separated list of fields to order by.
-     *                                    Supports:
-     *                                    - `createTime asc`
-     *                                    - `createTime desc`
+     * @param null|string $orderBy        a comma-separated list of fields to order by
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -73,7 +70,7 @@ class Invoices
     }
 
     /**
-     * Retrieves specified invoice.
+     * Get an invoice.
      *
      * @param string $invoiceId the identifier of the invoice
      *
@@ -84,6 +81,26 @@ class Invoices
     ): Invoice {
         $req = new Request('user.invoices.get', 'GET', '/user/v1/invoices/'.rawurlencode($invoiceId));
         $req->setIdempotent(true);
+
+        $res = $this->transport->execute($req);
+
+        return Invoice::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Pay an invoice.
+     *
+     * @param string $invoiceId the identifier of the invoice
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function pay(
+        string $invoiceId,
+    ): Invoice {
+        $req = new Request('user.invoices.pay', 'POST', '/user/v1/invoices/'.rawurlencode($invoiceId).':pay');
+        $body = [];
+
+        $req->setBody((object) $body);
 
         $res = $this->transport->execute($req);
 

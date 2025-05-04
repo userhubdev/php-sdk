@@ -39,6 +39,11 @@ final class Member implements \JsonSerializable, JsonUnserializable
     public ?AccountSubscriptionSeat $seat;
 
     /**
+     * The member view.
+     */
+    public string $view;
+
+    /**
      * The creation time of the membership.
      */
     public \DateTimeInterface $createTime;
@@ -53,6 +58,7 @@ final class Member implements \JsonSerializable, JsonUnserializable
         ?User $user = null,
         ?Role $role = null,
         ?AccountSubscriptionSeat $seat = null,
+        ?string $view = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
     ) {
@@ -60,6 +66,7 @@ final class Member implements \JsonSerializable, JsonUnserializable
         $this->user = $user ?? new User();
         $this->role = $role ?? new Role();
         $this->seat = $seat ?? null;
+        $this->view = $view ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
@@ -71,6 +78,7 @@ final class Member implements \JsonSerializable, JsonUnserializable
             'user' => $this->user,
             'role' => $this->role,
             'seat' => $this->seat,
+            'view' => $this->view,
             'createTime' => Util::encodeDateTime($this->createTime),
             'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
@@ -87,6 +95,7 @@ final class Member implements \JsonSerializable, JsonUnserializable
             isset($data->{'user'}) ? User::jsonUnserialize($data->{'user'}) : null,
             isset($data->{'role'}) ? Role::jsonUnserialize($data->{'role'}) : null,
             isset($data->{'seat'}) ? AccountSubscriptionSeat::jsonUnserialize($data->{'seat'}) : null,
+            $data->{'view'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

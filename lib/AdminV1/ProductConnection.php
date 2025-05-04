@@ -35,16 +35,6 @@ final class ProductConnection implements \JsonSerializable, JsonUnserializable
     public ?string $stateReason;
 
     /**
-     * The last time the product was pulled from the connection.
-     */
-    public ?\DateTimeInterface $pullTime;
-
-    /**
-     * The last time the product was pushed to the connection.
-     */
-    public ?\DateTimeInterface $pushTime;
-
-    /**
      * The creation time of the product connection.
      */
     public \DateTimeInterface $createTime;
@@ -59,8 +49,6 @@ final class ProductConnection implements \JsonSerializable, JsonUnserializable
         ?string $externalId = null,
         ?string $state = null,
         ?string $stateReason = null,
-        ?\DateTimeInterface $pullTime = null,
-        ?\DateTimeInterface $pushTime = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
     ) {
@@ -68,8 +56,6 @@ final class ProductConnection implements \JsonSerializable, JsonUnserializable
         $this->externalId = $externalId ?? '';
         $this->state = $state ?? '';
         $this->stateReason = $stateReason ?? null;
-        $this->pullTime = $pullTime ?? null;
-        $this->pushTime = $pushTime ?? null;
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
@@ -81,8 +67,6 @@ final class ProductConnection implements \JsonSerializable, JsonUnserializable
             'externalId' => $this->externalId,
             'state' => $this->state,
             'stateReason' => $this->stateReason,
-            'pullTime' => Util::encodeDateTime($this->pullTime),
-            'pushTime' => Util::encodeDateTime($this->pushTime),
             'createTime' => Util::encodeDateTime($this->createTime),
             'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
@@ -99,8 +83,6 @@ final class ProductConnection implements \JsonSerializable, JsonUnserializable
             $data->{'externalId'} ?? null,
             $data->{'state'} ?? null,
             $data->{'stateReason'} ?? null,
-            isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
-            isset($data->{'pushTime'}) ? Util::decodeDateTime($data->{'pushTime'}) : null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

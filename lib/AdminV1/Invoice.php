@@ -154,9 +154,9 @@ final class Invoice implements \JsonSerializable, JsonUnserializable
     public array $changes;
 
     /**
-     * The last time the invoice was pulled from the connection.
+     * The invoice view.
      */
-    public ?\DateTimeInterface $pullTime;
+    public string $view;
 
     /**
      * The creation time of the invoice.
@@ -198,7 +198,7 @@ final class Invoice implements \JsonSerializable, JsonUnserializable
         ?PaymentIntent $paymentIntent = null,
         ?array $items = null,
         ?array $changes = null,
-        ?\DateTimeInterface $pullTime = null,
+        ?string $view = null,
         ?\DateTimeInterface $createTime = null,
         ?\DateTimeInterface $updateTime = null,
     ) {
@@ -227,7 +227,7 @@ final class Invoice implements \JsonSerializable, JsonUnserializable
         $this->paymentIntent = $paymentIntent ?? null;
         $this->items = $items ?? [];
         $this->changes = $changes ?? [];
-        $this->pullTime = $pullTime ?? null;
+        $this->view = $view ?? '';
         $this->createTime = $createTime ?? Util::emptyDateTime();
         $this->updateTime = $updateTime ?? Util::emptyDateTime();
     }
@@ -260,7 +260,7 @@ final class Invoice implements \JsonSerializable, JsonUnserializable
             'paymentIntent' => $this->paymentIntent,
             'items' => $this->items,
             'changes' => $this->changes,
-            'pullTime' => Util::encodeDateTime($this->pullTime),
+            'view' => $this->view,
             'createTime' => Util::encodeDateTime($this->createTime),
             'updateTime' => Util::encodeDateTime($this->updateTime),
         ];
@@ -298,7 +298,7 @@ final class Invoice implements \JsonSerializable, JsonUnserializable
             isset($data->{'paymentIntent'}) ? PaymentIntent::jsonUnserialize($data->{'paymentIntent'}) : null,
             isset($data->{'items'}) ? Util::mapArray($data->{'items'}, [InvoiceItem::class, 'jsonUnserialize']) : null,
             isset($data->{'changes'}) ? Util::mapArray($data->{'changes'}, [InvoiceChange::class, 'jsonUnserialize']) : null,
-            isset($data->{'pullTime'}) ? Util::decodeDateTime($data->{'pullTime'}) : null,
+            $data->{'view'} ?? null,
             isset($data->{'createTime'}) ? Util::decodeDateTime($data->{'createTime'}) : null,
             isset($data->{'updateTime'}) ? Util::decodeDateTime($data->{'updateTime'}) : null,
         );

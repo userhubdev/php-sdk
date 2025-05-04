@@ -32,7 +32,7 @@ class Organizations
     }
 
     /**
-     * Lists organizations.
+     * List organizations.
      *
      * @param null|string $displayName Filter the results by display name.
      *                                 To enable prefix filtering append `*` to the end of the value
@@ -52,13 +52,7 @@ class Organizations
      *                                 Provide this to retrieve the subsequent page.
      *                                 When paginating, all other parameters provided to list organizations must match
      *                                 the call that provided the page token.
-     * @param null|string $orderBy     A comma-separated list of fields to order by.
-     *                                 Supports:
-     *                                 - `displayName asc`
-     *                                 - `email asc`
-     *                                 - `signupTime desc`
-     *                                 - `createTime desc`
-     *                                 - `deleteTime desc`
+     * @param null|string $orderBy     a comma-separated list of fields to order by
      * @param null|bool   $showDeleted whether to show deleted organizations
      * @param null|string $view        The organization view to return in the results.
      *                                 This defaults to the `BASIC` view.
@@ -105,7 +99,7 @@ class Organizations
     }
 
     /**
-     * Creates a new organization.
+     * Create an organization.
      *
      * @param null|string             $uniqueId            The client defined unique identifier of the organization account.
      *                                                     It is restricted to letters, numbers, underscores, and hyphens,
@@ -201,7 +195,7 @@ class Organizations
     }
 
     /**
-     * Retrieves specified organization.
+     * Get an organization.
      *
      * @param string $organizationId the identifier of the organization
      *
@@ -219,7 +213,7 @@ class Organizations
     }
 
     /**
-     * Updates specified organization.
+     * Update an organization.
      *
      * @param string                            $organizationId      the identifier of the organization
      * @param null|bool                         $allowMissing        If set to true, and the organization is not found, a new organization will be created.
@@ -325,7 +319,13 @@ class Organizations
     }
 
     /**
-     * Marks specified organization for deletion.
+     * Delete an organization.
+     *
+     * This marks the organization for deletion and can be restored during
+     * a grace period.
+     *
+     * To immediately delete an organization, you must also call purge
+     * organization.
      *
      * @param string $organizationId the identifier of the organization
      *
@@ -343,7 +343,7 @@ class Organizations
     }
 
     /**
-     * Un-marks specified organization for deletion.
+     * Restore an organization.
      *
      * @param string $organizationId the identifier of the organization
      *
@@ -365,7 +365,7 @@ class Organizations
     }
 
     /**
-     * Hard delete the specified organization.
+     * Purge a deleted organization.
      *
      * The organization must be marked for deletion before it can be purged.
      *
@@ -387,7 +387,7 @@ class Organizations
     }
 
     /**
-     * Connect specified organization to external account.
+     * Connect an organization to an external account.
      *
      * @param string      $organizationId the organization identifier
      * @param null|string $connectionId   the identifier of the connection
@@ -420,7 +420,79 @@ class Organizations
     }
 
     /**
-     * Disconnect specified organization from external account.
+     * Update an organization's external account.
+     *
+     * @param string                 $organizationId      the identifier of the organization
+     * @param null|string            $connectionId        the system-assigned identifier for the connection of the external account
+     * @param null|string|Undefined  $displayName         The human-readable display name of the external account.
+     *                                                    The maximum length is 200 characters.
+     *                                                    This might be further restricted by the external provider.
+     * @param null|string|Undefined  $email               The email address of the external account.
+     *                                                    The maximum length is 320 characters.
+     *                                                    This might be further restricted by the external provider.
+     * @param null|bool|Undefined    $emailVerified       whether the external account's email address has been verified
+     * @param null|string|Undefined  $phoneNumber         The E164 phone number for the external account (e.g. `+12125550123`).
+     * @param null|bool|Undefined    $phoneNumberVerified whether the external account's phone number has been verified
+     * @param null|string|Undefined  $currencyCode        The default ISO-4217 currency code for the external account (e.g. `USD`).
+     * @param null|Address|Undefined $address             the billing address for the external account
+     * @param null|bool|Undefined    $disabled            whether the external account is disabled
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function updateConnection(
+        string $organizationId,
+        ?string $connectionId = null,
+        null|string|Undefined $displayName = new Undefined(),
+        null|string|Undefined $email = new Undefined(),
+        null|bool|Undefined $emailVerified = new Undefined(),
+        null|string|Undefined $phoneNumber = new Undefined(),
+        null|bool|Undefined $phoneNumberVerified = new Undefined(),
+        null|string|Undefined $currencyCode = new Undefined(),
+        null|Address|Undefined $address = new Undefined(),
+        null|bool|Undefined $disabled = new Undefined(),
+    ): Organization {
+        $req = new Request('admin.organizations.updateConnection', 'PATCH', '/admin/v1/organizations/'.rawurlencode($organizationId).':updateConnection');
+        $req->setIdempotent(true);
+
+        $body = [];
+
+        if (!empty($connectionId)) {
+            $body['connectionId'] = $connectionId;
+        }
+        if (!$displayName instanceof Undefined) {
+            $body['displayName'] = $displayName;
+        }
+        if (!$email instanceof Undefined) {
+            $body['email'] = $email;
+        }
+        if (!$emailVerified instanceof Undefined) {
+            $body['emailVerified'] = $emailVerified;
+        }
+        if (!$phoneNumber instanceof Undefined) {
+            $body['phoneNumber'] = $phoneNumber;
+        }
+        if (!$phoneNumberVerified instanceof Undefined) {
+            $body['phoneNumberVerified'] = $phoneNumberVerified;
+        }
+        if (!$currencyCode instanceof Undefined) {
+            $body['currencyCode'] = $currencyCode;
+        }
+        if (!$address instanceof Undefined) {
+            $body['address'] = $address;
+        }
+        if (!$disabled instanceof Undefined) {
+            $body['disabled'] = $disabled;
+        }
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return Organization::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Disconnect an organization from an external account.
      *
      * This will delete all the data associated with the connected account, including
      * payment methods, invoices, and subscriptions.
@@ -461,7 +533,7 @@ class Organizations
     }
 
     /**
-     * Lists organization members.
+     * List organization members.
      *
      * @param string      $organizationId the identifier of the organization
      * @param null|string $displayName    Filter the results by display name.
@@ -483,11 +555,7 @@ class Organizations
      *                                    Provide this to retrieve the subsequent page.
      *                                    When paginating, all other parameters provided to list members must match
      *                                    the call that provided the page token.
-     * @param null|string $orderBy        A comma-separated list of fields to order by.
-     *                                    Supports:
-     *                                    - `displayName asc`
-     *                                    - `email asc`
-     *                                    - `createTime desc`
+     * @param null|string $orderBy        a comma-separated list of fields to order by
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -528,7 +596,7 @@ class Organizations
     }
 
     /**
-     * Creates a new organization member.
+     * Create an organization member.
      *
      * @param string      $organizationId the identifier of the organization
      * @param null|string $userId         the identifier of the user
@@ -559,7 +627,7 @@ class Organizations
     }
 
     /**
-     * Retrieves specified organization member.
+     * Get an organization member.
      *
      * @param string $organizationId the identifier of the organization
      * @param string $userId         the identifier of the user
@@ -579,7 +647,7 @@ class Organizations
     }
 
     /**
-     * Updates specified organization member.
+     * Update an organization member.
      *
      * @param string                $organizationId the identifier of the organization
      * @param string                $userId         the identifier of the user
@@ -614,7 +682,7 @@ class Organizations
     }
 
     /**
-     * Deletes specified organization member.
+     * Delete an organization member.
      *
      * @param string $organizationId the identifier of the organization
      * @param string $userId         the identifier of the user

@@ -25,7 +25,7 @@ class Session
     }
 
     /**
-     * Get the current session details.
+     * Get details about the current session.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -40,7 +40,7 @@ class Session
     }
 
     /**
-     * Exchange an ID token from your IdP for an access token.
+     * Exchange an ID token from an IdP for an access token.
      *
      * @param null|string $token the IdP ID token which is used to authenticated the user
      *
@@ -64,7 +64,7 @@ class Session
     }
 
     /**
-     * Create Portal session.
+     * Create a new Portal session.
      *
      * @param null|string $organizationId The identifier of the organization.
      *                                    When specified the `{accountId}` in the `portalUrl` will be
