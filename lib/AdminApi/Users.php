@@ -10,6 +10,7 @@ use UserHub\AdminV1\CreateApiSessionResponse;
 use UserHub\AdminV1\CreatePortalSessionResponse;
 use UserHub\AdminV1\ListUsersResponse;
 use UserHub\AdminV1\PurgeUserResponse;
+use UserHub\AdminV1\ReportUserActionResponse;
 use UserHub\AdminV1\User;
 use UserHub\CommonV1\Address;
 use UserHub\Internal\Request;
@@ -534,7 +535,7 @@ class Users
      * @param string $userId The identifier of the user.
      *                       This must be in the format `<externalId>@<connectionId>` where
      *                       `externalId` is the identity provider user identifier and
-     *                       and `connectionId` is the User Provider connection identifier.
+     *                       and `connectionId` is the User provider connection identifier.
      *
      * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
      */
@@ -551,6 +552,47 @@ class Users
         $res = $this->transport->execute($req);
 
         return User::jsonUnserialize($res->decodeBody());
+    }
+
+    /**
+     * Report a user action.
+     *
+     * If the `<externalId>@<connectionId>` user identifier syntax is
+     * used and the user doesn't exist, they will be imported.
+     *
+     * By default, the action is processed asynchronously.
+     *
+     * @param string      $userId The identifier of the user.
+     *                            This can be in the format `<externalId>@<connectionId>` where
+     *                            `externalId` is the identity provider user identifier and
+     *                            and `connectionId` is the User provider connection identifier.
+     * @param null|string $action the type of action
+     * @param null|bool   $wait   Process the user action synchronously.
+     *                            Otherwise the action is processed in the background and errors
+     *                            won't be returned.
+     *
+     * @throws UserHubError if the endpoint returns a non-2xx response or there was an error handling the request
+     */
+    public function reportAction(
+        string $userId,
+        ?string $action = null,
+        ?bool $wait = null,
+    ): ReportUserActionResponse {
+        $req = new Request('admin.users.reportAction', 'POST', '/admin/v1/users/'.rawurlencode($userId).':reportAction');
+        $body = [];
+
+        if (!empty($action)) {
+            $body['action'] = $action;
+        }
+        if (!empty($wait)) {
+            $body['wait'] = $wait;
+        }
+
+        $req->setBody((object) $body);
+
+        $res = $this->transport->execute($req);
+
+        return ReportUserActionResponse::jsonUnserialize($res->decodeBody());
     }
 
     /**
@@ -580,7 +622,7 @@ class Users
      *
      * @param string      $userId         The user ID.
      *                                    In addition to supporting the UserHub user ID,
-     *                                    you can also pass in the User Provider external identifier in the
+     *                                    you can also pass in the User provider external identifier in the
      *                                    format `<externalId>@<connectionId>` and if the user doesn't
      *                                    exist in UserHub they will automatically be imported.
      * @param null|string $portalUrl      The Portal URL, this is the target URL on the portal site.

@@ -9,9 +9,9 @@ namespace UserHub\AdminV1;
 use UserHub\Internal\JsonUnserializable;
 
 /**
- * The builtin email specific connection data.
+ * Response message for ReportUserAction.
  */
-final class BuiltinEmailConnection implements \JsonSerializable, JsonUnserializable
+final class ReportUserActionResponse implements \JsonSerializable, JsonUnserializable
 {
     public function __construct(
     ) {}
