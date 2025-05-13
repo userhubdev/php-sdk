@@ -39,28 +39,16 @@ final class PostmarkConnection implements \JsonSerializable, JsonUnserializable
      */
     public ?Email $replyTo;
 
-    /**
-     * The allowed email list.
-     *
-     * @var string[]
-     */
-    public array $allowedEmails;
-
-    /**
-     * @param null|string[] $allowedEmails
-     */
     public function __construct(
         ?string $serverToken = null,
         ?string $serverId = null,
         ?Email $from = null,
         ?Email $replyTo = null,
-        ?array $allowedEmails = null,
     ) {
         $this->serverToken = $serverToken ?? '';
         $this->serverId = $serverId ?? '';
         $this->from = $from ?? null;
         $this->replyTo = $replyTo ?? null;
-        $this->allowedEmails = $allowedEmails ?? [];
     }
 
     public function jsonSerialize(): mixed
@@ -70,7 +58,6 @@ final class PostmarkConnection implements \JsonSerializable, JsonUnserializable
             'serverId' => $this->serverId,
             'from' => $this->from,
             'replyTo' => $this->replyTo,
-            'allowedEmails' => $this->allowedEmails,
         ];
     }
 
@@ -85,7 +72,6 @@ final class PostmarkConnection implements \JsonSerializable, JsonUnserializable
             $data->{'serverId'} ?? null,
             isset($data->{'from'}) ? Email::jsonUnserialize($data->{'from'}) : null,
             isset($data->{'replyTo'}) ? Email::jsonUnserialize($data->{'replyTo'}) : null,
-            $data->{'allowedEmails'} ?? null,
         );
     }
 }
