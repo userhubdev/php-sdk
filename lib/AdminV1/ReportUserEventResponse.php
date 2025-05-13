@@ -9,9 +9,9 @@ namespace UserHub\AdminV1;
 use UserHub\Internal\JsonUnserializable;
 
 /**
- * Response message for ReportUserAction.
+ * Response message for ReportUserEvent.
  */
-final class ReportUserActionResponse implements \JsonSerializable, JsonUnserializable
+final class ReportUserEventResponse implements \JsonSerializable, JsonUnserializable
 {
     public function __construct(
     ) {}
