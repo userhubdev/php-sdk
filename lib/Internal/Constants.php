@@ -10,8 +10,8 @@ abstract class Constants
 {
     public const API_BASE_URL = 'https://api.userhub.com';
     public const API_VERSION = '2025-05-01';
-    public const USER_AGENT = 'UserHub-PHP/0.8.1';
-    public const VERSION = '0.8.1';
+    public const USER_AGENT = 'UserHub-PHP/0.8.2';
+    public const VERSION = '0.8.2';
 
     public const AUTH_HEADER = 'Authorization';
     public const API_KEY_HEADER = 'UserHub-Api-Key';
